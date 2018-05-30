@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container>
-<v-layout column> 
+<v-layout column>
   <v-flex>
     <v-select
           :items="currencies"
