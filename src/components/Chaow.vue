@@ -1,4 +1,5 @@
 <template>
+
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
@@ -29,24 +30,37 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout
-          justify-center
-          align-center
-        >
-          <v-flex text-xs-center>
-            <v-tooltip left>
-              <v-btn slot="activator" :href="source" icon large target="_blank">
-                <v-icon large>code</v-icon>
-              </v-btn>
-              <span>Source</span>
-            </v-tooltip>
-            <v-tooltip right>
-              <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/rJdVMq" target="_blank">
-                <v-icon large>mdi-codepen</v-icon>
-              </v-btn>
-              <span>Codepen</span>
-            </v-tooltip>
+      <v-container fluid>
+        <v-layout row wrap>
+          <v-flex xs12>
+            <v-alert :value="true" type="success">
+              This is a success alert.
+            </v-alert>
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex xs6>
+            <img src="@/assets/xxx.jpeg">
+
+            <v-btn color="success">Success</v-btn>
+          </v-flex>
+          <v-flex xs6>
+            <v-card>
+              <v-card-media
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpJpmNbQur9fVYe_LnZ2P8W8WtQ7jQVSvPxQc3l8S8F2xqxlLo"
+                height="200px">
+              </v-card-media>
+              <v-card-title primary-title>
+                <div>
+                  <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
+                  <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                </div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat color="orange">Share</v-btn>
+                <v-btn flat color="orange">Explore</v-btn>
+              </v-card-actions>
+            </v-card>
           </v-flex>
         </v-layout>
       </v-container>
@@ -59,6 +73,7 @@
 
 <script>
   export default {
+    components : {},
     data: () => ({
       drawer: null
     }),
