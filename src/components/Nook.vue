@@ -30,6 +30,8 @@
     </v-toolbar>
     <v-content>
       <v-container fill-height>
+        <nook-form></nook-form>
+        
         <v-layout justify-center align-center>
             <input type="number" v-model="num1">
             <input type="number" v-model="num2">
@@ -52,7 +54,11 @@
 </template>
 
 <script>
+import form from "@/components/form"
   export default {
+      components: {
+          'nook-form' : form
+      },
     data: () => ({
       drawer: true,
       items: [
