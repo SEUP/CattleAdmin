@@ -3,14 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vuetify from 'vuetify'
 
+import Vuetify from 'vuetify'
 import axios from 'axios'
 
 window.axios = axios;
 
-Vue.use(Vuetify)
-Vue.config.productionTip = false
+Vue.use(Vuetify);
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,4 +18,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});

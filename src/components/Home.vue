@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container>
-<v-layout column> 
+<v-layout column>
   <v-flex>
     <v-select
           :items="currencies"
@@ -13,7 +13,7 @@
   </v-flex>
   <v-flex v-if="output">
      <v-list two-line subheader>
-          <v-list-tile v-for="(value,key) in output.rates">
+          <v-list-tile v-bind:key="key" v-for="(value,key) in output.rates">
             <v-list-tile-content>
               <v-list-tile-title>{{key}}</v-list-tile-title>
               <v-list-tile-sub-title>{{value}}</v-list-tile-sub-title>
