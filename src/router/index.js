@@ -5,6 +5,8 @@ import Home  from '@/components/Home'
 import Most  from '@/components/Most'
 
 
+import Nook  from '@/components/Nook'
+import Eiei from '@/components/Eiei'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +19,14 @@ export default new Router({
       path: '/Home',
       name: 'Home',
       component: Home
+    }, {
+      path: '/Nook',
+      name: 'Nook',
+      component: Nook
+    }, {
+      path: '/Eiei',
+      name: 'Eiei',
+      component: Eiei
     }, {
       path: '/Most',
       name: 'Most',
