@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import Login  from '@/components/Login'
 import Home  from '@/components/Home'
 import Most  from '@/components/Most'
-
-
 import Nook  from '@/components/Nook'
 import Eiei from '@/components/Eiei'
 Vue.use(Router)
