@@ -29,6 +29,11 @@ export default new Router({
           path : 'chaow',
           name : 'admin-chaow',
           component : view('Chaow')
+        },
+        {
+          path : 'nook',
+          name : 'admin-nook',
+          component : view('Nook')
         }
       ]
     }
