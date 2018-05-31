@@ -33,6 +33,11 @@ export default new Router({
           path : 'porramet',
           name : 'admin-porramet',
           component : view('Porramet')
+        },
+        {
+          path : 'nook',
+          name : 'admin-nook',
+          component : view('Nook')
         }
       ]
     }
