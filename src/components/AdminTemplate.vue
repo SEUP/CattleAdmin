@@ -71,8 +71,23 @@
           </v-list-tile-content>
         </v-list-tile>
 
+
+
+
+        <v-list-tile :to="{name : 'admin-most'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              Most
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+
+     </v-navigation-drawer>
+
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="blue darken-3" dark app fixed>

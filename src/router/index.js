@@ -31,6 +31,12 @@ export default new Router({
           component : view('Chaow')
         },
         {
+
+          path: 'most',
+          name: 'admin-most',
+          component: view('Most')
+        },
+        {
           path : 'got',
           name : 'admin-got',
           component : view('Got')
