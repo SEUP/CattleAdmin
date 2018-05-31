@@ -31,6 +31,11 @@ export default new Router({
           component : view('Chaow')
         },
         {
+          path : 'paikung1',
+          name : 'admin-paikung',
+          component : view('paikung1')
+        },
+        {
           path : 'nook',
           name : 'admin-nook',
           component : view('Nook')

@@ -28,7 +28,17 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        
+        <v-list-tile :to="{name : 'admin-paikung'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              paikung
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-list-tile :to="{name : 'admin-nook'}" exact>
           <v-list-tile-action>
             <v-icon>mdi-account</v-icon>
@@ -39,7 +49,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        
+
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
