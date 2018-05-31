@@ -29,6 +29,20 @@ export default new Router({
           path : 'chaow',
           name : 'admin-chaow',
           component : view('Chaow')
+        },{
+          path : 'porramet',
+          name : 'admin-porramet',
+          component : view('Porramet')
+        },
+        {
+          path : 'paikung1',
+          name : 'admin-paikung',
+          component : view('paikung1')
+        },
+        {
+          path : 'nook',
+          name : 'admin-nook',
+          component : view('Nook')
         }
       ]
     }
