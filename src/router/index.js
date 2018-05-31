@@ -16,9 +16,16 @@ export default new Router({
       name: 'Login',
       component: view("Login")
     }, {
-      path: '/Home',
-      name: 'Home',
-      component: view("Home")
+      path: '/admin',
+      name: 'admin',
+      component: view("AdminTemplate"),
+      children : [
+        {
+          path : '',
+          name : 'admin-home',
+          component : view('Home')
+        }
+      ]
     }
   ]
 })

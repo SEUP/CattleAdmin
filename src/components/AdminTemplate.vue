@@ -1,0 +1,67 @@
+<template>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      v-model="drawer"
+      fixed
+      app
+    >
+      <v-list dense>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>mdi-home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              Home
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="blue darken-3" dark app fixed>
+      <v-toolbar-title  class="ml-0 pl-3 mr-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <span class="hidden-sm-and-down">Cattle Information System</span>
+      </v-toolbar-title>
+      <v-text-field
+        flat
+        solo-inverted
+        prepend-icon="search"
+        label="Search"
+        class="hidden-sm-and-down"
+      ></v-text-field>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>notifications</v-icon>
+      </v-btn>
+      <v-btn icon large>
+        <v-avatar size="32px" tile>
+          <img
+            src="https://vuetifyjs.com/static/doc-images/logo.svg"
+            alt="Vuetify"
+          >
+        </v-avatar>
+      </v-btn>
+    </v-toolbar>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
+</template>
+
+<script>
+  export default {
+    props: {
+      source: String
+    },
+    data: () => ({
+      drawer: null,
+    })
+  }
+</script>
