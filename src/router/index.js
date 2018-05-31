@@ -29,6 +29,11 @@ export default new Router({
           path : 'chaow',
           name : 'admin-chaow',
           component : view('Chaow')
+        },
+        {
+          path : 'got',
+          name : 'admin-got',
+          component : view('Got')
         },{
           path : 'porramet',
           name : 'admin-porramet',
