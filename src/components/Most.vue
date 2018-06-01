@@ -1,6 +1,13 @@
 <template>
-
+ <v-container fluid>
   <v-layout row wrap>
+
+    <v-flex pb-3 xs-12>
+      <v-text-field label="Post Title" v-model="from.title"/>
+      <v-text-field label="Post Body" multi-line v-model="from.body"/>
+      <v-btn color="pink" @click="save()"> Submit </v-btn>
+    </v-flex>
+
     <v-flex pb-3 xs12 class="display-1">
       Most Intawong Posts
     </v-flex>
@@ -14,7 +21,7 @@
 
   </v-layout>
 
-
+ </v-container>
 
 </template>
 
@@ -22,26 +29,25 @@
   export default {
     name: "Most",
     data: () => ({
-      posts : []
+      from:{}
     }),
+    computed : {
+      posts(){
+        return this.$store.state.posts.postList;
+      }
+    },
     async created(){
-      console.log(1);
       await this.load();
-      console.log(5);
+      console.log("1");
     },
     methods :{
+      save : async function(){
+        await this.$store.dispatch("posts/save",this.from);
+        this.from = {};
+      },
+
       load : async function () {
-        console.log(2);
-        await axios.get("https://jsonplaceholder.typicode.com/posts")
-          .then((response) => {
-            console.log(3);
-            this.display(response.data);
-        })
-          .catch((error) => {
-            console.log(3);
-            console.log(error);
-          })
-        console.log(4)
+        await this.$store.dispatch("posts/load");
       },
         display : function (data) {
           this.posts = data ;
