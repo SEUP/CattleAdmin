@@ -30,10 +30,7 @@ export default {
 
     },
     save: async function (context, form) {
-      await axios.post(
-        "https://jsonplaceholder.typicode.com/posts"
-        , form
-      )
+      await axios.post("https://jsonplaceholder.typicode.com/posts",form)
         .then((r) => {
           context.commit('insertPost', r.data);
         })

@@ -1,6 +1,12 @@
 <template>
   <v-container fluid>
     <v-layout row wrap>
+
+      <v-flex pb-3 xs-12>
+        <v-text-field label="Post title" v-model="form.title"/>
+        <v-text-field label="Post Content" multi-line v-model="form.body"/>
+        <v-btn color="primary" @click="save()">Submit</v-btn>
+      </v-flex>
       <v-flex pb-3 xs12 class="display-1">
         Chissanupong Posts
       </v-flex>
@@ -20,23 +26,25 @@
     export default {
       name: "ford",
       data: () => ({
-        posts : []
+         form: {}
       }),
+        computed : {
+          posts () {
+            return this.$store.state.posts.postList;
+          }
+      },
+
       async created() {
         await this.load();
         console.log('thfth');
       },
       methods: {
+        save:async function(){
+          await this.$store.dispatch("posts/save",this.form);
+          this.form = {};
+        },
         load: async function () {
-          axios.get("https://jsonplaceholder.typicode.com/posts")
-            .then((response) => {
-              console.log(response);
-              this.display(response.data);
-
-            })
-            .catch((error) =>{
-              console.log(error);
-            })
+          await this.$store.dispatch("posts/load");
         },
         display: function (data) {
           this.posts = data;
