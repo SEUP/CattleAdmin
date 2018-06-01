@@ -4,49 +4,15 @@
       <v-flex xs12 class="display-1" mb-3>
         paikung
       </v-flex>
-      <v-flex xs12>
-        <v-dialog v-model="dialog" persistent max-width="500px">
-          <v-card>
-            <v-card-title>
-              <span class="headline">New Contact</span>
-            </v-card-title>
-            <v-container grid-list-md>
-              <v-text-field
-                name="input-1"
-                label="Contact Name"
-                v-model="addForm.name"
-              ></v-text-field>
-              <v-text-field
-                name="input-1"
-                label="Phone Number"
-                v-model="addForm.number"
-              ></v-text-field>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" flat @click.native="addContact(addForm.name,addForm.number)">Save</v-btn>
-              </v-card-actions>
-            </v-container>
-          </v-card>
-        </v-dialog>
-        <v-btn color="promacy"><v-icon>เพิ่มรายชื่อติดต่อ</v-icon></v-btn>
+      <v-flex>
 
-        <v-data-table
-          :headers="headers"
-          :items="contacts">
-          <template slot="items" slot-scope="props">
-            <td>{{props.item.name}}</td>
-            <td>{{props.item.number}}</td>
-            <td>
-              <v-btn @click="removeContact(props.item)" flat color="red"><v-icon>mdi-delete</v-icon></v-btn>
-            </td>
-          </template>
-        </v-data-table>
+        <template v-for="post in posts">
+        <h1> {{post.title}} </h1>
+        <p>{{post.body}}</p>
+        <hr/>
+        </template>
       </v-flex>
     </v-layout>
-    <v-btn @click="dialog = true" dark fab fixed bottom right color="red">
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
   </v-container>
 </template>
 
@@ -55,53 +21,30 @@
   export default {
     name: "paikung",
     data: () => ({
-      dialog: false,
-      addForm :{
-        name : "",
-        number : "",
-      },
-      headers:[
-        {
-          text :"Contact Name",
-          value:'name',
-        },{
-          text:"Telephone Number",
-          value:'number',
-        },{
-          text:"Action",
-          sort:false,
-        }
-      ],
-      contacts : [
-        {
-          name : "Halo",
-          number : "123456789"
-        },
-        {
-          name :"John",
-          number : "1010101010"
-        },
-        {
-          name : "Robert",
-          number : "123654789"
-        }
-      ],
+      posts: []
     }),
-    methods : {
-      addContact : function (name,number) {
-        let newContact = { name : name,number:number}
-        this.contacts.push(newContact);
+    async created() {
+      console.log(1);
+      await this.load();
+      console.log(5)
+    },
+    methods: {
+      load:async function () {
+        console.log(2)
 
-        this.addForm = {
-          name:"",
-          number:"",
-        };
-
-        this.dialog = false;
+        await axios.get("https://jsonplaceholder.typicode.com/posts")
+          .then((response) => {
+            console.log(3);
+            this.display(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log(3);
+          })
+        console.log(4);
       },
-      removeContact : function(contact){
-        let index = this.contacts.indexOf(contact);
-        this.contacts.splice(index,1)
+      display: function (data) {
+      this.posts = data ;
       }
     }
   }
