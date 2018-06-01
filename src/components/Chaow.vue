@@ -6,15 +6,11 @@
       </v-flex>
 
       <v-flex>
-        <h1>Heading</h1>
-        <p>Content</p>
+        <template v-for="post in posts">
+        <h3>{{post.title}}</h3>
+        <p>{{post.body}}</p>
         <hr/>
-        <h1>Heading</h1>
-        <p>Content</p>
-        <hr/>
-        <h1>Heading</h1>
-        <p>Content</p>
-        <hr/>
+        </template>
       </v-flex>
     </v-layout>
   </v-container>
@@ -24,9 +20,30 @@
   export default {
     name: "Chaow",
     data: () => ({
-
+      posts : []
     }),
+    async created() {
+      console.log(1);
+      await this.load();
+      console.log(5);
+    },
     methods: {
+      load: async function () {
+        console.log(2);
+        await axios.get("https://jsonplaceholder.typicode.com/posts")
+          .then((r) => {
+            console.log(3);
+            this.display(r.data);
+          })
+          .catch((e) => {
+            console.log(3);
+            console.log(e);
+          })
+        console.log(4);
+      },
+      display: function (data) {
+        this.posts = data;
+      }
     }
   }
 </script>
