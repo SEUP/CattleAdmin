@@ -6,6 +6,7 @@ import router from './router'
 
 import Vuetify from 'vuetify'
 import axios from 'axios'
+import store from './stores/index'
 
 window.axios = axios;
 
@@ -16,6 +17,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 });
