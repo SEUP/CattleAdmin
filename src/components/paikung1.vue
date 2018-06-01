@@ -1,7 +1,14 @@
 <template>
   <v-container fluid>
     <v-layout row wrap>
-      <v-flex xs12 class="display-1" mb-3>
+
+      <v-flex pb-3 sx-12>
+        <v-text-field v-model="form.model" label="post title"  />
+        <v-text-field label="post content" multi-line />
+        <v-btn color="primary" @click="save()"> submit </v-btn>
+      </v-flex>
+
+      <v-flex mb-3xs12 class="display-1" >
         paikung
       </v-flex>
       <v-flex>
@@ -21,30 +28,28 @@
   export default {
     name: "paikung",
     data: () => ({
-      posts: []
+      form : {}
     }),
+    computed : {
+      posts () {
+        return this.$store.state.posts.postList;
+      }
+    },
     async created() {
       console.log(1);
       await this.load();
-      console.log(5)
+      console.log(5);
     },
     methods: {
-      load:async function () {
-        console.log(2)
-
-        await axios.get("https://jsonplaceholder.typicode.com/posts")
-          .then((response) => {
-            console.log(3);
-            this.display(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-            console.log(3);
-          })
-        console.log(4);
+      save : async function(){
+        await this.$store.dispatch("posts/save",this.form);
+        this.form = {};
+      },
+      load: async function () {
+        await this.$store.dispatch("posts/load");
       },
       display: function (data) {
-      this.posts = data ;
+        this.posts = data;
       }
     }
   }
