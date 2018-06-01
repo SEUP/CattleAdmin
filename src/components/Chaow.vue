@@ -43,7 +43,7 @@
             <td>{{props.item.number}}</td>
             <td>
               <v-btn @click="removeContact(props.item)"
-                flat color="red">
+                     flat color="red">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
             </td>
@@ -77,7 +77,7 @@
         },
         {
           text: "Action",
-          sort : false,
+          sort: false,
         }
       ],
       contacts: [
@@ -106,9 +106,13 @@
         this.dialog = false;
       },
 
-      removeContact : function(contact){
-        let index = this.contacts.indexOf(contact);
-        this.contacts.splice(index,1)
+      removeContact: function (contact) {
+
+        if (confirm("Do you want to remove this contact?")) {
+          let index = this.contacts.indexOf(contact);
+          this.contacts.splice(index, 1)
+        }
+
       }
     }
   }
