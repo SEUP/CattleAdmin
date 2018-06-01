@@ -54,6 +54,11 @@ export default new Router({
           path : 'nook',
           name : 'admin-nook',
           component : view('Nook')
+        },
+        {
+          path : 'ford',
+          name : 'admin-ford',
+          component : view('ford')
         }
       ]
     }
