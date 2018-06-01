@@ -1,6 +1,11 @@
 <template>
   <v-container fluid>
     <v-layout row wrap>
+      <v-flex pb-3 xs-12>
+        <v-text-field v-model="form.title" label="Post Title" />
+        <v-text-field v-model="form.body" label="Post Content" multi-line/>
+        <v-btn color="primary" @click="save()">Submit</v-btn>
+      </v-flex>
       <v-flex xs12 class="display-1" mb-3>
         Got
       </v-flex>
@@ -16,28 +21,28 @@
 </template>
 
 <script>
-
   export default {
     name: "Got",
     data: () => ({
-      posts: []
+      form : {}
     }),
+    computed:{
+      posts() {
+        return this.$store.state.posts.postList
+      }
+    },
     async created() {
+      console.log(1);
       await this.load();
-      console.log("yyy")
+      console.log(5);
     },
     methods: {
+      save: async function () {
+        await this.$store.dispatch("posts/save",this.form);
+        this.form = {};
+      },
       load: async function () {
-
-        await axios.get("https://jsonplaceholder.typicode.com/posts")
-          .then((response) => {
-            console.log(response);
-            this.display(response.data);
-
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+        await this.$store.dispatch("posts/load")
       },
       display: function (data) {
         this.posts = data;
