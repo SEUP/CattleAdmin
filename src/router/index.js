@@ -44,6 +44,10 @@ export default new Router({
           path : 'porramet',
           name : 'admin-porramet',
           component : view('Porramet')
+        },{
+          path : 'porramet-table',
+          name : 'admin-porramet-table',
+          component : view('PorrametTableFarmOwners')
         },
         {
           path : 'paikung1',

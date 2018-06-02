@@ -38,6 +38,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
         <v-list-tile :to="{name : 'admin-porramet'}" exact>
           <v-list-tile-action>
             <v-icon>mdi-account</v-icon>
@@ -45,6 +46,16 @@
           <v-list-tile-content>
             <v-list-tile-title>
               Porramet
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile :to="{name : 'admin-porramet-table'}" exact>
+          <v-list-tile-action>
+            <v-icon>table</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              PorrametTable
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>

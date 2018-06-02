@@ -1,41 +1,23 @@
 <template>
   <v-container fluid>
-    <v-dialog v-model="dialog" persistent max-width="500px">
-      <v-btn slot="activator" color="primary" dark>เพิ่มรายชื่อ</v-btn>
-      <v-card>
-        <v-card-title>
-          <span class="headline">New Contact</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container grid-list-md>
-            <v-layout column wrap>
-                <v-text-field v-model="addFrom.name" label="Contact Name"  ></v-text-field>
-                <v-text-field v-model="addFrom.number" label="Contact Number"></v-text-field>
-            </v-layout>
-          </v-container>
-
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="addContacts(addFrom.name,addFrom.number)">Save</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
     <v-layout row wrap>
-      <v-flex xs12>
-        <v-data-table :headers="header" :items="contacts">
-          <template slot="items" slot-scope="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-left">{{ props.item.number}}</td>
-            <td><v-btn flat @click="removeContacts(props.items)" icon><v-icon color="red" >delete</v-icon></v-btn></td>
-          </template>
-        </v-data-table>
+      <v-flex pb-3 xs12>
+        <v-text-field label="Post Title" v-model="form.title"/>
+        <v-text-field label="Post Body" multi-line v-model="form.body"/>
+        <v-btn type="submit" color="success" @click="save()">SUBMIT</v-btn>
+      </v-flex>
+      <v-flex pb-3 xs12 class="display-1">
+        Porramet Posts
+      </v-flex>
+
+      <v-flex>
+        <template v-for="post in posts">
+          <h1>{{post.title}}</h1>
+          <p>{{post.body}}</p>
+          <hr/>
+        </template>
       </v-flex>
     </v-layout>
-    <v-btn dark fab fixed bottom right color="red"  @click="dialog = true">
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
   </v-container>
 </template>
 
@@ -44,31 +26,32 @@
     name: "Porramet",
     data() {
       return {
-        dialog:false,
-        addFrom:{name:"",number:""},
-        header: [
-          {text: "Contact Name", value: "name"},
-          {text: "Contact Number", value: "number"},
-          {text: "Action"},
-        ],
-        contacts: [
-          {name: "Halo", number: "12345678"},
-          {name: "John", number: "14568984"},
-          {name: "Robert", number: "1489914"},
-        ]
+        form : {}
       }
-    }, methods: {
-      addContacts: function (name, number) {
-        let newContact = {name: name, number: number};
-        this.contacts.push(newContact);
-        this.dialog = false;
+    },computed : {
+      posts () {
+        return this.$store.state.posts.postList;
+      }
+    },
+    async created() {
+      console.log(1);
+      await this.load();
+      console.log(5);
+    }
+    ,  methods: {
+      save : async function(){
+        await this.$store.dispatch("posts/save",this.form);
+        this.form = {};
       },
-      removeContacts : function (contact) {
-        let index = this.contacts.indexOf(contact);
-        this.contacts.splice(index,1)
+      load: async function () {
+        await this.$store.dispatch("posts/load");
+      },
+      display: function (data) {
+        this.posts = data;
       }
     }
   }
+
 </script>
 
 <style scoped>
