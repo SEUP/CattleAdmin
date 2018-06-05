@@ -1,59 +1,55 @@
 <template>
-  <v-container fluid>
-    <v-layout row wrap>
-
-      <v-flex pb-3 xs-12>
-        <v-text-field label="Post title" v-model="form.title"/>
-        <v-text-field label="Post Content" multi-line v-model="form.body"/>
-        <v-btn color="primary" @click="save()">Submit</v-btn>
-      </v-flex>
-      <v-flex pb-3 xs12 class="display-1">
-        Chissanupong Posts
-      </v-flex>
-
-      <v-flex>
-        <template v-for="post in posts">
-        <h1>{{post.title}}</h1>
-        <p>{{post.body}}</p>
-        <hr/>
-        </template>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-data-table
+    :headers="headers"
+    :items="tableDatauser"
+    hide-actions
+    class="elevation-1"
+  >
+    <template slot="items" slot-scope="props">
+      <td>{{ props.item.id }}</td>
+      <td class="text-xs-left pa-0 ma-0">{{ props.item.name }}</td>
+      <td class="text-xs-left ">{{ props.item.email }}</td>
+      <td class="text-xs-left">{{ props.item.username }}</td>
+      <td class="text-xs-left">{{ props.item.created_at }}</td>
+      <td class="text-xs-left">{{ props.item.updated_at }}</td>
+      <td class="text-xs-left">
+        <v-btn class="ma-0" icon v-for="at in props.item.action" :key="at.name">
+          <v-icon :color="at.color" >{{at.icon}}</v-icon>
+        </v-btn>
+      </td>
+    </template>
+  </v-data-table>
 </template>
-
 <script>
-    export default {
-      name: "ford",
-      data: () => ({
-         form: {}
-      }),
-        computed : {
-          posts () {
-            return this.$store.state.posts.postList;
-          }
-      },
+  export default {
+    data () {
+      return {
+        headers:[
+          {text: "ID", align:"center" ,sortable :false,value:"id"},
+          {text: "Name", align:"left" ,value:"name"},
+          {text: "Email", align:"left" ,value:"email"},
+          {text: "Username", align:"left" ,value:"username"},
+          {text: "สร้างเมื่อ", align:"left" ,value:"created_at"},
+          {text: "ข้อมูลเมื่อ", align:"left" ,value:"updated_at"},
+          {text: "การจัดการ", align:"left" ,value:"action"},
 
-      async created() {
-        await this.load();
-        console.log('thfth');
+        ],
+      }
+    },computed : {
+      tableDatauser() {
+        return this.$store.state.accounts.userOder;
+      }
+    }, async created() {
+      await  this.loadData();
+    },methods : {
+      loadData: async function () {
+        await this.$store.dispatch("accounts/loader");
+
+
       },
-      methods: {
-        save:async function(){
-          await this.$store.dispatch("posts/save",this.form);
-          this.form = {};
-        },
-        load: async function () {
-          await this.$store.dispatch("posts/load");
-        },
-        display: function (data) {
-          this.posts = data;
-        }
+      display : function (data) {
+        this.tableDatauser = data
       }
     }
-
+  }
 </script>
-
-<style scoped>
-
-</style>
