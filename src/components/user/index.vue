@@ -2,13 +2,13 @@
     <v-container >
       <v-layout align-center>
         <v-flex>
-          <h3 class="display-1">จัดการข้อมูลผู้ใช้ระบบ</h3>
+          <h1 class="display-2">จัดการข้อมูลผู้ใช้ระบบ</h1>
         </v-flex>
       </v-layout>
       <v-divider class="my-3"></v-divider>
       <v-layout row>
         <v-flex xs3 >
-          <v-btn href=".#/admin/user/create" color="primary">ADD <v-icon>mdi-account-plus</v-icon>
+          <v-btn href=".#/admin/user/create" color="primary">เพิ่ม <v-icon>mdi-account-plus</v-icon>
           </v-btn>
         </v-flex>
         <v-flex xs7 offset-xs6>
@@ -54,7 +54,7 @@
   export default {
     data: () => ({
       headers: [
-        {text: "name", align: "left", value: "name"},
+        {text: "Name", align: "left", value: "name"},
         {text: "Email", align: "left", value: "email"},
         {text: "Username", align: "left", value: "role"},
         {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes"},
