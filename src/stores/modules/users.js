@@ -1,59 +1,31 @@
-export  default {
+export default {
   namespaced : true,
-  state : { //data
-    farmOwners :[],
-    tableFarmOwners : []
+  state : {
+    usersData :[],
   },mutations : {
-        setfarmOwners : function (state,farmOwnersData)  {
-          state.farmOwners = farmOwnersData
-        },
-        settablefarmOwners : function (state,dataTable) {
-          state.tableFarmOwners = dataTable
-        }
-
+    setUsersData : function (state,DataUsers) {
+      state.usersData = DataUsers
+    },
   },actions : {
-        loader : async  function (context) {
-          await axios.get("http://mct.ict.up.ac.th:10007/api/farm-owner")
-            .then( (r) => {
-              let farmOwnersData  = r.data.data;
-              context.commit("setfarmOwners",farmOwnersData)
-              let farmOwnerData = this.farmOwners;
-              // console.log(farmOwnersData)
-              let i;
-              let table = [];
-              for(i=0;i<farmOwnersData.length;i++){
-                let nowData = farmOwnersData[i]
-                let newData = {
-                  value:false,
-                  id:nowData.id,
-                  first_name:nowData.first_name
-                  ,last_name:nowData.last_name,
-                  mobile_no:nowData.mobile_no,
-                  province_name: nowData.province_name,
-                  amphur_name:nowData.amphur_name
-                  ,district_name:nowData.district_name,
-                  updated_at:nowData.updated_at,
-                  action : [
-                    {name:"export",icon:"unarchive",color:"success"},
-                    {name:"edit",icon:"create",color:"primary"},
-                    {name:"delete",icon:"delete",color:"red"},
-                  ]
-                }
+    loadUsers : async function (context) {
+      await axios.get("http://mct.ict.up.ac.th:10007/api/users")
+        .then( (r) => {
+          let data = r.data.data;
+          context.commit("setUsersData",data)
+        })
+        .catch( (err) => {
 
-                table.push(newData)
-                // console.log(newData)
-                // console.log(5555)
+        })
+    },searchUsers : async function (context,data) {
 
-              }context.commit("settablefarmOwners",table)
-              // console.log(table)
+    },saveUser : async function (context,data) {
 
+    },editUsers : async function (context,data) {
 
+    },deleteUser : async function (context,data) {
 
+    }
 
-            })
-            .catch( (e) => {
-
-            })
-        },
+  }
 }
-}
+
