@@ -17,43 +17,41 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-
-
-
-        <v-list-tile :to="{name : 'admin-user'}" exact>
+        <!--role-->
+        <v-list-tile :to="{name : 'role-index'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              UserData
+              Role
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
-    <v-list-tile :to="{name : 'admin-permissions'}" exact>
+        <!--Users-->
+        <v-list-tile :to="{name : 'user-index'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              permissions
+              User
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
-
-
-        <v-list-tile :to="{name : 'admin-usermanagement'}" exact>
+        <v-list-tile :to="{name : 'user-create'}" exact>
           <v-list-tile-action>
-            <v-icon>folder_open</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              User Management
+              User-create
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
 
       </v-list>
 
