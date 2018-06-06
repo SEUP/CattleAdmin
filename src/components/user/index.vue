@@ -2,27 +2,27 @@
     <v-container >
       <v-layout align-center>
         <v-flex>
-          <h1 class="display-2">จัดการข้อมูลผู้ใช้ระบบ</h1>
+          <h3 class="display-1">จัดการข้อมูลผู้ใช้ระบบ</h3>
         </v-flex>
       </v-layout>
       <v-divider class="my-3"></v-divider>
       <v-layout row>
+        <v-flex xs3 >
+          <v-btn color="primary">Accept <v-icon>mdi-account-plus</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs7 offset-xs6>
+          <v-text-field
+            id="testing"
+            name="input-1"
+            label="ค้นหา"
+            append-icon="mdi-magnify"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
         <v-flex xs12 >
           <v-card>
-            <v-layout row>
-              <v-flex xs3 >
-                <v-btn color="info">เพิ้ม</v-btn>
-              </v-flex>
-              <v-flex xs7 offset-xs6>
-                <v-text-field
-                  id="testing"
-                  name="input-1"
-                  label="ค้นหา"
-                  append-icon="mdi-magnify"
-                ></v-text-field>
-              </v-flex>
-            </v-layout>
-            <v-divider class="my-3"></v-divider>
             <v-data-table
               :headers="headers"
               :items="item"
@@ -36,9 +36,6 @@
                 <td>{{ props.item.atdes}}</td>
                 <td>{{ props.item.action }}<v-btn  color="success" @click>Edit</v-btn>
                   <v-btn  color="error"@click>Delete</v-btn></td>
-
-
-
               </template>
             </v-data-table>
             <div class="text-xs-center">
@@ -55,7 +52,7 @@
   export default {
     data: () => ({
       headers:[
-        {text: "name", align:"center" ,value:"name"},
+        {text: "name", align:"left" ,value:"name"},
         {text: "Email", align:"left" ,value:"email"},
         {text: "Role", align:"left" ,value:"role"},
         {text: "จังหวัด อำเภอ ตำบล", align:"left" ,value:"atdes"},
