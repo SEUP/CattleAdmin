@@ -2,7 +2,6 @@ export default {
   namespaced : true,
   state : {
     rolesData :[],
-    rolesSearchData : []
   },mutations : {
     setRolesData : function (state,DataRoles) {
       state.rolesData = DataRoles

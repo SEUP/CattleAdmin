@@ -59,6 +59,10 @@ export default new Router({
           name : 'admin-gotji',
           component : view('gotji')
         },{
+          path : 'permissions',
+          name : 'admin-permissions',
+          component : view('permissions')
+        },{
           path : 'porramet',
           name : 'admin-porramet',
           component : view('Porramet')
