@@ -1,53 +1,52 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex >
-        <!--<h1 class="display-1">จัดการข้อมูลผู้ใช้ระบบ</h1>-->
-
-        <v-card>
-          <h1 class="display-1">จัดการข้อมูลผู้ใช้ระบบ</h1>
-          <v-divider></v-divider>
-          <div class="text-xs-left">
-            <v-bottom-sheet v-model="sheet">
-              <v-btn slot="activator" color="green" dark>เพิ่มผู้ใช้</v-btn>
-            </v-bottom-sheet>
-          </div>
-          <v-layout row>
-            <v-flex xs4>
-              <v-text-field
-                id="testing"
-                name="input-1"
-                label="ค้นหา"
-                append-icon="mdi-magnify"
-                color="green"
-              ></v-text-field>
-
-            </v-flex>
-
-          </v-layout>
-          <v-divider></v-divider>
-          <v-data-table
-            :headers="headers"
-            :items="item"
-            hide-actions
-            class="elevation-1"
-          >
-            <template slot="items" slot-scope="props">
-              <td>{{ props.item.id }}</td>
-              <td>{{ props.item.email }}</td>
-              <td>{{ props.item.role }}</td>
-              <td>{{ props.item.atdes}}</td>
-              <td>{{ props.item.action }}</td>
-              <div>
-                <v-btn  color="success">Edit</v-btn>
-                <v-btn  color="error">Delete</v-btn>
-              </div>
-            </template>
-          </v-data-table>
-        </v-card>
-      </v-flex>
-    </v-layout>
+  <v-jumbotron color="white light4">
+    <v-container >
+      <v-layout align-center>
+        <v-flex>
+          <h1 class="display-2">Manage user information</h1>
+        </v-flex>
+      </v-layout>
+      <v-divider class="my-3"></v-divider>
+      <v-layout row>
+        <v-flex xs12 >
+          <v-card>
+            <v-layout row>
+              <v-flex xs3 >
+                <v-btn color="info">Info</v-btn>
+              </v-flex>
+              <v-flex xs7 offset-xs6>
+                <v-text-field
+                  id="testing"
+                  name="input-1"
+                  label="Label Text"
+                  append-icon="mdi-magnify"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-divider class="my-3"></v-divider>
+            <v-data-table
+              :headers="headers"
+              :items="item"
+              hide-actions
+              class="elevation-1"
+            >
+              <template slot="items" slot-scope="props">
+                <td>{{ props.item.id }}</td>
+                <td>{{ props.item.email }}</td>
+                <td>{{ props.item.role }}</td>
+                <td>{{ props.item.atdes}}</td>
+                <td>{{ props.item.action }}</td>
+                <div>
+                  <v-btn  color="success">Edit</v-btn>
+                  <v-btn  color="error">Delete</v-btn>
+                </div>
+              </template>
+            </v-data-table>
+          </v-card>
+        </v-flex>
+      </v-layout>
   </v-container>
+</v-jumbotron>
 </template>
 
 <script>
