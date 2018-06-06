@@ -1,5 +1,4 @@
 <template>
-  <v-jumbotron color="white light4">
     <v-container >
       <v-layout align-center>
         <v-flex>
@@ -49,7 +48,6 @@
         </v-flex>
       </v-layout>
   </v-container>
-  </v-jumbotron>
 </template>
 
 
