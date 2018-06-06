@@ -40,6 +40,11 @@ export default new Router({
           path : 'got',
           name : 'admin-got',
           component : view('Got')
+        },
+        {
+          path : 'gotji',
+          name : 'admin-gotji',
+          component : view('gotji')
         },{
           path : 'porramet',
           name : 'admin-porramet',
