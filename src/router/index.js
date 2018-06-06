@@ -33,7 +33,12 @@ export default new Router({
           component: view('Home')
         },
         userRoute,
-        roleRoute
+        roleRoute,
+        {
+          path : "/test",
+          name : "test",
+          component : view("test")
+        }
       ]
     }]
 })
