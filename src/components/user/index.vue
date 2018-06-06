@@ -34,11 +34,11 @@
                 <td>{{ props.item.email }}</td>
                 <td>{{ props.item.role }}</td>
                 <td>{{ props.item.atdes}}</td>
-                <td>{{ props.item.action }}</td>
-                <div>
-                  <v-btn  color="success" @click>Edit</v-btn>
-                  <v-btn  color="error"@click>Delete</v-btn>
-                </div>
+                <td>{{ props.item.action }}<v-btn  color="success" @click>Edit</v-btn>
+                  <v-btn  color="error"@click>Delete</v-btn></td>
+
+
+
               </template>
             </v-data-table>
             <div class="text-xs-center">
