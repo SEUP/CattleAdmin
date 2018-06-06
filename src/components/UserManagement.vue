@@ -22,42 +22,38 @@
               <h3>First Name</h3>
               <v-text-field
                 v-model="firstname"
-                :rules="firstnameRules"
                 label="First Name"
                 required
               ></v-text-field>
               <h3>Last Name</h3>
               <v-text-field
                 v-model="lastname"
-                :rules="lastnameRules"
                 label="Last Name"
                 required
               ></v-text-field>
               <h3>E-mail</h3>
               <v-text-field
                 v-model="email"
-                :rules="emailRules"
                 label="E-mail"
                 required
               ></v-text-field>
               <h3>Username</h3>
               <v-text-field
                 v-model="username"
-                :rules="usernameRules"
                 label="Username"
                 required
               ></v-text-field>
               <h3>Password</h3>
               <v-text-field
+                type="password"
                 v-model="password"
-                :rules="passwordRules"
                 label="Password"
                 required
               ></v-text-field>
               <h3>Verify Password</h3>
               <v-text-field
-                v-model="verifypassword"
-                :rules="verifypasswordRules"
+                type="password"
+                v-model="password_confirmation"
                 label="Verify Password"
                 required
               ></v-text-field>
@@ -70,7 +66,7 @@
                 <v-checkbox color="black" v-model="selected" label="ผู้ใช้งานระดับตำบล" value="ผู้ใช้งานระดับตำบล"></v-checkbox>
               </v-container>
 
-              <v-btn color="primary" @click="save()"> Submit </v-btn>
+              <v-btn color="primary" @click="saveUser()"> Submit </v-btn>
               <v-btn  @click="back()"> Cancel </v-btn>
             </v-form>
 
