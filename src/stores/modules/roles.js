@@ -27,7 +27,7 @@ export default {
 
         })
 
-      return state.rolesData;
+      return context.state.rolesData;
     },
     searchRoles: async function (context, data) {
       axios.get("http://mct.ict.up.ac.th:10007/api/roles", {params: {keyword: data}})
