@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Login  from '@/components/Login'
+import Home  from '@/components/Home'
+import pai from '@/components/paikung'
 
 function view(name) {
   return function (resolve) {
@@ -81,5 +84,13 @@ export default new Router({
         }
       ]
     }
+      path: '/Home',
+      name: 'Home',
+      component: Home
+
+}, {
+  path: '/paikung',
+  name: 'pai',
+  component: pai}
   ]
 })
