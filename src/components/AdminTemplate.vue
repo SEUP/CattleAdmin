@@ -119,6 +119,17 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-list-tile :to="{name : 'admin-usermanagement'}" exact>
+          <v-list-tile-action>
+            <v-icon>folder_open</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              User Management
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
 
         <v-list-tile :to="{name : 'admin-ford'}" exact>
           <v-list-tile-action>

@@ -42,6 +42,11 @@ export default new Router({
           component : view('Mostfarm')
         },
         {
+          path : 'usermanagement',
+          name : 'admin-usermanagement',
+          component : view('UserManagement')
+        },
+        {
           path : 'got',
           name : 'admin-got',
           component : view('Got')
