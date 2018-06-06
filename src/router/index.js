@@ -83,14 +83,5 @@ export default new Router({
           component : view('ford')
         }
       ]
-    }
-      path: '/Home',
-      name: 'Home',
-      component: Home
 
-}, {
-  path: '/paikung',
-  name: 'pai',
-  component: pai}
-  ]
-})
+}]})
