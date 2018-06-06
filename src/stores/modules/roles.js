@@ -18,6 +18,7 @@ export default {
         .then((r) => {
           if (params && !params.paginate) {
             context.commit("setRolesData", r.data)
+
           } else {
             context.commit("setPaginate", r.data)
           }
@@ -25,6 +26,8 @@ export default {
         .catch((err) => {
 
         })
+
+      return state.rolesData;
     },
     searchRoles: async function (context, data) {
       axios.get("http://mct.ict.up.ac.th:10007/api/roles", {params: {keyword: data}})
