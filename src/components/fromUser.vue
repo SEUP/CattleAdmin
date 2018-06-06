@@ -1,17 +1,71 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex >
+  <v-jumbotron color="white light4">
+    <v-container >
+      <v-layout align-center>
+        <v-flex>
+          <h1 class="display-2">Manage user information</h1>
+        </v-flex>
+      </v-layout>
+      <v-divider class="my-3"></v-divider>
+      <v-layout row>
+        <v-flex xs12 >
+          <v-card>
 
+            <v-layout row>
+              <v-flex xs3 >
+                <v-btn color="info">Info</v-btn>
+              </v-flex>
+              <v-flex xs7 offset-xs6>
+                <v-text-field
+                  id="testing"
+                  name="input-1"
+                  label="Label Text"
+                  append-icon="mdi-magnify"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
 
-      </v-flex>
-    </v-layout>
+            <v-divider class="my-3"></v-divider>
+
+            <v-data-table
+              :headers="headers"
+              :items="item"
+              hide-actions
+              class="elevation-1"
+            >
+              <template slot="items" slot-scope="props">
+                <td>{{ props.item.id }}</td>
+                <td>{{ props.item.email }}</td>
+                <td>{{ props.item.role }}</td>
+                <td>{{ props.item.atdes}}</td>
+                <td>{{ props.item.action }}</td>
+                <div>
+                  <v-btn  color="success">Edit</v-btn>
+                  <v-btn  color="error">Delete</v-btn>
+                </div>
+              </template>
+            </v-data-table>
+
+          </v-card>
+        </v-flex>
+      </v-layout>
+
   </v-container>
+</v-jumbotron>
 </template>
 
 <script>
   export default {
     data: () => ({
+      headers:[
+        {text: "ID", align:"center" ,value:"id"},
+        {text: "Email", align:"left" ,value:"email"},
+        {text: "Role", align:"left" ,value:"role"},
+        {text: "จังหวัด อำเภอ ตำบล", align:"left" ,value:"atdes"},
+        {text: "Action", align:"left" ,value:"action"},
+
+
+      ],
       sheet: false,
       tiles: [
         { img: 'keep.png', title: 'Keep' },
@@ -19,7 +73,9 @@
         { img: 'hangouts.png', title: 'Hangouts' },
         { img: 'messenger.png', title: 'Messenger' },
         { img: 'google.png', title: 'Google+' }
-      ]
+
+      ],item :[{ID:454545,email:"paikung@root", role:"admin" ,atdes: "เมือง นางเเล เชียงราย"
+      }]
     })
   }
 </script>
