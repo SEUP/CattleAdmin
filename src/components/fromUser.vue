@@ -10,7 +10,6 @@
       <v-layout row>
         <v-flex xs12 >
           <v-card>
-
             <v-layout row>
               <v-flex xs3 >
                 <v-btn color="info">Info</v-btn>
@@ -24,9 +23,7 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-
             <v-divider class="my-3"></v-divider>
-
             <v-data-table
               :headers="headers"
               :items="item"
@@ -45,11 +42,9 @@
                 </div>
               </template>
             </v-data-table>
-
           </v-card>
         </v-flex>
       </v-layout>
-
   </v-container>
 </v-jumbotron>
 </template>
