@@ -1,21 +1,19 @@
 <template>
   <v-container fluid>
     <v-layout row wrap>
-      <v-flex pb-3 xs12>
-        <v-text-field label="Post Title" v-model="form.title"/>
-        <v-text-field label="Post Body" multi-line v-model="form.body"/>
-        <v-btn type="submit" color="success" @click="save()">SUBMIT</v-btn>
-      </v-flex>
-      <v-flex pb-3 xs12 class="display-1">
-        Porramet Posts
-      </v-flex>
-
-      <v-flex>
-        <template v-for="post in posts">
-          <h1>{{post.title}}</h1>
-          <p>{{post.body}}</p>
-          <hr/>
-        </template>
+      <v-text-field append-icon="search" @keyup.13 = "search(text)" v-model="text">ค้นหา</v-text-field>
+      <v-flex xs12>
+        <v-data-table :headers="headersTable" :items="DataRoles">
+          <template slot="items" slot-scope="p">
+            <td>{{p.item.display_name}}</td>
+            <td>
+              <v-btn icon>
+                <v-icon color="success" >create</v-icon>
+              </v-btn>
+            </td>
+            <td></td>
+          </template>
+        </v-data-table>
       </v-flex>
     </v-layout>
   </v-container>
@@ -23,35 +21,35 @@
 
 <script>
   export default {
-    name: "Porramet",
-    data() {
+    name : "Roles",
+    data () {
       return {
-        form : {}
+        text:"",
+        headersTable: [
+          {text: "ชื่อ", align: "left", value: "display_name"},
+          {text: "การจัดการ", align: "left",},
+
+        ],
       }
     },computed : {
-      posts () {
-        return this.$store.state.posts.postList;
+      DataRoles  ()  {
+        return this.$store.state.roles.rolesData
+
       }
-    },
-    async created() {
-      console.log(1);
-      await this.load();
-      console.log(5);
-    }
-    ,  methods: {
-      save : async function(){
-        await this.$store.dispatch("posts/save",this.form);
-        this.form = {};
+    },async created ()  {
+      await  this.loadData ()
+    }, methods :  {
+      loadData : async function () {
+        await  this.$store.dispatch("roles/loadRoles");
       },
-      load: async function () {
-        await this.$store.dispatch("posts/load");
-      },
-      display: function (data) {
-        this.posts = data;
+      search : async function (text) {
+        console.log(1111)
+        await  this.$store.dispatch("roles/searchRoles",text);
+
+
       }
     }
   }
-
 </script>
 
 <style scoped>
