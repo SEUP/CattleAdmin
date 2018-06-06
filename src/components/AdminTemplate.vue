@@ -110,7 +110,7 @@
 
         <v-list-tile :to="{name : 'admin-mostfarm'}" exact>
           <v-list-tile-action>
-            <v-icon>table</v-icon>
+            <v-icon>folder_open</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
