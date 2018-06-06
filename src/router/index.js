@@ -60,9 +60,9 @@ export default new Router({
           component : view('PorrametTableFarmOwners')
         },
         {
-          path : 'paikung1',
-          name : 'admin-paikung',
-          component : view('paikung1')
+          path : 'userShow',
+          name : 'admin-user',
+          component : view('fromUser')
         },
         {
           path : 'nook',
