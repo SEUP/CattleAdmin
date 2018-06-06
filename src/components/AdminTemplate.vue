@@ -18,59 +18,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="{name : 'admin-chaow'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Chaow
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
 
-        <v-list-tile :to="{name : 'admin-got'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Got
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile :to="{name : 'admin-gotji'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Gotji
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile :to="{name : 'admin-porramet'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Porramet
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile :to="{name : 'admin-porramet-table'}" exact>
-          <v-list-tile-action>
-            <v-icon>table</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              PorrametTable
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
 
         <v-list-tile :to="{name : 'admin-user'}" exact>
           <v-list-tile-action>
@@ -83,41 +31,18 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="{name : 'admin-nook'}" exact>
+    <v-list-tile :to="{name : 'admin-permissions'}" exact>
           <v-list-tile-action>
             <v-icon>mdi-account</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              Nook
+              permissions
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
 
-
-
-        <v-list-tile :to="{name : 'admin-most'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Most
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile :to="{name : 'admin-mostfarm'}" exact>
-          <v-list-tile-action>
-            <v-icon>folder_open</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              MostFarm
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
 
         <v-list-tile :to="{name : 'admin-usermanagement'}" exact>
           <v-list-tile-action>
@@ -130,17 +55,6 @@
           </v-list-tile-content>
         </v-list-tile>
 
-
-        <v-list-tile :to="{name : 'admin-ford'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Ford
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
       </v-list>
 
      </v-navigation-drawer>
