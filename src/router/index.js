@@ -37,6 +37,11 @@ export default new Router({
           component: view('Most')
         },
         {
+          path : 'most-farm',
+          name : 'admin-mostfarm',
+          component : view('Mostfarm')
+        },
+        {
           path : 'got',
           name : 'admin-got',
           component : view('Got')

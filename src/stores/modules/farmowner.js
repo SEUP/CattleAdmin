@@ -12,7 +12,7 @@ export  default {
         }
 
   },actions : {
-        loader : async function (context) {
+        loader : async  function (context) {
           await axios.get("http://mct.ict.up.ac.th:10007/api/farm-owner")
             .then( (r) => {
               let farmOwnersData  = r.data.data;
@@ -43,8 +43,10 @@ export  default {
                 table.push(newData)
                 // console.log(newData)
                 // console.log(5555)
+
               }context.commit("settablefarmOwners",table)
               // console.log(table)
+
 
 
 
