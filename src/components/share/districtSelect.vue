@@ -83,7 +83,7 @@
             this.selProvince = p;
             this.provinceChange(p);
           }
-        })
+        });
 
         this.amphures.forEach((a) => {
           if (a.AMPHUR_ID == this.valAmphur) {
