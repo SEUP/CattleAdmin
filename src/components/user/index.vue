@@ -46,7 +46,7 @@
               <td>{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
               <td>{{ props.item.action }}
                 <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">Edit</v-btn>
-                <v-btn color="error" @click="dele()">Delete</v-btn>
+                <v-btn color="error" @click="delUser(props.item.id)">Delete</v-btn>
               </td>
             </template>
           </v-data-table>
@@ -64,6 +64,7 @@
 <script>
   export default {
     data: () => ({
+      ID :null,
       headers: [
         {text: "Name", align: "left", value: "name"},
         {text: "Email", align: "left", value: "email"},
@@ -104,6 +105,17 @@
       search: async function () {
         this.form.page = 1;
         await  this.$store.dispatch("users/getUsers", this.form)
+      },
+      delUser :async function (id) {
+        console.log(id)
+        let data = await this.$store.dispatch("users/deleteUserById",id)
+        await  console.log(data,"has been destroy (In Vue)")
+        await this.loadData()
+      },
+      getUserByID  : async function () {
+
+        let data = await  this.$store.dispatch("users/getUserById", this.idSand)
+        this.UserDataFormID = data
       }
     }
 
