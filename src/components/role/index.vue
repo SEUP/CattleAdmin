@@ -50,8 +50,8 @@
     data() {
       return {
         form: {page: 1, keyword: ""},
-        roles: null,
-        paginate: null,
+        roles: [],
+        paginate:{},
         headers: [
           {
             text: 'ID',
