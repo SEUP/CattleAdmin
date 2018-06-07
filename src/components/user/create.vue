@@ -57,6 +57,9 @@
               :valDistrict="form.user_district"
               @change="updateDistrictSelect"></district-select>
 
+            <choice-select :value="form.sex" type="sex" label="sex"></choice-select>
+
+
             <h3>Roles</h3>
             <v-container fluid>
               <role-checkbox :value="form.roles" @change="updateRoles"></role-checkbox>
@@ -65,6 +68,7 @@
             <v-btn color="primary" @click="saveUser"> Submit</v-btn>
             <v-btn @click=""> Cancel</v-btn>
           </v-form>
+
 
         </v-card>
       </v-flex>
@@ -78,11 +82,12 @@
 
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
+  import choiceSelect from "@/components/share/choiceSelect";
 
   export default {
     name: "create",
     components: {
-      roleCheckbox, districtSelect
+      roleCheckbox, districtSelect,choiceSelect
     },
     data() {
       return {

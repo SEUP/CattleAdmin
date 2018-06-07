@@ -11,9 +11,13 @@ import axios from 'axios'
 import store from './stores/index'
 
 window.axios = axios.create({
-  baseURL :process.env.API_URL,
-  timeout : 5000
+  baseURL: process.env.API_URL,
+  timeout: 5000
 });
+
+import lodash from 'lodash'
+
+window._ = lodash;
 
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
@@ -23,6 +27,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 });
