@@ -107,6 +107,7 @@
           this.amphures = [this.defaultAmphur];
         }
         this.selAmphure = this.defaultAmphur;
+        this.selDistrict = this.defaultDistrict;
         this.$emit('change', [ev, null, null])
       }
 
