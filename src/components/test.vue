@@ -1,37 +1,17 @@
 <template>
 <v-container fluid>
   <v-layout row wrap>
-
-    <v-flex pb-3 xs-12>
-      <h1>User</h1>
-    </v-flex>
-    <v-flex xs3>
-      <v-text-field
-        prepend-icon="mdi-magnify"
-        name="input-1-3"
-        label="ค้นหา"
-        single-line
-        v-model="text"
-        @keyup.13="search()"
-      ></v-text-field>
-
-    </v-flex>
-  </v-layout>
-  <v-layout>
     <v-flex>
-      <v-data-table
-        :headers="headers"
-        :items="Data"
-        hide-actions
-        class="elevation-1">
-        <template slot="items" slot-scope="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-center"><v-icon @click="
-modify()">mdi-pencil</v-icon><v-icon @click="dele()">mdi-delete</v-icon></td>
-
-        </template>
-      </v-data-table>
+      {{Users}}
     </v-flex>
+    <hr>
+    <v-flex>
+      <v-btn @click="createUser()">New User</v-btn>
+      <v-btn @click="editUser()">Edit User</v-btn>
+      <v-btn @click="delUser()">Delete User</v-btn>
+      <hr>
+    </v-flex>
+    {{userData}}
   </v-layout>
 </v-container>
 </template>
@@ -40,29 +20,54 @@ modify()">mdi-pencil</v-icon><v-icon @click="dele()">mdi-delete</v-icon></td>
     export default {
         name: "test",
       data : () => ({
-        text:null,
-        headers: [
-          {
-            text: 'ID',
-            align: 'left',
-            value: 'name'
-          },
-          {text: 'Action', sortable: false, align: 'center', value: 'Action'},
-        ],
-      }),computed : {
-          Data () {
-            return this.$store.state.users.usersData
-          }
-      } , async created () {
-          await  this.loadData()
-      },methods : {
-          loadData : async function () {
-            await this.$store.dispatch('users/loadUsers')
-            await console.log(this.Data);
-          },search : async function () {
-            await  this.$store.dispatch("users/searchUsers",this.text)
+        idForDel : 4,
+        form : {
+          keyword : "",
+          page : null,
+          with : null
+        },
+        formData : {"id":1,"name":"SuperAdministrator",
+          "personal_id":null,"email":"superadministrator@app.com",
+          "username":"superadministrator","created_at":"2018-05-24 03:43:16",
+          "updated_at":"2018-05-24 03:43:16","user_province":null,"user_amphur"
+            :null,"user_district":null},
 
+        formData2 : {"name":"test2",
+          "personal_id":null,"email":"test2@app.com","password": "1564231",
+          "username":"superadministrator2","user_province":null,"user_amphur"
+            :null,"user_district":null},
+        Users: null
+
+      }),
+      async created () {
+        await  this.loadData()
+      },
+      computed :  {
+        userData  (){
+         return this.$store.state.users.userData
         }
+    }
+      ,
+      methods : {
+          loadData :async function () {
+            let data =  await this.$store.dispatch("users/getUsers",this.form)
+            console.log("IN test",data)
+            this.Users  = data
+
+          },
+          createUser : async function () {
+            let data = await this.$store.dispatch("users/createUser",this.formData2)
+            await console.log ("IN Vue Create",data)
+          },
+          editUser : async function () {
+            let  data = await  this.$store.dispatch("users/updateUser",this.formData)
+            await console.log("In Vue Edit",data)
+          },
+          delUser :async function () {
+            let data = await this.$store.dispatch("users/deleteUserById",this.idForDel)
+            await  console.log(data,"has been destroy (In Vue)")
+          }
+
       }
     }
 </script>

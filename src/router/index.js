@@ -38,6 +38,10 @@ export default new Router({
           path : "/test",
           name : "test",
           component : view("test")
+        },{
+          path : "/test2",
+          name : "test2",
+          component : view("test2")
         }
       ]
     }]

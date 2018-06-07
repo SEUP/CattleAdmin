@@ -1,57 +1,81 @@
 export default {
   namespaced: true,
   state: {
-    paginate: {},
+    userData: {},
     usersData: [],
+    usersPaginate: {},
   },
   mutations: {
-    setPaginate: function (state, DataUsers) {
-      state.paginate = DataUsers
-      state.usersData = DataUsers.data;
+    setUserData: function (state, user) {
+      state.userData = user
     },
-    setUsersData: function (state, DataUsers) {
-      state.usersData = DataUsers
+    setUsersData: function (state, users) {
+      state.usersData = users
     },
-    setUserSearch: function (state, data) {
-      state.usersData = data
+    setUsersPaginate: function (state, paginate) {
+      state.usersPaginate = paginate;
+      state.usersData = paginate.data
     }
   },
   actions: {
-    loadUsers: async function (context, params = null) {
-      await axios.get("http://mct.ict.up.ac.th:10007/api/users")
+    async getUsers(context, params = null) {
+      let r = await  axios.get("/api/users", {params: params})
         .then((r) => {
           if (params && !params.paginate) {
-            console.log('test');
             context.commit("setUsersData", r.data)
-
           } else {
-            context.commit("setPaginate", r.data)
+            context.commit("setUsersPaginate", r.data)
           }
+          return r.data
         })
         .catch((err) => {
-
+          return null
         })
-
-      return context.state.usersData;
+      return r
     },
-    searchUsers: async function (context, data) {
-      await  axios.get("http://mct.ict.up.ac.th:10007/api/users", {params: data})
+    getUserById(context,id){
+
+    },
+    createUser: async function (context, form) {
+      let r = await axios.post("/api/users",  form)
         .then((r) => {
-          context.commit("setPaginate", r.data)
+          console.log("In Vuex create", r.data)
+          context.commit("setUserData", r.data)
+          return r.data
+
         })
         .catch((err) => {
-
+          return null
         })
-
-
-    }, saveUser: async function (context, data) {
-
-    }, editUsers: async function (context, data) {
-
-    }, deleteUser: async function (context, data) {
-
+      return r
+    },
+    updateUser: async function (context, form) {
+      let r = await axios.put("/api/users/" + form.id, form)
+        .then((r) => {
+          console.log("In Vuex edit", r.data)
+          context.commit("setUserData", r.data)
+          return r.data
+        })
+        .catch((err) => {
+          return null
+        })
+      return r
+    },
+    deleteUserById: async function (context, id) {
+      let r = await axios.delete("/api/users/" + id)
+        .then((r) => {
+          console.log(r.data,"has been destroy (IN VueX)")
+          context.commit("setUserData",r.data)
+          return r.data
+        })
+        .catch( (err) => {
+          return null
+        })
+      return r
     }
 
+
   }
+//
 }
 

@@ -10,7 +10,10 @@ import Vuetify from 'vuetify'
 import axios from 'axios'
 import store from './stores/index'
 
-window.axios = axios;
+window.axios = axios.create({
+  baseURL :process.env.API_URL,
+  timeout : 5000
+});
 
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
