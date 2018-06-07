@@ -32,10 +32,10 @@
           "updated_at":"2018-05-24 03:43:16","user_province":null,"user_amphur"
             :null,"user_district":null},
 
-        formData2 : {"name":"test2",
-          "personal_id":null,"email":"test2@app.com","password": "1564231",
-          "username":"superadministrator2","user_province":null,"user_amphur"
-            :null,"user_district":null},
+        formData2 : {"name":"Farmer","password" : "123456","password_confirmation":"123456",
+          "email":"farmer@app.com","username":"farmer2",
+          "created_at":"2018-05-24 03:43:17","updated_at":"2018-05-24 03:43:17"},
+
         Users: null
 
       }),

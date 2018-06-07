@@ -62,10 +62,9 @@ export default {
       return r
     },
     deleteUserById: async function (context, id) {
-      let r = await axios.delete("/api/users/" + id)
+      let r = await axios.delete("/api/users/" + id) //return True or False
         .then((r) => {
           console.log(r.data,"has been destroy (IN VueX)")
-          context.commit("setUserData",r.data)
           return r.data
         })
         .catch( (err) => {
