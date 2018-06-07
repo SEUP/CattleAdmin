@@ -90,14 +90,14 @@
             this.selAmphure = a;
             this.amphureChange(a);
           }
-        })
+        });
 
         this.districts.forEach((d) => {
           if (d.DISTRICT_ID == this.valDistrict) {
             this.selDistrict = d;
             this.districtChange(d);
           }
-        })
+        });
       },
       provinceChange: function (ev) {
         console.log(ev)
