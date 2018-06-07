@@ -87,7 +87,7 @@
       }
     }
     ,
-    async created() {
+    async mounted() {
       await this.loadData()
     }
     ,

@@ -87,9 +87,9 @@
     data() {
       return {
         form: {
-          user_province: [],
-          user_amphur : [],
-          user_district : [],
+          user_province: null,
+          user_amphur : null,
+          user_district : null,
           roles: []
         },
         selected: []
@@ -127,8 +127,9 @@
           roles.splice(i, 1);
         }
       },
-      saveUser: function () {
-        let user = this.$store.dispatch("users/saveUser", this.form);
+      saveUser: async function () {
+        console.log(this.form);
+        let user = await this.$store.dispatch("users/createUser", this.form);
         console.log("save User", this.form);
         this.$router.push({name: "user-index"})
       }
