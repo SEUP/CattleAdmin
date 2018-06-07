@@ -19,6 +19,11 @@ export default {
       path: "create",
       name: 'user-create',
       component: view('user/create')
+    },
+    {
+      path : 'edit',
+      name : 'user-edit',
+      component : view('user/edit')
     }
   ]
 }
