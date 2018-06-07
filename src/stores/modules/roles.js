@@ -12,7 +12,6 @@ export default {
           return null
         });
       return result
-
     },
   }
 
