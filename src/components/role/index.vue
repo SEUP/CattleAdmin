@@ -11,7 +11,7 @@
           name="input-1-3"
           label="ค้นหา"
           single-line
-          v-model="text"
+          v-model="form.keyword"
           @keyup.13="search()"
         ></v-text-field>
 
@@ -19,18 +19,27 @@
     </v-layout>
     <v-layout>
       <v-flex>
-      <v-data-table
-        :headers="headers"
-        :items="DataRoles"
-        hide-actions
-        class="elevation-1">
-        <template slot="items" slot-scope="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-center"><v-icon @click="
-modify()">mdi-pencil</v-icon><v-icon @click="dele()">mdi-delete</v-icon></td>
-
-        </template>
-      </v-data-table>
+        <v-data-table
+          :headers="headers"
+          :items="roles"
+          hide-actions
+          class="elevation-1">
+          <template slot="items" slot-scope="props">
+            <td>{{ props.item.name }}</td>
+            <td class="text-xs-center">
+              <v-btn>
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+              <v-btn>
+                <v-icon color="red">mdi-delete</v-icon>
+              </v-btn>
+            </td>
+          </template>
+        </v-data-table>
+        <div class="text-xs-center">
+          <v-pagination @input="changePage" :length="paginate.last_page"
+                        v-model="paginate.current_page"></v-pagination>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -40,7 +49,9 @@ modify()">mdi-pencil</v-icon><v-icon @click="dele()">mdi-delete</v-icon></td>
   export default {
     data() {
       return {
-        text:null,
+        form: {page: 1, keyword: ""},
+        roles: null,
+        paginate: null,
         headers: [
           {
             text: 'ID',
@@ -51,21 +62,30 @@ modify()">mdi-pencil</v-icon><v-icon @click="dele()">mdi-delete</v-icon></td>
         ],
       }
     },
-    computed: {
-      DataRoles() {
-        return this.$store.state.roles.rolesData
-      }
-    },
-    created(){
+    computed: {},
+    created() {
       this.load()
     },
     methods: {
-      load:async function(){
-        await this.$store.dispatch('roles/loadRoles')
+      changePage: async function (page) {
+        this.form.page = page;
+        let p = await this.$store.dispatch('roles/getRoles', this.form);
+        this.paginate = p;
+        this.roles = p.data;
       },
-      search:async function(){
-        await this.$store.dispatch('roles/searchRoles',this.text)
+      load: async function () {
+        let page = await this.$store.dispatch('roles/getRoles');
+        this.paginate = page;
+        this.roles = page.data;
+      },
+      search: async function () {
+
+        this.form.page = 1;
+        let page = await this.$store.dispatch('roles/getRoles', this.form);
+        this.paginate = page;
+        this.roles = page.data;
       }
     }
+
   }
 </script>
