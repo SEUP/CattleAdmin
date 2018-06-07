@@ -30,7 +30,7 @@ export default {
         })
         .catch((err) => {
           return null
-        })
+        });
       return r
     },
     getUserById(context,id){
@@ -39,26 +39,26 @@ export default {
     createUser: async function (context, form) {
       let r = await axios.post("/api/users",  form)
         .then((r) => {
-          console.log("In Vuex create", r.data)
-          context.commit("setUserData", r.data)
+          console.log("In Vuex create", r.data);
+          context.commit("setUserData", r.data);
           return r.data
 
         })
         .catch((err) => {
           return null
-        })
+        });
       return r
     },
     updateUser: async function (context, form) {
       let r = await axios.put("/api/users/" + form.id, form)
         .then((r) => {
-          console.log("In Vuex edit", r.data)
-          context.commit("setUserData", r.data)
+          console.log("In Vuex edit", r.data);
+          context.commit("setUserData", r.data);
           return r.data
         })
         .catch((err) => {
           return null
-        })
+        });
       return r
     },
     deleteUserById: async function (context, id) {
@@ -69,7 +69,7 @@ export default {
         })
         .catch( (err) => {
           return null
-        })
+        });
       return r
     }
 

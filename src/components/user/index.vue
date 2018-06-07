@@ -50,11 +50,11 @@
               </td>
             </template>
           </v-data-table>
-          <div class="text-xs-center">
-            <v-pagination @input="changePage" :length="paginate.last_page"
-                          v-model="paginate.current_page"></v-pagination>
-          </div>
         </v-card>
+        <div class="text-xs-center">
+          <v-pagination @input="changePage" :length="paginate.last_page"
+                        v-model="paginate.current_page"></v-pagination>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -82,29 +82,28 @@
     }),
     computed: {
       paginate: function () {
-        return this.$store.state.users.paginate;
+        return this.$store.state.users.usersData;
       }
     }
     ,
     async created() {
-      await
-        this.loadData()
+      await this.loadData()
     }
     ,
     methods: {
       changePage: async function (page) {
         this.form.page = page;
-        await  this.$store.dispatch("users/searchUsers", this.form)
+        await  this.$store.dispatch("users/getUsers", this.form)
 
       },
       loadData: async function () {
         this.form.page = 1;
-        await this.$store.dispatch('users/searchUsers' , this.form);
+        await this.$store.dispatch('users/getUsers' , this.form);
       }
       ,
       search: async function () {
         this.form.page = 1;
-        await  this.$store.dispatch("users/searchUsers", this.form)
+        await  this.$store.dispatch("users/getUsers", this.form)
       }
     }
 
