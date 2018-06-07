@@ -33,8 +33,15 @@ export default {
         });
       return r
     },
-    getUserById(context,id){
-
+    getUserById: async function(context,id){
+      let r =  await axios.get("/api/users/"+id)
+          .then ( (r) => {
+            return r.data
+          })
+        .catch((err) => {
+            return null
+        })
+      return r
     },
     createUser: async function (context, form) {
       let r = await axios.post("/api/users",  form)

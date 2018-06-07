@@ -9,9 +9,14 @@
       <v-btn @click="createUser()">New User</v-btn>
       <v-btn @click="editUser()">Edit User</v-btn>
       <v-btn @click="delUser()">Delete User</v-btn>
+      <v-btn @click="getUserByID()"> Get UserByID </v-btn>
       <hr>
     </v-flex>
     {{userData}}
+    <hr>
+    dfjgnksjdghiejspgkdlfhjdopfb/.cdbfnbd
+    <hr>
+    {{UserDataFormID}}
   </v-layout>
 </v-container>
 </template>
@@ -21,6 +26,8 @@
         name: "test",
       data : () => ({
         idForDel : 4,
+        idSand : 1,
+        UserDataFormID : {},
         form : {
           keyword : "",
           page : null,
@@ -66,7 +73,12 @@
           delUser :async function () {
             let data = await this.$store.dispatch("users/deleteUserById",this.idForDel)
             await  console.log(data,"has been destroy (In Vue)")
-          }
+          },
+        getUserByID  : async function () {
+            let data  = await  this.$store.dispatch("users/getUserById",this.idSand)
+            this.UserDataFormID  = data
+
+        }
 
       }
     }
