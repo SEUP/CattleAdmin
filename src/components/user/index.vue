@@ -28,7 +28,7 @@
         <v-card>
           <v-data-table
             :headers="headers"
-            :items="Data"
+            :items="paginate.data"
             hide-actions
             class="elevation-1"
           >
@@ -36,7 +36,14 @@
               <td>{{ props.item.name }}</td>
               <td>{{ props.item.email }}</td>
               <td>{{ props.item.username}}</td>
-              <td>{{ props.item.atdes}}</td>
+              <td>
+                <ul>
+                  <li v-for="role in props.item.roles">
+                    {{role.display_name}}
+                  </li>
+                </ul>
+              </td>
+              <td>{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
               <td>{{ props.item.action }}
                 <v-btn color="success" @click>Edit</v-btn>
                 <v-btn color="error" @click="dele()">Delete</v-btn>
@@ -44,7 +51,8 @@
             </template>
           </v-data-table>
           <div class="text-xs-center">
-            <v-pagination :length="paginate.last_page" v-model="paginate.current_page"></v-pagination>
+            <v-pagination @input="changePage" :length="paginate.last_page"
+                          v-model="paginate.current_page"></v-pagination>
           </div>
         </v-card>
       </v-flex>
@@ -59,25 +67,20 @@
       headers: [
         {text: "Name", align: "left", value: "name"},
         {text: "Email", align: "left", value: "email"},
-        {text: "Username", align: "left", value: "role"},
-        {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes"},
-        {text: "Action", align: "left", value: "action"},
+        {text: "Username", align: "left", value: "username"},
+        {text: "Roles", align: "left", value: "role"},
+        {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes", sortable: false},
+        {text: "Action", align: "left", value: "action", sortable: false},
 
 
       ],
       form: {
-        keyword: ""
+        keyword: "",
+        with : ['roles'],
+        page: 1,
       },
-
-      item: [{
-        name: "paikung", email: "paikung@root", role: "admin", atdes: "เมือง นางเเล เชียงราย"
-      }]
     }),
     computed: {
-      Data() {
-        return this.$store.state.users.usersData
-      }
-      ,
       paginate: function () {
         return this.$store.state.users.paginate;
       }
@@ -89,12 +92,18 @@
     }
     ,
     methods: {
+      changePage: async function (page) {
+        this.form.page = page;
+        await  this.$store.dispatch("users/searchUsers", this.form)
+
+      },
       loadData: async function () {
-        await this.$store.dispatch('users/loadUsers')
-        await console.log(this.Data);
+        this.form.page = 1;
+        await this.$store.dispatch('users/searchUsers' , this.form);
       }
       ,
       search: async function () {
+        this.form.page = 1;
         await  this.$store.dispatch("users/searchUsers", this.form)
       }
     }

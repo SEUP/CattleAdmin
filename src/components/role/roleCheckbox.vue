@@ -44,7 +44,7 @@
                 }
             },
             load: async function () {
-                this.roles = await this.$store.dispatch('roles/loadRoles',{paginate : false});
+                this.roles = await this.$store.dispatch('roles/getRoles',{paginate : false});
                 this.sync();
                 console.log("checkbox",this.roles);
             }

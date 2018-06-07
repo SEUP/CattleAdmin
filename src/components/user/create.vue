@@ -52,6 +52,12 @@
               required
             ></v-text-field>
 
+            <district-select
+              :valProvince="form.user_province"
+              :valAmphur="form.user_amphur"
+              :valDistrict="form.user_district"
+              @change="updateDistrictSelect"></district-select>
+
             <h3>Roles</h3>
             <v-container fluid>
               <role-checkbox :value="form.roles" @change="updateRoles"></role-checkbox>
@@ -72,45 +78,64 @@
 <script>
 
   import roleCheckbox from "@/components/role/roleCheckbox";
+  import districtSelect from "@/components/share/districtSelect";
 
   export default {
     name: "create",
-    components : {
-      roleCheckbox
+    components: {
+      roleCheckbox, districtSelect
     },
     data() {
       return {
-        form : {
-          roles : []
+        form: {
+          user_province: 44,
+          user_amphur : 651,
+          user_district : 5839,
+          roles: []
         },
         selected: []
       }
     },
-    computed : {
-      roles : function () {
+    computed: {
+      roles: function () {
         return this.$store.state.roles.rolesData;
       }
     },
     async created() {
     },
-    methods : {
-      updateRoles : function(value){
-        let roles = this.form.roles;
-        let i = roles.indexOf(value);
-        if( i == -1 ) {
-          roles.push(value);
-        }else {
-          roles.splice(i,1);
+    methods: {
+      updateDistrictSelect: function (value) {
+        this.form.province = value[0];
+        this.form.amphure = value[1];
+        this.form.district = value[2];
+
+        if (value[0]) {
+          this.form.user_province = value[0].PROVINCE_ID;
+        }
+        if (value[1]) {
+          this.form.user_amphur = value[1].AMPHUR_ID;
+        }
+        if (value[2]) {
+          this.form.user_district = value[2].DISTRICT_ID;
         }
       },
-      saveUser : function () {
-        let user = this.$store.dispatch("users/saveUser",this.form);
-        console.log("save User",this.form);
-        this.$router.push({name : "user-index"})
+      updateRoles: function (value) {
+        let roles = this.form.roles;
+        let i = roles.indexOf(value);
+        if (i == -1) {
+          roles.push(value);
+        } else {
+          roles.splice(i, 1);
+        }
+      },
+      saveUser: function () {
+        let user = this.$store.dispatch("users/saveUser", this.form);
+        console.log("save User", this.form);
+        this.$router.push({name: "user-index"})
       }
     }
 
-    }
+  }
 </script>
 
 <style scoped>
