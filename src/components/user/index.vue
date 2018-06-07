@@ -45,7 +45,7 @@
               </td>
               <td>{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
               <td>{{ props.item.action }}
-                <v-btn color="success" @click>Edit</v-btn>
+                <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">Edit</v-btn>
                 <v-btn color="error" @click="dele()">Delete</v-btn>
               </td>
             </template>

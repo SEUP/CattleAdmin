@@ -13,7 +13,7 @@
         <v-card>
           <v-footer color="gray">
             <v-spacer></v-spacer>
-            <h3>Create User</h3>
+            <h3>User edit</h3>
             <v-spacer></v-spacer>
 
           </v-footer>
@@ -80,7 +80,7 @@
   import districtSelect from "@/components/share/districtSelect";
 
   export default {
-    name: "create",
+    name: "edit",
     components: {
       roleCheckbox, districtSelect
     },
