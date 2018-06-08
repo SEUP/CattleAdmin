@@ -19,7 +19,7 @@
         </v-list-tile>
 
         <!--farmOwner-->
-        <v-list-tile :to="{name : 'user-create'}" exact>
+        <v-list-tile :to="{name : 'farmOwner-index'}" exact>
           <v-list-tile-action>
             <v-icon>mdi-plus</v-icon>
           </v-list-tile-action>

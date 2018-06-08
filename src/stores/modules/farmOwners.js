@@ -8,7 +8,7 @@ export default {
   },
   actions :{
     getFarmOwners  : async function (context,params=null) {
-        let result = await axios.get("api/farm-owner",{params:params})
+        let result = await axios.get("api/farmOwner",{params:params})
           .then( (response) => {
             return response.data
           })

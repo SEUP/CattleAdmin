@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 
 import userRoute from './user'
 import roleRoute from './role'
+import farmOwner from './farmOwner'
 
 
 function view(name) {
@@ -31,6 +32,7 @@ export default new Router({
           name: 'admin-home',
           component: view('Home')
         },
+        farmOwner,
         userRoute,
         roleRoute,
         {
