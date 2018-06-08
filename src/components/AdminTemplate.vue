@@ -54,6 +54,18 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <!--Part-7-->
+        <v-list-tile :to="{name : 'farmOwner-part7'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-numeric-7-box-outline</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              ส่วนที่ 7
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
 
 
       </v-list>

@@ -28,9 +28,9 @@
             :headers="headers"
             :items="paginate.data"
             hide-actions
-            class="elevation-1"
+            class="elevation-1 "
           >
-            <template slot="items" slot-scope="props">
+            <template slot="items" slot-scope="props" >
               <td class="text-xs-center">{{ props.item.name }}</td>
               <td class="text-xs-center">{{ props.item.email }}</td>
               <td class="text-xs-center">{{ props.item.username}}</td>
@@ -43,8 +43,9 @@
               </td>
               <td class="text-xs-center">{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
               <td class="text-xs-center">{{ props.item.action }}
-                <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">Edit</v-btn>
-                <v-btn color="error" @click="delUser(props.item.id)">Delete</v-btn>
+                <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">
+                  <v-icon>mdi-account-settings-variant</v-icon>&ensp;แก้ไข</v-btn>
+                <v-btn color="error" @click="delUser(props.item.id)"><v-icon>mdi-account-remove</v-icon>&ensp;Delete</v-btn>
               </td>
             </template>
           </v-data-table>

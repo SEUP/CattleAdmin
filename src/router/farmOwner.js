@@ -18,5 +18,10 @@ export default {
       name: 'farmOwner-edit',
       component: view('farmOwner/edit')
     },
+    {
+      path: 'part7',
+      name: 'farmOwner-part7',
+      component: view('farmOwner/part7')
+    },
   ]
 }
