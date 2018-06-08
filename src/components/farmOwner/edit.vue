@@ -2,7 +2,7 @@
   <v-container>
     <div>
       <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
-        บันทึกข้อมูลเกษตรกรใหม่
+        เเก้ไขข้อมูลเกษตรกร
       </v-card-text>
       <v-divider></v-divider>
       <v-layout row wrap class="justify-center pt-2">
