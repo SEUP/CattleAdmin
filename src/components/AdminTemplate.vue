@@ -13,18 +13,31 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              Home
+              หน้าหลัก
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <!--role-->
-        <v-list-tile :to="{name : 'role-index'}" exact>
+
+        <!--farmOwner-->
+        <v-list-tile :to="{name : 'user-create'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-plus</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              Role
+              บันทึกข้อมูลเกษตรใหม่
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <!--role-->
+        <v-list-tile :to="{name : 'role-index'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account-key</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              จัดการสิทธิ์ผู้ใช้
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -32,25 +45,15 @@
         <!--Users-->
         <v-list-tile :to="{name : 'user-index'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-account-box</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              User
+              จัดการข้อมูลผู้ใช้ระบบ
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="{name : 'user-create'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              User-create
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
 
 
       </v-list>
@@ -64,28 +67,31 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-sm-and-down">Cattle Information System</span>
       </v-toolbar-title>
-      <v-text-field
-        flat
-        solo-inverted
-        prepend-icon="search"
-        label="Search"
-        class="hidden-sm-and-down"
-      ></v-text-field>
+
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
-      <v-btn icon large>
-        <v-avatar size="32px" tile>
-          <img
-            src="https://vuetifyjs.com/static/doc-images/logo.svg"
-            alt="Vuetify"
-          >
-        </v-avatar>
-      </v-btn>
+
+      <v-menu offset-y offset-x>
+        <v-toolbar-title slot="activator">
+          <v-btn flat>
+            <v-icon>settings</v-icon>
+            <v-icon>arrow_drop_down</v-icon>
+          </v-btn>
+        </v-toolbar-title>
+        <v-list >
+          <v-list-tile >
+            <v-list-tile-title >
+              <v-icon >mdi-account</v-icon>
+              User Profile
+            </v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile >
+            <v-list-tile-title >
+              <v-icon >exit_to_app</v-icon>
+              Logout
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
     <v-content>
       <router-view></router-view>
