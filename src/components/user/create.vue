@@ -122,6 +122,7 @@
         if (value[2]) {
           this.form.user_district = value[2].DISTRICT_ID;
         }
+        console.log("UPDATE",this.form)
       },
       updateRoles: function (value) {
         let roles = this.form.roles;
