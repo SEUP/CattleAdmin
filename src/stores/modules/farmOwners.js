@@ -1,8 +1,8 @@
 export default {
   namespaced :true,
   state : {
-    //cate
-    //ee
+    //forcreate
+    //foredit
   },
   mutations : {
   },
@@ -18,9 +18,7 @@ export default {
       return result
     }
   }
-/// getBID
-  //edie
-  // sstate
+/// getByID
 
   //
 }
