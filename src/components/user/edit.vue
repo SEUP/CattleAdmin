@@ -22,6 +22,8 @@
             <v-text-field
               v-model="form.name"
               label="ชื่อ-นามสกุล"
+
+              single-line
               required
             ></v-text-field>
 
@@ -131,6 +133,11 @@
         let user = this.$store.dispatch("users/saveUser", this.form);
         console.log("save User", this.form);
         this.$router.push({name: "user-index"})
+      },
+      getUserByID  : async function () {
+
+        let data = await  this.$store.dispatch("users/getUserById", this.idSand);
+        this.UserDataFormID = data
       }
     }
 

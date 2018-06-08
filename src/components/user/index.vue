@@ -2,15 +2,13 @@
   <v-container>
     <v-layout align-center>
       <v-flex>
-        <h1 class="display-2">จัดการข้อมูลผู้ใช้ระบบ</h1>
+        <h1 class="display-1"><v-icon x-large color="primary">mdi-account-box</v-icon> จัดการข้อมูลผู้ใช้ระบบ</h1>
       </v-flex>
     </v-layout>
     <v-divider class="my-3"></v-divider>
     <v-layout row>
       <v-flex xs3>
-        <v-btn :to="{name:'user-create'}" color="primary">เพิ่ม
-          <v-icon>mdi-account-plus</v-icon>
-        </v-btn>
+        <v-btn :to="{name:'user-create'}" color="primary"><v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม</v-btn>
       </v-flex>
       <v-flex xs7 offset-xs6>
         <v-text-field
@@ -109,14 +107,13 @@
         await  this.$store.dispatch("users/getUsers", this.form)
       },
       delUser :async function (id) {
-        console.log(id)
-        let data = await this.$store.dispatch("users/deleteUserById",id)
-        await  console.log(data,"has been destroy (In Vue)")
+        console.log(id);
+        let data = await this.$store.dispatch("users/deleteUserById",id);
+        await  console.log(data,"has been destroy (In Vue)");
         await this.loadData()
       },
       getUserByID  : async function () {
-
-        let data = await  this.$store.dispatch("users/getUserById", this.idSand)
+        let data = await  this.$store.dispatch("users/getUserById", this.idSand);
         this.UserDataFormID = data
       }
     }
