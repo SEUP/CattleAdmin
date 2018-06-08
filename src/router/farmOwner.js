@@ -13,6 +13,10 @@ export default {
       path: 'index',
       name: 'farmOwner-index',
       component: view('farmOwner/index')
+    }, {
+      path: 'edit',
+      name: 'farmOwner-edit',
+      component: view('farmOwner/edit')
     },
   ]
 }

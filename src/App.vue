@@ -15,5 +15,6 @@ export default {
     @import "../node_modules/vuetify/dist/vuetify.css";
     @import '../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
     @import "../node_modules/@mdi/font/css/materialdesignicons.min.css";
+    @import "../static/css/customDesign.css";
 
 </style>
