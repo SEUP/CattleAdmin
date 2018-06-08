@@ -21,11 +21,11 @@
         <!--farmOwner-->
         <v-list-tile :to="{name : 'farmOwner-index'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-plus</v-icon>
+            <v-icon>mdi-magnify</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              บันทึกข้อมูลเกษตรใหม่
+              ค้นหาเกษตรกร
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>

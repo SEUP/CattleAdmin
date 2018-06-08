@@ -1,5 +1,5 @@
 <template>
-  <h1>farmOwner</h1>
+  <h1>จัดการเกษตรกร</h1>
 </template>
 
 <script>
