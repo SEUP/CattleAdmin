@@ -75,17 +75,15 @@
 
 
       ],
+      paginate:{},
+      users : [],
       form: {
         keyword: "",
         with : ['roles'],
         page: 1,
       },
     }),
-    computed: {
-      paginate: function () {
-        return this.$store.state.users.usersData;
-      }
-    }
+    computed: {}
     ,
     async mounted() {
       await this.loadData()
@@ -94,17 +92,23 @@
     methods: {
       changePage: async function (page) {
         this.form.page = page;
-        await  this.$store.dispatch("users/getUsers", this.form)
+        let paginate = await  this.$store.dispatch("users/getUsers", this.form)
+        this.paginate = paginate;
+        this.users = paginate.data;
 
       },
       loadData: async function () {
         this.form.page = 1;
-        await this.$store.dispatch('users/getUsers' , this.form);
+        let page = await this.$store.dispatch('users/getUsers' , this.form);
+        this.paginate = page;
+        this.users = page.data;
       }
       ,
       search: async function () {
         this.form.page = 1;
-        await  this.$store.dispatch("users/getUsers", this.form)
+        let page = await  this.$store.dispatch("users/getUsers", this.form)
+        this.paginate = page;
+        this.users = page.data;
       },
       delUser :async function (id) {
         console.log(id);
