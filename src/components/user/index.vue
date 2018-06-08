@@ -8,7 +8,7 @@
     <v-divider class="my-3"></v-divider>
     <v-layout row>
       <v-flex xs3>
-        <v-btn href=".#/admin/user/create" color="primary">เพิ่ม
+        <v-btn :to="{name:'user-create'}" color="primary">เพิ่ม
           <v-icon>mdi-account-plus</v-icon>
         </v-btn>
       </v-flex>
@@ -33,18 +33,18 @@
             class="elevation-1"
           >
             <template slot="items" slot-scope="props">
-              <td>{{ props.item.name }}</td>
-              <td>{{ props.item.email }}</td>
-              <td>{{ props.item.username}}</td>
-              <td>
-                <ul>
+              <td class="text-xs-center">{{ props.item.name }}</td>
+              <td class="text-xs-center">{{ props.item.email }}</td>
+              <td class="text-xs-center">{{ props.item.username}}</td>
+              <td class="text-xs-center">
+                <ul class="text-xs-left">
                   <li v-for="role in props.item.roles">
                     {{role.display_name}}
                   </li>
                 </ul>
               </td>
-              <td>{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
-              <td>{{ props.item.action }}
+              <td class="text-xs-center">{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
+              <td class="text-xs-center">{{ props.item.action }}
                 <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">Edit</v-btn>
                 <v-btn color="error" @click="delUser(props.item.id)">Delete</v-btn>
               </td>
@@ -59,19 +59,21 @@
     </v-layout>
   </v-container>
 </template>
+<style>
 
+</style>
 
 <script>
   export default {
     data: () => ({
       ID :null,
       headers: [
-        {text: "Name", align: "left", value: "name"},
-        {text: "Email", align: "left", value: "email"},
-        {text: "Username", align: "left", value: "username"},
-        {text: "Roles", align: "left", value: "role"},
-        {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes", sortable: false},
-        {text: "Action", align: "left", value: "action", sortable: false},
+        {text: "Name", align: "center", value: "name"},
+        {text: "Email", align: "center", value: "email"},
+        {text: "Username", align: "center", value: "username"},
+        {text: "Roles", align: "center", value: "role"},
+        {text: "จังหวัด อำเภอ ตำบล", align: "center", value: "atdes", sortable: false},
+        {text: "Action", align: "center", value: "action", sortable: false},
 
 
       ],
