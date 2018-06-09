@@ -102,7 +102,9 @@
         return this.$store.state.roles.rolesData;
       }
     },
-    async created() {
+    async created(
+
+    ) {
     },
     methods: {
       updateDistrictSelect: function (value) {

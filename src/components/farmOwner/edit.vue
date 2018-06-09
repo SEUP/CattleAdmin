@@ -191,11 +191,21 @@
   export default {
     name: "edit",
     data: () => ({
-      steper : 1
-    }),methods: {
+      steper : 1,
+      farmOwner : null
+    })
+    ,async created () {
+      let farmOwnerId  = await this.$route.params.id;
+      await this.loadData(farmOwnerId)
+
+    }
+    ,methods: {
       elFocus : function (el) {
         this.steper = el
-
+      },
+      loadData : async function (id) {
+        let data = await this.$store.dispatch("farmOwners/getFarmOwnerById",id)
+        this.farmOwner = data
 
       }
     }

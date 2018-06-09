@@ -1,22 +1,60 @@
 <template>
   <div>
-    <v-select
-      :items="provinces"
-      v-model="selProvince"
-      label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
-    ></v-select>
+    <v-layout column wrap>
+      <!--single line-->
+      <div v-if="singleLine">
+        <v-layout class="pa-0 ma-0" >
+          <v-flex xs12 md4 mr-2>
+            <v-select
+              hide-details
+              :items="provinces"
+              v-model="selProvince"
+              label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
+            ></v-select>
+          </v-flex>
 
-    <v-select v-if="amphures"
-              :items="amphures"
-              v-model="selAmphure"
-              label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
-    ></v-select>
+          <v-flex xs12 md4 mx-2>
+            <v-select v-if="amphures"
+                      hide-details
+                      :items="amphures"
+                      v-model="selAmphure"
+                      label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
+            ></v-select>
+          </v-flex>
 
-    <v-select v-if="districts"
-              :items="districts"
-              v-model="selDistrict"
-              label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
-    ></v-select>
+          <v-flex xs12 md4 ml-2>
+            <v-select v-if="districts"
+                      hide-details
+                      :items="districts"
+                      v-model="selDistrict"
+                      label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
+            ></v-select>
+          </v-flex>
+        </v-layout>
+      </div>
+
+      <!--multi-line-->
+      <div v-else>
+        <v-select
+          :items="provinces"
+          v-model="selProvince"
+          label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
+        ></v-select>
+
+        <v-select v-if="amphures"
+                  :items="amphures"
+                  v-model="selAmphure"
+                  label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
+        ></v-select>
+
+        <v-select v-if="districts"
+                  :items="districts"
+                  v-model="selDistrict"
+                  label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
+        ></v-select>
+      </div>
+
+    </v-layout>
   </div>
 </template>
 
@@ -24,6 +62,10 @@
   export default {
     name: "districtSelect",
     props: {
+      singleLine:{
+        type : Boolean,
+        default : false
+      },
       valProvince: {
         type: Number,
         default: 0
@@ -53,6 +95,7 @@
         DISTRICT_NAME: "กรุณาเลือก"
       };
       return {
+        ValSingleLine:null,
         defaultProvince: defaultProvince,
         defaultAmphur: defaultAmphur,
         defaultDistrict: defaultDistrict,
