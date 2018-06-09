@@ -119,65 +119,83 @@
             </v-stepper>
           </v-card>
         </v-flex>
-        <v-flex xs2 class="justify-center">
-          <div class="right_menu_fixed hidden-sm-and-down">
-            <v-divider class="divider-bold success"></v-divider>
-            <v-list class="card-border">
-              <v-list-tile class="text-xs-center">
-                <v-btn color="success" depressed block>Save All</v-btn>
-              </v-list-tile>
-              <v-divider></v-divider>
+        <v-list class="card-border pa-0 ma-0 right_menu_fixed_s hidden-sm-and-down" v-if="!showRightMenu">
+          <v-list-tile @click ="showRightMenu = !showRightMenu"  >
+            <
+          </v-list-tile>
+        </v-list>
 
-              <v-list-tile @click="elFocus(1)"  >
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 1</v-list-tile-content>
-              </v-list-tile>
+        <v-flex xs2 class="justify-center" v-if="showRightMenu" >
+          <v-layout row>
+            <v-flex xs11>
+              <div class="right_menu_fixed hidden-sm-and-down">
+                <v-divider class="divider-bold success"></v-divider>
+                <v-list class="card-border">
+                  <v-list-tile class="text-xs-center">
+                    <v-btn color="success" depressed block>Save All</v-btn>
+                  </v-list-tile>
+                  <v-divider></v-divider>
 
-              <v-list-tile @click="elFocus(2)">
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 2</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(1)"  >
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 1</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(3)"  >
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 3</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(2)">
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 2</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(4)"  >
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 4</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(3)"  >
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 3</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(5)">
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 5</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(4)"  >
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 4</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(6)" >
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 6</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(5)">
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 5</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(7)"  >
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 7</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(6)" >
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 6</v-list-tile-content>
+                  </v-list-tile>
 
-              <v-list-tile @click="elFocus(8)">
-                <v-icon >extension</v-icon>
-                <v-spacer></v-spacer>
-                <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
-              </v-list-tile>
+                  <v-list-tile @click="elFocus(7)"  >
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 7</v-list-tile-content>
+                  </v-list-tile>
 
-            </v-list>
-          </div>
+                  <v-list-tile @click="elFocus(8)">
+                    <v-icon >extension</v-icon>
+                    <v-spacer></v-spacer>
+                    <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
+              </div>
+
+            </v-flex>
+            <v-flex >
+              <v-list class="card-border pa-0 ma-0 right_menu_fixed_s hidden-sm-and-down">
+                <v-list-tile @click ="showRightMenu = !showRightMenu" class="pa-0" >
+                  >
+                </v-list-tile>
+              </v-list>
+            </v-flex>
+          </v-layout>
+
         </v-flex>
 
       </v-layout>
@@ -192,6 +210,7 @@
     name: "edit",
     data: () => ({
       steper : 1,
+      showRightMenu:true,
       farmOwner : null
     })
     ,async created () {
