@@ -1,29 +1,63 @@
 <template>
-  <v-container>
+  <v-card>
     <v-layout row>
       <v-flex xs12>
-        <h3 class="display-1"><v-icon x-large color="primary">mdi-numeric-7-box</v-icon>&ensp;ส่วนที่ 7 การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ </h3>
-        <v-divider class="my-3"></v-divider>
+        <p class="title">7.1 หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ(ตอบได้มากกว่า 1 ข้อ)</p>
+        <v-divider class="my-0"></v-divider>
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs7 offset-xs2>
-        <v-expansion-panel>
-          <v-expansion-panel-content v-for="(item,i) in 5" :key="i">
-            <div slot="header">{{"TO DO รอข้อมูล"}}</div>
-            <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
+      <v-flex xs12>
+        <p class="title">7.2 ท่านเคยได้รับการเยี่ยมเยือนฟาร์มจากหน่วยงานในข้อ 7.1 หรือไม่</p>
+        <v-divider class="my-0"></v-divider>
       </v-flex>
     </v-layout>
-  </v-container>
+    <v-layout row>
+      <v-flex xs12>
+        <p class="title">7.3 ท่านเคยได้รับการสนับสนุนปัจจัยการผลิตหรือไม่</p>
+        <v-divider class="my-0"></v-divider>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12>
+        <p class="title">7.4 การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์</p>
+        <v-divider class="my-0"></v-divider>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12>
+        <p class="title">7.5 ท่านเคยเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อหรือไม่</p>
+        <v-divider class="my-0"></v-divider>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12>
+        <p class="title">7.6 ท่านเคยไปดูงานเกี่ยวกับการเลี้ยงโคเนื้อหรือไม่</p>
+        <v-divider class="my-0"></v-divider>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12>
+        <p class="title">7.7 ท่านเคยได้รับการสนับสนุนให้แม่พันธุ์โคเนื้อมาเลี้ยงเพื่อผลิตลูกหรือไม่</p>
+        <v-divider class="my-0"></v-divider>
+        <!--<choice-select :value="form.sex" type="sex" label="sex"></choice-select>-->
+      </v-flex>
+    </v-layout>
+  </v-card>
 </template>
 
 <script>
+  import choiceSelect from "@/components/share/choiceSelect";
     export default {
-        name: "part"
+        name: "part7",
+      component :{
+          choiceSelect
+      },
+      data(){
+          return{
+            selected:[]
+          }
+      }
     }
 </script>
 
