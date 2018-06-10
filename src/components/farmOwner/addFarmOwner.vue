@@ -7,7 +7,7 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs7 offset-xs2>
+      <v-flex xs10>
         <v-expansion-panel>
           <v-expansion-panel-content >
             <div slot="header">{{"ส่วนที่ 1"}}</div>
@@ -46,9 +46,9 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 7"}}</div>
+            <div slot="header">{{"ส่วนที่ 7 การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><Part7></Part7></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -64,8 +64,11 @@
 </template>
 
 <script>
+  import Part7 from "./part7";
     export default {
-        name: "part"
+      components: {Part7},
+      name: "addFarmOwner",
+
     }
 </script>
 
