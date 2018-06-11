@@ -50,6 +50,16 @@ export default {
         })
       return result
     },
+    deleteFarmOwners : async function (context,id) {
+      let result = await  axios.delete("api/farm-owner/"+id)
+        .then((response) => {
+        return response.data
+      })
+        .catch( (err) => {
+          return null
+        });
+      return result
+    }
 
   }
 /// getByID
