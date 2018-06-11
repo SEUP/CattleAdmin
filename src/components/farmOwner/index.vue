@@ -125,7 +125,7 @@
           let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
           this.paginate = paginate;
           this.farmOwners = paginate.data;
-          console.log("TO search",this.form);
+          // console.log("TO search",this.form);
         },
         changePage: async function (page) {
           this.form.page = page;
@@ -147,7 +147,7 @@
           if (value[2]) {
             this.form.user_district = value[2].DISTRICT_ID;
           }
-          console.log("UPDATE",this.form)
+          // console.log("UPDATE",this.form)
         },
       }
     }

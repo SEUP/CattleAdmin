@@ -36,17 +36,22 @@
       }
     },
     async created() {
-      this.items = [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
+      let choice = await this.$store.dispatch("choices/getChoicesByType", this.type);
+      this.items = [defaultChoice].concat(choice)
+      // await console.log(this.items)
+     await this.sync()
     },
     methods: {
       sync: function () {
         this.items.forEach((i) => {
           if (i.id == this.value.id) {
-            updateValue(i);
+            this.selectedValue = i
+            this.updateValue(i);
           }
         })
       },
       updateValue: function (ev) {
+        // console.log(ev)
         this.$emit('change', ev)
       }
     }

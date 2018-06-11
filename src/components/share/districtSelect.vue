@@ -116,8 +116,8 @@
     async created() {
       let provinces = await this.$store.dispatch('districtSelect/getProvinces');
       this.provinces = [this.defaultProvince].concat(provinces);
-      this.sync();
-      console.log(this.provinces);
+      await this.sync();
+      // await console.log(this.valProvince);
     },
     methods: {
       sync: function () {
@@ -143,7 +143,7 @@
         });
       },
       provinceChange: function (ev) {
-        console.log(ev)
+        // console.log(ev)
         if (ev.amphurs) {
           this.amphures = [this.defaultAmphur].concat(ev.amphurs)
         } else {
@@ -155,7 +155,7 @@
       }
 
       , amphureChange: function (ev) {
-        console.log(ev)
+        // console.log(ev)
         if (ev.districts) {
           this.districts = [this.defaultDistrict].concat(ev.districts)
         } else {
