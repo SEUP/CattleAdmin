@@ -74,7 +74,7 @@
           <v-card-text class="pa-2 title">1.9 ท่านมีรายได้จากการประกอบอาชีพอะไรบ้าง (เลือกได้มากกว่า 1 ข้อ)</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            เช็คบอค
+              <job-type-checkbox type = "jobtypes" :value="form.jobtypes" @change = "updateJobType"></job-type-checkbox>
           </div>
           <v-card-text >1.10 ท่านมีรายได้รวมของครัวเรือนเฉลี่ยเท่าไหร่ (บาท/ปี)</v-card-text>
           <v-divider></v-divider>
@@ -101,6 +101,7 @@
 <script>
     import DistrictSelect from "../share/districtSelect";
     import ChoiceSelect from "../share/choiceSelect";
+    import jobTypeCheckbox from "../share/jobTypeCheckbox";
     export default {
       name: "part1",
       props : {
@@ -108,7 +109,7 @@
           type : Number,
         }
       },
-      components: {ChoiceSelect, DistrictSelect},
+      components: {ChoiceSelect, DistrictSelect,jobTypeCheckbox},
       data : () =>({
         form : undefined
       }),
@@ -150,10 +151,13 @@
           this.updateForm()
         },
         updateChoice :async function (value,type) {
-          await console.log("B",type)
-          type =await value
-          await console.log("A",this.form.income_range)
+          // await console.log("B",type)
+          // type =await value
+          // await console.log("A",this.form.income_range)
 
+        },
+        updateJobType : function (value) {
+          console.log(value)
         },
         updateForm : async function () {
           await this.$store.dispatch("farmOwners/updateState",this.form)
