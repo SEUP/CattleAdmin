@@ -49,8 +49,8 @@
         <v-checkbox v-model="selected" label="น้ำประปา" value="น้ำประปา"></v-checkbox>
         <v-checkbox v-model="selected" label="บ่อน้ำตื้น" value="บ่อน้ำตื้น"></v-checkbox>
       </v-container>
-
     </v-flex>
+
     <v-flex xs12 class="mt-2">
       <h2>3.3 ลักษณะการเลี้ยงโคเนื้อของท่าน</h2>
       <v-divider class="mt-3"></v-divider>
@@ -59,22 +59,79 @@
         <v-checkbox v-model="selected" label="กักขังกึ่งปล่อย" value="กักขังกึ่งปล่อย"></v-checkbox>
         <v-checkbox v-model="selected" label="ปล่อยทุ่ง" value="ปล่อยทุ่ง"></v-checkbox>
       </v-container>
-
     </v-flex>
+
     <v-flex xs12>
-      <h2>3.4 จำนวนแรงงานที่ใช้เลียงโค(คน)</h2>
+      <h2>3.4 พื้นที่ถือครองทางการเกษตร</h2>
       <v-divider class="mt-3"></v-divider>
       <v-flex xs6>
-        <v-subheader>Standard</v-subheader>
+        <choice-select type="own_land" label=" ">
+        </choice-select>
       </v-flex>
+    </v-flex>
+
+    <v-flex xs12>
+      <h2>3.5 การเช่าที่ดินเพื่อใช้ในการเลี้ยง</h2>
+      <v-divider class="mt-3"></v-divider>
       <v-flex xs6>
-        <v-select
-          :items="items1"
-          v-model="e1"
-          label="กรุณาเลือก"
-          single-line
-        ></v-select>
+        <choice-select type="rent_land" label=" ">
+        </choice-select>
       </v-flex>
+    </v-flex>
+
+    <v-flex xs12>
+      <h2>3.6 พื้นที่ที่ใช้ในการเลี้ยงโคเนื้อ</h2>
+      <v-divider class="mt-3"></v-divider>
+      <v-flex xs6>
+        <choice-select type="use_land" label=" ">
+        </choice-select>
+      </v-flex>
+    </v-flex>
+
+    <v-flex xs12 class="mt-2">
+      <h2>3.7 อาหารที่ท่านใช้เลี้ยงโคเนื้อเป็นอาหารประเภทใด (ตอบได้มากกว่า 1 ข้อ)</h2>
+      <v-divider class="mt-3"></v-divider>
+      <v-container fluid>
+        <v-checkbox v-model="selected" label="อาหารหยาบอย่างเดียว" value="อาหารหยาบอย่างเดียว"></v-checkbox>
+        <v-checkbox v-model="selected" label="ทั้งอาหารข้นและอาหารหยาบ" value="ทั้งอาหารข้นและอาหารหยาบ"></v-checkbox>
+        <v-checkbox v-model="selected" label="อาหารผสมครบส่วน(TMR)" value="อาหารผสมครบส่วน(TMR)"></v-checkbox>
+      </v-container>
+    </v-flex>
+
+    <v-flex xs12 class="mt-2">
+      <h2>3.8 แหล่งที่มาของอาหารข้นหรืออาหารผสมครบส่วน</h2>
+      <v-divider class="mt-3 mb-5"></v-divider>
+    </v-flex>
+
+    <v-flex xs12>
+      <h2>3.9 ท่านเคยให้แร่ธาตุก้อนหรือไม่</h2>
+      <v-divider class="mt-3"></v-divider>
+      <v-flex xs6>
+        <choice-select type="minerals_feed" label=" ">
+        </choice-select>
+      </v-flex>
+    </v-flex>
+
+    <v-flex xs12>
+      <h2>3.10 ท่านมีการสำรองฟางข้าว หรือเปลือกข้าวโพดไว้ใช้เลี้ยงโคหรือไม่</h2>
+      <v-divider class="mt-3"></v-divider>
+      <v-flex xs6>
+        <choice-select type="feedstock" label=" ">
+        </choice-select>
+      </v-flex>
+    </v-flex>
+
+    <v-flex xs12 class="mt-2">
+      <h2>3.11 ท่านใช้แหล่งอาหารหยาบในฤดูแล้งจาก</h2>
+      <v-divider class="mt-3"></v-divider>
+      <v-container fluid>
+        <v-checkbox v-model="selected" label="ที่ส่วนตัวหรือไร่นาตัวเอง" value="ที่ส่วนตัวหรือไร่นาตัวเอง"></v-checkbox>
+        <v-checkbox v-model="selected" label="ที่สาธารณะประโยชน์" value="ทที่สาธารณะประโยชน์"></v-checkbox>
+        <v-checkbox v-model="selected" label="แปลงปลูกหญ้าของตนเอง" value="แปลงปลูกหญ้าของตนเอง"></v-checkbox>
+        <v-checkbox v-model="selected" label="ตามไร่นาของคนอื่น" value="ตามไร่นาของคนอื่น"></v-checkbox>
+        <v-checkbox v-model="selected" label="ฟางข้าวหรือเปลือกข้าวโพดแห้ง" value="ฟางข้าวหรือเปลือกข้าวโพดแห้ง"></v-checkbox>
+        <v-checkbox v-model="selected" label="ฟางข้าวหรือเปลือกข้าวโพดหมักหรือปรุงแต่งเก็บไว้" value="ฟางข้าวหรือเปลือกข้าวโพดหมักหรือปรุงแต่งเก็บไว้"></v-checkbox>
+      </v-container>
     </v-flex>
 
   </v-container>
@@ -82,18 +139,15 @@
 
 
 <script>
+  import ChoiceSelect from "../share/choiceSelect";
+
   export default {
+    components: {ChoiceSelect},
     name: "past3",
     data() {
       return {
         selected: [''],
-        e1: null,
-
-        items1:[
-          {text:'มีพื้นที่ถือครอง'},
-          {text:'ไม่มีพื้นที่ถือครอง'}
-        ]
+      }
       }
     }
-  }
 </script>
