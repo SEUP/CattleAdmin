@@ -47,7 +47,7 @@ export default new Router({
           path : "/test3",
           name : "test3",
           component : view("test3")
-        }
+        },
       ]
     }]
 })
