@@ -1,19 +1,9 @@
 <template>
-  <v-layout column pa-0>
-    <v-flex>
-      <v-checkbox :label="items[0].choice"  v-model="selectedValue" :value="items[0].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-      <v-checkbox :label="items[1].choice"  v-model="selectedValue" :value="items[1].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-      <v-checkbox :label="items[2].choice"  v-model="selectedValue" :value="items[2].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-      <v-checkbox :label="items[3].choice"  v-model="selectedValue" :value="items[3].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-      <v-checkbox :label="items[4].choice"  v-model="selectedValue" :value="items[4].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-      <v-checkbox :label="items[5].choice"  v-model="selectedValue" :value="items[5].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-
-      <v-checkbox :label="items[6].choice"  v-model="selectedValue" :value="items[6].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-        <v-text-field v-model="text1" hide-details class="pa-0 px-3" placeholder="โปรดระบุ" ></v-text-field>
-      <v-checkbox :label="items[7].choice"  v-model="selectedValue" :value="items[7].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-        <v-text-field v-model="text1" hide-details class="pa-0 px-3" placeholder="โปรดระบุ" ></v-text-field>
-      <v-checkbox :label="items[8].choice"  v-model="selectedValue" :value="items[8].choice" @change ="updateSelectedValueOutput" hide-details></v-checkbox>
-        <v-text-field v-model="text1" hide-details class="pa-0 px-3" placeholder="โปรดระบุ" ></v-text-field>
+  <v-layout column pa-0 v-if = "items !== []" >
+    <v-flex v-for = "item in items" :key="items.choice">
+      <v-checkbox :label="item.choice"  v-model="selectedValue" :value="item.choice"
+                  @change ="updateSelectedValueOutput" hide-details></v-checkbox>
+        <v-text-field  hide-details class="pa-0 px-3" placeholder="โปรดระบุ" v-if="item.has_text" :value="item.pivot">{{"adad"}}</v-text-field>
     </v-flex>
   </v-layout>
 
@@ -40,8 +30,19 @@
       async created () {
         let choice = await  this.$store.dispatch("choices/getChoicesByType",this.type);
         this.items = await choice
+        console.log(this.items)
         await this.sync()
+
       },
+
+      watch : {
+        items : {
+          handler : function (newText,oldText) {
+            console.log("IN watch ",newText,oldText)
+          },
+          deep : true
+       }
+    },
       methods : {
         sync : function () {
           this.selectedValue = []

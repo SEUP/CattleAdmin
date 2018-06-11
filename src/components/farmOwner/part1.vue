@@ -157,7 +157,7 @@
 
         },
         updateJobType : function (value) {
-          console.log(value)
+          // console.log(value)
         },
         updateForm : async function () {
           await this.$store.dispatch("farmOwners/updateState",this.form)
