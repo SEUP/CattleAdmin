@@ -64,11 +64,30 @@
 </template>
 
 <script>
+  import roleCheckbox from "@/components/role/roleCheckbox";
+  import districtSelect from "@/components/share/districtSelect";
+  import choiceSelect from "@/components/share/choiceSelect";
   import Part7 from "./part7";
     export default {
-      components: {Part7},
+      components: {
+        Part7,
+        choiceSelect,
+        districtSelect,
+        roleCheckbox
+      },
       name: "addFarmOwner",
+      data (){
+        return{
+          selected:[],
+          form :{
+            user_province: null,
+            user_amphur : null,
+            user_district : null,
+            roles: []
+          }
+        }
 
+      }
     }
 </script>
 
