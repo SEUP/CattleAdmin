@@ -52,7 +52,7 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 8"}}</div>
+            <div slot="header">{{"ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ"}}</div>
             <v-card>
               <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
             </v-card>
