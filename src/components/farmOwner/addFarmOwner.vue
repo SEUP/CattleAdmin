@@ -42,7 +42,7 @@
           <v-expansion-panel-content >
             <div slot="header">{{"ส่วนที่ 6"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part6></part6></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -67,9 +67,13 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
+  import Part6 from "./part6";
   import Part7 from "./part7";
+
+
     export default {
       components: {
+        Part6,
         Part7,
         choiceSelect,
         districtSelect,

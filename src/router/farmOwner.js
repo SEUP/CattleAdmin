@@ -32,5 +32,10 @@ export default {
       name: 'farmOwner-part3',
       component: view('farmOwner/part3')
     },
+    {
+      path: 'part6',
+      name: 'farmOwner-part6',
+      component: view('farmOwner/part6')
+    },
   ]
 }
