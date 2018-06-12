@@ -1,7 +1,6 @@
 <template>
   <v-container mt-3>
     <v-layout row wrap>
-
       <v-flex>
         <h1 class="display-1">User Management</h1>
       </v-flex>
@@ -23,7 +22,6 @@
               v-model="form.name"
               label="ชื่อ-นามสกุล"
 
-              single-line
               required
             ></v-text-field>
 
@@ -56,9 +54,8 @@
             <district-select
               :valProvince="form.user_province"
               :valAmphur="form.user_amphur"
-              :valDistrict="form.user_district"
+              :valDistrict = "form.user_district"
               @change="updateDistrictSelect"></district-select>
-
             <h3>Roles</h3>
             <v-container fluid>
               <role-checkbox :value="form.roles" @change="updateRoles"></role-checkbox>
@@ -72,12 +69,9 @@
       </v-flex>
     </v-layout>
   </v-container>
-
-
 </template>
 
 <script>
-
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
 
@@ -86,8 +80,17 @@
     components: {
       roleCheckbox, districtSelect
     },
+    async created () {
+      this.items.userId = await this.$route.params.id
+      await this.getUserByID(this.items.userId)
+      console.log(this.form)
+    },
     data() {
       return {
+        items :{
+          userId: null,
+          with : ['role']
+        },
         form: {
           user_province: [],
           user_amphur : [],
@@ -101,10 +104,6 @@
       roles: function () {
         return this.$store.state.roles.rolesData;
       }
-    },
-    async created(
-
-    ) {
     },
     methods: {
       updateDistrictSelect: function (value) {
@@ -137,9 +136,8 @@
         this.$router.push({name: "user-index"})
       },
       getUserByID  : async function () {
-
-        let data = await  this.$store.dispatch("users/getUserById", this.idSand);
-        this.UserDataFormID = data
+        let data = await  this.$store.dispatch("users/getUserById", this.items.userId);
+        this.form = data
       }
     }
 
