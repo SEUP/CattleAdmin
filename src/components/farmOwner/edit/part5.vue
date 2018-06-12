@@ -39,22 +39,12 @@
 
   export default {
     name: "Part5",
-    props : {
-      ID : {
-        type : Number,
-      }
-    },
     components: {ChoiceCheckBox, ChoiceSelect },
     data : () =>({
       form : undefined
     }),
     async created  () {
-      await this.ID;
-      if (this.ID){
-        this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",this.ID);
-      }
-      await console.log("created",this.form)
-
+      this.form = await this.$store.state.farmOwners.farmOwner
     },
   }
 

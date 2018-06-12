@@ -70,7 +70,7 @@
                   <v-stepper-content :step="5">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <part5 :ID ="this.id"></part5>
+                        <part5 ></part5>
                       </v-card-text>
                     </v-card>
                     <v-btn color="primary" @click.native="steper = 6" >Continue</v-btn>
