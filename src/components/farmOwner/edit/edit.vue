@@ -17,8 +17,8 @@
                   <v-stepper-step :complete="steper > 1" :step="1" editable>ส่วนที่ 1 <small>ข้อมูลพื้นฐานของเกษตรกร</small></v-stepper-step>
                   <v-stepper-content :step="1">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                      <v-card-text v-if = "p1">
-                        <part1 :ID ="this.id"></part1>
+                      <v-card-text>
+                        <part1 ></part1>
                       </v-card-text>
                     </v-card>
                     <v-btn color="primary" @click.native="steper = 2" >Continue</v-btn>
@@ -31,7 +31,7 @@
                   <v-stepper-content :step="2">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
+                        <Part2 ></Part2>
                       </v-card-text>
                     </v-card>
                     <v-btn color="primary" @click.native="steper = 3" >Continue</v-btn>
@@ -208,6 +208,7 @@
 
 <script>
   import Part1 from "./part1"
+  import Part2 from "./part2"
   import Part3 from "./part3"
   import Part7 from "./part7"
   import Part6 from "./part6"
@@ -215,28 +216,20 @@
     name: "edit",
     components : {
       Part1,
+      Part2,
       Part3,
       Part6,
       Part7
     },
     data: () => ({
       p1 : false,
-      id : undefined,
       steper : 1,
       showRightMenu:true,
       farmOwner : null,
     })
     ,async created () {
       let farmOwnerId  = await this.$route.params.id;
-      // await console.log("ID In Edit",this.$route.params.id)
-      this.id = await farmOwnerId
-      if(this.id){
-        this.p1 = true
-        await this.loadData(farmOwnerId)
-      }
-
-
-
+      let form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
     }
     ,methods: {
       elFocus : function (el) {

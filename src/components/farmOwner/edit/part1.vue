@@ -107,7 +107,7 @@
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
             <choice-select type="income_range" label="ท่านมีรายได้รวมของครัวเรือนเฉลี่ยเท่าไหร่ (บาท/ปี)"
-                           :value="form.income_range.id"
+                           :value="form.income_range"
                            @change = "updateChoice" >
 
             </choice-select>
@@ -135,17 +135,12 @@
     import ChoiceCheckBox from "../../share/choiceCheckBox";
     export default {
       name: "part1",
-      props : {
-        ID : {
-          type : Number,
-        }
-      },
       components: {ChoiceCheckBox, ChoiceSelect, DistrictSelect},
       data : () =>({
         form : undefined
       }),
       async created  () {
-        this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",this.ID);
+        this.form = await this.$store.state.farmOwners.farmOwner
 
       },
       methods : {
@@ -181,18 +176,19 @@
           }
           this.updateForm()
         },
-        updateChoice :async function (value,id) {
-
+        updateChoice :async function (value) {
+          // console.log("IN FuC",value)
+          this.form.income_range = value
+          this.updateForm()
         },
         updateJobType :  function (value) {
           this.form.jobtypes = value
           this.updateForm()
-
         },
         updateForm : async function () {
           await this.$store.dispatch("farmOwners/updateState",this.form)
           let data = await this.$store.state.farmOwners.farmOwner
-          console.log("UPDATED",data)
+          // console.log("UPDATED",data)
         }
       }
     }
