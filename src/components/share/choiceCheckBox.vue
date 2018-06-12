@@ -54,9 +54,6 @@
       load :async function () {
         this.items = await this.$store.dispatch("choices/getChoicesByType",this.type)
         await this.sync()
-        console.log("V",this.value)
-        console.log("S",this.selected)
-        console.log("I",this.items)
       },
       updateChoice : function () {
         this.$emit("change",this.selected)
@@ -66,7 +63,6 @@
     created : function () {
       this.load()
     },
-
 
   }
 

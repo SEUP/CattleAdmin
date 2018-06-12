@@ -15,15 +15,15 @@
                 <v-spacer></v-spacer>
 
                 <v-flex xs12 md5 >
-                  <!--<choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>-->
+                  <choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>
                 </v-flex>
                 <v-flex xs12>
-                  <!--<district-select-->
-                    <!--:valProvince="form.user_province"-->
-                    <!--:valAmphur="form.user_amphur"-->
-                    <!--:valDistrict="form.user_district"-->
-                    <!--singleLine-->
-                    <!--@change="updateDistrictSelect"></district-select>-->
+                  <district-select
+                    :valProvince="form.user_province"
+                    :valAmphur="form.user_amphur"
+                    :valDistrict="form.user_district"
+                    singleLine
+                    @change="updateDistrictSelect"></district-select>
                 </v-flex>
                 <v-flex xs12 class="text-xs-center mt-2">
                   <v-btn color="primary" @click="search()" depressed>ค้นหา</v-btn>
@@ -90,11 +90,11 @@
     </v-container>
 </template>
 <script>
-  // import ChoiceSelect from "../share/choiceSelect";
-  // import districtSelect from "@/components/share/districtSelect";
+  import ChoiceSelect from "../share/choiceSelect";
+  import districtSelect from "@/components/share/districtSelect";
   export default {
     name: "farmOwner-index",
-    // components: {ChoiceSelect,districtSelect},
+    components: {ChoiceSelect,districtSelect},
     data : () => ({
       paginate:{},
       form : {
