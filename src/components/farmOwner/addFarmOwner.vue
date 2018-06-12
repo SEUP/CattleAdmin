@@ -24,7 +24,7 @@
           <v-expansion-panel-content >
             <div slot="header">{{"ส่วนที่ 3"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part3></part3></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -34,9 +34,9 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 5"}}</div>
+            <div slot="header">{{"ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part5></part5></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -67,16 +67,21 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
-  import Part8 from "./edit/part8";
+  import Part3 from "./edit/part3"
+  import Part5 from "./edit/part5";
   import Part6 from "./edit/part6";
   import Part7 from "./edit/part7";
+  import Part8 from "./edit/part8";
+
 
 
     export default {
       components: {
-        Part8,
+        Part3,
+        Part5,
         Part6,
         Part7,
+        Part8,
         choiceSelect,
         districtSelect,
         roleCheckbox
