@@ -47,10 +47,10 @@
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
             <choice-select type="sex" label="เพศ" :value="form.sex" @change = "updateChoice(form.sex)"></choice-select>
-            <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @chage ="updateForm"></v-text-field>
+            <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @chage ="updateForm" hide-details></v-text-field>
             <choice-select label="สถานภาพ" type="personal_status" :value="form.personal_status"
                            @change = "updateChoice(form.personal_status)"></choice-select>
-            <choice-select label="สถานภาพในครอบครัว" type="family_status" :value="form.family_status"
+            <choice-select label="สถานภาพในครอบครัว" type="family_status" singleLine :value="form.family_status"
                            @change = "updateChoice(form.family_status)" ></choice-select>
           </div>
           <v-card-text class="pa-2 title">1.6 การศึกษา</v-card-text>
