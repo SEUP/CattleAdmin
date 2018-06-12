@@ -67,8 +67,8 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
-  import Part6 from "./part6";
-  import Part7 from "./part7";
+  import Part6 from "./edit/part6";
+  import Part7 from "./edit/part7";
 
 
     export default {

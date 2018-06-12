@@ -16,7 +16,7 @@ export default {
     }, {
       path: 'edit',
       name: 'farmOwner-edit',
-      component: view('farmOwner/edit')
+      component: view('farmOwner/edit/edit')
     },
     {
       path: 'addFarmOwner',
@@ -26,16 +26,16 @@ export default {
     {
       path: 'part7',
       name: 'farmOwner-part7',
-      component: view('farmOwner/part7')
+      component: view('farmOwner/edit/part7')
     },{
       path: 'part3',
       name: 'farmOwner-part3',
-      component: view('farmOwner/part3')
+      component: view('farmOwner/edit/part3')
     },
     {
       path: 'part6',
       name: 'farmOwner-part6',
-      component: view('farmOwner/part6')
+      component: view('farmOwner/edit/part6')
     },
   ]
 }

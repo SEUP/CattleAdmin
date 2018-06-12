@@ -139,7 +139,7 @@
 
 
 <script>
-  import ChoiceSelect from "../share/choiceSelect";
+  import ChoiceSelect from "../../share/choiceSelect";
 
   export default {
     components: {ChoiceSelect},

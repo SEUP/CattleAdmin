@@ -52,7 +52,7 @@
 
 <script>
   import choiceSelect from "@/components/share/choiceSelect";
-  import ChoiceSelect from "../share/choiceSelect";
+  import ChoiceSelect from "../../share/choiceSelect";
     export default {
       components: {choiceSelect},
       name: "part7",

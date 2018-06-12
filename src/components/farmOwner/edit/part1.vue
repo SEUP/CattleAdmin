@@ -130,9 +130,9 @@
 </template>
 
 <script>
-    import DistrictSelect from "../share/districtSelect";
-    import ChoiceSelect from "../share/choiceSelect";
-    import ChoiceCheckBox from "../share/choiceCheckBox";
+    import DistrictSelect from "../../share/districtSelect";
+    import ChoiceSelect from "../../share/choiceSelect";
+    import ChoiceCheckBox from "../../share/choiceCheckBox";
     export default {
       name: "part1",
       props : {
