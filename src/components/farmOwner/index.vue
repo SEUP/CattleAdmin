@@ -1,51 +1,51 @@
 <template>
-  <v-container>
-    <h1 class="display-1 pa-0 mb-3">ค้นหาข้อมูลเกษตรกร</h1>
-    <v-divider class="mb-3"></v-divider>
-    <div>
-      <!--Search Input -->
-      <v-layout>
-        <v-flex>
-          <v-divider class="divider-bold orange"></v-divider>
-          <v-card>
-            <v-layout wrap px-3 py-1>
-              <v-flex xs12 md6>
-                <v-text-field label="ค้นหา : ชื่อ นามสกุล รหัสประจำตัวประชาชน" v-model="form.keyword"></v-text-field>
-              </v-flex>
-              <v-spacer></v-spacer>
+    <v-container>
+      <h1 class="display-1 pa-0 mb-3">ค้นหาข้อมูลเกษตรกร</h1>
+      <v-divider class="mb-3"></v-divider>
+      <div>
+        <!--Search Input -->
+        <v-layout>
+          <v-flex>
+            <v-divider class="divider-bold orange"></v-divider>
+            <v-card>
+              <v-layout wrap px-3 py-1>
+                <v-flex xs12 md6>
+                  <v-text-field label="ค้นหา : ชื่อ นามสกุล รหัสประจำตัวประชาชน" v-model="form.keyword"></v-text-field>
+                </v-flex>
+                <v-spacer></v-spacer>
 
-              <v-flex xs12 md5 >
-                <choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>
-              </v-flex>
-              <v-flex xs12>
-                <district-select
-                  :valProvince="form.user_province"
-                  :valAmphur="form.user_amphur"
-                  :valDistrict="form.user_district"
-                  singleLine
-                  @change="updateDistrictSelect"></district-select>
-              </v-flex>
-              <v-flex xs12 class="text-xs-center mt-2">
-                <v-btn color="primary" @click="search()" depressed>ค้นหา</v-btn>
-                <v-btn  @click="" outline>ล้างข้อมูล</v-btn>
-              </v-flex>
-            </v-layout>
-          </v-card>
-        </v-flex>
-      </v-layout>
+                <v-flex xs12 md5 >
+                  <!--<choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>-->
+                </v-flex>
+                <v-flex xs12>
+                  <!--<district-select-->
+                    <!--:valProvince="form.user_province"-->
+                    <!--:valAmphur="form.user_amphur"-->
+                    <!--:valDistrict="form.user_district"-->
+                    <!--singleLine-->
+                    <!--@change="updateDistrictSelect"></district-select>-->
+                </v-flex>
+                <v-flex xs12 class="text-xs-center mt-2">
+                  <v-btn color="primary" @click="search()" depressed>ค้นหา</v-btn>
+                  <v-btn  @click="" outline>ล้างข้อมูล</v-btn>
+                </v-flex>
+              </v-layout>
+            </v-card>
+          </v-flex>
+        </v-layout>
 
-      <v-layout class="my-2">
-        <v-flex>
-          <v-btn color="success" @click="">ส่งออกป็น Excel</v-btn>
-        </v-flex>
-      </v-layout>
+        <v-layout class="my-2">
+          <v-flex>
+            <v-btn color="success" @click="">ส่งออกป็น Excel</v-btn>
+          </v-flex>
+        </v-layout>
 
-      <!--Search result Display -->
-      <v-layout row>
-        <v-flex xs12>
+        <!--Search result Display -->
+        <v-layout row>
+          <v-flex xs12>
             <v-card >
               <v-data-table
-              class="" hide-actions :headers="headsTable" :items="paginate.data">
+                class="" hide-actions :headers="headsTable" :items="paginate.data">
                 <template slot="items" slot-scope="props">
                   <td class="text-xs-lef">{{ props.item.first_name +" "+ props.item.last_name }}</td>
                   <td class="text-xs-left">{{ props.item.mobile_no }}</td>
@@ -84,75 +84,71 @@
                               v-model="paginate.current_page" ></v-pagination>
               </v-flex>
             </v-card>
-        </v-flex>
-      </v-layout>
-    </div>
-  </v-container>
+          </v-flex>
+        </v-layout>
+      </div>
+    </v-container>
 </template>
-
 <script>
-    import ChoiceSelect from "../share/choiceSelect";
-    import districtSelect from "@/components/share/districtSelect";
-    export default {
-        name: "farmOwner-index",
-      components: {ChoiceSelect,districtSelect},
-      data : () => ({
-        paginate:{},
-        form : {
-          page : null,
-          keyword : ""
+  // import ChoiceSelect from "../share/choiceSelect";
+  // import districtSelect from "@/components/share/districtSelect";
+  export default {
+    name: "farmOwner-index",
+    // components: {ChoiceSelect,districtSelect},
+    data : () => ({
+      paginate:{},
+      form : {
+        page : null,
+        keyword : ""
 
-        },
-        farmOwners : [],
-        headsTable:[
-          {text: "ชื่อ-นามสกุล", align:"left" ,value:"full_name",sortable :false},
-          {text: "เบอร์โทร", align:"left" ,value:"mobile_no",sortable :false},
-          {text: "จังหวัด อำเภอ ตำบล", align:"left" ,value:"address_name",sortable :false},
-          {text: "ข้อมูลเมื่อ", align:"left" ,value:"updated_at",sortable :false},
-          {text: "การจัดการ", align:"center" ,value:"action" ,sortable :false},
-        ],
-      }),
-      async created () {
-        await this.loadData()
       },
-      methods : {
-        loadData : async function () {
-          let paginate  = await this.$store.dispatch("farmOwners/getFarmOwners")
-          this.paginate = paginate;
-          this.farmOwners = paginate.data;
-        },
-        search : async function () {
-          let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
-          this.paginate = paginate;
-          this.farmOwners = paginate.data;
-          // console.log("TO search",this.form);
-        },
-        changePage: async function (page) {
-          this.form.page = page;
-          let paginate = await  this.$store.dispatch("farmOwners/getFarmOwners", this.form)
-          this.paginate = paginate;
-          this.farmOwners = paginate.data;
+      farmOwners : [],
+      headsTable:[
+        {text: "ชื่อ-นามสกุล", align:"left" ,value:"full_name",sortable :false},
+        {text: "เบอร์โทร", align:"left" ,value:"mobile_no",sortable :false},
+        {text: "จังหวัด อำเภอ ตำบล", align:"left" ,value:"address_name",sortable :false},
+        {text: "ข้อมูลเมื่อ", align:"left" ,value:"updated_at",sortable :false},
+        {text: "การจัดการ", align:"center" ,value:"action" ,sortable :false},
+      ],
+    }),
+    async created () {
+      await this.loadData()
+    },
+    methods : {
+      loadData : async function () {
+        let paginate  = await this.$store.dispatch("farmOwners/getFarmOwners")
+        this.paginate = paginate;
+        this.farmOwners = paginate.data;
+      },
+      search : async function () {
+        let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
+        this.paginate = paginate;
+        this.farmOwners = paginate.data;
+        // console.log("TO search",this.form);
+      },
+      changePage: async function (page) {
+        this.form.page = page;
+        let paginate = await  this.$store.dispatch("farmOwners/getFarmOwners", this.form)
+        this.paginate = paginate;
+        this.farmOwners = paginate.data;
 
-        },updateDistrictSelect: function (value) {
-          this.form.province = value[0];
-          this.form.amphure = value[1];
-          this.form.district = value[2];
+      },updateDistrictSelect: function (value) {
+        this.form.province = value[0];
+        this.form.amphure = value[1];
+        this.form.district = value[2];
 
-          if (value[0]) {
-            this.form.user_province = value[0].PROVINCE_ID;
-          }
-          if (value[1]) {
-            this.form.user_amphur = value[1].AMPHUR_ID;
-          }
-          if (value[2]) {
-            this.form.user_district = value[2].DISTRICT_ID;
-          }
-          // console.log("UPDATE",this.form)
-        },
-      }
+        if (value[0]) {
+          this.form.user_province = value[0].PROVINCE_ID;
+        }
+        if (value[1]) {
+          this.form.user_amphur = value[1].AMPHUR_ID;
+        }
+        if (value[2]) {
+          this.form.user_district = value[2].DISTRICT_ID;
+        }
+        // console.log("UPDATE",this.form)
+      },
     }
+  }
 </script>
 
-<style scoped>
-
-</style>
