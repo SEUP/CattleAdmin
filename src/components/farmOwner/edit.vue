@@ -91,18 +91,18 @@
                   </v-stepper-content>
                 </div>
 
-                <div id="f7">
-                  <v-stepper-step :complete="steper > 7" :step="7" editable>ส่วนที่ 7<small>การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</small></v-stepper-step>
-                  <v-stepper-content :step="7">
-                    <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                      <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
-                      </v-card-text>
-                    </v-card>
-                    <v-btn color="primary" @click.native="steper = 8" >Continue</v-btn>
-                    <v-btn flat  @click.native="steper=0" outline>Cancel</v-btn>
-                  </v-stepper-content>
-                </div>
+              <div id="f7">
+                <v-stepper-step :complete="steper > 7" :step="7" editable>ส่วนที่ 7<small>การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</small></v-stepper-step>
+                <v-stepper-content :step="7">
+                  <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
+                    <v-card-text>
+                      <!---->  <part7 :ID ="this.id"></part7>
+                    </v-card-text>
+                  </v-card>
+                  <v-btn color="primary" @click.native="steper = 8" >Continue</v-btn>
+                  <v-btn flat  @click.native="steper=0" outline>Cancel</v-btn>
+                </v-stepper-content>
+              </div>
 
                 <div id="f8">
                   <v-stepper-step :complete="steper > 8" :step="8" editable>ส่วนที่ 8<small>ปัญหา อุปสรรค และข้อเสนอแนะ</small></v-stepper-step>
@@ -204,17 +204,18 @@
     </v-layout>
   </v-container>
 
-
 </template>
 
 <script>
   import Part1 from "./part1"
   import Part3 from "./part3"
+  import Part7 from "./part7"
   export default {
     name: "edit",
     components : {
       Part1,
-      Part3
+      Part3,
+      Part7
     },
     data: () => ({
       p1 : false,
@@ -244,6 +245,6 @@
         await console.log("SAVE",data)
       },
 
-    }
+      }
   }
 </script>

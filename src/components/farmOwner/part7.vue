@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+
     <v-container>
       <v-form>
         <v-flex xs12>
@@ -47,7 +47,7 @@
         </v-flex>
       </v-form>
     </v-container>
-  </v-card>
+
 </template>
 
 <script>
