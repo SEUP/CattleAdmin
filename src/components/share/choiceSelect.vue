@@ -81,7 +81,7 @@
         })
       },
       checkHasText : function () {
-        console.log(this.selectedValue)
+        // console.log(this.selectedValue)
         if(this.selectedValue.has_text){
           this.HasText = true
         }else{
