@@ -22,9 +22,9 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 3"}}</div>
+            <div slot="header">{{"ส่วนที่ 3 ข้อมูลแรงงาน พื้นที่ในการเลี้ยง และการจัดการอาหาร"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><Part3></Part3></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -52,7 +52,7 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 8"}}</div>
+            <div slot="header">{{"ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ"}}</div>
             <v-card>
               <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
             </v-card>
@@ -67,9 +67,12 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
+  import Part3 from "./part3";
   import Part7 from "./part7";
+
     export default {
       components: {
+        Part3,
         Part7,
         choiceSelect,
         districtSelect,
