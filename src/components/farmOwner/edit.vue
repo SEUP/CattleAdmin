@@ -123,6 +123,7 @@
             <
           </v-list-tile>
         </v-list>
+
         <v-flex xs2 class="justify-center" v-if="showRightMenu" >
           <v-layout row>
             <v-flex xs11>
