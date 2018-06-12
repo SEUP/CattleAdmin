@@ -36,8 +36,8 @@ export default {
     updateState : async function (context,form) {
       context.commit("setFarmOwner",form)
     },
-    updateFarmOwners : async function (context,state){
-      let form = state.farmOwners;
+    updateFarmOwner : async function (context){
+      let form = context.state.farmOwner;
       console.log(form);
       let result = await  axios.put("api/farm-owner/"+form.id,form)
         .then( (response) => {
@@ -50,7 +50,7 @@ export default {
         })
       return result
     },
-    deleteFarmOwners : async function (context,id) {
+    deleteFarmOwner : async function (context,id) {
       let result = await  axios.delete("api/farm-owner/"+id)
         .then((response) => {
         return response.data

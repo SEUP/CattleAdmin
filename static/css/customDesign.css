@@ -10,21 +10,11 @@
 }
 .right_menu_fixed {
   position: fixed;
-  /*top: 129px;*/
-  /*right: 5px;*/
-  width: 13vw;
-}
-.vertical_bar {
-  border-left: 1px solid;
-  height: 50px;
+  top: 15%;
+  right : 10px;
+  padding: 0 0 0 0 !important;
 }
 .overlay-img {
   background-color: rgba(0, 0, 0, 0.5);
 }
-.right_menu_fixed_s {
-  position: fixed;
-  top: 50%;
-  right : 0;
-  padding: 0 0 0 0 !important;
 
-}

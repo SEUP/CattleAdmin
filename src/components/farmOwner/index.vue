@@ -68,7 +68,7 @@
                     </v-tooltip>
 
                     <v-tooltip top>
-                      <v-btn class="ma-0" icon @click="" slot = "activator">
+                      <v-btn class="ma-0" icon @click="" slot = "activator" @click.native = "deleteFarmOwner(props.item.id)">
                         <v-icon color="red" >delete</v-icon>
                       </v-btn>
                       <span>Delete</span>
@@ -148,6 +148,10 @@
         }
         // console.log("UPDATE",this.form)
       },
+      deleteFarmOwner : async function (id) {
+        let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
+        await console.log("Delete",result)
+      }
     }
   }
 </script>

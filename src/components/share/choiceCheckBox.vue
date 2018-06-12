@@ -57,7 +57,7 @@
       },
       updateChoice : function () {
         this.$emit("change",this.selected)
-        console.log("emit",this.selected)
+        // console.log("emit",this.selected)
       }
     },
     created : function () {
