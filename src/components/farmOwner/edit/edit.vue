@@ -70,7 +70,7 @@
                   <v-stepper-content :step="5">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
+                        <part5 :ID ="this.id"></part5>
                       </v-card-text>
                     </v-card>
                     <v-btn color="primary" @click.native="steper = 6" >Continue</v-btn>
@@ -209,15 +209,17 @@
 <script>
   import Part1 from "./part1"
   import Part3 from "./part3"
-  import Part7 from "./part7"
+  import Part5 from "./part5"
   import Part6 from "./part6"
+  import Part7 from "./part7"
   export default {
     name: "edit",
     components : {
       Part1,
       Part3,
+      Part5,
       Part6,
-      Part7
+      Part7,
     },
     data: () => ({
       p1 : false,

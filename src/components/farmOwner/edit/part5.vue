@@ -1,12 +1,12 @@
 <template>
-  <v-container>
+  <v-container v-if="form">
     <v-layout row wrap>
       <v-flex xs12>
 
         <p class="title">5.1 เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</p>
 
         <v-divider class="my-3"></v-divider>
-        <choice-select type="budget_source" class="ml-5"></choice-select>
+        <choice-select type="budget_source" class="ml-5" :value="form.budget_source"></choice-select>
 
       </v-flex>
     </v-layout>
@@ -38,13 +38,24 @@
   import ChoiceCheckBox from "../../share/choiceCheckBox";
 
   export default {
-    components: {ChoiceSelect,ChoiceCheckBox},
-    name: "past5",
-    data() {
-      return {
-        selected: [''],
+    name: "Part5",
+    props : {
+      ID : {
+        type : Number,
       }
-    }
+    },
+    components: {ChoiceCheckBox, ChoiceSelect },
+    data : () =>({
+      form : undefined
+    }),
+    async created  () {
+      await this.ID;
+      if (this.ID){
+        this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",this.ID);
+      }
+      await console.log("created",this.form)
+
+    },
   }
 
 </script>
