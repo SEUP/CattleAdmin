@@ -100,7 +100,9 @@
           <div class="ma-2 mx-4">
               <choice-check-box type = "jobtypes"
                                 :value="form.jobtypes"
-                                @change = "form.joptype = $event">
+                                @change = "form.jobtypes = $event"
+                                @blur="updateForm"
+              >
 
               </choice-check-box >
           </div>
@@ -110,7 +112,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="income_range" label="ท่านมีรายได้รวมของครัวเรือนเฉลี่ยเท่าไหร่ (บาท/ปี)"
                            :value="form.income_range"
-                           @change = "form.income_range =  $event" >
+                           @change = "form.income_range =  $event"  >
 
             </choice-select>
           </div>
@@ -143,8 +145,6 @@
       }),
       async created  () {
         this.form = await this.$store.state.farmOwners.farmOwner
-
-
       },
       methods : {
         updateDistrictSelectHouse: function (value) {
@@ -180,6 +180,7 @@
           this.updateForm()
         },
         updateForm : async function () {
+          console.log("P1",this.form)
           await this.$store.dispatch("farmOwners/updateState",this.form)
           let data = await this.$store.state.farmOwners.farmOwner
         }

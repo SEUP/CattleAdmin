@@ -90,7 +90,7 @@
               // this.updateValue();
           }
         })
-        console.log("IN CHO",this.selectedValue)
+        // console.log("IN CHO",this.selectedValue)
       },
       checkHasText : function () {
         // console.log(this.selectedValue)
@@ -102,7 +102,7 @@
 
       },
       updateValue: async function () {
-        console.log("UPDATE select",this.selectedValue)
+        // console.log("UPDATE select",this.selectedValue)
         await this.checkHasText()
         await this.$emit('change', this.selectedValue)
 

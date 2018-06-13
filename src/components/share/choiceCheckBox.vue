@@ -14,7 +14,7 @@
                       hide-details class="pa-0 px-3"
                       placeholder="โปรดระบุ" :value="item.pivot.remark"
                       v-model="item.pivot.remark"
-                      @change = "updateChoice"
+                      @blur = "updateChoice"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -35,7 +35,7 @@
                       hide-details class="pa-0 px-3"
                       placeholder="โปรดระบุ" :value="item.pivot.remark"
                       v-model="item.pivot.remark"
-                      @change = "updateChoice"
+                      @blur = "updateChoice"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -86,7 +86,7 @@
       },
       updateChoice : function () {
         this.$emit("change",this.selected)
-        // console.log("emit",this.selected)
+        console.log("emitChoice",this.selected)
       }
     },
     created : function () {
