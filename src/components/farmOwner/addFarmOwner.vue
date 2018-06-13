@@ -22,7 +22,7 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 3"}}</div>
+            <div slot="header">{{"ส่วนที่ 3 ข้อมูลแรงงาน พื้นที่ในการเลี้ยง และการจัดการอาหาร"}}</div>
             <v-card>
               <v-card-text class="grey lighten-3"><part3></part3></v-card-text>
             </v-card>
