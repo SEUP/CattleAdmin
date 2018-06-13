@@ -28,9 +28,9 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 4"}}</div>
+            <div slot="header">{{"ส่วนที่ 4 การผสมพันธ์ุ ประสิทธิภาพการผลิต และการรักษาโรค"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part4></part4></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -67,7 +67,8 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
-  import Part3 from "./edit/part3"
+  import Part3 from "./edit/part3";
+  import Part4 from "./edit/part4";
   import Part5 from "./edit/part5";
   import Part6 from "./edit/part6";
   import Part7 from "./edit/part7";
@@ -78,6 +79,7 @@
     export default {
       components: {
         Part3,
+        Part4,
         Part5,
         Part6,
         Part7,
