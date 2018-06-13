@@ -57,12 +57,12 @@
             <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @blur ="updateForm" hide-details></v-text-field>
             <choice-select label="สถานภาพ" type="personal_status"
                            :value="form.personal_status"
-                           @change = "updateChoice(form.personal_status)">
+                           @change = "form.personal_status = $event">
 
             </choice-select>
             <choice-select label="สถานภาพในครอบครัว" type="family_status" singleLine
                            :value="form.family_status"
-                           @change = "updateChoice(form.family_status)" >
+                           @change = "form.family_status = $event" >
 
             </choice-select>
           </div>
@@ -70,7 +70,9 @@
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
             <choice-select label="การศึกษา" type="education" :value="form.education"
-                           @change = "updateChoice(form.education)" ></choice-select>
+                           @change = "form.education = $event" >
+
+            </choice-select>
           </div>
 
           <v-card-text class="pa-2 title">1.7 สถานภาพทางสังคม</v-card-text>
@@ -78,7 +80,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="social_status" label="สถานภาพทางสังคม"
                            :value="form.social_status"
-                           @change = "updateChoice(form.social_status)">
+                           @change = "form.social_status = $event">
 
             </choice-select>
           </div>
@@ -88,7 +90,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="cattle_job" label="การเลี้ยงโคเนื้อเป็น"
                            :value="form.cattle_job"
-                           @change = "updateChoice(form.cattle_job)">
+                           @change = "form.cattle_job = $event">
 
             </choice-select>
           </div>
@@ -98,7 +100,7 @@
           <div class="ma-2 mx-4">
               <choice-check-box type = "jobtypes"
                                 :value="form.jobtypes"
-                                @change = "updateJobType">
+                                @change = "form.joptype = $event">
 
               </choice-check-box >
           </div>
@@ -108,7 +110,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="income_range" label="ท่านมีรายได้รวมของครัวเรือนเฉลี่ยเท่าไหร่ (บาท/ปี)"
                            :value="form.income_range"
-                           @change = "updateChoice" >
+                           @change = "form.income_range =  $event" >
 
             </choice-select>
           </div>
@@ -174,15 +176,6 @@
           if (value[2]) {
             this.form.farm_district = value[2].DISTRICT_ID;
           }
-          this.updateForm()
-        },
-        updateChoice :async function (value) {
-          // console.log("IN FuC",value)
-          this.form.income_range = value
-          this.updateForm()
-        },
-        updateJobType :  function (value) {
-          this.form.jobtypes = value
           this.updateForm()
         },
         updateForm : async function () {
