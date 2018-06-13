@@ -225,7 +225,6 @@
     },
     data: () => ({
       form : undefined,
-      p1 : false,
       steper : 1,
       showRightMenu:true,
       farmOwner : null,
