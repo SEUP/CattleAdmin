@@ -5,15 +5,7 @@
         <v-flex xs12>
           <p class="title">7.1 หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ(ตอบได้มากกว่า 1 ข้อ)</p>
           <v-divider class="my-3"></v-divider>
-          <v-flex xs10 offset-xs1>
-            <v-checkbox v-model="selected" label="กรมส่งเสริมการเกษตร" color="success" value="กรมส่งเสริมการเกษตร"  ></v-checkbox>
-            <v-checkbox v-model="selected" label="กรมปศุสัตว์"  color="success" value="กรมปศุสัตว์"></v-checkbox>
-            <v-checkbox v-model="selected" label="องค์กรปกครองส่วนท้องถิ่น(อบต. อบจ. เทศบาล)" color="success" value="องค์กรปกครองส่วนท้องถิ่น(อบต. อบจ. เทศบาล)"></v-checkbox>
-            <v-checkbox v-model="selected" label="เอกชน" color="success" value="เอกชน"></v-checkbox>
-            <v-checkbox v-model="selected" label="สำนักงานการปฏิรูปที่ดินเพื่อการเกษตร(ส.ป.ก.)" color="success" value="สำนักงานการปฏิรูปที่ดินเพื่อการเกษตร(ส.ป.ก.)"></v-checkbox>
-            <v-checkbox v-model="selected" label="อื่นๆ(กลุ่มผู้เลี้ยงโคในหมู่บ้าน)" color="success" value="อื่นๆ(กลุ่มผู้เลี้ยงโคในหมู่บ้าน)"></v-checkbox>
-            <v-checkbox v-model="selected" label="ไม่เคยได้รับบริการจากหน่วยงานใดๆ" color="success" value="ไม่เคยได้รับบริการจากหน่วยงานใดๆ"></v-checkbox>
-          </v-flex>
+          <choice-check-box type="support_sources" @change="updateForm"></choice-check-box>
         </v-flex>
         <v-flex xs12>
           <p class="title">7.2 ท่านเคยได้รับการเยี่ยมเยือนฟาร์มจากหน่วยงานในข้อ 7.1 หรือไม่</p>
@@ -53,6 +45,7 @@
 <script>
   import choiceSelect from "@/components/share/choiceSelect"
   import ChoiceCheckBox from "../../share/choiceCheckBox";
+
     export default {
       components: {
         choiceSelect,
