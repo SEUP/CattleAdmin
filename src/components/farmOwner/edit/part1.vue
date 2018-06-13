@@ -53,7 +53,7 @@
           <v-card-text class="pa-2 title">1.5 สถานะทางครอบครัว</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <choice-select type="sex" label="เพศ" :value="form.sex" @change = "updateChoice(form.sex)"></choice-select>
+            <choice-select type="sex" label="เพศ" :value="form.sex" @change="form.sex = $event"></choice-select>
             <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @blur ="updateForm" hide-details></v-text-field>
             <choice-select label="สถานภาพ" type="personal_status"
                            :value="form.personal_status"
