@@ -10,15 +10,15 @@
       <v-flex xs10>
         <v-expansion-panel>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 1"}}</div>
+            <div slot="header">{{"ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part1></part1></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 2"}}</div>
+            <div slot="header">{{"ส่วนที่ 2 ข้อมูลการเลี้ยงและสถานภาพฟาร์ม"}}</div>
             <v-card>
-              <v-card-text class="grey lighten-3">{{"TO DO"}}</v-card-text>
+              <v-card-text class="grey lighten-3"><part2></part2></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -67,6 +67,8 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
+  import Part1 from "./edit/part1";
+  import Part2 from "./edit/part2";
   import Part3 from "./edit/part3";
   import Part4 from "./edit/part4";
   import Part5 from "./edit/part5";
@@ -76,8 +78,11 @@
 
 
 
+
     export default {
       components: {
+        Part1,
+        Part2,
         Part3,
         Part4,
         Part5,
