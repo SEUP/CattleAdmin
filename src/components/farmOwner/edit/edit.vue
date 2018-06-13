@@ -213,7 +213,15 @@
       form : undefined,
       steper : 1,
       farmOwner : null,
-    })
+    }),
+    computed : {
+      isReady : function(){
+        let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
+        let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
+
+        return choicesLoaded && districtLoaded;
+      }
+    }
     ,async created () {
       let farmOwnerId  = await this.$route.params.id;
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
