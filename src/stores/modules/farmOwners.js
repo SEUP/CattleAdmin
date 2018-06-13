@@ -1,11 +1,12 @@
 export default {
   namespaced :true,
   state : {
-     farmOwner : []
+    farmOwner : []
   },
   mutations : {
     setFarmOwner : function (state,farmOwner) {
       state.farmOwner = farmOwner
+      state.isLoad = true
     }
   },
   actions :{

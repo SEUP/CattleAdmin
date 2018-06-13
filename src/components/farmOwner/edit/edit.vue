@@ -7,7 +7,7 @@
         </v-card-text>
 
         <v-divider></v-divider>
-        <v-layout row wrap class="justify-center pt-2">
+        <v-layout row wrap class="justify-center pt-2" v-if="form">
           <v-flex mx-3>
             <v-card>
               <v-divider class="divider-bold indigo"></v-divider>
@@ -224,6 +224,7 @@
       Part7,
     },
     data: () => ({
+      form : undefined,
       p1 : false,
       steper : 1,
       showRightMenu:true,
@@ -231,7 +232,8 @@
     })
     ,async created () {
       let farmOwnerId  = await this.$route.params.id;
-      let form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
+      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
+
     }
     ,methods: {
       elFocus : function (el) {
