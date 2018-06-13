@@ -40,7 +40,7 @@
       </v-form>
     </v-container>
 
-</template>
+</template>s
 
 <script>
   import choiceSelect from "@/components/share/choiceSelect"
@@ -50,7 +50,14 @@
       components: {
         choiceSelect,
         ChoiceCheckBox,
-
+      },
+      watch : {
+        form : {
+          deep:true,
+          headler : function (newVal,OldVal) {
+            console.log("IN WATCH",newVal,OldVal)
+          }
+        }
       },
       name: "part7",
 
@@ -58,22 +65,12 @@
         return{
           form:[]
         }
-
       },
       async created (){
         this.from = await this.$store.state.farmOwners.farmOwner;
-
-      },
-      updateChoice :async function (value) {
-        // console.log("IN FuC",value)
-        this.form.income_range = value
-        this.updateForm()
-      },
-      updateJobType :  function (value) {
-        this.form.jobtypes = value
-        this.updateForm()
       },
       updateForm : async function () {
+        console.log("TO UPDATE",this.from.support_visit)
         await this.$store.dispatch("farmOwners/updateState",this.form)
         let data = await this.$store.state.farmOwners.farmOwner
         // console.log("UPDATED",data)
