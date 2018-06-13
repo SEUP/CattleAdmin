@@ -8,7 +8,7 @@
     </v-layout>
     <v-divider class="mt-2"></v-divider>
 
-    <v-layout row wrap mt-3>
+    <v-layout row wrap mt-3 v-if="form">
       <v-flex mt-3>
         <v-card>
           <v-footer color="gray">
@@ -65,7 +65,7 @@
             </v-container>
 
             <v-btn color="primary" @click="saveUser"> Submit</v-btn>
-            <v-btn @click=""> Cancel</v-btn>
+            <v-btn @click="$router.go(-1)"> Cancel</v-btn>
           </v-form>
 
         </v-card>
@@ -88,23 +88,12 @@
     },
     data() {
       return {
-        form: {
-          user_province: [],
-          user_amphur : [],
-          user_district : [],
-          roles: []
-        },
-        selected: []
+        form: null,
       }
     },
-    computed: {
-      roles: function () {
-        return this.$store.state.roles.rolesData;
-      }
-    },
-    async created(
-
-    ) {
+    computed: {},
+    async created() {
+      this.load(this.$route.params.id);
     },
     methods: {
       updateDistrictSelect: function (value) {
@@ -132,14 +121,13 @@
         }
       },
       saveUser: function () {
-        let user = this.$store.dispatch("users/saveUser", this.form);
+        let user = this.$store.dispatch("users/updateUser", this.form);
         console.log("save User", this.form);
         this.$router.push({name: "user-index"})
       },
-      getUserByID  : async function () {
-
-        let data = await  this.$store.dispatch("users/getUserById", this.idSand);
-        this.UserDataFormID = data
+      load: async function (id) {
+        let data = await  this.$store.dispatch("users/getUserById", id);
+        this.form = data
       }
     }
 

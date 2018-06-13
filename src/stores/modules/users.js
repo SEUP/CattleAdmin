@@ -36,11 +36,11 @@ export default {
     },
     updateUser: async function (context, form) {
       let result = await axios.put("/api/users/" + form.id, form)
-        .then((response) => {
-          return response.data
-        })
-        .catch((err) => {
-          return null
+            .then((response) => {
+              return response.data
+            })
+            .catch((err) => {
+              return null
         });
       return result
     },
