@@ -123,10 +123,10 @@
         </v-layout>
       </v-flex>
 
-      <v-flex xs3>
+      <v-flex xs3 class="hidden-sm-and-down">
         <v-layout row>
           <v-flex >
-            <div class="right_menu_fixed hidden-sm-and-down">
+            <div class="right_menu_fixed ">
               <v-divider class="divider-bold success"></v-divider>
               <v-list class="card-border">
                 <v-list-tile class="text-xs-center">
@@ -186,8 +186,13 @@
           </v-flex>
         </v-layout>
       </v-flex>
-
     </v-layout>
+    <v-layout class="hidden-md-and-up">
+      <v-flex xs12 mx-3>
+        <v-btn color="success" block @click.native = "updateFarmOwner">Save All</v-btn>
+      </v-flex>
+    </v-layout>
+
   </v-container>
 
 </template>
