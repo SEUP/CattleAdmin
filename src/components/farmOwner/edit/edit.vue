@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="isReady">
     <v-layout row>
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
@@ -213,11 +213,21 @@
       form : undefined,
       steper : 1,
       farmOwner : null,
-    })
+    }),
+    computed : {
+      isReady : function(){
+        let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
+        let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
+
+        return choicesLoaded && districtLoaded;
+      }
+    }
     ,async created () {
       let farmOwnerId  = await this.$route.params.id;
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
 
+      this.$store.dispatch("districtSelect/load");
+      this.$store.dispatch("choices/load");
     }
     ,methods: {
       elFocus : function (el) {
