@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="isReady">
-    <v-layout row>
+    <v-layout row v-scroll="onScroll">
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
           เเก้ไขข้อมูลเกษตรกร
@@ -126,7 +126,7 @@
       <v-flex xs3 class="hidden-sm-and-down">
         <v-layout row>
           <v-flex >
-            <div class="right_menu_fixed ">
+            <div id = "side_menu" class="right_menu_fixed">
               <v-divider class="divider-bold success"></v-divider>
               <v-list class="card-border">
                 <v-list-tile class="text-xs-center">
@@ -187,7 +187,7 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <v-layout class="hidden-md-and-up">
+    <v-layout class="hidden-md-and-up" >
       <v-flex xs12 mx-3>
         <v-btn color="success" block @click.native = "updateFarmOwner">Save All</v-btn>
       </v-flex>
@@ -223,7 +223,6 @@
       isReady : function(){
         let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
         let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
-
         return choicesLoaded && districtLoaded;
       }
     }
@@ -235,6 +234,17 @@
 
     }
     ,methods: {
+      onScroll (e) {
+        let offsetTop = window.pageYOffset || document.documentElement.scrollTop
+        console.log("offsetTop",offsetTop)
+        if (offsetTop >= 72){
+          document.getElementById("side_menu").classList.remove('right_menu_fixed')
+          document.getElementById("side_menu").classList.add('right_menu_fixed_scrolling')
+        }else {
+          document.getElementById("side_menu").classList.remove('right_menu_fixed_scrolling')
+          document.getElementById("side_menu").classList.add('right_menu_fixed')
+                }
+      },
       elFocus : function (el) {
         this.steper = el
       },

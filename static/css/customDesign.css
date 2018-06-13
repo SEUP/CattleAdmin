@@ -9,8 +9,14 @@
   max-width: 85vw;
 }
 .right_menu_fixed {
-  position: fixed;
+  position: absolute;
   top: 23vh;
+  right : 20px;
+  width: 15vw;
+}
+.right_menu_fixed_scrolling {
+  position: fixed;
+  top: 13vh;
   right : 20px;
   width: 15vw;
 }
