@@ -131,9 +131,6 @@
     </div>
 </template>
 
-
-
-
 <script>
     import DistrictSelect from "../../share/districtSelect";
     import ChoiceSelect from "../../share/choiceSelect";
@@ -146,6 +143,7 @@
       }),
       async created  () {
         this.form = await this.$store.state.farmOwners.farmOwner
+
 
       },
       methods : {
