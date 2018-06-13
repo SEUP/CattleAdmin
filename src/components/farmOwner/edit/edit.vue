@@ -1,13 +1,13 @@
 <template>
-  <v-container>
-    <v-layout row v-if="form">
+  <v-container v-if="isReady">
+    <v-layout row>
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
           เเก้ไขข้อมูลเกษตรกร
         </v-card-text>
 
         <v-divider></v-divider>
-        <v-layout row wrap class="justify-center pt-2" >
+        <v-layout row wrap class="justify-center pt-2" v-if="form">
           <v-flex mx-3>
             <v-card>
               <v-divider class="divider-bold indigo"></v-divider>
@@ -123,7 +123,7 @@
         </v-layout>
       </v-flex>
 
-      <v-flex xs3 class="hidden-sm-and-down">
+      <v-flex xs3>
         <v-layout row>
           <v-flex >
             <div class="right_menu_fixed hidden-sm-and-down">
@@ -186,6 +186,7 @@
           </v-flex>
         </v-layout>
       </v-flex>
+
     </v-layout>
   </v-container>
 

@@ -1,34 +1,39 @@
+let loadingState = ['None','OnGoing','Done'];
+
 export default {
   namespaced: true,
 
   state: {
-    isLoad: false,
+    loadingState : loadingState,
+    isLoad: loadingState[0],
     choices : []
   },
   mutations: {
     setChoices: function (state, c) {
       state.choices = _.groupBy(c,(o)=>{return o.type});
-      state.isLoad = true
     }
   },
   actions: {
     load: async function (context) {
+      context.state.isLoad = context.state.loadingState[1];
       let result = await axios.get("/api/choices",
         {params: {all: true}})
         .then((response) => {
           return response.data;
         });
 
+      context.state.isLoad = context.state.loadingState[2];
+
       context.commit("setChoices", result);
     },
     getChoices: async function (context) {
-      if (!context.state.isLoad) {
+      if (context.state.isLoad == context.state.loadingState[0]) {
         await context.dispatch("load")
       }
       return context.state.choices;
     }
     ,getChoicesByType: async function (context,type) {
-      if (!context.state.isLoad) {
+      if (context.state.isLoad == context.state.loadingState[0]) {
         await context.dispatch("load")
       }
       return context.state.choices[type];
