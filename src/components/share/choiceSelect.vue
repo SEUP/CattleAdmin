@@ -83,10 +83,14 @@
         this.items.forEach((i) => {
           i = Object.assign(i,{pivot:{remark: null}})
           if (i.id == this.value.id) {
-              this.selectedValue = i
-              this.updateValue();
+            this.selectedValue = i
+            if (this.value.pivot.remark) {
+              this.selectedValue.pivot.remark = this.value.pivot.remark
+            }
+              // this.updateValue();
           }
         })
+        console.log("IN CHO",this.selectedValue)
       },
       checkHasText : function () {
         // console.log(this.selectedValue)
