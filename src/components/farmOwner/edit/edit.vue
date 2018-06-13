@@ -109,7 +109,7 @@
                   <v-stepper-content :step="8">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
+                        <part8></part8>
                       </v-card-text>
                     </v-card>
                     <v-btn color="success">save</v-btn>
@@ -204,6 +204,7 @@
   import Part5 from "./part5"
   import Part6 from "./part6"
   import Part7 from "./part7"
+  import Part8 from "./part8"
   export default {
     name: "edit",
     components : {
@@ -213,6 +214,7 @@
       Part5,
       Part6,
       Part7,
+      Part8,
     },
     data: () => ({
       form : undefined,
