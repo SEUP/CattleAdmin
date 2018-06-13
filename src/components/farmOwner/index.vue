@@ -149,8 +149,13 @@
         // console.log("UPDATE",this.form)
       },
       deleteFarmOwner : async function (id) {
-        let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
-        await console.log("Delete",result)
+
+        if(confirm("Do you want to delete this item?")){
+          let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
+          await console.log("Delete",result)
+          await this.loadData();
+        }
+
       }
     }
   }

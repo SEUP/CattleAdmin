@@ -14,7 +14,7 @@ export default {
       name: 'farmOwner-index',
       component: view('farmOwner/index')
     }, {
-      path: 'edit',
+      path: ':id/edit',
       name: 'farmOwner-edit',
       component: view('farmOwner/edit/edit')
     },
