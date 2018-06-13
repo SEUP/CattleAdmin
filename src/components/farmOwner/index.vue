@@ -124,7 +124,7 @@
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.farmOwners = paginate.data;
-        // console.log("TO search",this.form);
+        console.log("TO search",this.form);
       },
       changePage: async function (page) {
         this.form.page = page;
@@ -133,20 +133,15 @@
         this.farmOwners = paginate.data;
 
       },updateDistrictSelect: function (value) {
-        this.form.province = value[0];
-        this.form.amphure = value[1];
-        this.form.district = value[2];
-
         if (value[0]) {
-          this.form.user_province = value[0].PROVINCE_ID;
+          this.form.province = value[0].PROVINCE_ID;
         }
         if (value[1]) {
-          this.form.user_amphur = value[1].AMPHUR_ID;
+          this.form.amphur = value[1].AMPHUR_ID;
         }
         if (value[2]) {
-          this.form.user_district = value[2].DISTRICT_ID;
+          this.form.district = value[2].DISTRICT_ID;
         }
-        // console.log("UPDATE",this.form)
       },
       deleteFarmOwner : async function (id) {
 
