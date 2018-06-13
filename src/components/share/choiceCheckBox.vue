@@ -83,8 +83,7 @@
         await this.sync()
       },
       updateChoice : function () {
-        this.$emit("change",
-        )
+        this.$emit("change",this.selected)
         // console.log("emit",this.selected)
       }
     },
