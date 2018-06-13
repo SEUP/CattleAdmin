@@ -6,7 +6,10 @@
         v-model="selectedValue"
         :label="label" item-text="choice"
       ></v-select>
-      <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="HasText" hide-details></v-text-field>
+      <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="HasText" hide-details
+                    v-model="selectedValue.pivot.remark"  @blur = "updateValue">
+
+      </v-text-field>
     </v-flex>
 
     <v-flex xs12 v-if = "singleLine">
@@ -19,7 +22,10 @@
           ></v-select>
         </v-flex>
         <v-flex xs6 mx-3>
-          <v-text-field placeholder="โปรดระบุ" v-if="HasText" hide-details ></v-text-field>
+          <v-text-field placeholder="โปรดระบุ" v-if="HasText" hide-details
+                        v-model="selectedValue.pivot.remark" @blur = "updateValue">
+
+          </v-text-field>
         </v-flex>
       </v-layout>
     </v-flex>
@@ -30,7 +36,8 @@
   let defaultChoice = {
     id : 0,
     has_text :0,
-    choice : "กรุณาเลือก"
+    choice : "กรุณาเลือก",
+    pivot:{remark: null}
   };
   export default {
     name: "choiceSelect",
@@ -74,6 +81,7 @@
     methods: {
       sync: function () {
         this.items.forEach((i) => {
+          i = Object.assign(i,{pivot:{remark: null}})
           if (i.id == this.value.id) {
               this.selectedValue = i
               this.updateValue();
@@ -90,7 +98,7 @@
 
       },
       updateValue: async function () {
-        console.log("UPDATE",this.selectedValue)
+        console.log("UPDATE select",this.selectedValue)
         await this.checkHasText()
         await this.$emit('change', this.selectedValue)
 
