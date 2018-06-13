@@ -40,7 +40,7 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 6"}}</div>
+            <div slot="header">{{"ส่วนที่ 6 ข้อมูลการตลาด การรวมกลุ่มของสมาชิก(วิสาหกิจชุมชนและสหกรณ์)"}}</div>
             <v-card>
               <v-card-text class="grey lighten-3"><part6></part6></v-card-text>
             </v-card>
