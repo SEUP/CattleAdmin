@@ -226,8 +226,6 @@
       let farmOwnerId  = await this.$route.params.id;
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
 
-      this.$store.dispatch("districtSelect/load");
-      this.$store.dispatch("choices/load");
     }
     ,methods: {
       elFocus : function (el) {
