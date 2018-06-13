@@ -123,7 +123,7 @@
         </v-layout>
       </v-flex>
 
-      <v-flex xs3>
+      <v-flex xs3 class="hidden-sm-and-down">
         <v-layout row>
           <v-flex >
             <div class="right_menu_fixed hidden-sm-and-down">
