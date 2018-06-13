@@ -10,9 +10,9 @@
 }
 .right_menu_fixed {
   position: fixed;
-  top: 15%;
-  right : 10px;
-  padding: 0 0 0 0 !important;
+  top: 23vh;
+  right : 20px;
+  width: 25vh;
 }
 .overlay-img {
   background-color: rgba(0, 0, 0, 0.5);

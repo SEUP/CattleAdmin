@@ -123,7 +123,7 @@
         </v-layout>
       </v-flex>
 
-      <v-flex v-if="showRightMenu" xs1>
+      <v-flex xs3>
         <v-layout row>
           <v-flex >
             <div class="right_menu_fixed hidden-sm-and-down">
@@ -187,20 +187,6 @@
         </v-layout>
       </v-flex>
 
-
-      <v-fab-transition>
-        <v-btn
-          color="red"
-          dark
-          fab
-          fixed
-          bottom
-          right
-          @click = "showRightMenu = !showRightMenu"
-        >
-          <v-icon>mdi-view-sequential</v-icon>
-        </v-btn>
-      </v-fab-transition>
     </v-layout>
   </v-container>
 
@@ -226,7 +212,6 @@
     data: () => ({
       form : undefined,
       steper : 1,
-      showRightMenu:true,
       farmOwner : null,
     })
     ,async created () {

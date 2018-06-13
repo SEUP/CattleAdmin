@@ -1,28 +1,55 @@
-@@ -0,0 +1,72 @@
 <template>
-  <v-layout column >
-    <v-flex v-for="item in items" :key="item.id">
-      <v-checkbox :label="item.choice" hide-details
-                  :value="item"
-                  v-model="selected"
-                  @change = "updateChoice"
-                  :input-value = "value"
-      >
-      </v-checkbox>
-      <v-text-field v-if="item.has_text"
-                    hide-details class="pa-0 px-3"
-                    placeholder="โปรดระบุ" :value="item.pivot.remark"
-                    v-model="item.pivot.remark"
+  <div>
+    <v-layout column v-if="!singleLine">
+      <v-flex v-for="item in items" :key="item.id">
+        <v-checkbox :label="item.choice" hide-details
+                    :value="item"
+                    v-model="selected"
                     @change = "updateChoice"
-      ></v-text-field>
-    </v-flex>
-  </v-layout>
+                    :input-value = "value"
+        >
+        </v-checkbox>
+        <v-text-field v-if="item.has_text"
+                      hide-details class="pa-0 px-3"
+                      placeholder="โปรดระบุ" :value="item.pivot.remark"
+                      v-model="item.pivot.remark"
+                      @change = "updateChoice"
+        ></v-text-field>
+      </v-flex>
+    </v-layout>
+
+    <v-layout row v-if="singleLine" v-for="item in items" :key="item.id">
+      <v-flex>
+        <v-checkbox :label="item.choice" hide-details
+                    :value="item"
+                    v-model="selected"
+                    @change = "updateChoice"
+                    :input-value = "value"
+        >
+        </v-checkbox>
+      </v-flex>
+      <v-flex>
+        <v-text-field v-if="item.has_text"
+                      hide-details class="pa-0 px-3"
+                      placeholder="โปรดระบุ" :value="item.pivot.remark"
+                      v-model="item.pivot.remark"
+                      @change = "updateChoice"
+        ></v-text-field>
+      </v-flex>
+    </v-layout>
+
+  </div>
+
 
 </template>
 <script>
 
   export default {
     props : {
+      singleLine : {
+        type : Boolean,
+        default : false
+      },
       value : {
         type : [Array],
         default : () => []

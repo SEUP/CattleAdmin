@@ -111,6 +111,13 @@
         <v-card-text class="pa-2 title">2.15 สถานภาพการระบาดของโรคในฟาร์มของท่านเป็นอย่างไร</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
+          <choice-select  label="โรคแท้งติดต่อ" type="abortion" :value = "form.abortion"></choice-select>
+          <choice-select  label="โรควัณโรค" type="tuberculosis" :value = "form.tuberculosis"></choice-select>
+          <choice-select  label="โรคปากและเท้าเปื่อย" type="foot_mouth_disease" :value = "form.foot_mouth_disease"></choice-select>
+          <div class="mt-3">
+            <v-card-text class="pa-0">โรคอื่นๆ</v-card-text>
+            <choice-check-box type = "disease_other" :value="form.disease_other" singleLine></choice-check-box>
+          </div>
 
         </div>
 
