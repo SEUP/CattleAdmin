@@ -7,6 +7,7 @@
                     v-model="selected"
                     @change = "updateChoice"
                     :input-value = "value"
+                    color="success"
         >
         </v-checkbox>
         <v-text-field v-if="item.has_text"
@@ -25,6 +26,7 @@
                     v-model="selected"
                     @change = "updateChoice"
                     :input-value = "value"
+                    color="success"
         >
         </v-checkbox>
       </v-flex>
