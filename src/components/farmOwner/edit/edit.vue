@@ -225,6 +225,8 @@
     ,async created () {
       let farmOwnerId  = await this.$route.params.id;
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
+      await this.$store.dispatch('choices/load');
+      await this.$store.dispatch('districtSelect/load');
 
     }
     ,methods: {
