@@ -90,6 +90,7 @@
 
       },
       updateValue: async function () {
+        console.log("UPDATE",this.selectedValue)
         await this.checkHasText()
         await this.$emit('change', this.selectedValue)
 

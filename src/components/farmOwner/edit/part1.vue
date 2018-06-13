@@ -147,6 +147,7 @@
       async created  () {
         this.form = await this.$store.state.farmOwners.farmOwner
 
+
       },
       methods : {
         updateDistrictSelectHouse: function (value) {
