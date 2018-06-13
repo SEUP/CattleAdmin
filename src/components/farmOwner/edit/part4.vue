@@ -14,13 +14,13 @@
       <v-flex xs12>
         <p class="title" >4.2 การผสมเทียมใช้น้ำเชื้อจากแหล่งใด</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type=""></choice-check-box>
+        <choice-check-box type="inseminate_sources"></choice-check-box>
       </v-flex>
 
       <v-flex mt-3>
         <p class="title" >4.2.1 ผู้ให้บริการผสมเทียมคือใคร</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type=""></choice-check-box>
+        <choice-check-box type="breeders"></choice-check-box>
       </v-flex>
     </v-layout>
 
