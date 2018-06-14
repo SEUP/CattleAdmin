@@ -3,7 +3,7 @@
     <v-layout row wrap>
 
       <v-flex pb-3 xs-12>
-        <h1>รายการสิทธิ</h1>
+        <h1><v-icon x-large color="primary">mdi-account-key</v-icon>&ensp;รายการสิทธิ์</h1>
       </v-flex>
       <v-flex xs3>
         <v-text-field

@@ -1,6 +1,6 @@
 <template>
     <v-container>
-      <h1 class="display-1 pa-0 mb-3">ค้นหาข้อมูลเกษตรกร</h1>
+      <h1 class="display-1 pa-0 mb-3"><v-icon x-large color="primary">mdi-magnify</v-icon>&ensp;ค้นหาข้อมูลเกษตรกร</h1>
       <v-divider class="mb-3"></v-divider>
       <div>
         <!--Search Input -->
