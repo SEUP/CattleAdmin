@@ -19,9 +19,9 @@ export default {
       component: view('farmOwner/edit/edit')
     },
     {
-      path: 'addFarmOwner',
+      path: '/addFarmOwner',
       name: 'farmOwner-addFarmOwner',
-      component: view('farmOwner/addFarmOwner')
+      component: view('farmOwner/add/addFarmOwner')
     },
     {
       path: 'part7',
