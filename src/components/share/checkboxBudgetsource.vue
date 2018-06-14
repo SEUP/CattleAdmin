@@ -11,36 +11,32 @@
         >
         </v-checkbox>
 
-            <v-text-field v-if="item.has_text"
-                                           hide-details class="pa-0 px-3"
-                                           placeholder="โปรดระบุ" :value="item.pivot.remark"
-                                           v-model="item.pivot.remark"
-                                           @change="updateChoice">
-            </v-text-field>
-
-      </v-flex>
-    </v-layout>
-
-    <v-layout row v-if="singleLine" v-for="item in items" :key="item.id">
-      <v-flex>
-        <v-checkbox :label="item.choice" hide-details
-                    :value="item"
-                    v-model="selected"
-                    @change="updateChoice"
-                    :input-value="value"
-        >
-        </v-checkbox>
-      </v-flex>
-      <v-flex>
-          <v-text-field v-if="item.has_text"
+        <template v-if="type == 'loan_types'">
+          <v-text-field v-if="item.has_text,item.choice=='เงินกู้จากธนาคารพาณิชย์'"
                         hide-details class="pa-0 px-3"
-                        placeholder="โปรดระบุ" :value="item.pivot.remark"
+                        placeholder="ชื่อธนาคาร" :value="item.pivot.remark"
                         v-model="item.pivot.remark"
                         @change="updateChoice"
-          ></v-text-field>
+          >
+          </v-text-field>
+
+        </template>
+        <v-text-field v-if="item.has_text"
+                      hide-details class="pa-0 px-3"
+                      placeholder="จำนวนเงิน(บาท)" :value="item.pivot.remark"
+                      v-model="item.pivot.amount"
+                      @change="updateChoice"
+        ></v-text-field>
+        <v-text-field v-if="item.has_text"
+                      hide-details class="pa-0 px-3"
+                      placeholder="อัตราดอกเบี้ย(%)" :value="item.pivot.remark"
+                      v-model="item.pivot.rate"
+                      @change="updateChoice"
+        ></v-text-field>
 
       </v-flex>
     </v-layout>
+
 
   </div>
 
@@ -99,3 +95,4 @@
   }
 
 </script>
+

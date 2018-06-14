@@ -15,7 +15,7 @@
       <v-flex xs12>
         <p class="title" >5.2 แหล่งเงินทุนกู้ยืม</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="loan_types"></choice-check-box>
+        <checkbox-budgetsource type="loan_types"></checkbox-budgetsource>
       </v-flex>
     </v-layout>
 
@@ -23,10 +23,11 @@
       <v-flex xs12>
         <p class="title" >5.3 เงินทุนในการเลี้ยงโคเนื้อรวมทั้งหมด (บาท) (รวมจาก 5.1 และ 5.2)</p>
         <v-divider class="my-3"></v-divider>
-        <v-text-field
-          class="mt-3 "
-          label="">
-        </v-text-field>
+        <v-text
+          class="mt-3"
+          label=""
+        >
+        </v-text>
       </v-flex>
     </v-layout>
   </v-container>
@@ -35,11 +36,11 @@
 
 <script>
   import ChoiceSelect from "../../share/choiceSelect";
-  import ChoiceCheckBox from "../../share/choiceCheckBox";
+  import checkboxBudgetsource from "../../share/checkboxBudgetsource";
 
   export default {
     name: "Part5",
-    components: {ChoiceCheckBox, ChoiceSelect },
+    components: {checkboxBudgetsource, ChoiceSelect },
     data : () =>({
       form : undefined
     }),
