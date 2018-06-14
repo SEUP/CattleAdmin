@@ -6,8 +6,8 @@
         <v-card-text class="pa-2 title">3.1 จำนวนแรงงานที่ใช้เลี้ยงโค (คน)</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="3.1.1 จำนวนแรงงานภายในครอบครัว" placeholder="จำนวนแรงงานภายในครอบครัว" v-model="form.total_workers_amount" @blur ="updateForm"></v-text-field>
-          <v-text-field label="3.1.2 จำนวนแรงงานภายนอก" placeholder="จำนวนแรงงานภายนอก" v-model="form.external_workers_amount" @blur ="updateForm" ></v-text-field>
+          <v-text-field label="3.1.1 จำนวนแรงงานภายในครอบครัว" placeholder="จำนวนแรงงานภายในครอบครัว" v-model="form.total_workers_amount" @blur="updateForm"></v-text-field>
+          <v-text-field label="3.1.2 จำนวนแรงงานภายนอก" placeholder="จำนวนแรงงานภายนอก" v-model="form.external_workers_amount" @blur="updateForm" ></v-text-field>
 
         </div>
 
