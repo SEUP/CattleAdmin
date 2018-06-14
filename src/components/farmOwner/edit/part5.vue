@@ -6,7 +6,7 @@
         <p class="title">5.1 เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</p>
 
         <v-divider class="my-3"></v-divider>
-        <choice-select type="budget_source" class="ml-5" :value="form.budget_source"></choice-select>
+        <choice-select type="budget_source" class="ml-5" :value="form.budget_source" single-line ></choice-select>
 
       </v-flex>
     </v-layout>

@@ -57,7 +57,7 @@
                   <v-stepper-content :step="4">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
+                        <part4></part4>
                       </v-card-text>
                     </v-card>
                     <v-btn color="primary" @click.native="steper = 5" >Continue</v-btn>
@@ -201,6 +201,7 @@
   import Part1 from "./part1"
   import Part2 from "./part2"
   import Part3 from "./part3"
+  import Part4 from "./part4"
   import Part5 from "./part5"
   import Part6 from "./part6"
   import Part7 from "./part7"
@@ -211,6 +212,7 @@
       Part1,
       Part2,
       Part3,
+      Part4,
       Part5,
       Part6,
       Part7,
