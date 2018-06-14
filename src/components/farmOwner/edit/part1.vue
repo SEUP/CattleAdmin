@@ -180,7 +180,7 @@
           this.updateForm()
         },
         updateForm : async function () {
-          console.log("P1",this.form)
+          // console.log("P1",this.form)
           await this.$store.dispatch("farmOwners/updateState",this.form)
           let data = await this.$store.state.farmOwners.farmOwner
         }

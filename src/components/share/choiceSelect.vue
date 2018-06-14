@@ -2,9 +2,9 @@
   <v-layout class="pa-0 py-1" >
     <v-flex xs12 v-if = "!singleLine">
       <v-select hide-details
-        :items="items"
-        v-model="selectedValue"
-        :label="label" item-text="choice"
+                :items="items"
+                v-model="selectedValue"
+                :label="label" item-text="choice"
       ></v-select>
       <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="HasText" hide-details
                     v-model="selectedValue.pivot.remark"  @blur = "updateValue">
@@ -55,7 +55,7 @@
       },
       value: {
         type: Object,
-        default: defaultChoice
+        default : () =>  (defaultChoice)
       }
     },
     data() {

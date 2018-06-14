@@ -15,7 +15,7 @@
                 <v-spacer></v-spacer>
 
                 <v-flex xs12 md5 >
-                  <choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>
+                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.id = $event.id"></select-search>
                 </v-flex>
                 <v-flex xs12>
                   <district-select
@@ -91,15 +91,19 @@
 </template>
 <script>
   import ChoiceSelect from "../share/choiceSelect";
+  import selectSearch from "../share/selectSearch";
   import districtSelect from "@/components/share/districtSelect";
   export default {
     name: "farmOwner-index",
-    components: {ChoiceSelect,districtSelect},
+    components: {ChoiceSelect,districtSelect,selectSearch},
     data : () => ({
       paginate:{},
       form : {
-        page : null,
-        keyword : ""
+        keyword : "",
+        id : null,
+        province : null,
+        amphur : null,
+        district : null,
 
       },
       farmOwners : [],
