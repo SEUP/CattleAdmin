@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="isReady">
     <v-layout row>
       <v-flex xs12>
         <h3 class="display-1"><v-icon x-large color="primary">mdi-plus-box</v-icon>&ensp;บันทึกข้อมูลเกษตรกรใหม่ </h3>
@@ -67,14 +67,14 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import choiceSelect from "@/components/share/choiceSelect";
-  import Part1 from "./edit/part1";
-  import Part2 from "./edit/part2";
-  import Part3 from "./edit/part3";
-  import Part4 from "./edit/part4";
-  import Part5 from "./edit/part5";
-  import Part6 from "./edit/part6";
-  import Part7 from "./edit/part7";
-  import Part8 from "./edit/part8";
+  import Part1 from "./part1";
+  import Part2 from "./part2";
+  import Part3 from "./part3";
+  import Part4 from "./part4";
+  import Part5 from "./part5";
+  import Part6 from "./part6";
+  import Part7 from "./part7";
+  import Part8 from "./part8";
 
 
 
@@ -105,7 +105,19 @@
           }
         }
 
+      },
+      computed : {
+        isReady : function(){
+          let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
+          let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
+          return choicesLoaded && districtLoaded;
+        }
+      },
+      async created() {
+        await this.$store.dispatch('choices/load');
+        await this.$store.dispatch('districtSelect/load');
       }
+
     }
 </script>
 
