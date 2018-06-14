@@ -14,7 +14,7 @@
                       hide-details class="pa-0 px-3"
                       placeholder="โปรดระบุ"
                       v-model="item.pivot.remark"
-                      @blur = "updateChoice"
+                      @change = "updateChoice"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -26,7 +26,6 @@
                     v-model="selected"
                     @change = "updateChoice"
                     :input-value = "value"
-                    color="success"
         >
         </v-checkbox>
       </v-flex>
@@ -35,7 +34,7 @@
                       hide-details class="pa-0 px-3"
                       placeholder="โปรดระบุ" :value="item.pivot.remark"
                       v-model="item.pivot.remark"
-                      @blur = "updateChoice"
+                      @change = "updateChoice"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -85,8 +84,9 @@
         await this.sync()
       },
       updateChoice : function () {
-        this.$emit("change",this.selected)
-        console.log("emitChoice",this.selected)
+        this.$emit("change",
+        )
+        // console.log("emit",this.selected)
       }
     },
     created : function () {

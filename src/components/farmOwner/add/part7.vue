@@ -4,12 +4,12 @@
         <v-flex xs12>
           <p class="title">7.1 หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ(ตอบได้มากกว่า 1 ข้อ)</p>
           <v-divider class="my-3"></v-divider>
-          <choice-check-box :value="form.support_visit" type="support_sources" @change="form.support_visit = $event"></choice-check-box>
+          <choice-check-box :value="form.support_sources" type="support_sources" @change="form.support_sources=$event"></choice-check-box>
         </v-flex>
         <v-flex xs12>
           <p class="title">7.2 ท่านเคยได้รับการเยี่ยมเยือนฟาร์มจากหน่วยงานในข้อ 7.1 หรือไม่</p>
           <v-divider class="my-2"></v-divider>
-          <choice-select :value="form.support_visit" type="support_visit"  @change="form.support_visit = $event" ></choice-select>
+          <choice-select :value="form.support_visit" type="support_visit"   ></choice-select>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">7.3 ท่านเคยได้รับการสนับสนุนปัจจัยการผลิตหรือไม่</p>
@@ -19,7 +19,7 @@
         <v-flex xs12 class="mt-3">
           <p class="title">7.4 การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์</p>
           <v-divider class="my-2"></v-divider>
-          <choice-select :value="form.support_visit" type="support_visit" @change="support_visit = $event" ></choice-select>
+          <choice-select :value="form.support_visit" type="support_visit" @change="form.support_visit = $event" ></choice-select>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">7.5 ท่านเคยเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อหรือไม่</p>
@@ -43,7 +43,7 @@
 
 <script>
   import choiceSelect from "@/components/share/choiceSelect"
-  import ChoiceCheckBox from "../../share/choiceCheckBox";
+  import ChoiceCheckBox from "@/components/share/choiceCheckBox";
 
     export default {
       components: {

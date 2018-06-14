@@ -3,7 +3,7 @@
     <v-layout row wrap>
 
       <v-flex pb-3 xs-12>
-        <h1>รายการสิทธิ</h1>
+        <h1><v-icon x-large color="primary">mdi-account-key</v-icon>&ensp;รายการสิทธิ์</h1>
       </v-flex>
       <v-flex xs3>
         <v-text-field
@@ -27,11 +27,11 @@
           <template slot="items" slot-scope="props">
             <td>{{ props.item.name }}</td>
             <td class="text-xs-center">
-              <v-btn>
-                <v-icon>mdi-pencil</v-icon>
+              <v-btn class="ma-0" icon >
+                <v-icon color="primary" >create</v-icon>
               </v-btn>
-              <v-btn>
-                <v-icon color="red">mdi-delete</v-icon>
+              <v-btn class="ma-0" icon>
+                <v-icon color="red" >delete</v-icon>
               </v-btn>
             </td>
           </template>
