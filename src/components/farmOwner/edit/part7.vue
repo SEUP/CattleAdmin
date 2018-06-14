@@ -66,7 +66,7 @@
       },
       async created (){
         this.form = await this.$store.state.farmOwners.farmOwner;
-        console.log("IN C",this.form)
+        // console.log("IN C",this.form)
       },methods : {
         updateForm : async function () {
           // console.log("TO UPDATE",this.form)
