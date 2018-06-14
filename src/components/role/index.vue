@@ -27,11 +27,11 @@
           <template slot="items" slot-scope="props">
             <td>{{ props.item.name }}</td>
             <td class="text-xs-center">
-              <v-btn>
-                <v-icon>mdi-pencil</v-icon>
+              <v-btn class="ma-0" icon >
+                <v-icon color="primary" >create</v-icon>
               </v-btn>
-              <v-btn>
-                <v-icon color="red">mdi-delete</v-icon>
+              <v-btn class="ma-0" icon>
+                <v-icon color="red" >delete</v-icon>
               </v-btn>
             </td>
           </template>
