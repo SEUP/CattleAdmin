@@ -137,7 +137,7 @@
         console.log(this.form);
         let user = await this.$store.dispatch("users/createUser", this.form);
         console.log("save User", this.form);
-        this.$router.push({name: "user-index"})
+        if(user){this.$router.push({name: "user-index"})}
       }
     }
 
