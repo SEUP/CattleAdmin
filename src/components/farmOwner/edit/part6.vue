@@ -24,7 +24,7 @@
         </v-flex>
         <v-flex xs12>
           <p class="title">6.5 ถ้าท่านรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อเมื่อใด</p>
-          TODO
+          <choice-check-box type="group_joins"></choice-check-box>
         </v-flex>
         <v-flex xs12>
           <p class="title">6.6 ถ้ายังไม่เข้ารวมกลุ่มท่านมีความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อหรือไม่</p>
@@ -41,7 +41,7 @@
         </v-flex>
         <v-flex xs12>
           <p class="title">6.9 ท่านขายโคเนื้อได้ราคาเท่าไหร่และใช้เวลาในการเลี้ยงนานเท่าใด</p>
-          TODO
+          <choice-check-box type="cattle_sales"></choice-check-box>
         </v-flex>
         <v-flex xs12>
           <p class="title">6.10 ท่านพอใจกับราคาที่ขายได้หรือไม่</p>
