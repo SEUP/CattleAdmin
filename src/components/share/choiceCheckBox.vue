@@ -11,23 +11,29 @@
         >
         </v-checkbox>
 
-        <template v-if="type  == 'loan_types'">
-            <v-text-field v-if="item.has_text"
+        <template v-if="type == 'loan_types'">
+            <v-text-field v-if="item.has_text,item.choice=='เงินกู้จากธนาคารพาณิชย์'"
                                            hide-details class="pa-0 px-3"
                                            placeholder="ชื่อธนาคาร" :value="item.pivot.remark"
                                            v-model="item.pivot.remark"
                                            @change="updateChoice"
           >
             </v-text-field>
+
         </template>
-        <template v-else>
           <v-text-field v-if="item.has_text"
                         hide-details class="pa-0 px-3"
-                        placeholder="โปรดระบุ" :value="item.pivot.remark"
-                        v-model="item.pivot.remark"
+                        placeholder="จำนวนเงิน(บาท)" :value="item.pivot.remark"
+                        v-model="item.pivot.amount"
                         @change="updateChoice"
           ></v-text-field>
-        </template>
+          <v-text-field v-if="item.has_text"
+                        hide-details class="pa-0 px-3"
+                        placeholder="อัตราดอกเบี้ย(%)" :value="item.pivot.remark"
+                        v-model="item.pivot.rate"
+                        @change="updateChoice"
+          ></v-text-field>
+
       </v-flex>
     </v-layout>
 
