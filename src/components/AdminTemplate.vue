@@ -18,6 +18,18 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <!--addFarmOwner-->
+        <v-list-tile :to="{name : 'farmOwner-addFarmOwner'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-plus</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              บันทึกข้อมูลเกษตรกรใหม่
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <!--farmOwner-->
         <v-list-tile :to="{name : 'farmOwner-index'}" exact>
           <v-list-tile-action>
@@ -54,27 +66,13 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <!--addFarmOwner-->
-        <v-list-tile :to="{name : 'farmOwner-addFarmOwner'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-plus</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              บันทึกข้อมูลเกษตรกรใหม่
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-
-
       </v-list>
 
      </v-navigation-drawer>
 
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      color="blue darken-3" dark app fixed>
+      color="blue darken-3" dark app fixed dense class="elevation-0">
       <v-toolbar-title class="ml-0 pl-3 mr-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-sm-and-down">Cattle Information System</span>
