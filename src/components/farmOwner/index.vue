@@ -15,7 +15,7 @@
                 <v-spacer></v-spacer>
 
                 <v-flex xs12 md5 >
-                  <choice-select type="male_breeding_types" :value="form.breeding" label="ประเภทโคที่เลี้ยง"></choice-select>
+                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.id = $event.id"></select-search>
                 </v-flex>
                 <v-flex xs12>
                   <district-select
@@ -91,15 +91,19 @@
 </template>
 <script>
   import ChoiceSelect from "../share/choiceSelect";
+  import selectSearch from "../share/selectSearch";
   import districtSelect from "@/components/share/districtSelect";
   export default {
     name: "farmOwner-index",
-    components: {ChoiceSelect,districtSelect},
+    components: {ChoiceSelect,districtSelect,selectSearch},
     data : () => ({
       paginate:{},
       form : {
-        page : null,
-        keyword : ""
+        keyword : "",
+        id : null,
+        province : null,
+        amphur : null,
+        district : null,
 
       },
       farmOwners : [],
@@ -124,7 +128,7 @@
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.farmOwners = paginate.data;
-        // console.log("TO search",this.form);
+        console.log("TO search",this.form);
       },
       changePage: async function (page) {
         this.form.page = page;
@@ -133,20 +137,15 @@
         this.farmOwners = paginate.data;
 
       },updateDistrictSelect: function (value) {
-        this.form.province = value[0];
-        this.form.amphure = value[1];
-        this.form.district = value[2];
-
         if (value[0]) {
-          this.form.user_province = value[0].PROVINCE_ID;
+          this.form.province = value[0].PROVINCE_ID;
         }
         if (value[1]) {
-          this.form.user_amphur = value[1].AMPHUR_ID;
+          this.form.amphur = value[1].AMPHUR_ID;
         }
         if (value[2]) {
-          this.form.user_district = value[2].DISTRICT_ID;
+          this.form.district = value[2].DISTRICT_ID;
         }
-        // console.log("UPDATE",this.form)
       },
       deleteFarmOwner : async function (id) {
 

@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="isReady">
-    <v-layout row>
+    <v-layout row v-scroll="onScroll">
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
           เเก้ไขข้อมูลเกษตรกร
@@ -109,7 +109,7 @@
                   <v-stepper-content :step="8">
                     <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
                       <v-card-text>
-                        <!---->     <span style="background-color: grey;height: 500px;width: 700px"></span>
+                        <part8></part8>
                       </v-card-text>
                     </v-card>
                     <v-btn color="success">save</v-btn>
@@ -123,10 +123,10 @@
         </v-layout>
       </v-flex>
 
-      <v-flex xs3>
+      <v-flex xs3 class="hidden-sm-and-down">
         <v-layout row>
           <v-flex >
-            <div class="right_menu_fixed hidden-sm-and-down">
+            <div id = "side_menu" class="right_menu_fixed">
               <v-divider class="divider-bold success"></v-divider>
               <v-list class="card-border">
                 <v-list-tile class="text-xs-center">
@@ -186,8 +186,13 @@
           </v-flex>
         </v-layout>
       </v-flex>
-
     </v-layout>
+    <v-layout class="hidden-md-and-up" >
+      <v-flex xs12 mx-3>
+        <v-btn color="success" block @click.native = "updateFarmOwner">Save All</v-btn>
+      </v-flex>
+    </v-layout>
+
   </v-container>
 
 </template>
@@ -199,6 +204,7 @@
   import Part5 from "./part5"
   import Part6 from "./part6"
   import Part7 from "./part7"
+  import Part8 from "./part8"
   export default {
     name: "edit",
     components : {
@@ -208,6 +214,7 @@
       Part5,
       Part6,
       Part7,
+      Part8,
     },
     data: () => ({
       form : undefined,
@@ -218,20 +225,28 @@
       isReady : function(){
         let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
         let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
-
         return choicesLoaded && districtLoaded;
       }
     }
-    ,async mounted () {
+    ,async created () {
       let farmOwnerId  = await this.$route.params.id;
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId)
-
-
       await this.$store.dispatch('choices/load');
       await this.$store.dispatch('districtSelect/load');
 
     }
     ,methods: {
+      onScroll (e) {
+        let offsetTop = window.pageYOffset || document.documentElement.scrollTop
+        // console.log("offsetTop",offsetTop)
+        if (offsetTop >= 72){
+          document.getElementById("side_menu").classList.remove('right_menu_fixed')
+          document.getElementById("side_menu").classList.add('right_menu_fixed_scrolling')
+        }else {
+          document.getElementById("side_menu").classList.remove('right_menu_fixed_scrolling')
+          document.getElementById("side_menu").classList.add('right_menu_fixed')
+                }
+      },
       elFocus : function (el) {
         this.steper = el
       },

@@ -7,6 +7,7 @@
                     v-model="selected"
                     @change = "updateChoice"
                     :input-value = "value"
+                    color="success"
         >
         </v-checkbox>
         <v-text-field v-if="item.has_text"
@@ -83,7 +84,8 @@
         await this.sync()
       },
       updateChoice : function () {
-        this.$emit("change",this.selected)
+        this.$emit("change",
+        )
         // console.log("emit",this.selected)
       }
     },

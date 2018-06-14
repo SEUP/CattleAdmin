@@ -43,9 +43,9 @@
               </td>
               <td class="text-xs-center">{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
               <td class="text-xs-center">{{ props.item.action }}
-                <v-btn color="success" :to="{name:'user-edit',params : {id : props.item.id}}">
-                  <v-icon>mdi-account-settings-variant</v-icon>&ensp;แก้ไข</v-btn>
-                <v-btn color="error" @click="delUser(props.item.id)"><v-icon>mdi-account-remove</v-icon>&ensp;Delete</v-btn>
+                <v-btn class="ma-0" icon :to="{name:'user-edit',params : {id : props.item.id}}">
+                  <v-icon color="primary" >create</v-icon></v-btn>
+                <v-btn  class="ma-0" icon @click="delUser(props.item.id)"> <v-icon color="red" >delete</v-icon></v-btn>
               </td>
             </template>
           </v-data-table>
