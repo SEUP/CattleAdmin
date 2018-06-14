@@ -12,7 +12,7 @@
         </v-checkbox>
         <v-text-field v-if="item.has_text"
                       hide-details class="pa-0 px-3"
-                      placeholder="โปรดระบุ" :value="item.pivot.remark"
+                      placeholder="โปรดระบุ"
                       v-model="item.pivot.remark"
                       @blur = "updateChoice"
         ></v-text-field>
