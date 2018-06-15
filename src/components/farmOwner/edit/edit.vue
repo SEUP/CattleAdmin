@@ -14,190 +14,164 @@
                 <v-divider class="divider-bold indigo"></v-divider>
                 <v-stepper v-model="steper" vertical non-linear>
 
-                  <div id="f1">
+                  <template>
                     <v-stepper-step :complete="steper > 1" :step="1" editable>ส่วนที่ 1
                       <small>ข้อมูลพื้นฐานของเกษตรกร</small>
                     </v-stepper-step>
                     <v-stepper-content :step="1">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <part1></part1>
-                        </v-card-text>
-                      </v-card>
+
+                      <part1></part1>
+
                       <v-btn color="primary" @click.native="steper = 2">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
-
-                  <div id="f2">
+                  </template>
+                  <template>
                     <v-stepper-step :complete="steper > 2" :step="2" editable>ส่วนที่ 2
                       <small>ข้อมูลการเลี้ยงเเละสถานภาพฟาร์ม</small>
                     </v-stepper-step>
                     <v-stepper-content :step="2">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <Part2></Part2>
-                        </v-card-text>
-                      </v-card>
+                      <Part2></Part2>
                       <v-btn color="primary" @click.native="steper = 3">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
-
-                  <div id="f3">
+                  </template>
+                  <template id="f3">
                     <v-stepper-step :complete="steper > 3" :step="3" editable>ส่วนที่ 3
                       <small>ข้อมูลแรงงาน พื้นที่ในการเลี้ยง และการจัดการอาหาร</small>
                     </v-stepper-step>
                     <v-stepper-content :step="3">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <Part3></Part3>
-                        </v-card-text>
-                      </v-card>
+
+                      <Part3></Part3>
+
                       <v-btn color="primary" @click.native="steper = 4">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
 
-                  <div id="f4">
+                  <template id="f4">
                     <v-stepper-step :complete="steper > 4" :step="4" editable>ส่วนที่ 4
                       <small>การผสมพันธ์ุ ประสิทธิภาพการผลิต และการรักษาโรค</small>
                     </v-stepper-step>
                     <v-stepper-content :step="4">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <part4></part4>
-                        </v-card-text>
-                      </v-card>
+                      <part4></part4>
                       <v-btn color="primary" @click.native="steper = 5">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
 
-                  <div id="f5">
+                  <template id="f5">
                     <v-stepper-step :complete="steper > 5" :step="5" editable>ส่วนที่ 5
                       <small>ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="5">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <part5></part5>
-                        </v-card-text>
-                      </v-card>
+
+                      <part5></part5>
+
                       <v-btn color="primary" @click.native="steper = 6">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
 
-                  <div id="f6">
+                  <template id="f6">
                     <v-stepper-step :complete="steper > 6" :step="6" editable>ส่วนที่ 6
                       <small>ข้อมูลการตลาด การรวมกลุ่มของสมาชิก(วิสาหกิจชุมชนและสหกรณ์)</small>
                     </v-stepper-step>
                     <v-stepper-content :step="6">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <!---->
-                          <part6></part6>
-                        </v-card-text>
-                      </v-card>
+
+                      <part6></part6>
+
                       <v-btn color="primary" @click.native="steper = 7">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
 
-                  <div id="f7">
+                  <template id="f7">
                     <v-stepper-step :complete="steper > 7" :step="7" editable>ส่วนที่ 7
                       <small>การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="7">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <!---->
-                          <part7></part7>
-                        </v-card-text>
-                      </v-card>
+
+                      <!---->
+                      <part7></part7>
+
                       <v-btn color="primary" @click.native="steper = 8">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
 
-                  <div id="f8">
+                  <template id="f8">
                     <v-stepper-step :complete="steper > 8" :step="8" editable>ส่วนที่ 8
                       <small>ปัญหา อุปสรรค และข้อเสนอแนะ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="8">
-                      <v-card class="elevation-0" style="border:#e5e5e5 1px solid">
-                        <v-card-text>
-                          <part8></part8>
-                        </v-card-text>
-                      </v-card>
+
+                      <part8></part8>
+
                       <v-btn color="success">save</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </div>
+                  </template>
                 </v-stepper>
               </v-card>
             </v-flex>
+
             <v-flex xs3>
-              <v-navigation-drawer stateless permanent floating value="true">
-                <v-divider class="divider-bold success"></v-divider>
-                <v-list class="card-border">
-                  <v-list-tile class="text-xs-center">
-                    <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
-                  </v-list-tile>
-                  <v-divider></v-divider>
+              <v-divider class="divider-bold success"></v-divider>
+              <v-list class="card-border">
+                <v-list-tile class="text-xs-center">
+                  <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
+                </v-list-tile>
+                <v-divider></v-divider>
 
-                  <v-list-tile @click="elFocus(1)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 1</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(1)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 1</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(2)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 2</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(2)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 2</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(3)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 3</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(3)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 3</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(4)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 4</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(4)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 4</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(5)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 5</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(5)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 5</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(6)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 6</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(6)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 6</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(7)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 7</v-list-tile-content>
-                  </v-list-tile>
+                <v-list-tile @click="elFocus(7)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 7</v-list-tile-content>
+                </v-list-tile>
 
-                  <v-list-tile @click="elFocus(8)">
-                    <v-icon>extension</v-icon>
-                    <v-spacer></v-spacer>
-                    <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
-                  </v-list-tile>
-                </v-list>
-
-              </v-navigation-drawer>
-
+                <v-list-tile @click="elFocus(8)">
+                  <v-icon>extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
+                </v-list-tile>
+              </v-list>
             </v-flex>
           </v-layout>
         </v-container>

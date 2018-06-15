@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-layout row wrap>
 
       <v-flex pb-3 xs-12>
