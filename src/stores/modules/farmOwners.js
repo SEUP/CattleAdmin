@@ -73,7 +73,7 @@ export default {
       loanType.forEach( (i) => {
         loanMoney += i.pivot.amount
       });
-      form.budget_source = loanMoney+selfMoney
+      form.budget_source.pivot.amount = loanMoney+selfMoney
       context.dispatch("updateState",(form))
     }
 
