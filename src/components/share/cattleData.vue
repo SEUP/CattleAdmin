@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="isReady">
     <v-layout column>
       <v-flex v-for="mainBreed in choices[type]" :key="mainBreed.id">
         <v-checkbox :label="mainBreed.choice" hide-details
@@ -9,9 +9,9 @@
                     color="success"
         >
         </v-checkbox>
-        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ1'">
+        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ'">
           <template>
-            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1" ></v-text-field>
+            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1" v-model="mainBreed.pivot.remark"/>
             <v-layout>
               <v-flex xs12 md4 mx-1>
                 <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details></v-text-field>
@@ -20,15 +20,13 @@
                 <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details></v-select>
               </v-flex>
               <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1"  hide-details></v-text-field>
+                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details></v-text-field>
               </v-flex>
               <v-flex xs12 md4 mx-1>
                 <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details></v-text-field>
               </v-flex>
             </v-layout>
           </template>
-
-          แสดงหมายเหตุเพันธุ์พื้นเมือง
         </v-flex>
         <v-flex class="pl-3" v-else>
           <v-flex v-for="subBreed in choices[mainBreed.children[0].type]" :key="subBreed.id">
@@ -60,6 +58,7 @@
     },
     data: () => ({
       choices: [],
+      selMainBreeds2 : [],
       selMainBreeds: [],
       selSubBreeds: {
         female_breeding_types: [],
@@ -85,17 +84,19 @@
 
       },
       form: null,
+      isReady: false,
     }),
-    async mounted() {
-      console.log("HELLO");
+    async created() {
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
+      console.log(this.isReady);
+      console.log(this.selMainBreeds,this.selMainBreeds2)
       this.sync();
+      console.log(this.isReady);
     },
     methods: {
       updateValue: function (type, value) {
-        // console.log(this.form[type],value)
-        // this.form[type] = value;
+        console.log('update value');
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
       childrenSync: function (type, order) {
@@ -126,6 +127,7 @@
         }
       },
       sync: function () {
+        console.log('sync start');
         let main = this.choices[this.type];
         let select = this.form[this.type];
 
@@ -133,19 +135,26 @@
         let selectLength = select.length;
 
         for (let i = 0; i < mainLength; i++) {
+
+          //initalize pivot data
+          if(!main[i].pivot) {
+            main[i].pivot = {}
+          }
+
+
           for (let j = 0; j < selectLength; j++) {
             if (main[i].id == select[j].id) {
               main[i] = select[j]
               this.selMainBreeds.push(main[i]);
-              console.log(main[i].children.length)
-              if(main[i].children.length > 0){
-                // sync children
+              // sync children
+              if (main[i].children.length > 0) {
+
                 this.childrenSync(main[i].children[0].type);
               }
-
             }
           }
         }
+        this.isReady = true;
       }
     }
   }

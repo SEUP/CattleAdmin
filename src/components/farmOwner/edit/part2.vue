@@ -28,7 +28,7 @@
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_male_breeding_types" disabled></v-text-field>
-          <cattle-data @change="" type="male_breeding_types" :value="form.male_breeding_types"></cattle-data>
+          <cattle-data type="male_breeding_types"></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.5 แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
