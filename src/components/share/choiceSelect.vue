@@ -8,10 +8,18 @@
                 @change="updateChoice"
 
       ></v-select>
-      <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="selectedValue.has_text" hide-details
-                    v-model="selectedValue.pivot.remark"  @blur="updateValue">
+      <div v-if="selectedValue.has_text">
+        <v-text-field placeholder="โปรดระบุจำนวนเงิน" class="pa-0 py-2"  hide-details
+                      v-if="selectedValue.type == 'budget_source'"
+                      v-model="selectedValue.pivot.amount"  @blur="updateValue">
+        </v-text-field>
 
-      </v-text-field>
+        <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2"  hide-details v-else
+                      v-model="selectedValue.pivot.remark"  @blur="updateValue">
+        </v-text-field>
+
+
+      </div>
     </v-flex>
 
     <v-flex xs12 v-if = "singleLine">
@@ -25,11 +33,17 @@
 
           ></v-select>
         </v-flex>
-        <v-flex xs6 mx-3>
-          <v-text-field placeholder="โปรดระบุ" v-if="selectedValue.has_text" hide-details
-                        v-model="selectedValue.pivot.remark" @blur="updateValue">
+        <v-flex xs6 mx-3 v-if="selectedValue.has_text">
 
+          <v-text-field placeholder="โปรดระบุจำนวนเงิน" class=""  hide-details
+                        v-if="selectedValue.type == 'budget_source'"
+                        v-model="selectedValue.pivot.amount"  @blur="updateValue">
           </v-text-field>
+
+          <v-text-field placeholder="โปรดระบุ" class=""  hide-details v-else
+                        v-model="selectedValue.pivot.remark"  @blur="updateValue">
+          </v-text-field>
+
         </v-flex>
       </v-layout>
     </v-flex>
@@ -41,7 +55,7 @@
     id : 0,
     has_text :0,
     choice : "กรุณาเลือก",
-    pivot:{remark: null}
+    pivot:{remark: null,amount:null}
   };
   export default {
     name: "choiceSelect",
@@ -73,17 +87,20 @@
     methods: {
       sync: function () {
         this.items.forEach((i) => {
-          i = Object.assign(i,{pivot:{remark: null}})
+          i = Object.assign(i,{pivot:{remark: null , amount : null}});
           if (i.id == this.value.id) {
-            this.selectedValue = i
+            this.selectedValue = i;
             if (this.value.pivot.remark) {
               this.selectedValue.pivot.remark = this.value.pivot.remark
+            }else if(this.value.pivot.amount) {
+              this.selectedValue.pivot.amount = this.value.pivot.amount
             }
           }
         })
       },
       updateChoice : async function (choice)  {
         this.selectedValue = choice
+        console.log("update",this.selectedValue)
         await this.updateValue()
       },
       updateValue: async function () {
