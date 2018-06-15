@@ -141,7 +141,6 @@
             main[i].pivot = {}
           }
 
-
           for (let j = 0; j < selectLength; j++) {
             if (main[i].id == select[j].id) {
               main[i] = select[j]
