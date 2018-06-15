@@ -34,7 +34,7 @@
         <v-card-text class="pa-2 title">2.5 แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="จำนวน" v-model="form.total_female_breeding_types" disabled>
+          <v-text-field label="จำนวน" v-model="form.total_female_breeding_types" readonly="">
           </v-text-field>
         </div>
         <v-card-text class="pa-2 title">2.6 โคเพศผู้อายุมากกว่า 6 เดือนขึ้นไปแต่ไม่ใช่พ่อพันธุ์คุมฝูง</v-card-text>
