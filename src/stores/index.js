@@ -7,6 +7,14 @@ import districtSelect from "./modules/districtSelect"
 import choices from "./modules/choices"
 import farmOwners from "./modules/farmOwners"
 
+import login from "./modules/login"
+import error from "./modules/error"
+
+function store(name) {
+  return function (resolve) {
+    require(['./modules/' + name], resolve);
+  }
+}
 
 Vue.use(Vuex);
 
@@ -18,5 +26,7 @@ export default new Vuex.Store({
     farmOwners: farmOwners,
     districtSelect: districtSelect,
     choices: choices,
+    login: login,
+    error: error
   }
 })

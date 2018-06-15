@@ -27,7 +27,6 @@
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
           <v-text-field  label="จำนวน" v-model="form.total_male_breeding_types" disabled></v-text-field>
-          <!--<checkbox-cattle-breeding-types type="male_breeding_types" :value="form.male_breeding_types"></checkbox-cattle-breeding-types>-->
         </div>
 
         <v-card-text class="pa-2 title">2.5 แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
@@ -129,10 +128,9 @@
 <script>
   import ChoiceSelect from "../../share/choiceSelect";
   import ChoiceCheckBox from "../../share/choiceCheckBox";
-  import checkboxCattleBreedingTypes from "../../share/checkboxCattleBreedingTypes";
     export default {
       name: "part2",
-      components: {ChoiceSelect, ChoiceCheckBox,checkboxCattleBreedingTypes},
+      components: {ChoiceSelect, ChoiceCheckBox},
       data : () =>({
         form : {}
       }),
