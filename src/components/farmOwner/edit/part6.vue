@@ -65,7 +65,7 @@
       }
 
     },async created (){
-      this.form = await this.$store.state.farmOwners.farmOwner;
+      //this.form = await this.$store.state.farmOwners.farmOwner;
     },methods : {
       updateForm : async function () {
         await this.$store.dispatch("farmOwners/updateState",this.form)

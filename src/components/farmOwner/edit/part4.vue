@@ -95,7 +95,7 @@
         form : undefined
       }),
       async created  () {
-        this.form = await this.$store.state.farmOwners.farmOwner
+        //this.form = await this.$store.state.farmOwners.farmOwner
       },
     }
 </script>
