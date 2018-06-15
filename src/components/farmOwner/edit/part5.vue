@@ -27,7 +27,7 @@
           class="mt-3"
           label="จำนวนเงิน"
           disabled
-          v-model="form.total_budget"
+          v-model="totalBudget"
         > <!--ทุกครั้ง ที่ ข้างบนมีการเปลี่ยนเเปลง ตจ้องโหลด เสตจ ใหม่ ข้อมูลจึงจะอัพเดท-->
         </v-text-field>
       </v-flex>
@@ -47,8 +47,19 @@
       form : undefined
     }),
     async created  () {
-      this.form = await this.$store.state.farmOwners.farmOwner
+      this.form = await this.$store.state.farmOwners.farmOwner;
       this.sumBudget()
+    },
+    computed : {
+      totalBudget : function(){
+        let total = 0;
+        total += this.form.budget_source.pivot.amount;
+        total += 10000;
+
+        this.form.total_budget = total;
+        //return this.form.total_budget
+        return 1000000;
+      }
     },
     methods : {
       sumBudget : async function () {

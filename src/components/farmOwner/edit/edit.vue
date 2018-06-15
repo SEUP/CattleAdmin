@@ -227,7 +227,7 @@
       isReady : function(){
         let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
         let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
-        return choicesLoaded && districtLoaded;
+        return choicesLoaded && districtLoaded && this.form;
       }
     }
     ,async created () {
