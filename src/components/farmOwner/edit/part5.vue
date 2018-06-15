@@ -15,7 +15,7 @@
       <v-flex xs12>
         <p class="title" >5.2 แหล่งเงินทุนกู้ยืม</p>
         <v-divider class="my-3"></v-divider>
-        <checkbox-budgetsource type="loan_types"></checkbox-budgetsource>
+        <!--<checkbox-budgetsource type="loan_types"></checkbox-budgetsource>-->
       </v-flex>
     </v-layout>
 

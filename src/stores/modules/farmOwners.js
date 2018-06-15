@@ -61,22 +61,6 @@ export default {
         });
       return result
     },
-    sumBudget : async function (context) {
-      let form = context.state.farmOwner;
-      let budgetSource = context.state.farmOwner.budget_source;
-      let loanType = context.state.farmOwner.loan_types;
-      let selfMoney = 0;
-      if(budgetSource.has_text){
-        selfMoney = budgetSource.pivot.amount
-      }
-      let loanMoney = 0 ;
-      loanType.forEach( (i) => {
-        loanMoney += i.pivot.amount
-      });
-      form.budget_source.pivot.amount = loanMoney+selfMoney
-      context.dispatch("updateState",(form))
-    }
-
   }
 /// getByID
 
