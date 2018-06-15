@@ -9,7 +9,25 @@
                     color="success"
         >
         </v-checkbox>
-        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ'">
+        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ1'">
+          <template>
+            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1" ></v-text-field>
+            <v-layout>
+              <v-flex xs12 md4 mx-1>
+                <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details></v-text-field>
+              </v-flex>
+              <v-flex xs12 md4 mx-1>
+                <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details></v-select>
+              </v-flex>
+              <v-flex xs12 md4 mx-1>
+                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1"  hide-details></v-text-field>
+              </v-flex>
+              <v-flex xs12 md4 mx-1>
+                <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details></v-text-field>
+              </v-flex>
+            </v-layout>
+          </template>
+
           แสดงหมายเหตุเพันธุ์พื้นเมือง
         </v-flex>
         <v-flex class="pl-3" v-else>
@@ -119,8 +137,11 @@
             if (main[i].id == select[j].id) {
               main[i] = select[j]
               this.selMainBreeds.push(main[i]);
-              // sync children
-              this.childrenSync(main[i].children[0].type);
+              console.log(main[i].children.length)
+              if(main[i].children.length > 0){
+                // sync children
+                this.childrenSync(main[i].children[0].type);
+              }
 
             }
           }
