@@ -1,11 +1,11 @@
 <template>
   <div>
-
     <v-layout column>
       <v-flex v-for="mainBreed in choices[type]" :key="mainBreed.id">
         <v-checkbox :label="mainBreed.choice" hide-details
                     :value="mainBreed"
                     v-model="selMainBreeds"
+                    @change="updateValue(type,selMainBreeds)"
                     color="success"
         >
         </v-checkbox>
@@ -18,7 +18,7 @@
                         :value="subBreed"
                         v-model="selSubBreeds[mainBreed.children[0].type]"
                         color="success"
-                        @change=""
+                        @change="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
             ></v-checkbox>
           </v-flex>
         </v-flex>
@@ -39,27 +39,48 @@
         type: String,
         Default: "ตัวเลือก"
       },
-      value: {
-        type: Array,
-        Default: [],
-      }
     },
     data: () => ({
       choices: [],
       selMainBreeds: [],
-      selSubBreeds: {},
+      selSubBreeds: {
+        female_breeding_types: [],
+        female_int_breeding_types: [],
+        female_mixed_breeding_types: [],
+        female_over_six_breeding_types: [],
+        female_over_six_int_breeding_types: [],
+        female_over_six_mixed_breeding_types: [],
+        female_under_six_breeding_types: [],
+        female_under_six_int_breeding_types: [],
+        female_under_six_mixed_breeding_types: [],
+
+        male_breeding_types: [],
+        male_int_breeding_types: [],
+        male_mixed_breeding_types: [],
+        male_over_six_breeding_types: [],
+        male_over_six_int_breeding_types: [],
+        male_over_six_mixed_breeding_types: [],
+        male_under_six_breeding_types: [],
+        male_under_six_int_breeding_types: [],
+        male_under_six_mixed_breeding_types: [],
+
+
+      },
       form: null,
     }),
     async mounted() {
       console.log("HELLO");
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
-      console.log(this.value)
       this.sync();
     },
     methods: {
+      updateValue : function(type,value){
+        console.log(this.form[type],value)
+        this.form[type] = value;
+      },
       childrenSync: function (type, order) {
-        let childrenForm = this.form[type]
+        let childrenForm = this.form[type];
         let childrenChoice = this.choices[type];
 
         let mainLength = childrenChoice.length;
@@ -69,14 +90,13 @@
           for (let j = 0; j < selectLength; j++) {
             try {
               if (childrenChoice[i].id == childrenForm[j].id) {
-                childrenChoice[i] = childrenForm[j]
-                if (!this.selSubBreeds[type]) {
-                  this.selSubBreeds[type] = []
-
-                  this.selSubBreeds[type] = Object.assign(this.selSubBreeds[type], []);
-
+                childrenChoice[i] = childrenForm[j];
+                console.log(this.selSubBreeds);
+                if (this.selSubBreeds[type]) {
+                  this.selSubBreeds[type].push(childrenChoice[i]);
+                } else {
+                  this.selSubBreeds[type] = [childrenChoice[i]]
                 }
-                this.selSubBreeds[type].push(childrenChoice[i]);
               }
             } catch (e) {
               console.log(childrenChoice[i], childrenForm[j])
@@ -88,7 +108,7 @@
       },
       sync: function () {
         let main = this.choices[this.type];
-        let select = this.value;
+        let select = this.form[this.type];
 
         let mainLength = main.length;
         let selectLength = select.length;
@@ -100,6 +120,7 @@
               this.selMainBreeds.push(main[i]);
               // sync children
               this.childrenSync(main[i].children[0].type);
+
             }
           }
         }
