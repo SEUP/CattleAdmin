@@ -75,9 +75,10 @@
       this.sync();
     },
     methods: {
-      updateValue : function(type,value){
-        console.log(this.form[type],value)
-        this.form[type] = value;
+      updateValue: function (type, value) {
+        // console.log(this.form[type],value)
+        // this.form[type] = value;
+        this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
       childrenSync: function (type, order) {
         let childrenForm = this.form[type];
