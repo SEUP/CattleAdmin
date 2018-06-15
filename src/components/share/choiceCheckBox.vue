@@ -41,10 +41,7 @@
 
       </v-flex>
     </v-layout>
-
   </div>
-
-
 </template>
 <script>
 
@@ -66,6 +63,12 @@
       items: [],
       selected: [],
     }),
+    async created () {
+      this.items = await this.$store.dispatch("choices/getChoicesByType", this.type)
+      await this.sync()
+      await console.log("created",this.items[0].id)
+      await console.log("created sel",this.selected)
+    },
     methods: {
       sync: function () {
         let items = this.items
@@ -82,19 +85,11 @@
           }
         }
       },
-      load: async function () {
-        this.items = await this.$store.dispatch("choices/getChoicesByType", this.type)
-        await this.sync()
-      },
-      updateChoice: function () {
-        this.$emit("change",
-        )
-        // console.log("emit",this.selected)
+      updateChoice : function () {
+        this.$emit("change",this.selected)
       }
     },
-    created: function () {
-      this.load()
-    },
+
 
   }
 

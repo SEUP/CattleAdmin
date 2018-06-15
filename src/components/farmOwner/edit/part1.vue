@@ -6,39 +6,39 @@
           <v-card-text class="pa-2 title">1.1 ข้อมูลทั่วไป</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <v-text-field label="ชื่อ" placeholder="กรุณากรอกชื่อ" v-model="form.first_name" @blur ="updateForm"></v-text-field>
-            <v-text-field label="นามสกุล" placeholder="กรุณากรอกนามสกุล" v-model="form.last_name" @blur ="updateForm"></v-text-field>
-            <v-text-field label="รหัสประจำตัวประชาชน" placeholder="กรุณากรอกรหัสประจำตัวประชาชน" v-model="form.person_id" @blur ="updateForm" ></v-text-field>
+            <v-text-field label="ชื่อ" placeholder="กรุณากรอกชื่อ" v-model="form.first_name" @blur="updateForm"></v-text-field>
+            <v-text-field label="นามสกุล" placeholder="กรุณากรอกนามสกุล" v-model="form.last_name" @blur="updateForm"></v-text-field>
+            <v-text-field label="รหัสประจำตัวประชาชน" placeholder="กรุณากรอกรหัสประจำตัวประชาชน" v-model="form.person_id" @blur="updateForm" ></v-text-field>
           </div>
 
         <v-card-text class="pa-2 title">1.2 ที่อยู่ตามสำเนาทะเบียนบ้าน</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <v-text-field label="บ้านเลขที่" placeholder="บ้านเลขที่" v-model="form.house_no" @blur ="updateForm"></v-text-field>
-            <v-text-field label="หมู่" placeholder="หมู่"  v-model="form.house_moo" @blur ="updateForm"></v-text-field>
+            <v-text-field label="บ้านเลขที่" placeholder="บ้านเลขที่" v-model="form.house_no" @blur="updateForm"></v-text-field>
+            <v-text-field label="หมู่" placeholder="หมู่"  v-model="form.house_moo" @blur="updateForm"></v-text-field>
             <district-select
                               :val-province="form.house_province"
                              :val-amphur="form.house_amphur"
                              :val-district="form.house_district"
-                             @change = "updateDistrictSelectHouse"
+                             @change="updateDistrictSelectHouse"
             >
             </district-select>
-            <v-text-field label="รหัสไปรษณีย์" placeholder="รหัสไปรษณีย์" v-model="form.house_postcode" @blur ="updateForm"></v-text-field>
-            <v-text-field label="โทรศัพท์บ้าน" placeholder="โทรศัพท์บ้าน"  v-model="form.house_phone" @blur ="updateForm"></v-text-field>
-            <v-text-field label="โทรศัพท์มือถือ" placeholder="โทรศัพท์มือถือ"  v-model="form.mobile_no" @blur ="updateForm"></v-text-field>
-            <v-text-field label="Email" placeholder="Email"  v-model="form.email" @blur ="updateForm"></v-text-field>
+            <v-text-field label="รหัสไปรษณีย์" placeholder="รหัสไปรษณีย์" v-model="form.house_postcode" @blur="updateForm"></v-text-field>
+            <v-text-field label="โทรศัพท์บ้าน" placeholder="โทรศัพท์บ้าน"  v-model="form.house_phone" @blur="updateForm"></v-text-field>
+            <v-text-field label="โทรศัพท์มือถือ" placeholder="โทรศัพท์มือถือ"  v-model="form.mobile_no" @blur="updateForm"></v-text-field>
+            <v-text-field label="Email" placeholder="Email"  v-model="form.email" @blur="updateForm"></v-text-field>
           </div>
 
           <v-card-text class="pa-2 title">1.3 ที่อยู่ฟาร์ม</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <v-text-field label="ที่ตั้งฟาร์มเลขที่" placeholder="ที่ตั้งฟาร์มเลขที่" v-model="form.farm_no" @blur ="updateForm"></v-text-field>
-            <v-text-field label="หมู่" placeholder="หมู่" v-model="form.farm_moo" @blur ="updateForm"></v-text-field>
+            <v-text-field label="ที่ตั้งฟาร์มเลขที่" placeholder="ที่ตั้งฟาร์มเลขที่" v-model="form.farm_no" @blur="updateForm"></v-text-field>
+            <v-text-field label="หมู่" placeholder="หมู่" v-model="form.farm_moo" @blur="updateForm"></v-text-field>
             <district-select
                               :val-province="form.farm_province"
                               :val-amphur="form.farm_amphur"
                               :val-district="form.farm_district"
-                              @change = "updateDistrictSelectFarm"
+                              @change="updateDistrictSelectFarm"
             >
             </district-select>
           </div>
@@ -46,23 +46,23 @@
           <v-card-text class="pa-2 title">1.4 ตำแหน่งพิกัด GPS ของฟาร์ม</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <v-text-field label="พิกัดฟาร์ม (lat)" placeholder="พิกัดฟาร์ม (lat)" v-model="form.farm_lat" @blur ="updateForm"></v-text-field>
-            <v-text-field label="พิกัดฟาร์ม (lng)" placeholder="พิกัดฟาร์ม (lng)" v-model="form.farm_long" @blur ="updateForm"></v-text-field>
+            <v-text-field label="พิกัดฟาร์ม (lat)" placeholder="พิกัดฟาร์ม (lat)" v-model="form.farm_lat" @blur="updateForm"></v-text-field>
+            <v-text-field label="พิกัดฟาร์ม (lng)" placeholder="พิกัดฟาร์ม (lng)" v-model="form.farm_long" @blur="updateForm"></v-text-field>
           </div>
 
           <v-card-text class="pa-2 title">1.5 สถานะทางครอบครัว</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
             <choice-select type="sex" label="เพศ" :value="form.sex" @change="form.sex = $event"></choice-select>
-            <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @blur ="updateForm" hide-details></v-text-field>
+            <v-text-field label="อายุ" placeholder="อายุ" type="number" v-model="form.age" @blur="updateForm" hide-details></v-text-field>
             <choice-select label="สถานภาพ" type="personal_status"
                            :value="form.personal_status"
-                           @change = "form.personal_status = $event">
+                           @change="form.personal_status = $event">
 
             </choice-select>
             <choice-select label="สถานภาพในครอบครัว" type="family_status" singleLine
                            :value="form.family_status"
-                           @change = "form.family_status = $event" >
+                           @change="form.family_status = $event" >
 
             </choice-select>
           </div>
@@ -70,7 +70,7 @@
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
             <choice-select label="การศึกษา" type="education" :value="form.education"
-                           @change = "form.education = $event" >
+                           @change="form.education = $event" >
 
             </choice-select>
           </div>
@@ -80,7 +80,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="social_status" label="สถานภาพทางสังคม"
                            :value="form.social_status"
-                           @change = "form.social_status = $event">
+                           @change="form.social_status = $event">
 
             </choice-select>
           </div>
@@ -90,7 +90,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="cattle_job" label="การเลี้ยงโคเนื้อเป็น"
                            :value="form.cattle_job"
-                           @change = "form.cattle_job = $event">
+                           @change="form.cattle_job = $event">
 
             </choice-select>
           </div>
@@ -100,10 +100,8 @@
           <div class="ma-2 mx-4">
               <choice-check-box type = "jobtypes"
                                 :value="form.jobtypes"
-                                @change = "form.jobtypes = $event"
-                                @blur="updateForm"
+                                @change="form.jobtypes = $event"
               >
-
               </choice-check-box >
           </div>
 
@@ -112,7 +110,7 @@
           <div class="ma-2 mx-4">
             <choice-select type="income_range" label="ท่านมีรายได้รวมของครัวเรือนเฉลี่ยเท่าไหร่ (บาท/ปี)"
                            :value="form.income_range"
-                           @change = "form.income_range =  $event"  >
+                           @change="form.income_range = $event"  >
 
             </choice-select>
           </div>
@@ -125,7 +123,7 @@
                           hint="*หากยังไม่มีรายได้จากการขายโคเนื้อ ให้เว้นว่างช่องนี้ไว้"
                           persistent-hint type="number"
                           v-model="form.avg_cattle_income"
-                          @blur ="updateForm"
+                          @blur="updateForm"
             ></v-text-field>
           </div>
         </v-flex>

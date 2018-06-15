@@ -5,9 +5,11 @@
                 :items="items"
                 v-model="selectedValue"
                 :label="label" item-text="choice"
+                @change="updateChoice"
+
       ></v-select>
-      <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="HasText" hide-details
-                    v-model="selectedValue.pivot.remark"  @blur = "updateValue">
+      <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2" v-if="selectedValue.has_text" hide-details
+                    v-model="selectedValue.pivot.remark"  @blur="updateValue">
 
       </v-text-field>
     </v-flex>
@@ -19,11 +21,13 @@
                     :items="items"
                     v-model="selectedValue"
                     :label="label" item-text="choice"
+                    @change="updateChoice"
+
           ></v-select>
         </v-flex>
         <v-flex xs6 mx-3>
-          <v-text-field placeholder="โปรดระบุ" v-if="HasText" hide-details
-                        v-model="selectedValue.pivot.remark" @blur = "updateValue">
+          <v-text-field placeholder="โปรดระบุ" v-if="selectedValue.has_text" hide-details
+                        v-model="selectedValue.pivot.remark" @blur="updateValue">
 
           </v-text-field>
         </v-flex>
@@ -58,25 +62,13 @@
         default : () =>  (defaultChoice)
       }
     },
-    data() {
-      return {
-        HasText : false,
-        selectedValue: defaultChoice,
-        items: [],
-      }
-    },
+    data :  () => ({
+      items: [],
+      selectedValue : defaultChoice
+    }),
     async created() {
       this.items = await [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
       await this.sync()
-    },
-    watch :{
-      selectedValue : {
-        deep : true,
-        handler :  function (newVal,oldVal) {
-          this.updateValue()
-        }
-      }
-
     },
     methods: {
       sync: function () {
@@ -87,23 +79,14 @@
             if (this.value.pivot.remark) {
               this.selectedValue.pivot.remark = this.value.pivot.remark
             }
-              // this.updateValue();
           }
         })
-        // console.log("IN CHO",this.selectedValue)
       },
-      checkHasText : function () {
-        // console.log(this.selectedValue)
-        if(this.selectedValue.has_text){
-          this.HasText = true
-        }else{
-          this.HasText = false
-        }
-
+      updateChoice : async function (choice)  {
+        this.selectedValue = choice
+        await this.updateValue()
       },
       updateValue: async function () {
-        // console.log("UPDATE select",this.selectedValue)
-        await this.checkHasText()
         await this.$emit('change', this.selectedValue)
 
       }

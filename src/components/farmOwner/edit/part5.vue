@@ -23,11 +23,11 @@
       <v-flex xs12>
         <p class="title" >5.3 เงินทุนในการเลี้ยงโคเนื้อรวมทั้งหมด (บาท) (รวมจาก 5.1 และ 5.2)</p>
         <v-divider class="my-3"></v-divider>
-        <v-text
+        <v-text-field
           class="mt-3"
           label=""
         >
-        </v-text>
+        </v-text-field>
       </v-flex>
     </v-layout>
   </v-container>

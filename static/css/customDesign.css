@@ -10,13 +10,13 @@
 }
 .right_menu_fixed {
   position: absolute;
-  top: 21vh;
+  top: 130px;
   right : 20px;
   width: 15vw;
 }
 .right_menu_fixed_scrolling {
   position: fixed;
-  top: 9vh;
+  top: 72px;
   right : 20px;
   width: 15vw;
 }

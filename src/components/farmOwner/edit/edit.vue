@@ -241,7 +241,7 @@
       onScroll (e) {
         let offsetTop = window.pageYOffset || document.documentElement.scrollTop
         // console.log("offsetTop",offsetTop)
-        if (offsetTop >= 72){
+        if (offsetTop >= 58){
           document.getElementById("side_menu").classList.remove('right_menu_fixed')
           document.getElementById("side_menu").classList.add('right_menu_fixed_scrolling')
         }else {
