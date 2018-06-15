@@ -47,7 +47,7 @@
       form : undefined
     }),
     async mounted  () {
-      //this.form = await this.$store.state.farmOwners.farmOwner;
+      this.form = await this.$store.state.farmOwners.farmOwner;
       this.sumBudget()
     },
     computed : {

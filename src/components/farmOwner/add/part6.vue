@@ -1,7 +1,7 @@
 
 <template>
 
-    <v-container v-if="form != null">
+    <v-container >
       <v-form>
         <v-flex xs12>
           <p class="title">6.1 ท่านจำหน่ายโคเนื้อให้กับใคร</p>
@@ -61,11 +61,11 @@
     name: "part6",
     data (){
       return{
-        form:[]
+        form:{}
       }
 
     },async created (){
-      this.form = await this.$store.state.farmOwners.farmOwner;
+      //this.form = await this.$store.state.farmOwners.farmOwner;
     },methods : {
       updateForm : async function () {
         await this.$store.dispatch("farmOwners/updateState",this.form)

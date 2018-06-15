@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="form">
+  <v-container >
     <v-layout row wrap>
       <v-flex xs12>
 
@@ -44,10 +44,10 @@
     name: "Part5",
     components: {checkboxBudgetsource, ChoiceSelect },
     data : () =>({
-      form : undefined
+      form : {}
     }),
     async created  () {
-      this.form = await this.$store.state.farmOwners.farmOwner
+      //this.form = await this.$store.state.farmOwners.farmOwner
       this.sumBudget()
     },
     methods : {

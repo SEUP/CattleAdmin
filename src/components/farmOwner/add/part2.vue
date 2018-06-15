@@ -1,5 +1,5 @@
 <template>
-  <div v-if="form">
+  <div >
     <v-layout column wrap>
       <v-flex xs12 >
         <v-card-text class="pa-2 title">2.1 การเลี้ยงโคเนื้อของท่านมีวัตถุประสงค์เพื่ออะไร (เลือกได้มากกว่า 1 ข้อ)</v-card-text>
@@ -134,10 +134,10 @@
       name: "part2",
       components: {ChoiceSelect, ChoiceCheckBox,checkboxCattleBreedingTypes},
       data : () =>({
-        form : undefined
+        form : {}
       }),
       async created  () {
-        this.form = await this.$store.state.farmOwners.farmOwner
+        //this.form = await this.$store.state.farmOwners.farmOwner
         // await console.log("P2",this.form)
       },
     }

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="form">
+    <div >
       <v-layout column wrap>
         <v-flex xs12>
 
@@ -139,10 +139,10 @@
       name: "part1",
       components: {ChoiceCheckBox, ChoiceSelect, DistrictSelect},
       data : () =>({
-        form : undefined
+        form : {}
       }),
       async created  () {
-        this.form = await this.$store.state.farmOwners.farmOwner
+        //this.form = await this.$store.state.farmOwners.farmOwner
       },
       methods : {
         updateDistrictSelectHouse: function (value) {

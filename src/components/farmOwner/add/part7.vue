@@ -1,5 +1,5 @@
 <template>
-    <v-container v-if="form != null">
+    <v-container >
       <v-form>
         <v-flex xs12>
           <p class="title">7.1 หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ(ตอบได้มากกว่า 1 ข้อ)</p>
@@ -43,7 +43,7 @@
 
 <script>
   import choiceSelect from "@/components/share/choiceSelect"
-  import ChoiceCheckBox from "../../share/choiceCheckBox";
+  import ChoiceCheckBox from "@/components/share/choiceCheckBox";
 
     export default {
       components: {
@@ -53,7 +53,7 @@
       name: "part7",
       data (){
         return{
-          form:null
+          form:{}
         }
       },
       async created (){
@@ -62,7 +62,7 @@
       },methods : {
         updateForm : async function () {
           // console.log("TO UPDATE",this.form)
-          await this.$store.dispatch("farmOwners/updateState",this.form)
+          await this.$store.dispatch("farmOwners/updateState",this.form);
           let data = await this.$store.state.farmOwners.farmOwner
           // console.log("UPDATED",data)
         }

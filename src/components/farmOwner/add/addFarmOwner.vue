@@ -64,9 +64,6 @@
 </template>
 
 <script>
-  import roleCheckbox from "@/components/role/roleCheckbox";
-  import districtSelect from "@/components/share/districtSelect";
-  import choiceSelect from "@/components/share/choiceSelect";
   import Part1 from "./part1";
   import Part2 from "./part2";
   import Part3 from "./part3";
@@ -89,23 +86,13 @@
         Part6,
         Part7,
         Part8,
-        choiceSelect,
-        districtSelect,
-        roleCheckbox
-      },
-      name: "addFarmOwner",
-      data (){
-        return{
-          selected:[],
-          form :{
-            user_province: null,
-            user_amphur : null,
-            user_district : null,
-            roles: []
-          }
-        }
 
       },
+      name: "addFarmOwner",
+      data :()=>({
+        form : undefined,
+        farmOwner : null
+      }),
       computed : {
         isReady : function(){
           let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';

@@ -92,10 +92,10 @@
         name: "part4",
       components: {ChoiceCheckBox, ChoiceSelect },
       data : () =>({
-        form : undefined
+        form : {}
       }),
       async created  () {
-        this.form = await this.$store.state.farmOwners.farmOwner
+        //this.form = await this.$store.state.farmOwners.farmOwner
       },
     }
 </script>
