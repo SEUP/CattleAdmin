@@ -74,7 +74,7 @@ export default {
         loanMoney += i.pivot.amount
       });
       form.budget_source = loanMoney+selfMoney
-      this.updateState(form)
+      context.dispatch("updateState",(form))
     }
 
   }
