@@ -7,12 +7,12 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs10>
+      <v-flex xs9>
         <v-expansion-panel>
-          <v-expansion-panel-content >
+          <v-expansion-panel-content id="1" >
             <div slot="header">{{"ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร"}}</div>
-            <v-card>
-              <v-card-text class="grey lighten-3"><part1></part1></v-card-text>
+            <v-card  >
+              <v-card-text class="grey lighten-3"  ><part1 ></part1></v-card-text>
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
@@ -52,13 +52,80 @@
             </v-card>
           </v-expansion-panel-content>
           <v-expansion-panel-content >
-            <div slot="header">{{"ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ"}}</div>
+            <div slot="header" id="part8" >{{"ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ"}}</div>
             <v-card>
               <v-card-text class="grey lighten-3"><part8></part8></v-card-text>
             </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-flex>
+
+      <v-flex xs3 >
+        <v-layout row>
+          <v-flex >
+            <div id = "side_menu" class="right_menu_fixed">
+              <v-divider class="divider-bold success"></v-divider>
+              <v-list class="card-border">
+                <v-list-tile class="text-xs-center">
+                  <v-btn color="success" depressed block @click.native = "updateFarmOwner">Save All</v-btn>
+                </v-list-tile>
+                <v-divider></v-divider>
+
+                <v-list-tile  ><v-btn >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content >ส่วนที่ 1</v-list-tile-content>
+                </v-btn>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(2)">
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 2</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(3)"  >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 3</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(4)"  >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 4</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(5)">
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 5</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(6)" >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 6</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="elFocus(7)"  >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 7</v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile @click="toPart(part8)" >
+                  <v-icon >extension</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+
+
     </v-layout>
   </v-container>
 </template>
@@ -103,6 +170,9 @@
       async created() {
         await this.$store.dispatch('choices/load');
         await this.$store.dispatch('districtSelect/load');
+      },
+      toPart : function(part) {
+        document.getElementById(part).click();
       }
 
     }
