@@ -15,7 +15,7 @@
       <v-flex xs12>
         <p class="title" >5.2 แหล่งเงินทุนกู้ยืม</p>
         <v-divider class="my-3"></v-divider>
-        <!--<checkbox-budgetsource type="loan_types"></checkbox-budgetsource>-->
+        <checkbox-budgetsource v-bind:value="form.loan_types" type="loan_types" @change="form.loan_types = $event"></checkbox-budgetsource>
       </v-flex>
     </v-layout>
 
@@ -27,7 +27,7 @@
           class="mt-3"
           label="จำนวนเงิน"
           disabled
-          v-model="form.total_budget"
+          v-model="totalBudget"
         > <!--ทุกครั้ง ที่ ข้างบนมีการเปลี่ยนเเปลง ตจ้องโหลด เสตจ ใหม่ ข้อมูลจึงจะอัพเดท-->
         </v-text-field>
       </v-flex>
@@ -46,16 +46,34 @@
     data : () =>({
       form : undefined
     }),
-    async created  () {
-      this.form = await this.$store.state.farmOwners.farmOwner
+    async mounted  () {
+      this.form = await this.$store.state.farmOwners.farmOwner;
       this.sumBudget()
+    },
+    computed : {
+      totalBudget : function(){
+        let total = 0;
+        total += this.form.budget_source.pivot.amount;
+        let loneTypes = this.form.loan_types;
+        loneTypes.forEach((t)=>{  // v-for='t in loneTypes'
+          if(t.pivot && t.pivot.amount){
+            total += t.pivot.amount
+          }
+        });
+
+        this.form.total_budget = total;
+        return this.form.total_budget;
+      },
+      testForLoop : function(){
+
+      }
     },
     methods : {
       sumBudget : async function () {
         this.$store.dispatch("farmOwners/sumBudget")
 
       }
-    }
+    },
   }
 
 </script>
