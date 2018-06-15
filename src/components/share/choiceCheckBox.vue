@@ -66,8 +66,6 @@
     async created () {
       this.items = await this.$store.dispatch("choices/getChoicesByType", this.type)
       await this.sync()
-      await console.log("created",this.items[0].id)
-      await console.log("created sel",this.selected)
     },
     methods: {
       sync: function () {

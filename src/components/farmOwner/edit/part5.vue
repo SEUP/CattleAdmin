@@ -25,8 +25,10 @@
         <v-divider class="my-3"></v-divider>
         <v-text-field
           class="mt-3"
-          label=""
-        >
+          label="จำนวนเงิน"
+          disabled
+          v-model="form.total_budget"
+        > <!--ทุกครั้ง ที่ ข้างบนมีการเปลี่ยนเเปลง ตจ้องโหลด เสตจ ใหม่ ข้อมูลจึงจะอัพเดท-->
         </v-text-field>
       </v-flex>
     </v-layout>
@@ -46,7 +48,14 @@
     }),
     async created  () {
       this.form = await this.$store.state.farmOwners.farmOwner
+      this.sumBudget()
     },
+    methods : {
+      sumBudget : async function () {
+        this.$store.dispatch("farmOwners/sumBudget")
+
+      }
+    }
   }
 
 </script>
