@@ -1,7 +1,7 @@
 <template>
   <v-container v-if="isReady">
     <v-layout row v-scroll="onScroll">
-      <v-flex xs12>
+      <v-flex xs9>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
           เเก้ไขข้อมูลเกษตรกร
         </v-card-text>

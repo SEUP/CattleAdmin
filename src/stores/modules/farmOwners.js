@@ -2,14 +2,20 @@ export default {
   namespaced: true,
   state: {
     farmOwner: null
+  },
+  mutations: {
+    setFarmOwner: function (state, farmOwner) {
+      state.farmOwner = farmOwner;
+      state.isLoad = true
     },
-    mutations: {
-      setFarmOwner: function (state, farmOwner) {
-        state.farmOwner = farmOwner;
-        state.isLoad = true
+    updateChoices : function(state,params){
+      state.farmOwner[params.type] = params.value;
     }
   },
   actions: {
+    updateChoices: function (context, params) {
+      context.commit("updateChoices",params);
+    },
     getFarmOwners: async function (context, params = null) {
       let result = await axios.get("api/farm-owner", {params: params})
         .then((response) => {
@@ -35,7 +41,7 @@ export default {
           });
         // console.log("VX",result)
         return result
-      }else {
+      } else {
         return farmOwner;
       }
     },

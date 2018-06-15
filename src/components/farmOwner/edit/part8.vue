@@ -29,7 +29,22 @@
 
 <script>
     export default {
-        name: "part8"
+        name: "part8",
+      data (){
+        return{
+          form:null
+        }
+      },
+      async created (){
+        
+      },methods : {
+        updateForm : async function () {
+          // console.log("TO UPDATE",this.form)
+          await this.$store.dispatch("farmOwners/updateState",this.form)
+          let data = await this.$store.state.farmOwners.farmOwner
+          // console.log("UPDATED",data)
+        }
+      }
     }
 </script>
 

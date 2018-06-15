@@ -1,30 +1,32 @@
 <template>
-  <div v-if="form">
+  <div >
     <v-layout column wrap>
       <v-flex xs12 >
         <v-card-text class="pa-2 title">2.1 การเลี้ยงโคเนื้อของท่านมีวัตถุประสงค์เพื่ออะไร (เลือกได้มากกว่า 1 ข้อ)</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
-            <choice-check-box type="farm_purposes" :value="form.farm_purposes"></choice-check-box>
+            <choice-check-box type="farm_purposes" :value="form.farm_purposes">
+            </choice-check-box>
         </div>
 
         <v-card-text class="pa-2 title">2.2 ท่านมีการจดบันทึกข้อมูลหรือทำประวัติโคเนื้อหรือไม่</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
-            <choice-select type="farm_record" :value="form.farm_record"></choice-select>
+            <choice-select type="farm_record" :value="form.farm_record">
+            </choice-select>
         </div>
 
         <v-card-text class="pa-2 title">2.3 จำนวนโคเนื้อที่เกษตกรเลี้ยงทั้งหมด (ตัว)</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
-            <v-text-field label="จำนวน" v-model="form.total_master_breeding_types" disabled></v-text-field>
+            <v-text-field label="จำนวน" v-model="form.total_master_breeding_types" disabled>
+            </v-text-field>
         </div>
 
         <v-card-text class="pa-2 title">2.4 พ่อพันธุ์โคเนื้อที่เลี้ยง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4" >
-            <v-text-field  label="จำนวน" v-model="form.total_male_breeding_types" disabled>
-            </v-text-field>
+          <v-text-field  label="จำนวน" v-model="form.total_male_breeding_types" disabled></v-text-field>
         </div>
 
         <v-card-text class="pa-2 title">2.5 แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
@@ -130,10 +132,11 @@
       name: "part2",
       components: {ChoiceSelect, ChoiceCheckBox},
       data : () =>({
-        form : undefined
+        form : {}
       }),
       async created  () {
-          this.form = await this.$store.state.farmOwners.farmOwner
+        //this.form = await this.$store.state.farmOwners.farmOwner
+        // await console.log("P2",this.form)
       },
     }
 </script>
