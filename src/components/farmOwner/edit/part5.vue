@@ -41,29 +41,35 @@
 
   export default {
     name: "Part5",
-    components: {checkboxBudgetsource, ChoiceSelect },
-    data : () =>({
-      form : undefined
+    components: {checkboxBudgetsource, ChoiceSelect},
+    data: () => ({
+      form: undefined
     }),
-    async mounted  () {
+    async mounted() {
       this.form = await this.$store.state.farmOwners.farmOwner;
+      //console.log("DATA", this.form)
     },
-    computed : {
-      totalBudget : function(){
+    computed: {
+      totalBudget: function () {
         let total = 0;
         total += this.form.budget_source.pivot.amount;
-        let loneTypes = this.form.loan_types;
-        loneTypes.forEach((t)=>{  // v-for='t in loneTypes'
-          if(t.pivot && t.pivot.amount){
-            total += t.pivot.amount
+        let loneTypes = this.form.loan_types ? this.form.loan_types : [];
+        loneTypes.forEach((t) => {  // v-for='t in loneTypes'
+          if (t.pivot && t.pivot.amount) {
+             total += parseInt(t.pivot.amount)
           }
         });
         this.form.total_budget = total;
         return this.form.total_budget;
       },
     },
+    methods: {
+      updateForm: async function () {
+        await this.$store.dispatch("farmOwners/updateState", this.form);
+        let data = await this.$store.state.farmOwners.farmOwner
+      }
+    },
   }
-
 </script>
 
 <style scoped>
