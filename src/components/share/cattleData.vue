@@ -11,24 +11,26 @@
         </v-checkbox>
         <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ'">
           <template>
-            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1" v-model="mainBreed.pivot.remark"/>
+            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1"
+                          v-model="mainBreed.pivot.remark" @blur="updateValue(type,selMainBreeds)"/>
             <v-layout>
               <v-flex xs12 md4 mx-1>
                 <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details
-                              v-model="mainBreed.pivot.amount"/>
+                              v-model="mainBreed.pivot.amount" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
               <v-flex xs12 md4 mx-1>
                 <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
                           :items="source_opt" v-model="mainBreed.pivot.source_opt"
+                          @change="updateValue(type,selMainBreeds)"
                 />
               </v-flex>
               <v-flex xs12 md4 mx-1>
                 <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details
-                              v-model="mainBreed.pivot.source"/>
+                              v-model="mainBreed.pivot.source" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
               <v-flex xs12 md4 mx-1>
                 <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details
-                              v-model="mainBreed.pivot.price"></v-text-field>
+                              v-model="mainBreed.pivot.price" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
             </v-layout>
           </template>
@@ -45,18 +47,25 @@
               <v-layout>
                 <v-flex xs12 md4 mx-1>
                   <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details
-                                v-if="subBreed.pivot" v-model="subBreed.pivot.amount"/>
-                </v-flex>
-                <v-flex xs12 md4 mx-1>
-                  <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
-                            :items="source_opt"
+                                v-if="subBreed.pivot" v-model="subBreed.pivot.amount"
+                                @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
                   />
                 </v-flex>
                 <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details/>
+                  <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
+                            v-model="subBreed.pivot.source_opt"
+                            :items="source_opt"
+                            @change="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
+                  />
                 </v-flex>
                 <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details></v-text-field>
+                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details v-model="subBreed.pivot.source"
+                                @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
+                  />
+                </v-flex>
+                <v-flex xs12 md4 mx-1>
+                  <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details v-model="subBreed.pivot.price"
+                                @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"/>
                 </v-flex>
               </v-layout>
             </template>
