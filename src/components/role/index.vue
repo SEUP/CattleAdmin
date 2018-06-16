@@ -10,7 +10,7 @@
           prepend-icon="mdi-magnify"
           name="input-1-3"
           label="ค้นหา"
-          single-line
+          province_id:
           v-model="form.keyword"
           @keyup.13="search()"
         ></v-text-field>
