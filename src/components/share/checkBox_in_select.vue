@@ -5,9 +5,11 @@
                :items="items"
                item-text="choice"
               v-model="selectedValuechoice"
+              class="mb-2"
      ></v-select>
+
      <div v-if="selectedValuechoice.id == 202">
-       <v-layout v-for="item in items_Box">
+       <v-layout v-for="item in items_Box" :key="item.id" class="mt-3">
          <v-flex class="ml-s xs6"  >
            <v-checkbox :label="item.choice" hide-details :value="item"
                        :input-value="value_Box"

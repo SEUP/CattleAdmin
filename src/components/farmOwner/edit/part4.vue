@@ -70,7 +70,7 @@
     <v-layout row wrap mt-5>
       <v-flex xs12>
         <p class="title">4.7 ท่านได้ทำวัคซีนป้องกันโรคให้กับโคเนื้อที่เลี้ยงหรือไม่</p>
-        <v-divider class="my-3"></v-divider>
+        <v-divider class="my-1"></v-divider>
         <check-box_in_select type="vaccine_ever" :value="form.vaccine_ever" @change="form.vaccine_ever=$event"></check-box_in_select>
       </v-flex>
     </v-layout>

@@ -8,7 +8,7 @@
 
         <v-divider></v-divider>
         <v-container fluid grid-list-lg>
-          <v-layout row wrap >
+          <v-layout row wrap v-if="farmOwner" >
             <v-flex xs9>
               <v-card>
                 <v-divider class="divider-bold indigo"></v-divider>
@@ -212,6 +212,7 @@
       },
       name: "addFarmOwner",
       data :()=>({
+
         steper :1,
         farmOwner : null
       }),
