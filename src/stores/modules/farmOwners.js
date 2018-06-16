@@ -13,6 +13,19 @@ export default {
     }
   },
   actions: {
+    createFarmOwner: async function (context) {
+      let form = context.state.farmOwner;
+      console.log(form);
+      let result = await  axios.post("api/farm-owner/create", form)
+        .then((response) => {
+          context.commit("setFarmOwner", response.data);
+          return response.data;
+        })
+        .catch((err) => {
+          return null
+        })
+      return result
+    },
     updateChoices: function (context, params) {
       context.commit("updateChoices",params);
     },

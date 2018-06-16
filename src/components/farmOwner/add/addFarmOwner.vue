@@ -180,7 +180,7 @@
     </v-layout>
     <v-layout class="hidden-md-and-up">
       <v-flex xs12 mx-3>
-        <v-btn color="success" block @click.native="updateFarmOwner">Save All</v-btn>
+        <v-btn color="success" block @click.native="createFarmOwner">Save All</v-btn>
       </v-flex>
     </v-layout>
 
@@ -228,8 +228,14 @@
         await this.$store.dispatch('districtSelect/load');
         this.farmOwner = await this.$store.state.farmOwners.farmOwner;
       },
-      elFocus : function (el) {
-        this.steper = el;
+      methods:{
+        elFocus : function (el) {
+          this.steper = el;
+        },
+        createFarmOwner: async function () {
+          let data = await this.$store.dispatch("farmOwners/createFarmOwner");
+          await console.log("SAVE", data)
+        },
       }
     }
 </script>

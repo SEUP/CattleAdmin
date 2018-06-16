@@ -62,7 +62,7 @@
       },methods : {
         updateForm : async function () {
           // console.log("TO UPDATE",this.form)
-          await this.$store.dispatch("farmOwners/updateState",this.form)
+          await this.$store.dispatch("farmOwners/updateState",this.form);
           let data = await this.$store.state.farmOwners.farmOwner
           // console.log("UPDATED",data)
         }
