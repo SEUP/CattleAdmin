@@ -82,7 +82,7 @@
     props: {
       type: {
         type: String,
-        Default: [],
+        default: [],
       },
     },
     data: () => ({
