@@ -79,7 +79,7 @@
       <v-flex xs12>
         <p class="title">4.8 ท่านมีการจัดการมูลโคในฟาร์มของท่านอย่างไร (เลือกได้มากกว่า 1 ข้อ)</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="cattle_dung_uses"></choice-check-box>
+        <choice-check-box type="cattle_dung_uses" :value="form.cattle_dung_uses" @change="form.cattle_dung_uses=$event" ></choice-check-box>
       </v-flex>
     </v-layout>
 
