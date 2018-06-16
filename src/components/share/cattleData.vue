@@ -126,7 +126,7 @@
         let childrenChoice = this.choices[type];
 
         let mainLength = childrenChoice.length;
-        let selectLength = childrenForm.length;
+        let selectLength = childrenForm ?  childrenForm.length : 0;
 
         for (let i = 0; i < mainLength; i++) {
           for (let j = 0; j < selectLength; j++) {
