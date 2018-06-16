@@ -143,7 +143,7 @@
     methods : {
       sumSubChildCattle: function (type) {
         console.log("IN",type)
-        let subChildOption = this.form[type] ? this.form[type] :
+        let subChildOption = this.form[type] ? this.form[type] : [];
         // console.log(subChildOption)
         let sum = 0;
         for (let i = 0; i < subChildOption.length; i++) {

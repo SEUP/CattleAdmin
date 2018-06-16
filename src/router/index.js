@@ -5,7 +5,7 @@ import Home from '@/components/Home'
 import userRoute from './user'
 import roleRoute from './role'
 import farmOwner from './farmOwner'
-
+import chart from "./chart"
 
 function view(name) {
   return function (resolve) {
@@ -35,18 +35,19 @@ export default new Router({
         farmOwner,
         userRoute,
         roleRoute,
+        chart,
         {
-          path : "/test",
-          name : "test",
-          component : view("test")
-        },{
-          path : "/test2",
-          name : "test2",
-          component : view("test2")
-        },{
-          path : "/test3",
-          name : "test3",
-          component : view("test3")
+          path: "/test",
+          name: "test",
+          component: view("test")
+        }, {
+          path: "/test2",
+          name: "test2",
+          component: view("test2")
+        }, {
+          path: "/test3",
+          name: "test3",
+          component: view("test3")
         },
       ]
     }]

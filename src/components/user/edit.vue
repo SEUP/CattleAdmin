@@ -23,7 +23,7 @@
               v-model="form.name"
               label="ชื่อ-นามสกุล"
 
-              single-line
+              province_id:
               required
             ></v-text-field>
 
