@@ -2,13 +2,18 @@
   <v-container>
     <v-layout align-center>
       <v-flex>
-        <h1 class="display-1"><v-icon x-large color="primary">mdi-account-box</v-icon> จัดการข้อมูลผู้ใช้ระบบ</h1>
+        <h1 class="display-1">
+          <v-icon x-large color="primary">mdi-account-box</v-icon>
+          จัดการข้อมูลผู้ใช้ระบบ
+        </h1>
       </v-flex>
     </v-layout>
     <v-divider class="my-3"></v-divider>
     <v-layout row>
       <v-flex xs3>
-        <v-btn :to="{name:'user-create'}" color="primary"><v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม</v-btn>
+        <v-btn :to="{name:'user-create'}" color="primary">
+          <v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม
+        </v-btn>
       </v-flex>
       <v-flex xs7 offset-xs6>
         <v-text-field
@@ -30,7 +35,7 @@
             hide-actions
             class="elevation-1 "
           >
-            <template slot="items" slot-scope="props" >
+            <template slot="items" slot-scope="props">
               <td class="text-xs-center">{{ props.item.name }}</td>
               <td class="text-xs-center">{{ props.item.email }}</td>
               <td class="text-xs-center">{{ props.item.username}}</td>
@@ -41,11 +46,14 @@
                   </li>
                 </ul>
               </td>
-              <td class="text-xs-center">{{ "TODO เดี๋ยวมาทำ รอข้อมูล"}}</td>
+              <td class="text-xs-center">{{ getProvinceAmphurDistrictString(props.item) }}</td>
               <td class="text-xs-center">{{ props.item.action }}
                 <v-btn class="ma-0" icon :to="{name:'user-edit',params : {id : props.item.id}}">
-                  <v-icon color="primary" >create</v-icon></v-btn>
-                <v-btn  class="ma-0" icon @click="delUser(props.item.id)"> <v-icon color="red" >delete</v-icon></v-btn>
+                  <v-icon color="primary">create</v-icon>
+                </v-btn>
+                <v-btn class="ma-0" icon @click="delUser(props.item.id)">
+                  <v-icon color="red">delete</v-icon>
+                </v-btn>
               </td>
             </template>
           </v-data-table>
@@ -65,7 +73,7 @@
 <script>
   export default {
     data: () => ({
-      ID :null,
+      ID: null,
       headers: [
         {text: "Name", align: "center", value: "name"},
         {text: "Email", align: "center", value: "email"},
@@ -76,11 +84,11 @@
 
 
       ],
-      paginate:{},
-      users : [],
+      paginate: {},
+      users: [],
       form: {
         keyword: "",
-        with : ['roles'],
+        with: ['roles', 'province', 'amphur', 'district'],
         page: 1,
       },
     }),
@@ -91,6 +99,18 @@
     }
     ,
     methods: {
+      getProvinceAmphurDistrictString: function (user) {
+        let pvString = user.province ? user.province.PROVINCE_NAME : "-";
+        let amString = user.amphur ? user.amphur.AMPHUR_NAME : "-";
+        let diString = user.district ? user.district.DISTRICT_NAME : "-";
+
+
+        let outputStr = "";
+        outputStr += pvString == "-" ? "" : pvString;
+        outputStr += amString == "-" ? "" : " " + amString;
+        outputStr += diString == "-" ? "" : " " + diString;
+        return outputStr;
+      },
       changePage: async function (page) {
         this.form.page = page;
         let paginate = await  this.$store.dispatch("users/getUsers", this.form)
@@ -100,7 +120,7 @@
       },
       loadData: async function () {
         this.form.page = 1;
-        let page = await this.$store.dispatch('users/getUsers' , this.form);
+        let page = await this.$store.dispatch('users/getUsers', this.form);
         this.paginate = page;
         this.users = page.data;
       }
@@ -111,13 +131,13 @@
         this.paginate = page;
         this.users = page.data;
       },
-      delUser :async function (id) {
+      delUser: async function (id) {
         console.log(id);
-        let data = await this.$store.dispatch("users/deleteUserById",id);
-        await  console.log(data,"has been destroy (In Vue)");
+        let data = await this.$store.dispatch("users/deleteUserById", id);
+        await  console.log(data, "has been destroy (In Vue)");
         await this.loadData()
       },
-      getUserByID  : async function () {
+      getUserByID: async function () {
         let data = await  this.$store.dispatch("users/getUserById", this.idSand);
         this.UserDataFormID = data
       }
