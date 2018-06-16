@@ -63,7 +63,7 @@
       <v-flex xs12>
         <p class="title">4.6 การถ่ายพยาธิ(ครั้ง/ปี)</p>
         <v-divider class="my-3"></v-divider>
-        <ChoiceSelect type="dewormed_amount" :value="form.dewormed_amount" @chang="form.dewormed_amount=$event"></ChoiceSelect>
+        <ChoiceSelect type="dewormed_amount"   :value="form.dewormed_amount" @change="form.dewormed_amount=$event"></ChoiceSelect>
       </v-flex>
     </v-layout>
 
@@ -105,6 +105,8 @@
           // console.log("P1",this.form)
           await this.$store.dispatch("farmOwners/updateState",this.form);
           let data = await this.$store.state.farmOwners.farmOwner
+
+
         }
     }
     }

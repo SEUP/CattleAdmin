@@ -67,10 +67,10 @@
             <v-btn color="primary" @click="saveUser"> Submit</v-btn>
             <v-btn @click="$router.go(-1)"> Cancel</v-btn>
           </v-form>
-
         </v-card>
       </v-flex>
     </v-layout>
+
   </v-container>
 
 

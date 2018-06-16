@@ -1,6 +1,4 @@
-
 <template>
-
     <v-container v-if="form != null">
       <v-form>
         <v-flex xs12>
@@ -49,9 +47,7 @@
         </v-flex>
       </v-form>
     </v-container>
-
 </template>
-
 
 <script>
   import ChoiceSelect from "../../share/choiceSelect";
