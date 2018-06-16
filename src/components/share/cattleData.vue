@@ -14,7 +14,8 @@
             <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1" v-model="mainBreed.pivot.remark"/>
             <v-layout>
               <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details  v-model="mainBreed.pivot.amount"/>
+                <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details
+                              v-model="mainBreed.pivot.amount"/>
               </v-flex>
               <v-flex xs12 md4 mx-1>
                 <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
@@ -22,10 +23,12 @@
                 />
               </v-flex>
               <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details v-model="mainBreed.pivot.source"/>
+                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details
+                              v-model="mainBreed.pivot.source"/>
               </v-flex>
               <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details v-model="mainBreed.pivot.price"></v-text-field>
+                <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details
+                              v-model="mainBreed.pivot.price"></v-text-field>
               </v-flex>
             </v-layout>
           </template>
@@ -50,10 +53,10 @@
                   />
                 </v-flex>
                 <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details />
+                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details/>
                 </v-flex>
                 <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details ></v-text-field>
+                  <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details></v-text-field>
                 </v-flex>
               </v-layout>
             </template>
@@ -74,9 +77,9 @@
       },
     },
     data: () => ({
-      source_opt : ['ตลาดโค','พ่อค้าคนกลาง','ในหมู่บ้าน','โครงการหลวง','ผลิตเองในฟาร์ม','อื่นๆ'],
+      source_opt: ['ตลาดโค', 'พ่อค้าคนกลาง', 'ในหมู่บ้าน', 'โครงการหลวง', 'ผลิตเองในฟาร์ม', 'อื่นๆ'],
       choices: [],
-      selMainBreeds2 : [],
+      selMainBreeds2: [],
       selMainBreeds: [],
       selSubBreeds: {
         female_breeding_types: [],
@@ -108,10 +111,10 @@
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
       console.log(this.isReady);
-      console.log("BEFORE",this.choices[this.type])
+      console.log("BEFORE", this.choices[this.type])
       this.sync();
       console.log(this.isReady);
-      console.log("AFTER",this.choices[this.type])
+      console.log("AFTER", this.choices[this.type])
     },
     methods: {
       updateValue: function (type, value) {
@@ -154,25 +157,19 @@
         let selectLength = select.length;
 
         for (let i = 0; i < mainLength; i++) {
-          if(!main[i].pivot) {
-            main[i].pivot = {}
-          }
-          for (let child = 0 ;child<main[i].children.length;child++){
-            main[i].children[child].pivot = {}
-          }
+
           for (let j = 0; j < selectLength; j++) {
             if (main[i].id == select[j].id) {
               main[i] = select[j]
               this.selMainBreeds.push(main[i]);
               // sync children
               if (main[i].children.length > 0) {
-
                 this.childrenSync(main[i].children[0].type);
               }
             }
           }
         }
-        this.choices[this.type]  = main
+        this.choices[this.type] = main
         this.isReady = true;
       }
     }
