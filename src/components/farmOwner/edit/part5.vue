@@ -28,7 +28,7 @@
           label="จำนวนเงิน"
           disabled
           v-model="totalBudget"
-        > <!--ทุกครั้ง ที่ ข้างบนมีการเปลี่ยนเเปลง ตจ้องโหลด เสตจ ใหม่ ข้อมูลจึงจะอัพเดท-->
+        >
         </v-text-field>
       </v-flex>
     </v-layout>
@@ -48,7 +48,6 @@
     }),
     async mounted  () {
       this.form = await this.$store.state.farmOwners.farmOwner;
-      this.sumBudget()
     },
     computed : {
       totalBudget : function(){
@@ -60,19 +59,9 @@
             total += t.pivot.amount
           }
         });
-
         this.form.total_budget = total;
         return this.form.total_budget;
       },
-      testForLoop : function(){
-
-      }
-    },
-    methods : {
-      sumBudget : async function () {
-        this.$store.dispatch("farmOwners/sumBudget")
-
-      }
     },
   }
 

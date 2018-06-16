@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="isReady">
-    <v-layout row v-scroll="onScroll">
+    <v-layout row >
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
           เเก้ไขข้อมูลเกษตรกร
@@ -230,17 +230,6 @@
 
     }
     , methods: {
-      onScroll(e) {
-        let offsetTop = window.pageYOffset || document.documentElement.scrollTop
-        // console.log("offsetTop",offsetTop)
-        if (offsetTop >= 58) {
-          document.getElementById("side_menu").classList.remove('right_menu_fixed')
-          document.getElementById("side_menu").classList.add('right_menu_fixed_scrolling')
-        } else {
-          document.getElementById("side_menu").classList.remove('right_menu_fixed_scrolling')
-          document.getElementById("side_menu").classList.add('right_menu_fixed')
-        }
-      },
       elFocus: function (el) {
         this.steper = el
       },
