@@ -49,7 +49,7 @@
         }
         this.chartData = await axios.get(QueryString).then((r) => {
           return r.data
-        })
+        });
         this.displayChart();
       },
       displayChart: function () {

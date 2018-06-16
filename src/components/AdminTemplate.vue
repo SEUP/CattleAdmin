@@ -68,7 +68,7 @@
 
       </v-list>
 
-     </v-navigation-drawer>
+    </v-navigation-drawer>
 
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
@@ -87,16 +87,16 @@
             <v-icon>arrow_drop_down</v-icon>
           </v-btn>
         </v-toolbar-title>
-        <v-list >
-          <v-list-tile >
-            <v-list-tile-title >
-              <v-icon >mdi-account</v-icon>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title>
+              <v-icon>mdi-account</v-icon>
               User Profile
             </v-list-tile-title>
           </v-list-tile>
-          <v-list-tile >
-            <v-list-tile-title >
-              <v-icon >exit_to_app</v-icon>
+          <v-list-tile :to="{name:'Login'}">
+            <v-list-tile-title>
+              <v-icon>exit_to_app</v-icon>
               Logout
             </v-list-tile-title>
           </v-list-tile>

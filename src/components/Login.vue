@@ -1,5 +1,5 @@
 <template>
-<v-app id="inspire">
+  <v-app id="inspire">
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -7,16 +7,18 @@
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
                 <v-toolbar-title>Login form</v-toolbar-title>
-            </v-toolbar>
+              </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="person" name="login" label="Login si" type="text"></v-text-field>
-                  <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                  <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.email"
+                                type="text"></v-text-field>
+                  <v-text-field id="password" prepend-icon="lock" name="password" label="Password"
+                                v-model="form.password" type="password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn :to="{name:'admin-home'}" color="primary">Login</v-btn>
+                <v-btn @click="login()" color="primary">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -28,12 +30,20 @@
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'HelloWorld',
+    data() {
+      return {
+        form: {},
+      }
+    },
+    methods: {
+      login: async function () {
+        let token = await this.$store.dispatch("login/getToken", this.form)
+        if(token){
+          this.$router.push({name:'admin-home'})
+        }
+      }
     }
   }
-}
 </script>
