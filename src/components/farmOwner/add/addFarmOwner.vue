@@ -157,24 +157,21 @@
       },
       name: "addFarmOwner",
       data :()=>({
-        form : undefined,
         farmOwner : null
       }),
       computed : {
         isReady : function(){
           let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
           let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
-          return choicesLoaded && districtLoaded;
+          return choicesLoaded && districtLoaded && this.farmOwner;
         }
       },
       async created() {
+        await this.$store.dispatch('farmOwners/getForm');
         await this.$store.dispatch('choices/load');
         await this.$store.dispatch('districtSelect/load');
+        this.farmOwner = await this.$store.state.farmOwners.farmOwner;
       },
-      toPart : function(part) {
-        document.getElementById(part).click();
-      }
-
     }
 </script>
 

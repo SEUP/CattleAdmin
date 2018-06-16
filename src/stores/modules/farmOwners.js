@@ -55,7 +55,6 @@ export default {
         .then((response) => {
           context.commit("setFarmOwner", response.data);
           return response.data;
-
         })
         .catch((err) => {
           return null
@@ -72,6 +71,18 @@ export default {
         });
       return result
     },
+    getForm :async function (context){
+      let result = await  axios.get("api/farm-owner/create")
+        .then((response) => {
+          context.commit("setFarmOwner",response.data);
+          return response.data
+        })
+        .catch((err) => {
+          return null
+        });
+      return result
+    }
+
   }
 /// getByID
 
