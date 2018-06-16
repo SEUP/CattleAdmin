@@ -15,7 +15,7 @@
                 <v-spacer></v-spacer>
 
                 <v-flex xs12 md5 >
-                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.id = $event.id"></select-search>
+                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.breeding = $event.id"></select-search>
                 </v-flex>
                 <v-flex xs12>
                   <district-select
