@@ -25,6 +25,12 @@
       province: null,
       chartData: null,
     }),
+    watch: {
+      '$route'(to, from) {
+        // Whatever you need to change route
+        this.load();
+      }
+    },
     mounted() {
       this.load();
     },
@@ -38,8 +44,8 @@
       load: async function () {
         let type = this.$route.params.type;
         let QueryString = "/api/charts/pie/" + type;
-        if(this.province &&this.province.PROVINCE_ID != 0) {
-          QueryString += "/"+this.province.PROVINCE_ID;
+        if (this.province && this.province.PROVINCE_ID != 0) {
+          QueryString += "/" + this.province.PROVINCE_ID;
         }
         this.chartData = await axios.get(QueryString).then((r) => {
           return r.data
