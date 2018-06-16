@@ -110,8 +110,6 @@
         male_under_six_breeding_types: [],
         male_under_six_int_breeding_types: [],
         male_under_six_mixed_breeding_types: [],
-
-
       },
       form: null,
       isReady: false,
@@ -119,15 +117,21 @@
     async created() {
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
-      console.log(this.isReady);
-      console.log("BEFORE", this.choices[this.type])
+      // console.log(this.isReady);
+      // console.log("BEFORE", this.choices[this.type])
+      this.addSelSubBreeds()
       this.sync();
-      console.log(this.isReady);
-      console.log("AFTER", this.choices[this.type])
+      // console.log(this.isReady);
+      // console.log("AFTER", this.choices[this.type])
     },
     methods: {
+      addSelSubBreeds : function () {
+        this.selSubBreeds
+
+      },
       updateValue: function (type, value) {
-        console.log('update value');
+        this.$emit("change",type)
+        // console.log('update value');
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
       childrenSync: function (type, order) {
@@ -152,7 +156,6 @@
             } catch (e) {
               console.log(childrenChoice[i], childrenForm[j])
             }
-
 
           }
         }

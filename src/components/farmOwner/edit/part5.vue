@@ -2,7 +2,6 @@
   <v-container v-if="form">
     <v-layout row wrap>
       <v-flex xs12>
-
         <p class="title">5.1 เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</p>
 
         <v-divider class="my-3"></v-divider>
