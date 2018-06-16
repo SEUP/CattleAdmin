@@ -5,9 +5,12 @@
           <p class="title">8.1 ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ</p>
           <v-divider class="my-3"></v-divider>
           <v-text-field
+            label="ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ"
             class="mt-3 ml-3"
             multi-line
-            label="ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ">
+            v-model="form.problem "
+            @blur="updateForm"
+          >
           </v-text-field>
         </v-flex>
       </v-layout>
@@ -17,9 +20,12 @@
           <p class="title">8.2 ท่านมีข้อเสนอแนะในการพัฒนาระบบการผลิตและการตลาดโคเนื้อในเขตพื้นที่ เชียงราย พะเยา แพร่ น่าน อย่างไร</p>
           <v-divider class="my-3"></v-divider>
           <v-text-field
+            label="ข้อเสนอแนะในการพัฒนาระบบการผลิตและการตลาดโคเนื้อในเขตพื้นที่ เชียงราย พะเยา แพร่ น่าน อย่างไร"
             class="mt-3 ml-3"
             multi-line
-            label="ข้อเสนอแนะในการพัฒนาระบบการผลิตและการตลาดโคเนื้อในเขตพื้นที่ เชียงราย พะเยา แพร่ น่าน อย่างไร">
+            v-model="form.suggestion"
+            @blur="updateForm"
+          >
           </v-text-field>
         </v-flex>
       </v-layout>
@@ -36,13 +42,11 @@
         }
       },
       async created (){
-        
+        this.form = await this.$store.state.farmOwners.farmOwner
       },methods : {
         updateForm : async function () {
-          // console.log("TO UPDATE",this.form)
           await this.$store.dispatch("farmOwners/updateState",this.form)
           let data = await this.$store.state.farmOwners.farmOwner
-          // console.log("UPDATED",data)
         }
       }
     }
