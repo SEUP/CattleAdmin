@@ -11,7 +11,7 @@
           <v-layout row wrap v-if="form">
             <v-flex xs9>
               <v-card>
-                <v-divider class="divider-bold indigo"></v-divider>
+                <v-divider class="pt-1 indigo"></v-divider>
                 <v-stepper v-model="steper" vertical non-linear>
 
                   <template>
@@ -117,8 +117,8 @@
             </v-flex>
 
             <v-flex xs3>
-              <v-divider class="divider-bold success"></v-divider>
-              <v-list class="card-border">
+              <v-divider class="pt-1 success"></v-divider>
+              <v-list >
                 <v-list-tile class="text-xs-center">
                   <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
                 </v-list-tile>

@@ -6,7 +6,7 @@
         <!--Search Input -->
         <v-layout>
           <v-flex>
-            <v-divider class="divider-bold orange"></v-divider>
+            <v-divider class="pt-1 orange"></v-divider>
             <v-card>
               <v-layout wrap px-3 py-1>
                 <v-flex xs12 md6>
