@@ -20,53 +20,53 @@
                     </v-stepper-step>
                     <v-stepper-content :step="1">
 
-                      <part1></part1>
+                      <part1 ></part1>
 
                       <v-btn color="primary" @click.native="steper = 2">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
-                  <template>
+                  <template >
                     <v-stepper-step :complete="steper > 2" :step="2" editable>ส่วนที่ 2
                       <small>ข้อมูลการเลี้ยงเเละสถานภาพฟาร์ม</small>
                     </v-stepper-step>
                     <v-stepper-content :step="2">
-                      <Part2></Part2>
+                      <Part2 ></Part2>
                       <v-btn color="primary" @click.native="steper = 3">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
-                  </template>
-                  <template id="f3">
+                  </template >
+                  <template id="f3" >
                     <v-stepper-step :complete="steper > 3" :step="3" editable>ส่วนที่ 3
                       <small>ข้อมูลแรงงาน พื้นที่ในการเลี้ยง และการจัดการอาหาร</small>
                     </v-stepper-step>
                     <v-stepper-content :step="3">
 
-                      <Part3></Part3>
+                      <Part3 ></Part3>
 
                       <v-btn color="primary" @click.native="steper = 4">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
 
-                  <template id="f4">
+                  <template id="f4" >
                     <v-stepper-step :complete="steper > 4" :step="4" editable>ส่วนที่ 4
                       <small>การผสมพันธ์ุ ประสิทธิภาพการผลิต และการรักษาโรค</small>
                     </v-stepper-step>
                     <v-stepper-content :step="4">
-                      <part4></part4>
+                      <part4 ></part4>
                       <v-btn color="primary" @click.native="steper = 5">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
 
-                  <template id="f5">
+                  <template id="f5" >
                     <v-stepper-step :complete="steper > 5" :step="5" editable>ส่วนที่ 5
                       <small>ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="5">
 
-                      <part5></part5>
+                      <part5 ></part5>
 
                       <v-btn color="primary" @click.native="steper = 6">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
@@ -79,34 +79,34 @@
                     </v-stepper-step>
                     <v-stepper-content :step="6">
 
-                      <part6></part6>
+                      <part6 ></part6>
 
                       <v-btn color="primary" @click.native="steper = 7">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
 
-                  <template id="f7">
+                  <template id="f7" >
                     <v-stepper-step :complete="steper > 7" :step="7" editable>ส่วนที่ 7
                       <small>การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="7">
 
                       <!---->
-                      <part7></part7>
+                      <part7 ></part7>
 
                       <v-btn color="primary" @click.native="steper = 8">Continue</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
 
-                  <template id="f8">
+                  <template id="f8" >
                     <v-stepper-step :complete="steper > 8" :step="8" editable>ส่วนที่ 8
                       <small>ปัญหา อุปสรรค และข้อเสนอแนะ</small>
                     </v-stepper-step>
                     <v-stepper-content :step="8">
 
-                      <part8></part8>
+                      <part8 ></part8>
 
                       <v-btn color="success">save</v-btn>
                       <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>

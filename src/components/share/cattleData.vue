@@ -177,7 +177,7 @@
         master -= oldVal;
         master += newVal;
         this.form.total_master_breeding_types = master
-        console.log("master", this.form.total_master_breeding_types)
+        // console.log("master", this.form.total_master_breeding_types)
       },
       updateTotal : function (type, value) {
         // console.log(value)
@@ -237,7 +237,6 @@
               // console.log("master1",this.form.total_master_breeding_types)
               mainVal -= subVal
               let totalSubVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
-              console.log("toMaster",totalSubType,sumVal)
               this.updateTotalMaster(totalSubType,sumVal)
               this.form[totalSubType] = sumVal
               // console.log(this.form[totalSubType])

@@ -1,11 +1,12 @@
 <template >
-  <v-container >
+  <v-container v-if="form">
     <v-layout row wrap>
       <v-flex xs12>
 
         <p class="title">4.1 ผสมพันธุ์โคเนื้อในฟาร์มของท่าน</p>
         <v-divider class="my-3"></v-divider>
-        <choice-select :value="form.farm_breeding_type" type="farm_breeding_type" @change="form.farm_breeding_type=$event" class="ml-3"></choice-select>
+        <choice-select :value="form.farm_breeding_type" type="farm_breeding_type"
+                       @change="form.farm_breeding_type=$event" class="ml-3"></choice-select>
 
       </v-flex>
     </v-layout>
@@ -14,13 +15,15 @@
       <v-flex xs12>
         <p class="title" >4.2 การผสมเทียมใช้น้ำเชื้อจากแหล่งใด</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="inseminate_sources" :value="form.inseminate_sources" @change="form.inseminate_sources=$event"></choice-check-box>
+        <choice-check-box type="inseminate_sources" :value="form.inseminate_sources"
+                          @change="form.inseminate_sources=$event"></choice-check-box>
       </v-flex>
 
       <v-flex mt-3>
         <p class="title" >4.2.1 ผู้ให้บริการผสมเทียมคือใคร</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="breeders" :value="form.breeders" @change="form.breeders=$event"></choice-check-box>
+        <choice-check-box type="breeders" :value="form.breeders"
+                          @change="form.breeders=$event"></choice-check-box>
       </v-flex>
     </v-layout>
 
@@ -41,13 +44,15 @@
       <v-flex xs12>
         <p class="title">4.4 การตายของโคในรอบปี</p>
         <v-divider class="my-3"></v-divider>
-        <choice-select type="cattle_death" class="ml-3" :value="form.cattle_death" @change="form.cattle_death=$event"></choice-select>
+        <choice-select type="cattle_death" class="ml-3" :value="form.cattle_death"
+                       @change="form.cattle_death=$event"></choice-select>
       </v-flex>
 
       <v-flex mt-3>
         <p class="title">4.4.1 สาเหตุการตาย</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="cattle_death_causes" :value="form.cattle_death_causes" @change="form.cattle_death_causes=$event"></choice-check-box>
+        <choice-check-box type="cattle_death_causes" :value="form.cattle_death_causes"
+                          @change="form.cattle_death_causes=$event"></choice-check-box>
       </v-flex>
     </v-layout>
 
@@ -55,7 +60,8 @@
       <v-flex xs12>
         <p class="title">4.5 เมื่อโคเจ็บป่วยบุคคลที่ทำการรักษาให้(ตอบได้มากกว่า1ข้อ)</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="disease_cured_by " :value="form.disease_cured_by" @change="form.disease_cured_by=$event"></choice-check-box>
+        <choice-check-box type="disease_cured_by" :value="form.disease_cured_by"
+                          @change="form.disease_cured_by=$event"></choice-check-box>
       </v-flex>
     </v-layout>
 
@@ -63,7 +69,8 @@
       <v-flex xs12>
         <p class="title">4.6 การถ่ายพยาธิ(ครั้ง/ปี)</p>
         <v-divider class="my-3"></v-divider>
-        <ChoiceSelect type="dewormed_amount" :value="form.dewormed_amount" @chang="form.dewormed_amount=$event"></ChoiceSelect>
+        <ChoiceSelect type="dewormed_amount" :value="form.dewormed_amount"
+                      @change="form.dewormed_amount=$event"></ChoiceSelect>
       </v-flex>
     </v-layout>
 
@@ -71,7 +78,8 @@
       <v-flex xs12>
         <p class="title">4.7 ท่านได้ทำวัคซีนป้องกันโรคให้กับโคเนื้อที่เลี้ยงหรือไม่</p>
         <v-divider class="my-1"></v-divider>
-        <check-box_in_select type="vaccine_ever" :value="form.vaccine_ever" @change="form.vaccine_ever=$event"></check-box_in_select>
+        <check-box_in_select type="vaccine_ever" :value="form.vaccine_ever"
+                             @change="form.vaccine_ever=$event"></check-box_in_select>
       </v-flex>
     </v-layout>
 
@@ -79,7 +87,8 @@
       <v-flex xs12>
         <p class="title">4.8 ท่านมีการจัดการมูลโคในฟาร์มของท่านอย่างไร (เลือกได้มากกว่า 1 ข้อ)</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="cattle_dung_uses" :value="form.cattle_dung_uses" @change="form.cattle_dung_uses=$event" ></choice-check-box>
+        <choice-check-box type="cattle_dung_uses" :value="form.cattle_dung_uses"
+                          @change="form.cattle_dung_uses=$event" ></choice-check-box>
       </v-flex>
     </v-layout>
 

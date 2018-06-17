@@ -71,10 +71,10 @@
         <v-card-text class="pa-2 title">2.10 ค่าใช้จ่ายในการเลี้ยงโคเนื้อ</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="ค่าใช้จ่ายโดยประมาณ (บาท/เดือน)" v-model="form.total_expense_amount" type="number" @blur="updateForm"/>
-          <v-text-field label="ค่ายา (บาท/เดือน)" v-model="form.drug_price" type="number" @blur="updateForm"/>
-          <v-text-field label="ค่าอาหารและแร่ธาตุ (บาท/เดือน)" v-model="form.food_price" type="number" @blur="updateForm"/>
-          <v-text-field label="อื่นๆ" v-model="form.expense_price" type="number" @blur="updateForm"/>
+          <v-text-field label="ค่าใช้จ่ายโดยประมาณ (บาท/เดือน)" v-model="form.total_expense_amount" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="ค่ายา (บาท/เดือน)" v-model="form.drug_price" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="ค่าอาหารและแร่ธาตุ (บาท/เดือน)" v-model="form.food_price" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="อื่นๆ" v-model="form.expense_price" type="number" @blur="updateForm" hide-details/>
         </div>
 
         <v-card-text class="pa-2 title">2.11 ท่านมีประสบการณ์การเลี้ยงโคเนื้อมานานแค่ไหน</v-card-text>
