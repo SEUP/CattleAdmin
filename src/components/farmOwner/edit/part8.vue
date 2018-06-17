@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container v-if="isReady">
       <v-layout row wrap>
         <v-flex xs12>
           <p class="title">8.1 ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ</p>
@@ -29,7 +29,6 @@
           </v-text-field>
         </v-flex>
       </v-layout>
-
     </v-container>
 </template>
 
@@ -38,14 +37,19 @@
         name: "part8",
       data (){
         return{
-          form:null
+          form:null,
+          isReady : false
         }
       },
       async created (){
-        this.form = await this.$store.state.farmOwners.farmOwner
-      },methods : {
+        this.form = await this.$store.state.farmOwners.farmOwner;
+        this.form.problem = await this.form.problem ? this.form.problem : "";
+        this.form.suggestion = await this.form.suggestion ? this.form.suggestion : "";
+        this.isReady = true
+
+       },methods : {
         updateForm : async function () {
-          await this.$store.dispatch("farmOwners/updateState",this.form)
+          await this.$store.dispatch("farmOwners/updateState",this.form);
           let data = await this.$store.state.farmOwners.farmOwner
         }
       }
