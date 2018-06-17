@@ -92,7 +92,7 @@
 <script>
   import ChoiceSelect from "../share/choiceSelect";
   import selectSearch from "../share/selectSearch";
-  import districtSelect from "@/components/share/districtSelect";
+  import districtSelect from "@/components/share/districtSelectSingleLine";
   export default {
     name: "farmOwner-index",
     components: {ChoiceSelect,districtSelect,selectSearch},
@@ -128,7 +128,6 @@
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.farmOwners = paginate.data;
-        console.log("TO search",this.form);
       },
       changePage: async function (page) {
         this.form.page = page;
@@ -151,7 +150,6 @@
 
         if(confirm("Do you want to delete this item?")){
           let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
-          await console.log("Delete",result)
           await this.loadData();
         }
 

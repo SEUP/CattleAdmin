@@ -173,21 +173,17 @@
       updateTotalMaster : function (type,newVal) {
         let master = this.form.total_master_breeding_types;
         let oldVal = this.form[type] ? this.form[type] : 0 ;
-          // console.log("updateTotalMaster",type,oldVal,newVal)
         master -= oldVal;
         master += newVal;
         this.form.total_master_breeding_types = master
-        // console.log("master", this.form.total_master_breeding_types)
       },
       updateTotal : function (type, value) {
-        // console.log(value)
         // loop in value
         let sumVal = 0;
         for(let i =0 ;i<value.length;i++){
           let val = value[i]
           if(val.children.length > 0 ){ //  ถ้ามี child พันธุ์ต่างๆประเทศ ผสม ถ้าเปลั้ยนจากตัวหลัก
             let valChildType = val.children[0].type
-            // console.log(this.form[valChildType],"valChild")
             let valChild = this.form[valChildType] ? this.form[valChildType] : [] ;
             let sumValChildAmount = 0;
             for(let k = 0 ;k<valChild.length;k++){
@@ -195,19 +191,14 @@
                 sumValChildAmount += parseInt(valChildAmount)
             }
             let totalValChildType = "total_"+valChildType
-            let totalValChild = this.form[totalValChildType] ? this.form[totalValChildType] : 0;
             this.form[totalValChildType] = sumValChildAmount
             sumVal += sumValChildAmount
-            // console.log("child",this.form)
           }else { // พัน พื้นเมือง เเละ อื่นๆ ถ้าเปลี่ยนจากตัวหลัก หรือ พันธุ์ต่างๆประเทศ ผสม ถ้ามีการเปลี่ยนเเปลงที่ ตัว นั้น
-            // console.log("normal" , val)
             let valAmount = parseInt(val.pivot.amount ? val.pivot.amount : 0) ;
             sumVal += valAmount
             let mainId = [52,55]
             if (mainId.includes(val.id)){ // ถ้าเป็น พันพื้นเมือง อื่นๆ
-              // console.log("normal",val.type)
               let totalMainType = "total_"+val.type
-              // console.log(this.form[totalMainType],totalMainType)
               this.updateTotalMaster(totalMainType,sumVal)
               this.form[totalMainType] = sumVal
             }else { // ถ้าเป็น พันธ์ ต่างประเทศ ลุกผลม
@@ -229,22 +220,16 @@
               }
 
               let mainVal = this.form[mainType] ? this.form[mainType] : 0 ;
-              // console.log("child",val)
               let totalSubType = "total_"+val.type;
               let subVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
-              // console.log("mainVAl",mainVal);
-              // console.log("subVal",subVal);
-              // console.log("master1",this.form.total_master_breeding_types)
               mainVal -= subVal
               let totalSubVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
               this.updateTotalMaster(totalSubType,sumVal)
               this.form[totalSubType] = sumVal
-              // console.log(this.form[totalSubType])
               mainVal += sumVal
               this.form[mainType] = mainVal >= 0 ? mainVal : 0
             }
           }
-          // console.log("Sumval",sumVal,)
         }
       }
     }
