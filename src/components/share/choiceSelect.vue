@@ -1,39 +1,16 @@
 <template>
-  <v-layout class="pa-0 py-1" >
-    <v-flex xs12 v-if = "!singleLine">
-      <v-select hide-details
-                :items="items"
-                v-model="selectedValue"
-                :label="label" item-text="choice"
-                @change="updateChoice"
-
-      ></v-select>
-      <div v-if="selectedValue.has_text">
-        <v-text-field placeholder="โปรดระบุจำนวนเงิน" class="pa-0 py-2"  hide-details
-                      v-if="selectedValue.type == 'budget_source'"
-                      v-model="selectedValue.pivot.amount"  @blur="updateValue">
-        </v-text-field>
-
-        <v-text-field placeholder="โปรดระบุ" class="pa-0 py-2"  hide-details v-else
-                      v-model="selectedValue.pivot.remark"  @blur="updateValue">
-        </v-text-field>
-
-
-      </div>
-    </v-flex>
-
-    <v-flex xs12 v-if = "singleLine">
+  <v-layout>
+    <v-flex xs12 >
       <v-layout row>
-        <v-flex xs6>
+        <v-flex xs>
           <v-select hide-details
                     :items="items"
                     v-model="selectedValue"
                     :label="label" item-text="choice"
                     @change="updateChoice"
-
           ></v-select>
         </v-flex>
-        <v-flex xs6 mx-3 v-if="selectedValue.has_text">
+        <v-flex  mx-3 v-if="selectedValue.has_text">
 
           <v-text-field placeholder="โปรดระบุจำนวนเงิน" class=""  hide-details
                         v-if="selectedValue.type == 'budget_source'"
@@ -60,10 +37,6 @@
   export default {
     name: "choiceSelect",
     props: {
-      singleLine : {
-        type : Boolean,
-        default : false
-      },
       type: {
         type: String,
       },
@@ -100,7 +73,6 @@
       },
       updateChoice : async function (choice)  {
         this.selectedValue = choice
-        console.log("update",this.selectedValue)
         await this.updateValue()
       },
       updateValue: async function () {

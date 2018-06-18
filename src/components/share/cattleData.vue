@@ -117,26 +117,16 @@
     async created() {
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
-      // console.log(this.isReady);
-      // console.log("BEFORE", this.choices[this.type])
-      this.addSelSubBreeds()
       this.sync();
-      // console.log(this.isReady);
-      // console.log("AFTER", this.choices[this.type])
     },
     methods: {
-      addSelSubBreeds : function () {
-        this.selSubBreeds
-
-      },
       updateValue: function (type, value) {
-        this.$emit("change",type)
-        // console.log('update value');
+        this.updateTotal(type, value)
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
       childrenSync: function (type, order) {
         let childrenForm = this.form[type];
-        let childrenChoice = this.choices[type];
+        let childrenChoice = this.choices[type] ? this.choices[type] : [];
 
         let mainLength = childrenChoice.length;
         let selectLength = childrenForm ?  childrenForm.length : 0;
@@ -146,7 +136,6 @@
             try {
               if (childrenChoice[i].id == childrenForm[j].id) {
                 childrenChoice[i] = childrenForm[j];
-                // console.log(this.selSubBreeds);
                 if (this.selSubBreeds[type]) {
                   this.selSubBreeds[type].push(childrenChoice[i]);
                 } else {
@@ -161,15 +150,12 @@
         }
       },
       sync: function () {
-        console.log('sync start');
         let main = this.choices[this.type];
-        let select = this.form[this.type];
-
+        let select = this.form[this.type] ? this.form[this.type] : [] ;
         let mainLength = main.length;
         let selectLength = select.length;
 
         for (let i = 0; i < mainLength; i++) {
-
           for (let j = 0; j < selectLength; j++) {
             if (main[i].id == select[j].id) {
               main[i] = select[j]
@@ -183,6 +169,68 @@
         }
         this.choices[this.type] = main
         this.isReady = true;
+      },
+      updateTotalMaster : function (type,newVal) {
+        let master = this.form.total_master_breeding_types;
+        let oldVal = this.form[type] ? this.form[type] : 0 ;
+        master -= oldVal;
+        master += newVal;
+        this.form.total_master_breeding_types = master
+      },
+      updateTotal : function (type, value) {
+        // loop in value
+        let sumVal = 0;
+        for(let i =0 ;i<value.length;i++){
+          let val = value[i]
+          if(val.children.length > 0 ){ //  ถ้ามี child พันธุ์ต่างๆประเทศ ผสม ถ้าเปลั้ยนจากตัวหลัก
+            let valChildType = val.children[0].type
+            let valChild = this.form[valChildType] ? this.form[valChildType] : [] ;
+            let sumValChildAmount = 0;
+            for(let k = 0 ;k<valChild.length;k++){
+              let valChildAmount = valChild[k].pivot.amount  ? valChild[k].pivot.amount : 0 ;
+                sumValChildAmount += parseInt(valChildAmount)
+            }
+            let totalValChildType = "total_"+valChildType
+            this.form[totalValChildType] = sumValChildAmount
+            sumVal += sumValChildAmount
+          }else { // พัน พื้นเมือง เเละ อื่นๆ ถ้าเปลี่ยนจากตัวหลัก หรือ พันธุ์ต่างๆประเทศ ผสม ถ้ามีการเปลี่ยนเเปลงที่ ตัว นั้น
+            let valAmount = parseInt(val.pivot.amount ? val.pivot.amount : 0) ;
+            sumVal += valAmount
+            let mainId = [52,55,62,65,72,75,82,85,92,95,102,105]
+            if (mainId.includes(val.id)){ // ถ้าเป็น พันพื้นเมือง อื่นๆ
+              let totalMainType = "total_"+val.type
+              this.updateTotalMaster(totalMainType,sumVal)
+              this.form[totalMainType] = sumVal
+            }else { // ถ้าเป็น พันธ์ ต่างประเทศ ลุกผลม
+              // update self main Type
+              let mainType  = "" ;
+
+              if(type.startsWith('female_over_six')){
+                mainType = "total_female_over_six_breeding_types"
+              }else if (type.startsWith('female_under_six')){
+                mainType = "total_female_under_six_breeding_types"
+              }else if (type.startsWith('female')){
+                mainType = "total_female_breeding_types"
+              }else if (type.startsWith('male_over_six')){
+                mainType = "total_male_over_six_breeding_types"
+              }else if (type.startsWith('male_under_six')){
+                mainType = "total_male_under_six_breeding_types"
+              }else if (type.startsWith('male')){
+                mainType = "total_male_breeding_types"
+              }
+
+              let mainVal = this.form[mainType] ? this.form[mainType] : 0 ;
+              let totalSubType = "total_"+val.type;
+              let subVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
+              mainVal -= subVal
+              let totalSubVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
+              this.updateTotalMaster(totalSubType,sumVal)
+              this.form[totalSubType] = sumVal
+              mainVal += sumVal
+              this.form[mainType] = mainVal >= 0 ? mainVal : 0
+            }
+          }
+        }
       }
     }
   }

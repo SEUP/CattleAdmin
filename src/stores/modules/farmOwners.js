@@ -66,6 +66,7 @@ export default {
       console.log(form);
       let result = await  axios.put("api/farm-owner/" + form.id, form)
         .then((response) => {
+
           context.commit("setFarmOwner", response.data);
           return response.data;
         })
@@ -87,6 +88,15 @@ export default {
     getForm :async function (context){
       let result = await  axios.get("api/farm-owner/create")
         .then((response) => {
+          let isObj = ['abortion','age_sale','budget_source','cattle_death','cattle_heath_support','cattle_job','dewormed_amount','education','family_status','farm_breeding_type','farm_disease_check','farm_exp','farm_future','farm_record','farm_register_status','feed_purchase_cooperative','feedstock','female_breeder_support','foot_mouth_disease','income_range','minerals_feed','observe_support','own_land','personal_status','production_support','rent_land','sale_satisfaction','sex','social_status','sub_minerals_feed','support_visit','training_support','','tuberculosis','use_land','vaccine_ever','weight_range_sale']
+
+          for(const key of Object.keys(response.data)) {
+            if(isObj.includes(key)){
+              response.data[key] = {}
+              response.data[key].pivot = {}
+            }
+
+          }
           context.commit("setFarmOwner",response.data);
           return response.data
         })

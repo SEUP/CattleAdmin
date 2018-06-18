@@ -31,10 +31,8 @@
       sync: function () {
         let roles_length = this.roles.length;
         let sel_length = this.value.length;
-
         let roles = this.roles;
-        let sel = this.value;
-
+        let sel = this.value ;
         for (let i = 0; i < roles_length; i++) {
           for (let j = 0; j < sel_length; j++) {
             if (roles[i].id == sel[j].id) {

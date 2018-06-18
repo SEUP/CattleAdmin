@@ -31,52 +31,50 @@
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_male_breeding_types" readonly/>
-          <cattle-data type="male_breeding_types" @change = "updateCattle"></cattle-data>
+          <cattle-data type="male_breeding_types" ></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.5 แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_female_breeding_types" readonly/>
-          <cattle-data type="female_breeding_types" @change = "updateCattle"></cattle-data>
+          <cattle-data type="female_breeding_types"></cattle-data>
         </div>
         <v-card-text class="pa-2 title">2.6 โคเพศผู้อายุมากกว่า 6 เดือนขึ้นไปแต่ไม่ใช่พ่อพันธุ์คุมฝูง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_male_over_six_breeding_types" readonly/>
+          <cattle-data type="male_over_six_breeding_types"></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.7 โคเพศเมียอายุมากกว่า 6 เดือนขึ้นไปแต่ยังไม่ตั้งท้อง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_female_over_six_breeding_types" readonly/>
+          <cattle-data type="female_over_six_breeding_types"></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.8 ลูกโคเพศผู้อายุน้อยกว่า 6 เดือน</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <v-text-field label="จำนวน" v-model="form.total_male_under_six_breeding_types" readonly/>
-        </div>
-
-        <v-card-text class="pa-2 title">2.8 ลูกโคเพศผู้อายุน้อยกว่า 6 เดือน</v-card-text>
-        <v-divider></v-divider>
-        <div class="ma-2 mx-4">
-          <v-text-field label="จำนวน" v-model="form.total_male_under_six_breeding_types" readonly />
+          <cattle-data type="male_under_six_breeding_types"></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.9 ลูกโคเพศเมียอายุน้อยกว่า 6 เดือน</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="จำนวน" v-model="form.total_male_under_six_breeding_types" readonly />
+          <v-text-field label="จำนวน" v-model="form.total_female_under_six_breeding_types" readonly />
+          <cattle-data type="female_under_six_breeding_types"></cattle-data>
         </div>
 
         <v-card-text class="pa-2 title">2.10 ค่าใช้จ่ายในการเลี้ยงโคเนื้อ</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="ค่าใช้จ่ายโดยประมาณ (บาท/เดือน)" v-model="form.total_expense_amount" type="number" @blur="updateForm"/>
-          <v-text-field label="ค่ายา (บาท/เดือน)" v-model="form.drug_price" type="number" @blur="updateForm"/>
-          <v-text-field label="ค่าอาหารและแร่ธาตุ (บาท/เดือน)" v-model="form.food_price" type="number" @blur="updateForm"/>
-          <v-text-field label="อื่นๆ" v-model="form.expense_price" type="number" @blur="updateForm"/>
+          <v-text-field label="ค่าใช้จ่ายโดยประมาณ (บาท/เดือน)" v-model="form.total_expense_amount" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="ค่ายา (บาท/เดือน)" v-model="form.drug_price" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="ค่าอาหารและแร่ธาตุ (บาท/เดือน)" v-model="form.food_price" type="number" @blur="updateForm" hide-details/>
+          <v-text-field label="อื่นๆ" v-model="form.expense_price" type="number" @blur="updateForm" hide-details/>
         </div>
 
         <v-card-text class="pa-2 title">2.11 ท่านมีประสบการณ์การเลี้ยงโคเนื้อมานานแค่ไหน</v-card-text>
@@ -141,44 +139,7 @@
       this.form = await this.$store.state.farmOwners.farmOwner
     },
     methods : {
-      sumSubChildCattle: function (type) {
-        console.log("IN",type)
-        let subChildOption = this.form[type] ? this.form[type] : [];
-        // console.log(subChildOption)
-        let sum = 0;
-        for (let i = 0; i < subChildOption.length; i++) {
-          let subOption = subChildOption[i];
-          console.log(subOption)
-          if (subOption.children.length> 0){
-            let itemsType = subOption.children[0].type
-            let items = this.form[itemsType]
-            let sumItems = 0
-            items.forEach( (item) => {
-              // console.log(item,"KK")
-              sumItems += parseInt(item.pivot.amount) ? parseInt(item.pivot.amount) : 0;
-            })
-            let subItems = "total_"+itemsType
-            console.log(subItems,sumItems)
-            this.form[subItems] = sumItems
-            sum += sumItems
-          }else{
-            sum += parseInt(subOption.pivot.amount) ? parseInt(subOption.pivot.amount) : 0;
-          }
-        }
-        type = "total_"+type
-        this.form[type] = sum
-        return sum
-      },
-      updateCattle :async function (type) {
-        let sumChild =0 ;
-        sumChild = await this.sumSubChildCattle("female_breeding_types")
-
-
-        this.form.total_master_breeding_types = await sumChild
-
-      },
       updateForm : async function () {
-        // console.log("P1",this.form)
         await this.$store.dispatch("farmOwners/updateState",this.form)
         let data = await this.$store.state.farmOwners.farmOwner
       }

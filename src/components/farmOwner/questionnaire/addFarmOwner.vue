@@ -3,15 +3,15 @@
     <v-layout row >
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
-          เเก้ไขข้อมูลเกษตรกร
+          <v-icon color="primary" x-large>mdi-plus</v-icon>บันทึกข้อมูลเกษตรกรใหม่
         </v-card-text>
 
         <v-divider></v-divider>
         <v-container fluid grid-list-lg>
-          <v-layout row wrap v-if="form">
+          <v-layout row wrap v-if="farmOwner" >
             <v-flex xs9>
               <v-card>
-                <v-divider class="divider-bold indigo"></v-divider>
+                <v-divider class="pt-1 indigo"></v-divider>
                 <v-stepper v-model="steper" vertical non-linear>
 
                   <template>
@@ -117,7 +117,7 @@
             </v-flex>
 
             <v-flex xs3>
-              <v-divider class="divider-bold success"></v-divider>
+              <v-divider class="pt-1 success"></v-divider>
               <v-list class="card-border">
                 <v-list-tile class="text-xs-center">
                   <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
@@ -180,7 +180,7 @@
     </v-layout>
     <v-layout class="hidden-md-and-up">
       <v-flex xs12 mx-3>
-        <v-btn color="success" block @click.native="updateFarmOwner">Save All</v-btn>
+        <v-btn color="success" block @click.native="createFarmOwner">Save All</v-btn>
       </v-flex>
     </v-layout>
 
@@ -189,56 +189,59 @@
 </template>
 
 <script>
-  import Part1 from "./part1"
-  import Part2 from "./part2"
-  import Part3 from "./part3"
-  import Part4 from "./part4"
-  import Part5 from "./part5"
-  import Part6 from "./part6"
-  import Part7 from "./part7"
-  import Part8 from "./part8"
+  import Part1 from "./part1";
+  import Part2 from "./part2";
+  import Part3 from "./part3";
+  import Part4 from "./part4";
+  import Part5 from "./part5";
+  import Part6 from "./part6";
+  import Part7 from "./part7";
+  import Part8 from "./part8";
 
-  export default {
-    name: "edit",
-    components: {
-      Part1,
-      Part2,
-      Part3,
-      Part4,
-      Part5,
-      Part6,
-      Part7,
-      Part8,
-    },
-    data: () => ({
-      form: undefined,
-      steper: 1,
-      farmOwner: null,
-    }),
-    computed: {
-      isReady: function () {
-        let choicesLoaded = this.$store.state.choices.isLoad == 'Done';
-        let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
-        return choicesLoaded && districtLoaded && this.form;
+    export default {
+      components: {
+        Part1,
+        Part2,
+        Part3,
+        Part4,
+        Part5,
+        Part6,
+        Part7,
+        Part8,
+
+      },
+      name: "addFarmOwner",
+      data :()=>({
+
+        steper :1,
+        farmOwner : null
+      }),
+      computed : {
+        isReady : function(){
+          let choicesLoaded =  this.$store.state.choices.isLoad == 'Done';
+          let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
+          return choicesLoaded && districtLoaded && this.farmOwner;
+        }
+      },
+      async created() {
+        await this.$store.dispatch('farmOwners/getForm');
+        await this.$store.dispatch('choices/load');
+        await this.$store.dispatch('districtSelect/load');
+        this.farmOwner = await this.$store.state.farmOwners.farmOwner;
+        console.log(this.farmOwner)
+      },
+      methods:{
+        elFocus : function (el) {
+          this.steper = el;
+        },
+        createFarmOwner: async function () {
+          let data = await this.$store.dispatch("farmOwners/createFarmOwner");
+          await console.log("SAVE", data)
+        },
       }
     }
-    , async created() {
-      let farmOwnerId = await this.$route.params.id;
-      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId)
-      await this.$store.dispatch('choices/load');
-      await this.$store.dispatch('districtSelect/load');
-
-    }
-    , methods: {
-      elFocus: function (el) {
-        this.steper = el
-      },
-      updateFarmOwner: async function () {
-        let data = await this.$store.dispatch("farmOwners/updateFarmOwner")
-        await console.log("SAVE", data)
-      },
-
-    }
-
-  }
 </script>
+
+<style scoped>
+
+</style>

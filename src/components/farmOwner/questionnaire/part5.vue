@@ -5,7 +5,9 @@
         <p class="title">5.1 เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</p>
 
         <v-divider class="my-3"></v-divider>
-        <choice-select type="budget_source" class="ml-5" :value="form.budget_source" single-line ></choice-select>
+        <choice-select type="budget_source" class="ml-5" :value="form.budget_source"
+                       @change="form.budget_source = $event"
+        ></choice-select>
 
       </v-flex>
     </v-layout>
@@ -14,7 +16,8 @@
       <v-flex xs12>
         <p class="title" >5.2 แหล่งเงินทุนกู้ยืม</p>
         <v-divider class="my-3"></v-divider>
-        <checkbox-budgetsource v-bind:value="form.loan_types" type="loan_types" @change="form.loan_types = $event"></checkbox-budgetsource>
+        <checkbox-budgetsource v-bind:value="form.loan_types" type="loan_types"
+                               @change="form.loan_types = $event"></checkbox-budgetsource>
       </v-flex>
     </v-layout>
 
@@ -27,6 +30,7 @@
           label="จำนวนเงิน"
           disabled
           v-model="totalBudget"
+
         >
         </v-text-field>
       </v-flex>

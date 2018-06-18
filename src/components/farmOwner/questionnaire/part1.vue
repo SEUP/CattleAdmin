@@ -16,7 +16,7 @@
           <div class="ma-2 mx-4">
             <v-text-field label="บ้านเลขที่" placeholder="บ้านเลขที่" v-model="form.house_no" @blur="updateForm"></v-text-field>
             <v-text-field label="หมู่" placeholder="หมู่"  v-model="form.house_moo" @blur="updateForm"></v-text-field>
-            <district-select
+            <district-select  class="mx-0"
                               :val-province="form.house_province"
                              :val-amphur="form.house_amphur"
                              :val-district="form.house_district"
@@ -34,7 +34,7 @@
           <div class="ma-2 mx-4">
             <v-text-field label="ที่ตั้งฟาร์มเลขที่" placeholder="ที่ตั้งฟาร์มเลขที่" v-model="form.farm_no" @blur="updateForm"></v-text-field>
             <v-text-field label="หมู่" placeholder="หมู่" v-model="form.farm_moo" @blur="updateForm"></v-text-field>
-            <district-select
+            <district-select   class="mx-0"
                               :val-province="form.farm_province"
                               :val-amphur="form.farm_amphur"
                               :val-district="form.farm_district"
@@ -60,7 +60,7 @@
                            @change="form.personal_status = $event">
 
             </choice-select>
-            <choice-select label="สถานภาพในครอบครัว" type="family_status" singleLine
+            <choice-select label="สถานภาพในครอบครัว" type="family_status"
                            :value="form.family_status"
                            @change="form.family_status = $event" >
 
@@ -178,7 +178,6 @@
           this.updateForm()
         },
         updateForm : async function () {
-          // console.log("P1",this.form)
           await this.$store.dispatch("farmOwners/updateState",this.form)
           let data = await this.$store.state.farmOwners.farmOwner
         }

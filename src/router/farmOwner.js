@@ -14,28 +14,14 @@ export default {
       name: 'farmOwner-index',
       component: view('farmOwner/index')
     }, {
-      path: ':id/edit',
-      name: 'farmOwner-edit',
-      component: view('farmOwner/edit/edit')
+      path: ':id/editFarmOwner',
+      name: 'farmOwner-editFarmOwner',
+      component: view('farmOwner/questionnaire/editFarmOwner')
     },
     {
       path: '/addFarmOwner',
       name: 'farmOwner-addFarmOwner',
-      component: view('farmOwner/add/addFarmOwner')
-    },
-    {
-      path: 'part7',
-      name: 'farmOwner-part7',
-      component: view('farmOwner/edit/part7')
-    },{
-      path: 'part3',
-      name: 'farmOwner-part3',
-      component: view('farmOwner/edit/part3')
-    },
-    {
-      path: 'part6',
-      name: 'farmOwner-part6',
-      component: view('farmOwner/edit/part6')
+      component: view('farmOwner/questionnaire/addFarmOwner')
     },
   ]
 }

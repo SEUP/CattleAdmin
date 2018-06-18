@@ -6,7 +6,7 @@
         <!--Search Input -->
         <v-layout>
           <v-flex>
-            <v-divider class="divider-bold orange"></v-divider>
+            <v-divider class="pt-1 orange"></v-divider>
             <v-card>
               <v-layout wrap px-3 py-1>
                 <v-flex xs12 md6>
@@ -61,7 +61,7 @@
                     </v-tooltip>
 
                     <v-tooltip top >
-                      <v-btn class="ma-0" icon :to="{name:'farmOwner-edit',params : {id : props.item.id}}" slot="activator">
+                      <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.id}}" slot="activator">
                         <v-icon color="primary" >create</v-icon>
                       </v-btn>
                       <span>Edit</span>
@@ -92,7 +92,7 @@
 <script>
   import ChoiceSelect from "../share/choiceSelect";
   import selectSearch from "../share/selectSearch";
-  import districtSelect from "@/components/share/districtSelect";
+  import districtSelect from "@/components/share/districtSelectSingleLine";
   export default {
     name: "farmOwner-index",
     components: {ChoiceSelect,districtSelect,selectSearch},
@@ -128,7 +128,6 @@
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.farmOwners = paginate.data;
-        console.log("TO search",this.form);
       },
       changePage: async function (page) {
         this.form.page = page;
@@ -151,7 +150,6 @@
 
         if(confirm("Do you want to delete this item?")){
           let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
-          await console.log("Delete",result)
           await this.loadData();
         }
 
