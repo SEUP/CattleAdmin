@@ -3,7 +3,7 @@
     <v-layout row >
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
-          เเก้ไขข้อมูลเกษตรกร
+          <v-icon x-large color="primary">mdi-pencil</v-icon> เเก้ไขข้อมูลเกษตรกร
         </v-card-text>
 
         <v-divider></v-divider>

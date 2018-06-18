@@ -189,14 +189,14 @@
 </template>
 
 <script>
-  import Part1 from "../edit/part1";
-  import Part2 from "../edit/part2";
-  import Part3 from "../edit/part3";
-  import Part4 from "../edit/part4";
-  import Part5 from "../edit/part5";
-  import Part6 from "../edit/part6";
-  import Part7 from "../edit/part7";
-  import Part8 from "../edit/part8";
+  import Part1 from "./part1";
+  import Part2 from "./part2";
+  import Part3 from "./part3";
+  import Part4 from "./part4";
+  import Part5 from "./part5";
+  import Part6 from "./part6";
+  import Part7 from "./part7";
+  import Part8 from "./part8";
 
     export default {
       components: {
@@ -228,6 +228,7 @@
         await this.$store.dispatch('choices/load');
         await this.$store.dispatch('districtSelect/load');
         this.farmOwner = await this.$store.state.farmOwners.farmOwner;
+        console.log(this.farmOwner)
       },
       methods:{
         elFocus : function (el) {

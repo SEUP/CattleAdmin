@@ -128,6 +128,7 @@
       load: async function (id) {
         let data = await  this.$store.dispatch("users/getUserById", id);
         this.form = data
+        console.log(this.form)
       }
     }
 

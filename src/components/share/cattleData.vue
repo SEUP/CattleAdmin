@@ -196,7 +196,7 @@
           }else { // พัน พื้นเมือง เเละ อื่นๆ ถ้าเปลี่ยนจากตัวหลัก หรือ พันธุ์ต่างๆประเทศ ผสม ถ้ามีการเปลี่ยนเเปลงที่ ตัว นั้น
             let valAmount = parseInt(val.pivot.amount ? val.pivot.amount : 0) ;
             sumVal += valAmount
-            let mainId = [52,55]
+            let mainId = [52,55,62,65,72,75,82,85,92,95,102,105]
             if (mainId.includes(val.id)){ // ถ้าเป็น พันพื้นเมือง อื่นๆ
               let totalMainType = "total_"+val.type
               this.updateTotalMaster(totalMainType,sumVal)

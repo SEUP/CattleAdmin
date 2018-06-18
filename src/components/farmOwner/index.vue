@@ -61,7 +61,7 @@
                     </v-tooltip>
 
                     <v-tooltip top >
-                      <v-btn class="ma-0" icon :to="{name:'farmOwner-edit',params : {id : props.item.id}}" slot="activator">
+                      <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.id}}" slot="activator">
                         <v-icon color="primary" >create</v-icon>
                       </v-btn>
                       <span>Edit</span>
