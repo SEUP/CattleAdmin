@@ -88,12 +88,19 @@
     },
     data() {
       return {
+        getUser:{
+          id: null,
+          with : ['roles']
+        },
         form: null,
       }
     },
     computed: {},
     async created() {
-      this.load(this.$route.params.id);
+      this.getUser.id = this.$route.params.id;
+      await this.load()
+      await console.log("start",this.form)
+
     },
     methods: {
       updateDistrictSelect: function (value) {
@@ -125,10 +132,9 @@
         console.log("save User", this.form);
         this.$router.push({name: "user-index"})
       },
-      load: async function (id) {
-        let data = await  this.$store.dispatch("users/getUserById", id);
+      load: async function () {
+        let data = await  this.$store.dispatch("users/getUserById", this.getUser);
         this.form = data
-        console.log(this.form)
       }
     }
 
