@@ -8,7 +8,11 @@
           <router-link :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">SEX</router-link>
           <br>
           Basic Route to A chart
-          <router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">Education</router-link>
+          <router-link :to="{name:'chart-normal',params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'education'}}">Education</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-range-farmowner',
+          params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'avg_cattle_income'}}">avg_cattle_income</router-link>
         </v-flex>
         <v-flex md6>
           <v-layout row wrap>

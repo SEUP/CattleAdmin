@@ -4,7 +4,7 @@
       <v-flex xs12>
         <div class="headline">{{$route.params.label}}</div>
         <province-select :value="province"
-                         @change="provinceChange">
+                           @change="provinceChange">
         </province-select>
       </v-flex>
       <v-flex>
@@ -16,14 +16,22 @@
 </template>
 
 <script>
-    import ProvinceSelect from "../share/provinceSelect";
-    import Highcharts from "highcharts/highcharts"
+  import ProvinceSelect from "../share/provinceSelect";
+  import Highcharts from "highcharts/highcharts"
     export default {
-        name: "normalChart",
-      components: {ProvinceSelect},
+      name: "farmownerRangeChart",
+      components : {
+        ProvinceSelect
+      },
       data : () => ({
         province :null,
-        chartData : null
+        chartData : null,
+        min: 50000,
+        max: 200000,
+        step: 3,
+        withNull : true,
+        nullText : "ยังไม่ได้ขาย"
+
       }),
       watch : {
         '$route'(to,from){
@@ -31,7 +39,7 @@
         }
       },
       mounted () {
-          this.load ();
+        this.load ();
       },
       methods : {
         provinceChange : function (ev) {
@@ -40,11 +48,11 @@
         },
         load : async function () {
           let type = this.$route.params.type;
-          let QueryString ="/api/charts/normal/"+type;
+          let QueryString ="/api/charts/range/farm-owner/"+type+"/"+this.min+"/"+this.max+"/"+this.step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData = await  axios.get(QueryString)
+          this.chartData = await  axios.get(QueryString,{params : {withNull: this.withNull, nullText: this.nullText}})
             .then( (response) => {
               return response.data
             })
@@ -56,52 +64,36 @@
         displayChart : function () {
           let chart = this.$refs.chart ; // getElementBy ID | $refs
           Highcharts.chart(chart,{
-           chart : {
-             type: 'column',
-             height : 600
-           },
-           title : {
-             text  : null
-           },
+            chart : {
+              type: 'column',
+              height : 600
+            },
+            title : {
+              text  : null
+            },
             xAxis: {
               categories: this.chartData.xAxis.categories,
               labels: {
-                rotation: -45, align: 'right',
-                staggerLines: 1,
                 style: {
                   fontSize: '14px',
                   "fontWeight": "bold",
-                  autoRotationLimit: 40,
-                  textOverflow: 'none',
-                  whiteSpace: 'initial',
                 }
               }
             },
             yAxis: {
               min: 0,
               title: {
-                text: '',
-                align: 'high'
+                text: this.chartTitle,
               },
               labels: {
                 overflow: 'justify',
-                style: {
-                  fontSize: '20px'
-                }
               }
             },
             tooltip: this.chartData.tooltip,
             plotOptions: {
               column: {
-                // animation: false,
                 dataLabels: {
-                  enabled: true,
-                  style: {
-                    fontSize: '20px'
-                  },formatter: function () {
-                    // display only if larger than 1
-                    return this.y >= 1 ? '<b>' + this.y + ' คน' : null;
-                  }
+                  enabled: true
                 }
               }
             },
@@ -123,6 +115,7 @@
             series: this.chartData.series,
           })
         }
+
       }
     }
 </script>

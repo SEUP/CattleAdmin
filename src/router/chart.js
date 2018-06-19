@@ -17,6 +17,10 @@ export default {
       path: 'normal/:label/:type',
       name: 'chart-normal',
       component: view('charts/normalChart')
+    },{
+      path: 'range-farmowner/:label/:type',
+      name: 'chart-range-farmowner',
+      component: view('charts/farmownerRangeChart')
     },
   ]
 }
