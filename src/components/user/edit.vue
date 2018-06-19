@@ -23,8 +23,6 @@
               v-model="form.name"
               label="ชื่อ-นามสกุล"
 
-              province_id:
-              required
             ></v-text-field>
 
             <v-text-field
