@@ -12,7 +12,10 @@
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-range-farmowner',
-          params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'avg_cattle_income'}}">avg_cattle_income</router-link>
+          params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'avg_cattle_income',min: 50000,max: 200000,step: 3,withNull : true,nullText : 'ยังไม่ได้ขาย'}}"
+          >
+            avg_cattle_income
+          </router-link>
         </v-flex>
         <v-flex md6>
           <v-layout row wrap>

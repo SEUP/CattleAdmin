@@ -23,9 +23,9 @@ export default new Vuex.Store({
   modules: {
     roles: roles,
     users: users,
-    farmOwners: farmOwners,
     districtSelect: districtSelect,
     choices: choices,
+    farmOwners: farmOwners,
     login: login,
     error: error
   }

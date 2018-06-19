@@ -66,28 +66,19 @@
             xAxis: {
               categories: this.chartData.xAxis.categories,
               labels: {
-                rotation: -45, align: 'right',
-                staggerLines: 1,
                 style: {
                   fontSize: '14px',
                   "fontWeight": "bold",
-                  autoRotationLimit: 40,
-                  textOverflow: 'none',
-                  whiteSpace: 'initial',
                 }
               }
             },
             yAxis: {
               min: 0,
               title: {
-                text: '',
-                align: 'high'
+                text: this.chartTitle,
               },
               labels: {
                 overflow: 'justify',
-                style: {
-                  fontSize: '20px'
-                }
               }
             },
             tooltip: this.chartData.tooltip,
