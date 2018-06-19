@@ -13,6 +13,14 @@ export default {
       path: 'pie/:label/:type',
       name: 'chart-pie',
       component: view('charts/pieChart')
+    },{
+      path: 'normal/:label/:type',
+      name: 'chart-normal',
+      component: view('charts/normalChart')
+    },{
+      path: 'range-farmowner/:label/:type',
+      name: 'chart-range-farmowner',
+      component: view('charts/farmownerRangeChart')
     },
   ]
 }
