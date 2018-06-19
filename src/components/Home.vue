@@ -6,6 +6,9 @@
         <v-flex md6>
           Basic Route to A chart
           <router-link :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">SEX</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">Education</router-link>
         </v-flex>
         <v-flex md6>
           <v-layout row wrap>
