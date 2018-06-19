@@ -48,11 +48,16 @@
         },
         load : async function () {
           let type = this.$route.params.type;
-          let QueryString ="/api/charts/range/farm-owner/"+type+"/"+this.min+"/"+this.max+"/"+this.step;
+          let min = await this.$route.params.min;
+          let max = this.$route.params.max;
+          let step = this.$route.params.step;
+          let withNull = this.$route.params.withNull;
+          let nullText = this.$route.params.nullText;
+          let QueryString ="/api/charts/range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData = await  axios.get(QueryString,{params : {withNull: this.withNull, nullText: this.nullText}})
+          this.chartData = await  axios.get(QueryString,{params : {withNull: withNull, nullText: nullText}})
             .then( (response) => {
               return response.data
             })
