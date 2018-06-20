@@ -25,6 +25,10 @@ export default {
       path: 'budget/:label/:type',
       name: 'chart-budget',
       component: view('charts/budget')
+    },{
+      path: 'groupJoin/:label/:type',
+      name: 'chart-groupJoin',
+      component: view('charts/groupJoin')
     },
   ]
 }
