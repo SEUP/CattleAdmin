@@ -16,6 +16,9 @@
           >
             avg_cattle_income
           </router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-budget',params : {label:'เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ',type:'budget'}}">Budget</router-link>
 
           <v-expansion-panel >
             <v-expansion-panel-content>
