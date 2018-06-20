@@ -33,6 +33,10 @@ export default {
       path: 'cattle/:label',
       name: 'chart-cattle',
       component: view('charts/cattleChart')
+    },{
+      path: 'double/:label/:type',
+      name: 'chart-double',
+      component: view('charts/doubleChart')
     },
   ]
 }

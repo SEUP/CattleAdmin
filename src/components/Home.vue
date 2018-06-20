@@ -25,6 +25,9 @@
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-cattle',params : {label:'จำนวนโคเนื้อที่เลี้ยง'}}">cattle</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-double',params : {label:'การขึ้นทะเบียนฟาร์มกับภาครัฐ',type:'use_land'}}">double</router-link>
 
           <v-expansion-panel >
             <v-expansion-panel-content>

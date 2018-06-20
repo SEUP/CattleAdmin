@@ -151,7 +151,6 @@
         },
         displayChart : function (chartNumber) {
           if (chartNumber == 0) {
-            console.log('male',this.chartData[0])
             let male = this.$refs.map_male_breeding
             Highcharts.chart(male,{
               chart: {
@@ -202,7 +201,6 @@
               drilldown: this.chartData[0].drilldown,
             })
           } else if (chartNumber == 1) {
-            console.log('female',this.chartData[1])
             let female = this.$refs.map_female_breeding;
             Highcharts.chart(female,{
               chart: {
