@@ -34,6 +34,9 @@
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-doublePivot',params : {label:'การถ่ายพยาธิ',type:'dewormed_amount'}}">doublePivot</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
 
           <v-expansion-panel >
             <v-expansion-panel-content>
@@ -155,8 +158,6 @@
                 </v-card-text>
               </v-card>
             </v-expansion-panel-content>
-
-
 
           </v-expansion-panel>
         </v-flex>

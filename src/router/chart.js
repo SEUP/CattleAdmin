@@ -45,6 +45,10 @@ export default {
       path: 'doublePivot/:label/:type',
       name: 'chart-doublePivot',
       component: view('charts/doublePivotChart')
+    },{
+      path: 'suggestion',
+      name: 'chart-suggestion',
+      component: view('charts/suggestion')
     },
   ]
 }
