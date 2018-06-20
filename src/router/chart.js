@@ -24,11 +24,15 @@ export default {
     },{
       path: 'budget/:label/:type',
       name: 'chart-budget',
-      component: view('charts/budget')
+      component: view('charts/budgetChart')
     },{
       path: 'groupJoin/:label/:type',
       name: 'chart-groupJoin',
-      component: view('charts/groupJoin')
+      component: view('charts/groupJoinChart')
+    },{
+      path: 'cattle/:label',
+      name: 'chart-cattle',
+      component: view('charts/cattleChart')
     },
   ]
 }

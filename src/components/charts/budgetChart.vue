@@ -136,7 +136,7 @@
               title: {
                 text: "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้",
               },
-              xAxis: this.chartData[0].xAxis,
+              xAxis: this.chartData[1].xAxis,
               yAxis: {
                 min: 0,
                 title: {
@@ -153,7 +153,7 @@
               legend: {
                 enabled: false
               },
-              tooltip: this.chartData[0].tooltip,
+              tooltip: this.chartData[1].tooltip,
               plotOptions: {
                 column: {
                   pointPadding: 0.2,
@@ -170,9 +170,9 @@
                   }
                 }
               },
-              series: this.chartData[0].drilldown,
+              series: this.chartData[1].drilldown,
             });
-          }else if (chartnumber==2) {
+          }else if (chartNumber==2) {
             let total_budget = this.$refs.total_budget; // getElementBy ID | $refs
             Highcharts.chart(total_budget, {
               chart: {
@@ -182,7 +182,7 @@
                 text: "จำนวนคนตามยอดกู้ แยกตามแหล่งเงินกู้",
               },
               xAxis: {
-                categories: this.chartData[1].xAxis.categories,
+                categories: this.chartData[2].xAxis.categories,
               },
               yAxis: {
                 min: 0,
@@ -193,7 +193,7 @@
                   overflow: 'justify'
                 }
               },
-              tooltip: this.chartData[1].tooltip,
+              tooltip: this.chartData[2].tooltip,
               plotOptions: {
                 column: {
                   dataLabels: {
@@ -219,7 +219,7 @@
               credits: {
                 enabled: false
               },
-              series: self.chartData[1].series,
+              series: self.chartData[2].series,
             });
           }
         }
