@@ -37,6 +37,10 @@ export default {
       path: 'double/:label/:type',
       name: 'chart-double',
       component: view('charts/doubleChart')
+    },{
+      path: 'multiChoice/:label/:type',
+      name: 'chart-multiChoice',
+      component: view('charts/multiChoiceChart')
     },
   ]
 }

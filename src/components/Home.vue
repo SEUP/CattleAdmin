@@ -28,6 +28,9 @@
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-double',params : {label:'การขึ้นทะเบียนฟาร์มกับภาครัฐ',type:'use_land'}}">double</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-multiChoice',params : {label:'การเกิดโรคในฟาร์ม',type:'abortion'}}">multiChoice</router-link>
 
           <v-expansion-panel >
             <v-expansion-panel-content>
