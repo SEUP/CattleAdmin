@@ -26,12 +26,6 @@
       data : () => ({
         province :null,
         chartData : null,
-        min: 50000,
-        max: 200000,
-        step: 3,
-        withNull : true,
-        nullText : "ยังไม่ได้ขาย"
-
       }),
       watch : {
         '$route'(to,from){
@@ -48,11 +42,12 @@
         },
         load : async function () {
           let type = this.$route.params.type;
-          let min = await this.$route.params.min;
+          let min =  this.$route.params.min;
           let max = this.$route.params.max;
           let step = this.$route.params.step;
           let withNull = this.$route.params.withNull;
           let nullText = this.$route.params.nullText;
+          // console.log(this.$route.params)
           let QueryString ="/api/charts/range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID

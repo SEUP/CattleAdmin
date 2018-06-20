@@ -8,7 +8,7 @@
           <router-link :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">SEX</router-link>
           <br>
           Basic Route to A chart
-          <router-link :to="{name:'chart-normal',params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'education'}}">Education</router-link>
+          <router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">Education</router-link>
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-range-farmowner',
@@ -18,7 +18,7 @@
           </router-link>
 
           <v-expansion-panel >
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -34,7 +34,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 2 ข้อมูลการเลี้ยงและสถานภาพฟาร์ม</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -52,7 +52,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 3 ข้อมูลแรงงาน พื้นที่ในการเลี้ยง และการจัดการอาหาร</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -70,7 +70,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 4 การผสมพันธ์ุ ประสิทธิภาพการผลิต และการรักษาโรค</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -87,7 +87,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -96,7 +96,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 6 ข้อมูลการตลาด การรวมกลุ่มของสมาชิก(วิสาหกิจชุมชนและสหกรณ์)</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -114,7 +114,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 7 การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
@@ -129,7 +129,7 @@
               </v-card>
             </v-expansion-panel-content>
 
-            <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+            <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ</div>
               <v-card>
                 <v-card-text class="grey lighten-3" >
