@@ -41,6 +41,10 @@ export default {
       path: 'multiChoice/:label/:type',
       name: 'chart-multiChoice',
       component: view('charts/multiChoiceChart')
+    },{
+      path: 'doublePivot/:label/:type',
+      name: 'chart-doublePivot',
+      component: view('charts/doublePivotChart')
     },
   ]
 }

@@ -31,6 +31,9 @@
           <br>
           Basic Route to A chart
           <router-link :to="{name:'chart-multiChoice',params : {label:'การเกิดโรคในฟาร์ม',type:'abortion'}}">multiChoice</router-link>
+          <br>
+          Basic Route to A chart
+          <router-link :to="{name:'chart-doublePivot',params : {label:'การถ่ายพยาธิ',type:'dewormed_amount'}}">doublePivot</router-link>
 
           <v-expansion-panel >
             <v-expansion-panel-content>

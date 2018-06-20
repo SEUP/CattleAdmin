@@ -24,7 +24,7 @@
         </v-card>
       </v-flex>
 
-      <v-flex xs12 v-if = "type = 'use_land'">
+      <v-flex xs12 v-if = "type == 'use_land'">
         <v-card>
           <v-card-text class="subheader black--text">ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้</v-card-text>
           <v-divider/>
