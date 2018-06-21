@@ -5,11 +5,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-
 import Vuetify from 'vuetify'
 import axios from 'axios'
 import store from './stores/index'
+
 
 window.axios = axios.create({
   baseURL: process.env.API_URL,
@@ -22,6 +21,16 @@ window._ = lodash;
 
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
+
+const VueGoogleMaps = require('vue2-google-maps');
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyAA4xy46J4VXUz-MK2XLMtK6Eglw99H5Us',
+    v: 'GOOGLE_MAPS_VERSION',
+    libraries: 'places'
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
