@@ -6,6 +6,7 @@ import users from './modules/users'
 import districtSelect from "./modules/districtSelect"
 import choices from "./modules/choices"
 import farmOwners from "./modules/farmOwners"
+import charts from "./modules/charts"
 
 import login from "./modules/login"
 import error from "./modules/error"
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     choices: choices,
     farmOwners: farmOwners,
     login: login,
-    error: error
+    error: error,
+    charts: charts,
   }
 })

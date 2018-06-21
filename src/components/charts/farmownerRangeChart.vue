@@ -47,18 +47,12 @@
           let step = this.$route.params.step;
           let withNull = this.$route.params.withNull;
           let nullText = this.$route.params.nullText;
-          // console.log(this.$route.params)
+          let params = {withNull: withNull, nullText: nullText}
           let QueryString ="/api/charts/range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData = await  axios.get(QueryString,{params : {withNull: withNull, nullText: nullText}})
-            .then( (response) => {
-              return response.data
-            })
-            .catch( (err) => {
-              return null
-            });
+          this.chartData = await this.$store.dispatch("charts/getrangeFarmOwnerChart",QueryString,111)
           this.displayChart();
         },
         displayChart : function () {

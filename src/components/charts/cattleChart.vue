@@ -88,64 +88,46 @@
           this.load();
         },
         load : async function () {
-          let male ="/api/charts/cattle/พ่อพันธุ์โคเนื้อที่เลี้ยง/male_breeding_types";
+          let male ="cattle/พ่อพันธุ์โคเนื้อที่เลี้ยง/male_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             male += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[0] = await axios.get(male)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[0] = await this.$store.dispatch("charts/getChart",male)
           this.displayChart(0);
 
-          let female ="/api/charts/cattle/แม่พันธุ์โคเนื้อที่เลี้ยง/female_breeding_types";
+          let female ="cattle/แม่พันธุ์โคเนื้อที่เลี้ยง/female_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             female += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[1] = await axios.get(female)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[1] = await this.$store.dispatch("charts/getChart",female)
           this.displayChart(1);
 
-          let maleOverSix ="/api/charts/cattle/โคเพศผู้อายุมากกว่า 6 เดือนขึ้นไปแต่ไม่ใช่พ่อพันธุ์คุมฝูง/male_over_six_breeding_types";
+          let maleOverSix ="cattle/โคเพศผู้อายุมากกว่า 6 เดือนขึ้นไปแต่ไม่ใช่พ่อพันธุ์คุมฝูง/male_over_six_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             maleOverSix += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[2] = await axios.get(maleOverSix)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[2] = await this.$store.dispatch("charts/getChart",maleOverSix)
           this.displayChart(2);
 
-          let femaleOverSix ="/api/charts/cattle/โคเพศเมียอายุมากกว่า 6 เดือนขึ้นไปแต่ยังไม่ตั้งท้อง/female_over_six_breeding_types";
+          let femaleOverSix ="cattle/โคเพศเมียอายุมากกว่า 6 เดือนขึ้นไปแต่ยังไม่ตั้งท้อง/female_over_six_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             femaleOverSix += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[3] = await axios.get(femaleOverSix)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[3] = await this.$store.dispatch("charts/getChart",femaleOverSix)
           this.displayChart(3);
 
-          let maleUnderSix ="/api/charts/cattle/ลูกโคเพศผู้อายุน้อยกว่า 6 เดือน/male_under_six_breeding_types";
+          let maleUnderSix ="cattle/ลูกโคเพศผู้อายุน้อยกว่า 6 เดือน/male_under_six_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             maleUnderSix += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[4] = await axios.get(maleUnderSix)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[4] = await this.$store.dispatch("charts/getChart",maleUnderSix)
           this.displayChart(4);
 
-          let femaleUnderSix ="/api/charts/cattle/ลูกโคเพศเมียอายุน้อยกว่า 6 เดือน/female_under_six_breeding_types";
+          let femaleUnderSix ="cattle/ลูกโคเพศเมียอายุน้อยกว่า 6 เดือน/female_under_six_breeding_types";
           if(this.province && this.province.PROVINCE_ID !=0){
             femaleUnderSix += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[5] = await axios.get(femaleUnderSix)
-            .then( (response) => {
-              return response.data
-            })
+          this.chartData[5] = await this.$store.dispatch("charts/getChart",femaleUnderSix)
           this.displayChart(5);
 
         },
