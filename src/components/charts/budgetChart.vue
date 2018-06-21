@@ -79,9 +79,6 @@
             .catch( (err) => {
               return null
             });
-          this.displayChart(0);
-          this.displayChart(1);
-
           let QueryString2 ="/api/charts/range/farm-owner/total_budget/"+this.min + "/"+this.max + "/"+this.step ;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString2 += "/" + this.province.PROVINCE_ID
@@ -94,6 +91,8 @@
             .catch( (err) => {
               return null
             });
+          this.displayChart(0);
+          this.displayChart(1);
           this.displayChart(2);
         },
         displayChart : function (chartNumber) {
@@ -136,7 +135,7 @@
               title: {
                 text: "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้",
               },
-              xAxis: this.chartData[1].xAxis,
+              xAxis: this.chartData[0].xAxis,
               yAxis: {
                 min: 0,
                 title: {
@@ -153,7 +152,7 @@
               legend: {
                 enabled: false
               },
-              tooltip: this.chartData[1].tooltip,
+              tooltip: this.chartData[0].tooltip,
               plotOptions: {
                 column: {
                   pointPadding: 0.2,
@@ -170,7 +169,7 @@
                   }
                 }
               },
-              series: this.chartData[1].drilldown,
+              series: this.chartData[0].drilldown,
             });
           }else if (chartNumber==2) {
             let total_budget = this.$refs.total_budget; // getElementBy ID | $refs
@@ -182,7 +181,7 @@
                 text: "จำนวนคนตามยอดกู้ แยกตามแหล่งเงินกู้",
               },
               xAxis: {
-                categories: this.chartData[2].xAxis.categories,
+                categories: this.chartData[1].xAxis.categories,
               },
               yAxis: {
                 min: 0,
@@ -193,7 +192,7 @@
                   overflow: 'justify'
                 }
               },
-              tooltip: this.chartData[2].tooltip,
+              tooltip: this.chartData[1].tooltip,
               plotOptions: {
                 column: {
                   dataLabels: {
@@ -219,7 +218,7 @@
               credits: {
                 enabled: false
               },
-              series: self.chartData[2].series,
+              series: this.chartData[1].series,
             });
           }
         }

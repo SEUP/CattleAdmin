@@ -48,7 +48,7 @@
           let withNull = this.$route.params.withNull;
           let nullText = this.$route.params.nullText;
           let params = {withNull: withNull, nullText: nullText}
-          let QueryString ="/api/charts/range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
+          let QueryString ="range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }

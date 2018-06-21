@@ -42,8 +42,22 @@
             <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร</div>
               <v-card>
+
                 <v-card-text class="grey lighten-3" >
-                 <div>-->  เพศ</div>
+                  <v-list>
+                  <v-list-tile  @click="">
+                    <v-list-tile-content>
+                      <v-list-tile-title>เพศ</v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+
+                  <v-list-tile @click="">
+                    <v-list-tile-content>
+                      <v-list-tile-title>อายุ</v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                  </v-list>
+
                   <div>-->  อายุ</div>
                   <div>-->  การศึกษา</div>
                   <div>-->  ที่ตั้งฟาร์มของเกษตรกร</div>
