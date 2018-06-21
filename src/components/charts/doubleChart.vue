@@ -49,9 +49,6 @@
         chartData : [
           {},{},{}
         ],
-        min : 50000,
-        max : 500000,
-        step : 5
       }),
       watch : {
         '$route'(to,from){
@@ -69,7 +66,7 @@
         load : async function () {
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
-          this.chartData[0] = axios.get("api/charts/double/"+label+"/"+this.type)
+          this.chartData[0] = await axios.get("api/charts/double/"+label+"/"+this.type)
             .then( (response) => {
               return response.data
             });
@@ -79,8 +76,8 @@
         },
         displayChart : function (chartNumber) {
           if(chartNumber==0) {
-            let marter = this.$refs.master;
-            Highcharts.chart(marter,{
+            let master = this.$refs.master;
+            Highcharts.chart(master,{
               chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -108,7 +105,7 @@
               series: this.chartData[0].series,
             });
           }else if(chartNumber==1){
-            let sub = this.$refs.master;
+            let sub = this.$refs.sub;
             Highcharts.chart(sub,{
               chart: {
                 type: 'column'
