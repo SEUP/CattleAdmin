@@ -117,13 +117,13 @@
         <v-divider ></v-divider>
         <v-card-text >
           <ul class="pl-3">
-            <li>หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ</li>
-            <li>การเยี่ยมเยือนฟาร์มจากหน่วยงาน</li>
-            <li>การได้รับการสนับสนุนปัจจัยการผลิต</li>
-            <li>การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์</li>
-            <li>การเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อ</li>
-            <li>การไปดูงานเกี่ยวกับการเลี้ยงโคเนื้อ</li>
-            <li>การสนับสนุนให้แม่พันธุ์โคเนื้อมาเลี้ยงเพื่อผลิตลูก</li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ',type:'support_sources'}}">หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การเยี่ยมเยือนฟาร์มจากหน่วยงาน',type:'support_visit'}}">การเยี่ยมเยือนฟาร์มจากหน่วยงาน</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การได้รับการสนับสนุนปัจจัยการผลิต',type:'production_support'}}">การได้รับการสนับสนุนปัจจัยการผลิต</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์',type:'cattle_heath_support'}}">การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อ',type:'training_support'}}">การเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อ</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การไปดูงานเกี่ยวกับการเลี้ยงโคเนื้อ',type:'observe_support'}}">การไปดูงานเกี่ยวกับการเลี้ยงโคเนื้อ</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'การสนับสนุนให้แม่พันธุ์โคเนื้อมาเลี้ยงเพื่อผลิตลูก',type:'female_breeder_support'}}">การสนับสนุนให้แม่พันธุ์โคเนื้อมาเลี้ยงเพื่อผลิตลูก</v-btn></li>
           </ul>
         </v-card-text>
       </v-card>
