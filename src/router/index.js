@@ -36,19 +36,6 @@ export default new Router({
         userRoute,
         roleRoute,
         chart,
-        {
-          path: "/test",
-          name: "test",
-          component: view("test")
-        }, {
-          path: "/test2",
-          name: "test2",
-          component: view("test2")
-        }, {
-          path: "/test3",
-          name: "test3",
-          component: view("test3")
-        },
       ]
     }]
 })

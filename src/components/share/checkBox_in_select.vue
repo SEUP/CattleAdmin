@@ -190,9 +190,11 @@
         this.items = await [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
         this.items_Box = await [].concat(await this.$store.dispatch("choices/getChoicesByType",'vaccine_types'));
         this.items_select = await [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType",'vaccined_by'));
-
-
         await this.sync()
+
+        console.log("value",this.value)
+        console.log("value_Box",this.value_Box)
+        console.log("value_select",this.value_select)
       },
       methods:{
         sync: function () {

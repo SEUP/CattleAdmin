@@ -102,8 +102,9 @@
           this.user_id = this.$route.params.user_id;
           this.user_is_admin = this.$route.params.user_is_admin;
           this.admin_level  = this.$route.params.admin_level ;
-
           let QueryString = "api/farm-owner/suggestion"
+
+          // this.items = await this.$store.dispatch("charts/getSuggestion",this.form)
           this.items = await axios.get(QueryString,this.form)
             .then ((response) => {
               return response.data

@@ -144,6 +144,7 @@
         this.loadData();
         let se1 = this.$refs.districtSelects;
         se1.reload()
+        this.$router
 
       },
       changePage: async function (page) {

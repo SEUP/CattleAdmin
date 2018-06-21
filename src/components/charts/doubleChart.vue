@@ -10,7 +10,7 @@
 
       <v-flex xs12>
         <v-card>
-          <v-card-text class="subheader black--text">เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</v-card-text>
+          <v-card-text class="subheader black--text">{{head1}}</v-card-text>
           <v-divider/>
           <div ref="master"></div>
         </v-card>
@@ -18,7 +18,7 @@
 
       <v-flex xs12 >
         <v-card>
-          <v-card-text class="subheader black--text">ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้</v-card-text>
+          <v-card-text class="subheader black--text">{{head2}}</v-card-text>
           <v-divider/>
           <div ref="sub"></div>
         </v-card>
@@ -26,7 +26,7 @@
 
       <v-flex xs12 v-if = "type == 'use_land'">
         <v-card>
-          <v-card-text class="subheader black--text">ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้</v-card-text>
+          <v-card-text class="subheader black--text">{{head3}}</v-card-text>
           <v-divider/>
           <div ref="sum_use_land"></div>
         </v-card>
@@ -44,6 +44,9 @@
       name: "doubleChart",
       components : {ProvinceSelect},
       data: () => ({
+        head1 : null,
+        head2 : null,
+        head3 : null,
         type : null,
         province : null,
         chartData : [
@@ -66,6 +69,17 @@
         load : async function () {
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
+
+          if (this.type == 'use_land'){
+              this.head1 = "เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ",
+              this.head2 = "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้",
+              this.head3 = "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้"
+          }else {
+              this.head1 = label
+              this.head2 = label
+              this.head3 = label
+
+          }
           let QueryString = "double/"+label+"/"+this.type
           this.chartData[0] = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);

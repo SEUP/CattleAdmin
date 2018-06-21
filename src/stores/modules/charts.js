@@ -14,8 +14,17 @@ export default {
       return result
     },
     getRangeFarmOwnerChart : async function (context,{type,params}){
-      console.log("DDD",type,params)
       let result  = axios.get("api/charts/"+type,{params : params})
+        .then ((response)=>{
+          return response.data
+        })
+        .catch( (err) => {
+          return null
+        })
+      return result
+    },
+    getSuggestion : async function (context,params){
+      let result  = axios.get("api/farm-owner/suggestion",{params : params})
         .then ((response)=>{
           return response.data
         })
