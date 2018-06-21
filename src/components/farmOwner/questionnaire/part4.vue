@@ -77,7 +77,7 @@
       <v-flex xs12>
         <p class="title">4.7 ท่านได้ทำวัคซีนป้องกันโรคให้กับโคเนื้อที่เลี้ยงหรือไม่</p>
         <v-divider class="my-1"></v-divider>
-        <vaccine-ever></vaccine-ever>
+        <vaccine-ever type="vaccine_ever"></vaccine-ever>
       </v-flex>
     </v-layout>
 
