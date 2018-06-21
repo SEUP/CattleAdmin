@@ -66,10 +66,8 @@
         load : async function () {
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
-          this.chartData[0] = await axios.get("api/charts/double/"+label+"/"+this.type)
-            .then( (response) => {
-              return response.data
-            });
+          let QueryString = "double/"+label+"/"+this.type
+          this.chartData[0] = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);
           this.displayChart(1);
           this.displayChart(2);

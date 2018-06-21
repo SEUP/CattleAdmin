@@ -52,7 +52,7 @@
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData = await this.$store.dispatch("charts/getrangeFarmOwnerChart",QueryString,111)
+          this.chartData = await this.$store.dispatch("charts/getRangeFarmOwnerChart",{type:QueryString,params:params})
           this.displayChart();
         },
         displayChart : function () {

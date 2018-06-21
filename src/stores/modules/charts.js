@@ -3,8 +3,8 @@ export default {
   state : {},
   mutations : {},
   actions : {
-    getChart : async function (context,type,params = null){
-      let result  = axios.get("api/charts/"+type,{params : params})
+    getChart : async function (context,type){
+      let result  = axios.get("api/charts/"+type)
         .then ((response)=>{
           return response.data
         })
@@ -13,8 +13,8 @@ export default {
         })
       return result
     },
-    getrangeFarmOwnerChart : async function (context,type,params){
-      console.log(params)
+    getRangeFarmOwnerChart : async function (context,{type,params}){
+      console.log("DDD",type,params)
       let result  = axios.get("api/charts/"+type,{params : params})
         .then ((response)=>{
           return response.data

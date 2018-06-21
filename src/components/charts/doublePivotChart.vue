@@ -57,18 +57,16 @@
         load : async function () {
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
-          this.chartData[0] = axios.get("api/charts/doublePivot/"+label+"/"+this.type)
-            .then( (response) => {
-              return response.data
-            });
+          let QueryString = "doublePivot/"+label+"/"+this.type
+          this.chartData = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);
           this.displayChart(1);
           this.displayChart(2);
         },
         displayChart: function (chartNumber) {
           if (chartNumber == 0) {
-            let marter = this.$refs.master;
-            Highcharts.chart(marter,{
+            let master = this.$refs.master;
+            Highcharts.chart(master,{
               chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,

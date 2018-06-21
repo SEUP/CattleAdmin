@@ -67,30 +67,18 @@
           this.load();
         },
         load :async function () {
-          let QueryString ="/api/charts/budget";
+          let QueryString ="budget";
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[0] = await  axios.get(QueryString)
-            .then( (response) => {
-              return response.data;
+          this.chartData[0] = await  await this.$store.dispatch("charts/getChart",QueryString)
 
-            })
-            .catch( (err) => {
-              return null
-            });
-          let QueryString2 ="/api/charts/range/farm-owner/total_budget/"+this.min + "/"+this.max + "/"+this.step ;
+          let QueryString2 ="range/farm-owner/total_budget/"+this.min + "/"+this.max + "/"+this.step ;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString2 += "/" + this.province.PROVINCE_ID
           }
-          this.chartData[1] = await  axios.get(QueryString2)
-            .then( (response) => {
-              return response.data;
+          this.chartData[1] = await this.$store.dispatch("charts/getChart",QueryString2)
 
-            })
-            .catch( (err) => {
-              return null
-            });
           this.displayChart(0);
           this.displayChart(1);
           this.displayChart(2);

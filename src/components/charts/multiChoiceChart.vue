@@ -39,17 +39,11 @@
         },
         load : async function () {
           let type = this.$route.params.type;
-          let QueryString ="/api/charts/multi-choice/"+type;
+          let QueryString ="multi/choices/"+type;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
           }
-          this.chartData = await  axios.get(QueryString)
-            .then( (response) => {
-              return response.data
-            })
-            .catch( (err) => {
-              return null
-            });
+          this.chartData = await  this.$store.dispatch("charts/getChart",QueryString);
           this.displayChart();
         },
         displayChart: function () {
