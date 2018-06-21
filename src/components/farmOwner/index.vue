@@ -134,17 +134,8 @@
         this.farmOwners = paginate.data;
       },
       resetSearch :function () {
-        this.form = {
-          keyword: "",
-          breeding : null,
-          province: 0,
-          amphur: 0,
-          district: 0,
-        };
-        this.loadData();
-        let se1 = this.$refs.districtSelects;
-        se1.reload()
-        this.$router
+        this.form = Object.assign({})
+        this.$router.go()
 
       },
       changePage: async function (page) {

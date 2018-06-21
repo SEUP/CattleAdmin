@@ -64,7 +64,7 @@
           page: "",
         },
         header : [
-          {text: "แัญหาเเละอุปสรรคในการเลี้ยงโคเนื้อ", align:"left" ,value:"problem",sortable :false},
+          {text: "ปัญหาเเละอุปสรรคในการเลี้ยงโคเนื้อ", align:"left" ,value:"problem",sortable :false},
           {text: "ข้อเสนอเเนะ", align:"left" ,value:"suggestion",sortable :false},
           {text: "จังหวัด  อำเภอ  ตำบล", align:"left" ,value:"address_name",sortable :false},
 
@@ -76,25 +76,23 @@
       },
       methods : {
         updateDistrictSelect: function (value) {
+          console.log(value);
           if (value[0]) {
             this.form.province = value[0].PROVINCE_ID;
+            this.form.amphur = 0;
+            this.form.district = 0;
           }
           if (value[1]) {
             this.form.amphur = value[1].AMPHUR_ID;
+            this.form.district = 0 ;
           }
           if (value[2]) {
             this.form.district = value[2].DISTRICT_ID;
           }
         },
         resetSearch :function () {
-          this.form = {
-              keyword: "",
-              province: 0,
-              amphur: 0,
-              district: 0,
-              page: "",
-          };
-          this.load()
+          this.form = Object.assign({})
+          this.$router.go()
         },
         load : async function () {
           this.paginate = await this.$store.dispatch("charts/getSuggestion",this.form)
