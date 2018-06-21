@@ -1,22 +1,35 @@
 <template>
-  <!--1-4-->
-
-      <v-card><h2>ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร</h2>
-        <v-card-text class="grey lighten-3" >
-          <div>-->  เพศ</div>
-          <div>-->  อายุ</div>
-          <div>-->  การศึกษา</div>
-          <div>-->  ที่ตั้งฟาร์มของเกษตรกร</div>
-          <div>-->  อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)</div>
-          <div>-->  เฉลี่ยรายได้รวมของครอบครัว</div>
-          <div>-->  รายได้จากการประกอบอาชีพของเกษตรกร</div>
-          <div>-->  รายได้เฉลี่ยต่อปีของการขายโคเนื้อ</div>
+  <v-layout class="column">
+    <v-flex >
+      <v-card>
+        <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
+        <v-divider ></v-divider>
+        <v-card-text class="pl-3">
+          เงินทุนการเลี้ยงโคเนื้อ
         </v-card-text>
       </v-card>
+    </v-flex>
+    <v-flex >
+      <v-card>
+        <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
+        <v-divider ></v-divider>
+        <v-card-text class="pl-3">
+          เงินทุนการเลี้ยงโคเนื้อ
+        </v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex >
+      <v-card>
+        <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
+        <v-divider ></v-divider>
+        <v-card-text class="pl-3">
+          เงินทุนการเลี้ยงโคเนื้อ
+        </v-card-text>
+      </v-card>
+    </v-flex>
 
 
-
-  <!--5-8-->
+  </v-layout>
 </template>
 
 <script>

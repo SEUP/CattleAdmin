@@ -38,9 +38,9 @@
           Basic Route to A chart
           <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
 
+         <charts-menu></charts-menu>
 
 
-          <ChartsMenu></ChartsMenu>
 
         </v-flex>
         <v-flex md6>
