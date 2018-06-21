@@ -6,14 +6,17 @@
         <v-divider ></v-divider>
         <v-card-text class="pl-3">
           <ul class="pl-3">
-          <li>เพศ</li>
-          <li>อายุ</li>
-          <li>การศึกษา</li>
+          <li> <v-btn block :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">เพศ</v-btn></li>
+          <li>  <v-btn  block :to="{name:'chart-range-farmowner',params : {label:'อายุ',type:'age',min: 15,max: 70,step: 8,withNull : true,nullText : '0-15'}}">อายุ</v-btn></li>
+          <li> <v-btn block  :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">การศึกษา</v-btn></li>
           <li>ที่ตั้งฟาร์มของเกษตรกร</li>
-          <li>อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)</li>
-          <li>เฉลี่ยรายได้รวมของครอบครัว</li>
-          <li>รายได้จากการประกอบอาชีพของเกษตรกร</li>
-          <li>รายได้เฉลี่ยต่อปีของการขายโคเนื้อ</li>
+          <li> <v-btn block :to="{name:'chart-pie',params : {label:'อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)',type:'cattle_job'}}">อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)</v-btn></li>
+          <li> <v-btn block :to="{name:'chart-normal',params : {label:'เฉลี่ยรายได้รวมของครอบครัว',type:'income_range'}}">เฉลี่ยรายได้รวมของครอบครัว</v-btn></li>
+          <li> <v-btn block  :to="{name:'chart-normal',params : {label:'รายได้จากการประกอบอาชีพของเกษตรกร',type:'jobtypes'}}">รายได้จากการประกอบอาชีพของเกษตรกร</v-btn></li>
+          <li> <v-btn block :to="{name:'chart-range-farmowner',
+          params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'avg_cattle_income',min: 50000,max: 200000,step: 3,withNull : true,nullText : 'ยังไม่ได้ขาย'}}"
+          >รายได้เฉลี่ยต่อปีของการขายโคเนื้อ
+          </v-btn></li>
           </ul>
         </v-card-text>
       </v-card>
@@ -24,16 +27,16 @@
         <v-divider ></v-divider>
         <v-card-text class="pl-3">
           <ul class="pl-3">
-          <li>วัตถุประสงค์ของการเลี้ยงโคเนื้อ</li>
-          <li>การทำประวัติโคเนื้อ</li>
-          <li>จำนวนโคเนื้อที่เลี้ยง</li>
-          <li>ประสบการณ์การเลี้ยงโคเนื้อ</li>
-          <li>เป้าหมายการเลี้ยงในอนาคต)</li>
+          <li>  <v-btn block :to="{name:'chart-normal',params : {label:'วัตถุประสงค์ของการเลี้ยงโคเนื้อ',type:'farm_purposes'}}">วัตถุประสงค์ของการเลี้ยงโคเนื้อ</v-btn></li>
+          <li><v-btn block :to="{name:'chart-pie',params : {label:'การทำประวัติโคเนื้อ',type:'farm_record'}}">การทำประวัติโคเนื้อ</v-btn></li>
+          <li><v-btn block :to="{name:'chart-cattle',params : {label:'จำนวนโคเนื้อที่เลี้ยง'}}">จำนวนโคที่เลี้ยง</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'ประสบการณ์การเลี้ยงโคเนื้อ',type:'farm_exp'}}">ประสบการณ์การเลี้ยงโคเนื้อ</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'เป้าหมายการเลี้ยงในอนาคต',type:'farm_future'}}">เป้าหมายการเลี้ยงในอนาคต</v-btn></li>
           <li>การขึ้นทะเบียนฟาร์มกับภาครัฐ</li>
-          <li>การเกิดโรคในฟาร์ม</li>
-          <li>ค่าใช้จ่ายในการเลี้ยงโคเนื้อ</li>
-          <li>ประวัติการตรวจโรคสัตว์</li>
-          <li>แหล่งน้ำที่ใช้อ</li>
+          <li> <v-btn block :to="{name:'chart-multiChoice',params : {label:'การเกิดโรคในฟาร์ม',type:'abortion,tuberculosis,foot_mouth_disease,disease_other'}}">การเกิดโรคในฟาร์ม</v-btn></li>
+          <li> <v-btn  block :to="{name:'chart-range-farmowner',params : {label:'ค่าใช้จ่ายในการเลี้ยงโคเนื้อ (บาท ต่อ เดือน)',type:'total_expense_amount',min: 1000,max: 10000,step: 3,withNull : true,nullText : 'ยังไม่ได้ขาย'}}">ค่าใช้จ่ายในการเลี้ยงโคเนื้อ</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'ประวัติการตรวจโรคสัตว์',type:'farm_disease_check'}}">ประวัติการตรวจโรคสัตว์</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'แหล่งน้ำที่ใช้',type:'water_source_types'}}">แหล่งน้ำที่ใช้</v-btn></li>
           </ul>
         </v-card-text>
       </v-card>
@@ -84,7 +87,7 @@
         <v-divider ></v-divider>
         <v-card-text >
           <ul class="pl-3">
-            <li>เงินทุนการเลี้ยงโคเนื้อ</li>
+            <li><v-btn block :to="{name:'chart-budget',params : {label:'เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ',type:'budget'}}">เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</v-btn></li>
           </ul>
         </v-card-text>
       </v-card>

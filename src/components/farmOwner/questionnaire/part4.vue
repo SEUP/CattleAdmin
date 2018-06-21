@@ -77,8 +77,7 @@
       <v-flex xs12>
         <p class="title">4.7 ท่านได้ทำวัคซีนป้องกันโรคให้กับโคเนื้อที่เลี้ยงหรือไม่</p>
         <v-divider class="my-1"></v-divider>
-        <check-box_in_select type="vaccine_ever" :value="form.vaccine_ever"
-                             @change="form.vaccine_ever=$event"></check-box_in_select>
+        <vaccine-ever></vaccine-ever>
       </v-flex>
     </v-layout>
 
@@ -97,11 +96,11 @@
 <script>
     import ChoiceSelect from "../../share/choiceSelect";
     import ChoiceCheckBox from "../../share/choiceCheckBox";
-    import CheckBox_in_select from "../../share/checkBox_in_select";
+    import vaccineEver from "../../share/vaccineEver";
 
     export default {
         name: "part4",
-      components: {CheckBox_in_select, ChoiceCheckBox, ChoiceSelect },
+      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect },
       data : () =>({
         form : undefined
       }),
