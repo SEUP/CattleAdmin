@@ -77,6 +77,7 @@
       <v-flex xs12>
         <p class="title">4.7 ท่านได้ทำวัคซีนป้องกันโรคให้กับโคเนื้อที่เลี้ยงหรือไม่</p>
         <v-divider class="my-1"></v-divider>
+        <vaccine-ever></vaccine-ever>
       </v-flex>
     </v-layout>
 
@@ -95,11 +96,11 @@
 <script>
     import ChoiceSelect from "../../share/choiceSelect";
     import ChoiceCheckBox from "../../share/choiceCheckBox";
-
+    import vaccineEver from "../../share/vaccineEver";
 
     export default {
         name: "part4",
-      components: { ChoiceCheckBox, ChoiceSelect },
+      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect },
       data : () =>({
         form : undefined
       }),
