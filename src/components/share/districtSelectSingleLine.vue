@@ -65,7 +65,6 @@
         DISTRICT_NAME: "กรุณาเลือก"
       };
       return {
-        ValSingleLine:null,
         defaultProvince: defaultProvince,
         defaultAmphur: defaultAmphur,
         defaultDistrict: defaultDistrict,
@@ -122,6 +121,7 @@
         this.selAmphure = this.defaultAmphur;
         this.selDistrict = this.defaultDistrict;
         this.$emit('change', [ev, null, null])
+
       }
 
       , amphureChange: function (ev) {

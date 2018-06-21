@@ -15,19 +15,23 @@
                 <v-spacer></v-spacer>
 
                 <v-flex xs12 md5 >
-                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.breeding = $event.id"></select-search>
+                    <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง"
+                                   v-model="form.breeding" @change="form.breeding = $event.id"
+                    >
+                    </select-search>
                 </v-flex>
                 <v-flex xs12>
                   <district-select-single-line
-                    :valProvince="form.user_province"
-                    :valAmphur="form.user_amphur"
-                    :valDistrict="form.user_district"
+                    :valProvince="form.province"
+                    :valAmphur="form.amphur"
+                    :valDistrict="form.district"
                     singleLine
-                    @change="updateDistrictSelect"></district-select-single-line>
+                    @change="updateDistrictSelect">
+                  </district-select-single-line>
                 </v-flex>
                 <v-flex xs12 class="text-xs-center mt-2">
                   <v-btn color="primary" @click="search()" depressed>ค้นหา</v-btn>
-                  <v-btn  @click="" outline @click="resetSearch()">ล้างข้อมูล</v-btn>
+                  <v-btn outline @click="resetSearch()">ล้างข้อมูล</v-btn>
                 </v-flex>
               </v-layout>
             </v-card>
@@ -100,7 +104,7 @@
       paginate:{},
       form : {
         keyword : "",
-        id : null,
+        breeding : null,
         province : null,
         amphur : null,
         district : null,
@@ -132,12 +136,15 @@
       resetSearch :function () {
         this.form = {
           keyword: "",
+          breeding : null,
           province: 0,
           amphur: 0,
           district: 0,
-          page: "",
         };
-        this.load()
+        this.loadData();
+        let se1 = this.$refs.districtSelects;
+        se1.reload()
+
       },
       changePage: async function (page) {
         this.form.page = page;

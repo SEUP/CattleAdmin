@@ -53,7 +53,6 @@
         DISTRICT_NAME: "กรุณาเลือก"
       };
       return {
-        ValSingleLine:null,
         defaultProvince: defaultProvince,
         defaultAmphur: defaultAmphur,
         defaultDistrict: defaultDistrict,

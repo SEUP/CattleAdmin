@@ -12,7 +12,7 @@
           <v-divider></v-divider>
           <v-card-actions>
           <v-layout wrap>
-            <v-text-field label="ค้นหา" placeholder="ค้นหา : ปัญหาเเละข้อเสนอเเนะ" class="mx-3"></v-text-field>
+            <v-text-field label="ค้นหา" placeholder="ค้นหา : ปัญหาเเละข้อเสนอเเนะ" class="mx-3" v-model="form.keyword"></v-text-field>
             <v-flex xs12>
               <district-select-single-line class="mx-2"
                                            :valProvince="form.province"
