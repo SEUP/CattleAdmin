@@ -14,11 +14,18 @@
           <v-layout wrap>
             <v-text-field label="ค้นหา" placeholder="ค้นหา : ปัญหาเเละข้อเสนอเเนะ" class="mx-3"></v-text-field>
             <v-flex xs12>
-              <district-select-single-line class="mx-2"></district-select-single-line>
+              <district-select-single-line class="mx-2"
+                                           :valProvince="form.province"
+                                           :valAmphur="form.amphur"
+                                           :valDistrict="form.district"
+                                           singleLine
+                                           @change="updateDistrictSelect"
+              >
+              </district-select-single-line>
             </v-flex>
             <v-flex xs12 class="text-xs-center">
-              <v-btn depressed color="primary">ค้นหา</v-btn>
-              <v-btn outline>ล้างข้อมูล</v-btn>
+              <v-btn depressed color="primary" @click="load">ค้นหา</v-btn>
+              <v-btn outline @click="resetSearch">ล้างข้อมูล</v-btn>
             </v-flex>
           </v-layout>
           </v-card-actions>
@@ -33,9 +40,11 @@
           </template>
         </v-data-table>
       </v-flex>
+      <v-flex xs12 py-2 class="text-xs-center">
+        <v-pagination  ></v-pagination>
+      </v-flex>
     </v-layout>
   </v-container>
-
 </template>
 
 <script>
@@ -44,6 +53,18 @@
       name: "suggestion",
       components: {DistrictSelectSingleLine},
       data : () => ({
+        user_id: 0,
+        user_is_admin: 0,
+        admin_level: 0,
+        farmOwners: [],
+        farmOwnerPage: {},
+        form: {
+          keyword: "",
+          province: 0,
+          amphur: 0,
+          district: 0,
+          page: "",
+        },
         header : [
           {text: "แัญหาเเละอุปสรรคในการเลี้ยงโคเนื้อ", align:"left" ,value:"problem",sortable :false},
           {text: "ข้อเสนอเเนะ", align:"left" ,value:"suggestion",sortable :false},
@@ -51,7 +72,47 @@
 
         ],
         items : []
-      })
+      }),
+      mounted() {
+        this.load();
+      },
+      methods : {
+        updateDistrictSelect: function (value) {
+          if (value[0]) {
+            this.form.province = value[0].PROVINCE_ID;
+          }
+          if (value[1]) {
+            this.form.amphur = value[1].AMPHUR_ID;
+          }
+          if (value[2]) {
+            this.form.district = value[2].DISTRICT_ID;
+          }
+        },
+        resetSearch :function () {
+          this.form = {
+              keyword: "",
+              province: 0,
+              amphur: 0,
+              district: 0,
+              page: "",
+          };
+          this.load()
+        },
+        load : async function () {
+          this.user_id = this.$route.params.user_id;
+          this.user_is_admin = this.$route.params.user_is_admin;
+          this.admin_level  = this.$route.params.admin_level ;
+
+          let QueryString = "api/farm-owner/suggestion"
+          this.items = await axios.get(QueryString,this.form)
+            .then ((response) => {
+              return response.data
+            })
+            .catch((err)=> {
+              return null
+            })
+        }
+      }
     }
 </script>
 
