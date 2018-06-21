@@ -38,7 +38,7 @@
           Basic Route to A chart
           <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
 
-          <v-expansion-panel >
+          <v-expansion-panel>
             <v-expansion-panel-content>
               <div slot="header" >ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร</div>
               <v-card>
