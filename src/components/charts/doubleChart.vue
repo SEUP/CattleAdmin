@@ -69,17 +69,9 @@
         load : async function () {
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
-
-          if (this.type == 'use_land'){
-              this.head1 = "เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ",
-              this.head2 = "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้",
-              this.head3 = "ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้"
-          }else {
-              this.head1 = label
-              this.head2 = label
-              this.head3 = label
-
-          }
+          this.head1 = label
+          this.head2 = label
+          this.head3 = label
           let QueryString = "double/"+label+"/"+this.type
           this.chartData[0] = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);

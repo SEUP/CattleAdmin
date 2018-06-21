@@ -56,7 +56,7 @@
     computed: {
       totalBudget: function () {
         let total = 0;
-        total += this.form.budget_source.pivot.amount;
+        total += this.form.budget_source.pivot.amount ? this.form.budget_source.pivot.amount : 0 ;
         let loneTypes = this.form.loan_types ? this.form.loan_types : [];
         loneTypes.forEach((t) => {  // v-for='t in loneTypes'
           if (t.pivot && t.pivot.amount) {
