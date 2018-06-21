@@ -18,7 +18,7 @@ export default {
       name: 'chart-normal',
       component: view('charts/normalChart')
     }, {
-      path: 'range-farmowner/:label/:type/:min/:max/:step/:withNull/:nullText',
+      path: 'range-farmowner/:label/:type/:min/:max/:step/:?withNull/:?nullText',
       name: 'chart-range-farmowner',
       component: view('charts/farmownerRangeChart')
     }, {

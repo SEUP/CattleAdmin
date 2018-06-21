@@ -67,16 +67,15 @@
         <v-divider ></v-divider>
         <v-card-text class="pl-3">
           <ul class="pl-3">
-          <li>วัตถุประสงค์ของการเลี้ยงโคเนื้อ</li>
-          <li>การทำประวัติโคเนื้อ</li>
-          <li>จำนวนโคเนื้อที่เลี้ยง</li>
-          <li>ประสบการณ์การเลี้ยงโคเนื้อ</li>
-          <li>เป้าหมายการเลี้ยงในอนาคต)</li>
-          <li>การขึ้นทะเบียนฟาร์มกับภาครัฐ</li>
-          <li>การเกิดโรคในฟาร์ม</li>
-          <li>ค่าใช้จ่ายในการเลี้ยงโคเนื้อ</li>
-          <li>ประวัติการตรวจโรคสัตว์</li>
-          <li>แหล่งน้ำที่ใช้อ</li>
+          <li><v-btn block :to="{name:'chart-pie',params : {label:'การผสมพันธุ์โคเนื้อในฟาร์ม',type:'farm_breeding_type'}}">การผสมพันธุ์โคเนื้อในฟาร์ม</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'แหล่งน้ำเชื้อการผสมเทียม',type:'inseminate_sources'}}">แหล่งน้ำเชื้อการผสมเทียม</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'ผู้ให้บริการผสมเทียม',type:'breeders'}}">ผู้ให้บริการผสมเทียม</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'การตายของโคในรอบปี',type:'cattle_death'}}">การตายของโคในรอบปี</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'บุคคลที่ทำการรักษาให้เมื่อโคเจ็บป่วย',type:'disease_cured_by'}}">บุคคลที่ทำการรักษาให้เมื่อโคเจ็บป่วย</v-btn></li>
+          <li><v-btn  block :to="{name:'chart-range-farmowner',params : {label:'อัตราส่วนพ่อพันธุ์คุมฝูง',type:'breeding_rate',min: 1,max: 20,step: 3}}">อัตราส่วนพ่อพันธุ์คุมฝูง</v-btn></li>
+          <li><v-btn  block :to="{name:'chart-doublePivot',params : {label:'การถ่ายพยาธิ',type:'dewormed_amount'}}">การถ่ายพยาธิ</v-btn></li>
+          <li><v-btn block  :to="{name:'chart-double',params : {label:'วัคซีนป้องกันโรค',type:'vaccine_ever'}}">วัคซีนป้องกันโรค</v-btn></li>
+          <li><v-btn block :to="{name:'chart-normal',params : {label:'การจัดการมูลโคในฟาร์ม',type:'cattle_dung_uses'}}">การจัดการมูลโคในฟาร์ม</v-btn></li>
           </ul>
         </v-card-text>
       </v-card>
