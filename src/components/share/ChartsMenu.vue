@@ -78,46 +78,71 @@
         </v-card-text>
       </v-card>
     </v-flex>
-    <v-flex >
-
+    <v-flex>
       <v-card>
         <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
         <v-divider ></v-divider>
-        <v-card-text class="pl-3">
-          เงินทุนการเลี้ยงโคเนื้อ
+        <v-card-text >
+          <ul class="pl-3">
+            <li>เงินทุนการเลี้ยงโคเนื้อ</li>
+          </ul>
         </v-card-text>
       </v-card>
     </v-flex>
     <v-flex >
       <v-card>
-        <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
+        <v-card-title class="title">ส่วนที่ 6 ข้อมูลการตลาด การรวมกลุ่มของสมาชิก(วิสาหกิจชุมชนและสหกรณ์)</v-card-title>
         <v-divider ></v-divider>
-        <v-card-text class="pl-3">
-          เงินทุนการเลี้ยงโคเนื้อ
+        <v-card-text >
+          <ul class="pl-3">
+            <li>การจำหน่ายโคเนื้อให้กับใคร</li>
+            <li>อายุของโคเนื้อที่จำหน่าย</li>
+            <li>น้ำหนักของโคเนื้อที่ท่านจำหน่าย</li>
+            <li>ลักษณะการจำหน่ายโคเนื้อ</li>
+            <li>การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</li>
+            <li>ราคาของโคเนื้อที่ขายและระยะเวลาในการเลี้ยง</li>
+            <li>ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</li>
+            <li>ความต้องการความช่วยเหลือจากสหกรณ์</li>
+            <li>ความต้องการซื้ออาหารข้นในนามสหกรณ์</li>
+            <li>ระดับความพอใจต่อราคาที่ขาย</li>
+          </ul>
         </v-card-text>
       </v-card>
     </v-flex>
     <v-flex >
       <v-card>
-        <v-card-title class="title">ส่วนที่ 5 ข้อมูลแหล่งเงินทุนที่ใช้ในการเลี้ยงโคเนื้อ</v-card-title>
+        <v-card-title class="title">ส่วนที่ 7 การได้รับบริการ การส่งเสริมและสนับสนุนจากหน่วยงานต่างๆ</v-card-title>
         <v-divider ></v-divider>
-        <v-card-text class="pl-3">
-          เงินทุนการเลี้ยงโคเนื้อ
+        <v-card-text >
+          <ul class="pl-3">
+            <li>หน่วยงานที่ให้บริการส่งเสริมการเลี้ยงโคเนื้อ</li>
+            <li>การเยี่ยมเยือนฟาร์มจากหน่วยงาน</li>
+            <li>การได้รับการสนับสนุนปัจจัยการผลิต</li>
+            <li>การใช้บริการด้านสุขภาพโคจากหน่วยงานของกรมปศุสัตว์</li>
+            <li>การเข้ารับการฝึกอบรมเกี่ยวกับการเลี้ยงโคเนื้อ</li>
+            <li>การไปดูงานเกี่ยวกับการเลี้ยงโคเนื้อ</li>
+            <li>การสนับสนุนให้แม่พันธุ์โคเนื้อมาเลี้ยงเพื่อผลิตลูก</li>
+          </ul>
         </v-card-text>
       </v-card>
     </v-flex>
-
-
+    <v-flex >
+      <v-card>
+        <v-card-title class="title">ส่วนที่ 8 ปัญหา อุปสรรค และข้อเสนอแนะ</v-card-title>
+        <v-divider ></v-divider>
+        <v-card-text >
+          <ul class="pl-3">
+            <li>ตารางปัญหา อุปสรรคและข้อเสนอแนะ</li>
+          </ul>
+        </v-card-text>
+      </v-card>
+    </v-flex>
   </v-layout>
 </template>
 
-
-
-        <!--5-8-->
-
 <script>
     export default {
-        name: "charts-manu"
+        name: "charts-menu"
     }
 </script>
 

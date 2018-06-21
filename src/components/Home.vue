@@ -38,9 +38,7 @@
           Basic Route to A chart
           <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
 
-         <charts-menu></charts-menu>
-
-
+        <charts-menu></charts-menu>
 
         </v-flex>
         <v-flex md6>
@@ -71,7 +69,7 @@
 </template>
 <style scoped></style>
 <script>
-  import ChartsMenu from  "./ChartsManu";
+  import ChartsMenu from "./share/ChartsMenu";
   import ThailandNorthMapChart from "@/components/maps/ThailandNorthMapChart";
   import ThailandProvinceMapChart from "@/components/maps/ThailandProvinceMapChart";
 
