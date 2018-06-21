@@ -141,7 +141,6 @@
 <script>
 
 
-  import ChoiceSelect from "./choiceSelect";
 
   let defaultChoice = {
     id : 0,
@@ -151,9 +150,6 @@
   };
     export default {
       name: "checkBox_in_select",
-      components: {
-
-        ChoiceSelect},
       props: {
         singleLine : {
           type : Boolean,
@@ -216,10 +212,10 @@
         },
 
         updateChoice : function () {
-          this.$emit("change",this.selected,this.selectedValue1,this.selectedValue2,this.selectedValue3,this.selectedValue4)
+          this.$emit("change",this.selected,this.selectedValuechoice, this.selectedValue1,this.selectedValue2,this.selectedValue3,this.selectedValue4)
         },
         updateValue: async function () {
-          await this.$emit('change', this.selectedValue1,this.selectedValue2,this.selectedValue3,this.selectedValue4)
+          await this.$emit('change', this.selectedValue1,this.selectedValuechoice,this.selectedValue2,this.selectedValue3,this.selectedValue4)
 
         }
       }
