@@ -18,16 +18,16 @@
                     <select-search type = "master_breeding_types" label="ประเภทโคที่เลี้ยง" @change="form.breeding = $event.id"></select-search>
                 </v-flex>
                 <v-flex xs12>
-                  <district-select
+                  <district-select-single-line
                     :valProvince="form.user_province"
                     :valAmphur="form.user_amphur"
                     :valDistrict="form.user_district"
                     singleLine
-                    @change="updateDistrictSelect"></district-select>
+                    @change="updateDistrictSelect"></district-select-single-line>
                 </v-flex>
                 <v-flex xs12 class="text-xs-center mt-2">
                   <v-btn color="primary" @click="search()" depressed>ค้นหา</v-btn>
-                  <v-btn  @click="" outline>ล้างข้อมูล</v-btn>
+                  <v-btn  @click="" outline @click="resetSearch()">ล้างข้อมูล</v-btn>
                 </v-flex>
               </v-layout>
             </v-card>
@@ -92,10 +92,10 @@
 <script>
   import ChoiceSelect from "../share/choiceSelect";
   import selectSearch from "../share/selectSearch";
-  import districtSelect from "@/components/share/districtSelectSingleLine";
+  import DistrictSelectSingleLine from "../share/districtSelectSingleLine";
   export default {
     name: "farmOwner-index",
-    components: {ChoiceSelect,districtSelect,selectSearch},
+    components: {DistrictSelectSingleLine, ChoiceSelect,selectSearch},
     data : () => ({
       paginate:{},
       form : {
@@ -128,6 +128,16 @@
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.farmOwners = paginate.data;
+      },
+      resetSearch :function () {
+        this.form = {
+          keyword: "",
+          province: 0,
+          amphur: 0,
+          district: 0,
+          page: "",
+        };
+        this.load()
       },
       changePage: async function (page) {
         this.form.page = page;
