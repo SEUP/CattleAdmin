@@ -4,38 +4,21 @@
 
       <v-layout row wrap>
         <v-flex md6>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">SEX</router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">Education</router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-range-farmowner',
-          params : {label:'รายได้เฉลี่ยต่อปีของการขายโคเนื้อ',type:'avg_cattle_income',min: 50000,max: 200000,step: 3,withNull : true,nullText : 'ยังไม่ได้ขาย'}}"
-          >
-            avg_cattle_income
-          </router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-budget',params : {label:'เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ',type:'budget'}}">Budget</router-link>
-          <br>
-          Basic Route to A chart
+
+          <router-link :to="{name:'chart-normal',params : {label:'การตายของโคในรอบปี',type:'cattle_death'}}">death</router-link>
+
+
+
+
+
+
           <router-link :to="{name:'chart-groupJoin',params : {label:'การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_joins'}}">groupJoin</router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-cattle',params : {label:'จำนวนโคเนื้อที่เลี้ยง'}}">cattle</router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-double',params : {label:'การขึ้นทะเบียนฟาร์มกับภาครัฐ',type:'use_land'}}">double</router-link>
-          <br>
-          Basic Route to A chart
-          <router-link :to="{name:'chart-multiChoice',params : {label:'การเกิดโรคในฟาร์ม',type:'abortion'}}">multiChoice</router-link>
-          <br>
-          Basic Route to A chart
+
+          <router-link :to="{name:'chart-double',params : {label:'การขึ้นทะเบียนฟาร์มกับภาครัฐ',type:'farm_register_status'}}">double</router-link>
+
+
           <router-link :to="{name:'chart-doublePivot',params : {label:'การถ่ายพยาธิ',type:'dewormed_amount'}}">doublePivot</router-link>
-          <br>
-          Basic Route to A chart
+
           <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
 
         <charts-menu></charts-menu>
