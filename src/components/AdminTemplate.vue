@@ -110,7 +110,7 @@
           </v-btn>
         </v-toolbar-title>
         <v-list>
-          <v-list-tile :to="{name:'user-userProfile'}">
+          <v-list-tile :to="{name:'user-userProfile',params : {id:userData.id,username:userData.username}}">
             <v-list-tile-title >
               <v-icon>mdi-account</v-icon>
               User Profile

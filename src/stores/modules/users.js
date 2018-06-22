@@ -14,6 +14,7 @@ export default {
       return result
     },
     getUserById: async function(context,params = null){
+
       let result =  await axios.get("/api/users/"+params.id,{params:params})
           .then ( (response) => {
             return response.data
@@ -21,7 +22,6 @@ export default {
         .catch((err) => {
             return null
         })
-      console.log("VueX",result)
       return result
     },
     createUser: async function (context, form) {

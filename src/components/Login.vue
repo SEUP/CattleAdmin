@@ -26,7 +26,7 @@
                   <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.email"
                                 type="text"></v-text-field>
                   <v-text-field id="password" prepend-icon="lock" name="password" label="Password"
-                                v-model="form.password" type="password"></v-text-field>
+                                v-model="form.password" type="password" @keypress.13s="login()"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
