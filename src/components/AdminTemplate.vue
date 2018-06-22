@@ -110,14 +110,14 @@
           </v-btn>
         </v-toolbar-title>
         <v-list>
-          <v-list-tile :to="{name:'user-userProfile',params : {id:userData.id,username:userData.username}}">
+          <v-list-tile :to="{name:'user-userProfile',params : {id:userData.id,username:userData.username}}" class="black--text">
             <v-list-tile-title >
               <v-icon>mdi-account</v-icon>
               User Profile
             </v-list-tile-title>
           </v-list-tile>
           <v-list-tile :to="{name:'Login'}">
-            <v-list-tile-title>
+            <v-list-tile-title class="black--text">
               <v-icon>mdi-exit-to-app</v-icon>
               Logout
             </v-list-tile-title>
@@ -142,15 +142,15 @@
     }),
     async mounted () {
       let user = await this.$store.dispatch("login/loadUser");
-      //this.checkUser(user)
+      this.checkUser(user)
       this.userData = user
     },
     methods : {
       checkUser : function (user) {
         console.log("user",user)
-        if(!user){
-          this.$router.push({name: 'Login'})
-        }
+        // if(!user){
+        //   this.$router.push({name: 'Login'})
+        // }
       }
     }
   }

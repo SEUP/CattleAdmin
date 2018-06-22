@@ -22,6 +22,9 @@
     </v-flex>
   </v-layout>
   </v-container>
+  <v-container v-else>
+    <h1>form is null</h1>
+  </v-container>
 </template>
 
 <script>
