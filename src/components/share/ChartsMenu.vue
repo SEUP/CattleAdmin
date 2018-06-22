@@ -96,16 +96,16 @@
         <v-divider ></v-divider>
         <v-card-text >
           <ul class="pl-3">
-            <li>การจำหน่ายโคเนื้อให้กับใคร</li>
-            <li>อายุของโคเนื้อที่จำหน่าย</li>
-            <li>น้ำหนักของโคเนื้อที่ท่านจำหน่าย</li>
-            <li>ลักษณะการจำหน่ายโคเนื้อ</li>
-            <li>การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</li>
-            <li>ราคาของโคเนื้อที่ขายและระยะเวลาในการเลี้ยง</li>
-            <li>ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</li>
-            <li>ความต้องการความช่วยเหลือจากสหกรณ์</li>
-            <li>ความต้องการซื้ออาหารข้นในนามสหกรณ์</li>
-            <li>ระดับความพอใจต่อราคาที่ขาย</li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'การจำหน่ายโค',type:'seller_types'}}">การจำหน่ายโค</v-btn></li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'อายุของโคเนื้อที่จำหน่าย',type:'age_sale'}}">อายุของโคเนื้อที่จำหน่าย</v-btn></li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'น้ำหนักของโคเนื้อที่ท่านจำหน่าย',type:'weight_range_sale'}}">น้ำหนักของโคเนื้อที่ท่านจำหน่าย</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'ลักษณะการจำหน่าย',type:'cattle_sale_methods'}}">ลักษณะการจำหน่าย</v-btn></li>
+            <li><v-btn block :to="{name:'chart-groupJoin',params : {label:'การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_joins'}}">การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</v-btn></li>
+            <li><v-btn :to="{name:'chart-sold'}">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</v-btn></li>
+            <li><v-btn block :to="{name:'chart-pie',params : {label:'ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_join_future'}}">ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</v-btn></li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'ความต้องการความช่วยเหลือจากสหกรณ์',type:'cooperative_help_types'}}">ความต้องการความช่วยเหลือจากสหกรณ์</v-btn></li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'ความต้องการซื้ออาหารข้นในนามสหกรณ์',type:'feed_purchase_cooperative'}}">ความต้องการซื้ออาหารข้นในนามสหกรณ์</v-btn></li>
+            <li><v-btn block :to="{name:'chart-normal',params : {label:'ระดับความพอใจต่อราคาที่ขาย',type:'sale_satisfaction'}}">ระดับความพอใจต่อราคาที่ขาย</v-btn></li>
           </ul>
         </v-card-text>
       </v-card>
