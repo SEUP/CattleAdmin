@@ -2,7 +2,7 @@
   <v-container class="grid-list-md">
     <v-layout row wrap>
       <v-flex xs12>
-        <div class="headline">{{$route.params.label}}</div>
+        <div class="headline">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>

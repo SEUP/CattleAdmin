@@ -45,9 +45,12 @@
           let min =  this.$route.params.min;
           let max = this.$route.params.max;
           let step = this.$route.params.step;
-          let withNull = this.$route.params.withNull;
-          let nullText = this.$route.params.nullText;
-          let params = {withNull: withNull, nullText: nullText}
+          let withNull = this.$route.params.withNull ;
+          let nullText = this.$route.params.nullText ;
+          let params = {}
+          if(withNull && nullText){
+            params = {withNull: withNull, nullText: nullText}
+          }
           let QueryString ="range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
           if(this.province && this.province.PROVINCE_ID !=0){
             QueryString += "/" + this.province.PROVINCE_ID
