@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" v-if="userData">
     <v-navigation-drawer
       width="230"
       :clipped="$vuetify.breakpoint.lgAndUp"
@@ -115,13 +115,13 @@
       <v-menu offset-y offset-x>
         <v-toolbar-title slot="activator">
           <v-btn flat>
-            Root Admin
+            {{userData.username}}
             <v-icon>arrow_drop_down</v-icon>
           </v-btn>
         </v-toolbar-title>
         <v-list>
-          <v-list-tile>
-            <v-list-tile-title>
+          <v-list-tile :to="{name:'user-userProfile'}">
+            <v-list-tile-title >
               <v-icon>mdi-account</v-icon>
               User Profile
             </v-list-tile-title>
@@ -148,6 +148,20 @@
     },
     data: () => ({
       drawer: null,
-    })
+      userData : null
+    }),
+    async mounted () {
+      let user = await this.$store.dispatch("login/loadUser");
+      this.checkUser(user)
+      this.userData = user
+    },
+    methods : {
+      checkUser : function (user) {
+        console.log("user",user)
+        if(!user){
+          this.$router.push({name: 'Login'})
+        }
+      }
+    }
   }
 </script>

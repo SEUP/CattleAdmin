@@ -24,6 +24,10 @@ export default {
       path : ':id/edit',
       name : 'user-edit',
       component : view('user/edit')
+    },{
+      path : ':id/profile/:username',
+      name : 'user-userProfile',
+      component : view('user/userProfile')
     }
   ]
 }

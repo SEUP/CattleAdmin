@@ -1,7 +1,13 @@
 export default {
   namespaced: true,
-  state: {},
-  mutations: {},
+  state: {
+    user :null
+  },
+  mutations: {
+    setUser : function (state,user) {
+      state.user = user
+    }
+  },
   actions: {
     getToken: async function (context, form) {
       let client = {
@@ -26,6 +32,10 @@ export default {
           context.dispatch("error/setError",error.response.data, {root: true});
           return null;
         });
+      return token;
+
+    },
+    getUser : async function (token){
       let user = null;
       if(token) {
         user = await axios.get('/api/user').then((r)=>{
@@ -33,13 +43,19 @@ export default {
         }).catch((error)=>{
           return null;
         })
-
         localStorage.user = JSON.stringify(user);
-
       }
-
-      return token;
+    },
+    loadUser : async function (context) {
+      let userData = await localStorage.getItem('user');
+      if (userData){
+        userData = JSON.parse(userData)
+        context.commit("setUser",userData)
+        return userData
+      }
     }
+
+
   }
 
 }

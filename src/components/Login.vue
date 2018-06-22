@@ -55,8 +55,10 @@
     },
     methods: {
       login: async function () {
-        let token = await this.$store.dispatch("login/getToken", this.form)
+        let token = await this.$store.dispatch("login/getToken", this.form);
+
         if (token) {
+          await this.$store.dispatch("login/getUser",token)
           this.$router.push({name: 'admin-home'})
         }
       }
