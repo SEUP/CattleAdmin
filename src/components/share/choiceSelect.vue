@@ -12,9 +12,10 @@
         </v-flex>
         <v-flex  mx-3 v-if="selectedValue.has_text">
 
-          <v-text-field placeholder="โปรดระบุจำนวนเงิน" class=""  hide-details
-                        v-if="selectedValue.type == 'budget_source'"
-                        v-model="selectedValue.pivot.amount"  @blur="updateValue">
+          <v-text-field placeholder="โปรดระบุจำนวน" class=""  hide-details
+                        v-if="selectedValue.type == 'budget_source'||selectedValue.type == 'dewormed_amount'"
+                        v-model="selectedValue.pivot.amount"  @blur="updateValue"
+                        type="NUMBER">
           </v-text-field>
 
           <v-text-field placeholder="โปรดระบุ" class=""  hide-details v-else
