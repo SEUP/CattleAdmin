@@ -32,7 +32,7 @@
         </v-card>
       </v-flex>
       <v-flex xs12>
-        <v-data-table hide-actions :headers="header" :items="items">
+        <v-data-table hide-actions :headers="header" :items="paginate.data">
           <template slot="items" slot-scope="props">
             <td class="text-xs-lef">{{ props.item.problem  }}</td>
             <td class="text-xs-left">{{ props.item.suggestion }}</td>
@@ -41,7 +41,8 @@
         </v-data-table>
       </v-flex>
       <v-flex xs12 py-2 class="text-xs-center">
-        <v-pagination  ></v-pagination>
+        <v-pagination @input="changePage" :length="paginate.last_page"
+                      v-model="paginate.current_page" ></v-pagination>
       </v-flex>
     </v-layout>
   </v-container>
@@ -53,9 +54,6 @@
       name: "suggestion",
       components: {DistrictSelectSingleLine},
       data : () => ({
-        user_id: 0,
-        user_is_admin: 0,
-        admin_level: 0,
         farmOwners: [],
         farmOwnerPage: {},
         form: {
@@ -66,12 +64,12 @@
           page: "",
         },
         header : [
-          {text: "แัญหาเเละอุปสรรคในการเลี้ยงโคเนื้อ", align:"left" ,value:"problem",sortable :false},
+          {text: "ปัญหาเเละอุปสรรคในการเลี้ยงโคเนื้อ", align:"left" ,value:"problem",sortable :false},
           {text: "ข้อเสนอเเนะ", align:"left" ,value:"suggestion",sortable :false},
           {text: "จังหวัด  อำเภอ  ตำบล", align:"left" ,value:"address_name",sortable :false},
 
         ],
-        items : []
+        paginate:{},
       }),
       mounted() {
         this.load();
@@ -80,38 +78,28 @@
         updateDistrictSelect: function (value) {
           if (value[0]) {
             this.form.province = value[0].PROVINCE_ID;
+            this.form.amphur = 0;
+            this.form.district = 0;
           }
           if (value[1]) {
             this.form.amphur = value[1].AMPHUR_ID;
+            this.form.district = 0 ;
           }
           if (value[2]) {
             this.form.district = value[2].DISTRICT_ID;
           }
         },
         resetSearch :function () {
-          this.form = {
-              keyword: "",
-              province: 0,
-              amphur: 0,
-              district: 0,
-              page: "",
-          };
-          this.load()
+          this.form = Object.assign({})
+          this.$router.go()
         },
         load : async function () {
-          this.user_id = this.$route.params.user_id;
-          this.user_is_admin = this.$route.params.user_is_admin;
-          this.admin_level  = this.$route.params.admin_level ;
-          let QueryString = "api/farm-owner/suggestion"
-
-          // this.items = await this.$store.dispatch("charts/getSuggestion",this.form)
-          this.items = await axios.get(QueryString,this.form)
-            .then ((response) => {
-              return response.data
-            })
-            .catch((err)=> {
-              return null
-            })
+          this.paginate = await this.$store.dispatch("charts/getSuggestion",this.form)
+        },
+        changePage: async function (page) {
+          this.form.page = page;
+          let paginate = await  this.$store.dispatch("charts/getSuggestion", this.form)
+          this.paginate = paginate;
         }
       }
     }

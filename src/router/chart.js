@@ -53,6 +53,10 @@ export default {
       path: 'gmap',
       name: 'chart-gmap',
       component: view('charts/gmapChart')
+    }, {
+      path: 'sold',
+      name: 'chart-sold',
+      component: view('charts/soldChart')
     }
   ]
 }

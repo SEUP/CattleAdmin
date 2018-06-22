@@ -4,7 +4,7 @@
       <v-checkbox :label="role.name"
                   v-bind:value="role"
                   v-on:change="$emit('change', role)"
-                  :input-value="value"
+                  :input-value="value" hide-details
       >
       </v-checkbox>
     </div>

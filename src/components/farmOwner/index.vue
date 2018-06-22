@@ -53,7 +53,7 @@
                 <template slot="items" slot-scope="props">
                   <td class="text-xs-lef">{{ props.item.first_name +" "+ props.item.last_name }}</td>
                   <td class="text-xs-left">{{ props.item.mobile_no }}</td>
-                  <td class="text-xs-left">{{ props.item.province_name +" "+props.item.amphur_name+" "+props.item.district_name }}</td>
+                  <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
                   <td class="text-xs-left">{{ props.item.updated_at }}</td>
 
                   <td class="text-xs-center">
@@ -123,6 +123,18 @@
       await this.loadData()
     },
     methods : {
+      getProvinceAmphurDistrictString: function (item) {
+        let pvString = item.province_name ? item.province_name : "-";
+        let amString = item.amphur_name ? item.amphur_name : "-";
+        let diString = item.district_name ? item.amphur_name : "-";
+
+
+        let outputStr = "";
+        outputStr += pvString == "-" ? "" : pvString;
+        outputStr += amString == "-" ? "" : " " + amString;
+        outputStr += diString == "-" ? "" : " " + diString;
+        return outputStr;
+      },
       loadData : async function () {
         let paginate  = await this.$store.dispatch("farmOwners/getFarmOwners")
         this.paginate = paginate;
@@ -134,17 +146,8 @@
         this.farmOwners = paginate.data;
       },
       resetSearch :function () {
-        this.form = {
-          keyword: "",
-          breeding : null,
-          province: 0,
-          amphur: 0,
-          district: 0,
-        };
-        this.loadData();
-        let se1 = this.$refs.districtSelects;
-        se1.reload()
-        this.$router
+        this.form = Object.assign({})
+        this.$router.go()
 
       },
       changePage: async function (page) {
@@ -156,9 +159,12 @@
       },updateDistrictSelect: function (value) {
         if (value[0]) {
           this.form.province = value[0].PROVINCE_ID;
+          this.form.amphur = 0;
+          this.form.district = 0;
         }
         if (value[1]) {
           this.form.amphur = value[1].AMPHUR_ID;
+          this.form.district = 0 ;
         }
         if (value[2]) {
           this.form.district = value[2].DISTRICT_ID;
