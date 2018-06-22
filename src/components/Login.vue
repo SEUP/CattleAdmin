@@ -1,5 +1,18 @@
 <template>
   <v-app id="inspire">
+
+    <loading :active.sync="spinnerVisible"></loading>
+
+    <v-snackbar
+      :timeout="6000"
+      :color="'error'"
+      :multi-line="true"
+      :vertical="true"
+      v-model="showError">
+      {{ error.message }}
+      <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
+    </v-snackbar>
+
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -30,8 +43,11 @@
 </template>
 
 <script>
+  import Base from "@/components/Base"
+
   export default {
-    name: 'HelloWorld',
+    extends: Base,
+    name: 'Login',
     data() {
       return {
         form: {},
@@ -40,8 +56,8 @@
     methods: {
       login: async function () {
         let token = await this.$store.dispatch("login/getToken", this.form)
-        if(token){
-          this.$router.push({name:'admin-home'})
+        if (token) {
+          this.$router.push({name: 'admin-home'})
         }
       }
     }

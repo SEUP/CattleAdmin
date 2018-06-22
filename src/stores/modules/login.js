@@ -19,6 +19,7 @@ export default {
           return r.data
         })
         .catch((error) => {
+          context.dispatch("error/setError",error.response.data, {root: true});
           return null;
         })
 
