@@ -133,7 +133,7 @@
         <v-divider ></v-divider>
         <v-card-text >
           <ul class="pl-3">
-            <li>ตารางปัญหา อุปสรรคและข้อเสนอแนะ</li>
+            <li><v-btn block :to="{name:'chart-suggestion'}">รายงาน ปัญหา อุปสรรค และข้อเสนอแนะ</v-btn> </li>
           </ul>
         </v-card-text>
       </v-card>
