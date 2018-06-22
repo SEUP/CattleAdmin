@@ -33,21 +33,21 @@
             :headers="headers"
             :items="paginate.data"
             hide-actions
-            class="elevation-1 "
+            class="dense"
           >
             <template slot="items" slot-scope="props">
-              <td class="text-xs-center">{{ props.item.name }}</td>
-              <td class="text-xs-center">{{ props.item.email }}</td>
-              <td class="text-xs-center">{{ props.item.username}}</td>
-              <td class="text-xs-center">
+              <td class="text-xs-left">{{ props.item.name }}</td>
+              <td class="text-xs-left">{{ props.item.email }}</td>
+              <td class="text-xs-left">{{ props.item.username}}</td>
+              <td class="text-xs-left">
                 <ul class="text-xs-left">
                   <li v-for="role in props.item.roles">
                     {{role.display_name}}
                   </li>
                 </ul>
               </td>
-              <td class="text-xs-center">{{ getProvinceAmphurDistrictString(props.item) }}</td>
-              <td class="text-xs-center">{{ props.item.action }}
+              <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
+              <td class="text-xs-left">{{ props.item.action }}
                 <v-btn class="ma-0" icon :to="{name:'user-edit',params : {id : props.item.id}}">
                   <v-icon color="primary">create</v-icon>
                 </v-btn>
@@ -66,8 +66,10 @@
     </v-layout>
   </v-container>
 </template>
-<style>
-
+<style scoped>
+  table.table thead td:not(:nth-child(1)), table.table tbody td:not(:nth-child(1)), table.table thead th:not(:nth-child(1)), table.table tbody th:not(:nth-child(1)), table.table thead td:first-child, table.table tbody td:first-child, table.table thead th:first-child, table.table tbody th:first-child {
+    padding: 0px 12px !important;
+  }
 </style>
 
 <script>
@@ -75,12 +77,12 @@
     data: () => ({
       ID: null,
       headers: [
-        {text: "Name", align: "center", value: "name"},
-        {text: "Email", align: "center", value: "email"},
-        {text: "Username", align: "center", value: "username"},
-        {text: "Roles", align: "center", value: "role"},
-        {text: "จังหวัด อำเภอ ตำบล", align: "center", value: "atdes", sortable: false},
-        {text: "Action", align: "center", value: "action", sortable: false},
+        {text: "Name", align: "left", value: "name"},
+        {text: "Email", align: "left", value: "email"},
+        {text: "Username", align: "left", value: "username"},
+        {text: "Roles", align: "left", value: "role"},
+        {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes", sortable: false},
+        {text: "Action", align: "left", value: "action", sortable: false},
 
 
       ],
