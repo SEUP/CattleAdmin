@@ -147,9 +147,12 @@
       },updateDistrictSelect: function (value) {
         if (value[0]) {
           this.form.province = value[0].PROVINCE_ID;
+          this.form.amphur = 0;
+          this.form.district = 0;
         }
         if (value[1]) {
           this.form.amphur = value[1].AMPHUR_ID;
+          this.form.district = 0 ;
         }
         if (value[2]) {
           this.form.district = value[2].DISTRICT_ID;

@@ -76,7 +76,6 @@
       },
       methods : {
         updateDistrictSelect: function (value) {
-          console.log(value);
           if (value[0]) {
             this.form.province = value[0].PROVINCE_ID;
             this.form.amphur = 0;
