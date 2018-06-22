@@ -61,7 +61,6 @@
     methods: {
       sync: function () {
         this.items.forEach((i) => {
-          i = Object.assign(i,{pivot:{remark: null , amount : null}});
           if (i.id == this.value.id) {
             this.selectedValue = i;
             if (this.value.pivot.remark) {

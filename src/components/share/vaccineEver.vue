@@ -4,9 +4,9 @@
       <v-flex class="lg12">
         <v-select hide-details
                   :items="items"
-                  v-model="ChoiceMain"
+                  v-model="selectedMain"
                   :label="label" item-text="choice"
-                  @change="updateValue(type,ChoiceMain)"
+                  @change="updateValue()"
                   color="success">
         </v-select>
       </v-flex>
@@ -44,11 +44,8 @@
       }
     },
     data: () => ({
-      ChoiceMain : ChoiceMain,
-      Main :[ChoiceMain],
-      selMain : ChoiceMain,
+      selectedMain : ChoiceMain,
       items:[],
-      items_checkBox:[]
     }),
     computed: {
       ...mapState({
@@ -58,14 +55,23 @@
     async created() {
       this.items_checkBox = await [].concat(await this.$store.dispatch("choices/getChoicesByType", "vaccine_types"));
       this.items = await [ChoiceMain].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
+      await  this.sync()
+
     },
     mounted (){
       console.log(this.form);
     },
     methods :{
-      updateValue: function (type, value) {
-
-        this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
+      updateValue: function () {
+        this.$store.dispatch("farmOwners/updateState",this.form)
+      },
+      sync : function () {
+        this.items.forEach((i) =>{
+          if (i.id == this.form[this.type].id){
+            console.log(i.id == this.form[this.type].id);
+            this.selectedMain = i ;
+          }
+        })
       }
     }
   }
