@@ -1,6 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
+      width="230"
       :clipped="$vuetify.breakpoint.lgAndUp"
       v-model="drawer"
       fixed
@@ -38,6 +39,30 @@
           <v-list-tile-content>
             <v-list-tile-title>
               ค้นหาเกษตรกร
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <!--report-->
+        <v-list-tile :to="{name : 'admin-report'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-chart-bar</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              แผนภูมิรายงาน
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <!--download form-->
+        <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-file-document</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              ดาวน์โหลดเเบบสอบถาม
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -83,7 +108,7 @@
       <v-menu offset-y offset-x>
         <v-toolbar-title slot="activator">
           <v-btn flat>
-            <v-icon>settings</v-icon>
+            Root Admin
             <v-icon>arrow_drop_down</v-icon>
           </v-btn>
         </v-toolbar-title>
@@ -96,7 +121,7 @@
           </v-list-tile>
           <v-list-tile :to="{name:'Login'}">
             <v-list-tile-title>
-              <v-icon>exit_to_app</v-icon>
+              <v-icon>mdi-exit-to-app</v-icon>
               Logout
             </v-list-tile-title>
           </v-list-tile>

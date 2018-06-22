@@ -31,6 +31,10 @@ export default new Router({
           path: '',
           name: 'admin-home',
           component: view('Home')
+        },     {
+          path: 'report',
+          name: 'admin-report',
+          component: view('Report')
         },
         farmOwner,
         userRoute,
