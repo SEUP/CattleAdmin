@@ -101,7 +101,7 @@
             <li><v-btn block :to="{name:'chart-normal',params : {label:'น้ำหนักของโคเนื้อที่ท่านจำหน่าย',type:'weight_range_sale'}}">น้ำหนักของโคเนื้อที่ท่านจำหน่าย</v-btn></li>
             <li><v-btn block :to="{name:'chart-pie',params : {label:'ลักษณะการจำหน่าย',type:'cattle_sale_methods'}}">ลักษณะการจำหน่าย</v-btn></li>
             <li><v-btn block :to="{name:'chart-groupJoin',params : {label:'การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_joins'}}">การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</v-btn></li>
-            <li><v-btn :to="{name:'chart-sold'}">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</v-btn></li>
+            <li><v-btn block :to="{name:'chart-sold'}">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</v-btn></li>
             <li><v-btn block :to="{name:'chart-pie',params : {label:'ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_join_future'}}">ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</v-btn></li>
             <li><v-btn block :to="{name:'chart-normal',params : {label:'ความต้องการความช่วยเหลือจากสหกรณ์',type:'cooperative_help_types'}}">ความต้องการความช่วยเหลือจากสหกรณ์</v-btn></li>
             <li><v-btn block :to="{name:'chart-normal',params : {label:'ความต้องการซื้ออาหารข้นในนามสหกรณ์',type:'feed_purchase_cooperative'}}">ความต้องการซื้ออาหารข้นในนามสหกรณ์</v-btn></li>
