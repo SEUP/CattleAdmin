@@ -116,9 +116,10 @@
               </v-card>
             </v-flex>
 
-            <v-flex xs3>
-              <v-divider class="pt-1 success"></v-divider>
-              <v-list class="card-border">
+            <v-flex xs3 >
+              <div style="position: sticky; top:72px ">
+                <v-divider class="pt-1 success"></v-divider>
+              <v-list class="elevation-1">
                 <v-list-tile class="text-xs-center">
                   <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
                 </v-list-tile>
@@ -172,6 +173,7 @@
                   <v-list-tile-content>ส่วนที่ 8</v-list-tile-content>
                 </v-list-tile>
               </v-list>
+              </div>
             </v-flex>
           </v-layout>
         </v-container>
