@@ -5,19 +5,10 @@
       <v-layout row wrap>
         <v-flex md6>
 
-          <router-link :to="{name:'chart-normal',params : {label:'การตายของโคในรอบปี',type:'cattle_death'}}">death</router-link>
 
-          <router-link :to="{name:'chart-groupJoin',params : {label:'การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_joins'}}">groupJoin</router-link>
+          <charts-menu>
 
-          <router-link :to="{name:'chart-double',params : {label:'การขึ้นทะเบียนฟาร์มกับภาครัฐ',type:'farm_register_status'}}">double</router-link>
-
-
-          <router-link :to="{name:'chart-doublePivot',params : {label:'การถ่ายพยาธิ',type:'dewormed_amount'}}">doublePivot</router-link>
-
-          <router-link :to="{name:'chart-suggestion'}">suggestion</router-link>
-          <router-link :to="{name:'chart-sold'}">sold</router-link>
-
-          <charts-menu></charts-menu>
+          </charts-menu>
 
         </v-flex>
         <v-flex md6>

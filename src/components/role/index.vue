@@ -2,18 +2,23 @@
   <v-container>
     <v-layout row wrap>
 
-      <v-flex pb-3 xs-12>
+      <v-flex xs12>
         <h1 class="display-1" ><v-icon x-large color="primary">mdi-account-key</v-icon>&ensp;รายการสิทธิ์</h1>
+        <v-divider class="mt-2"></v-divider>
       </v-flex>
-      <v-flex xs3>
-        <v-text-field
-          prepend-icon="mdi-magnify"
-          name="input-1-3"
-          label="ค้นหา"
-          province_id:
-          v-model="form.keyword"
-          @keyup.13="search()"
-        ></v-text-field>
+
+      <v-flex xs12 >
+        <v-layout row>
+          <v-spacer></v-spacer>
+          <v-flex md3>
+            <v-text-field
+              append-icon="mdi-magnify"
+              label="ค้นหา"
+              v-model="form.keyword"
+              @keyup.13="search()"
+            ></v-text-field>
+          </v-flex>
+        </v-layout>
 
       </v-flex>
     </v-layout>
