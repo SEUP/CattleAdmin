@@ -2,7 +2,7 @@
   <v-layout class="column">
     <v-flex >
       <v-card>
-        <v-card-title class="title">ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตร</v-card-title>
+        <v-card-title class="title">ส่วนที่ 1 ข้อมูลพื้นฐานของเกษตรกร</v-card-title>
         <v-divider ></v-divider>
         <v-card-text class="pl-3">
           <ul class="pl-3">

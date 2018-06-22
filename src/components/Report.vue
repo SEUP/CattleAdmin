@@ -1,8 +1,14 @@
 <template>
-  <v-container fluid class="grid-list-md">
+  <v-container class="grid-list-md">
     <v-layout row wrap>
 
       <v-layout row wrap>
+        <v-flex xs12 >
+          <v-card-text class="display-1  pa-0 text-xs-center text-md-left">
+            <v-icon color="primary" x-large>mdi-chart-bar</v-icon>แผนภูมิรายงานเกษตรกรผู้เลี้ยงโคเนื้อ 4 จังหวัด พะเยา เชียงราย แพร่ น่าน
+          </v-card-text>
+          <v-divider class="my-3"></v-divider>
+        </v-flex>
         <v-flex md6>
 
 

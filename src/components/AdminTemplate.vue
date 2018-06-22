@@ -18,6 +18,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--addFarmOwner-->
         <v-list-tile :to="{name : 'farmOwner-addFarmOwner'}" exact>
@@ -30,6 +31,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--farmOwner-->
         <v-list-tile :to="{name : 'farmOwner-index'}" exact>
@@ -42,6 +44,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--report-->
         <v-list-tile :to="{name : 'admin-report'}" exact>
@@ -54,6 +57,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--download form-->
         <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
@@ -66,6 +70,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--role-->
         <v-list-tile :to="{name : 'role-index'}" exact>
@@ -78,6 +83,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
         <!--Users-->
         <v-list-tile :to="{name : 'user-index'}" exact>
@@ -90,6 +96,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
 
       </v-list>
 
