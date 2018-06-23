@@ -8,7 +8,8 @@
         .then((response) => {
           return response.data;
         })
-        .catch((err) => {
+        .catch((error) => {
+          context.dispatch("error/setError",error.response.data, {root: true});
           return null
         });
       return result

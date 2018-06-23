@@ -9,27 +9,36 @@
         <v-card-text>เเก้ไขโปรไฟล์</v-card-text>
         <v-divider></v-divider>
         <div class="mx-5 my-2">
-          <v-text-field  label="Username" v-model="form.username"></v-text-field>
-          <v-text-field  label="Email"  readonly v-model="form.email"></v-text-field>
-          <v-text-field  label="Password" v-model="form.password"></v-text-field>
-          <v-text-field  label="Verify Password" v-model="form.password_confirmation"></v-text-field>
+          <v-text-field  label="Username" v-model="form.username"
+                         :error-messages="error.errors.username"
+          ></v-text-field>
+          <v-text-field  label="Email"  readonly
+                         v-model="form.email"
+          ></v-text-field>
+          <v-text-field  label="Password"
+                         v-model="form.password"
+                         :error-messages="error.errors.password"
+          ></v-text-field>
+          <v-text-field  label="Verify Password"
+                         v-model="form.password_confirmation"
+                         :error-messages="error.errors.password"
+          ></v-text-field>
         </div>
         <div class="text-xs-center">
         <v-btn depressed color="success" @click="saveUser()">save Change</v-btn>
-        <v-btn outline @click="goBack()">cancel</v-btn>
+        <v-btn outline @click="$router.go(-1)">cancel</v-btn>
         </div>
       </v-card>
     </v-flex>
   </v-layout>
   </v-container>
-  <v-container v-else>
-    <h1>form is null</h1>
-  </v-container>
 </template>
 
 <script>
+  import Base from "@/components/Base";
     export default {
       name: "userProfile",
+      extends : Base,
       data : () => ({
         form : null
       }),

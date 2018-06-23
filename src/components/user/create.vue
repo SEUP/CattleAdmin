@@ -51,6 +51,7 @@
             <v-text-field
               type="password"
               v-model="form.password_confirmation"
+              :error-messages="error.errors.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>
@@ -67,7 +68,7 @@
             </v-container>
 
             <v-btn color="primary" @click="saveUser"> Submit</v-btn>
-            <v-btn @click=""> Cancel</v-btn>
+            <v-btn @click="$router.go(-1)">Cancel</v-btn>
           </v-form>
 
 

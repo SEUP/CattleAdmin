@@ -6,9 +6,16 @@
           <v-card-text class="pa-2 title">1.1 ข้อมูลทั่วไป</v-card-text>
           <v-divider></v-divider>
           <div class="ma-2 mx-4">
-            <v-text-field label="ชื่อ" placeholder="กรุณากรอกชื่อ" v-model="form.first_name" @blur="updateForm"></v-text-field>
-            <v-text-field label="นามสกุล" placeholder="กรุณากรอกนามสกุล" v-model="form.last_name" @blur="updateForm"></v-text-field>
-            <v-text-field label="รหัสประจำตัวประชาชน" placeholder="กรุณากรอกรหัสประจำตัวประชาชน" v-model="form.person_id" @blur="updateForm" ></v-text-field>
+            <v-text-field label="ชื่อ" placeholder="กรุณากรอกชื่อ"
+                          v-model="form.first_name"
+                          :error-messages="error.errors.first_name"
+                          @blur="updateForm"></v-text-field>
+            <v-text-field label="นามสกุล" placeholder="กรุณากรอกนามสกุล"
+                          :error-messages="error.errors.last_name"
+                          v-model="form.last_name" @blur="updateForm"></v-text-field>
+            <v-text-field label="รหัสประจำตัวประชาชน" placeholder="กรุณากรอกรหัสประจำตัวประชาชน"
+                          :error-messages="error.errors.person_id"
+                          v-model="form.person_id" @blur="updateForm" ></v-text-field>
           </div>
 
         <v-card-text class="pa-2 title">1.2 ที่อยู่ตามสำเนาทะเบียนบ้าน</v-card-text>
@@ -132,11 +139,13 @@
 </template>
 
 <script>
+    import Base from "@/components/Base";
     import DistrictSelect from "../../share/districtSelect";
     import ChoiceSelect from "../../share/choiceSelect";
     import ChoiceCheckBox from "../../share/choiceCheckBox";
     export default {
       name: "part1",
+      extends : Base,
       components: {ChoiceCheckBox, ChoiceSelect, DistrictSelect},
       data : () =>({
         form : undefined

@@ -21,6 +21,7 @@
           <v-form class="mt-3 ml-3 mr-5">
             <v-text-field
               v-model="form.name"
+              :error-messages="error.errors.name"
               label="ชื่อ-นามสกุล"
 
             ></v-text-field>
@@ -28,18 +29,21 @@
             <v-text-field
               v-model="form.email"
               label="E-mail"
+              :error-messages="error.errors.email"
               required
             ></v-text-field>
 
             <v-text-field
               v-model="form.username"
               label="Username"
+              :error-messages="error.errors.username"
               required
             ></v-text-field>
 
             <v-text-field
               type="password"
               v-model="form.password"
+              :error-messages="error.errors.password"
               label="Password"
               required
             ></v-text-field>
@@ -47,6 +51,7 @@
             <v-text-field
               type="password"
               v-model="form.password_confirmation"
+              :error-messages="error.errors.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>
@@ -78,9 +83,11 @@
 
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
+  import Base from "@/components/Base";
 
   export default {
     name: "edit",
+    extends : Base,
     components: {
       roleCheckbox, districtSelect
     },

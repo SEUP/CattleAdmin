@@ -1,3 +1,5 @@
+import error from "./error";
+
 let loadingState = ['None','OnGoing','Done'];
 
 export default {
@@ -19,7 +21,10 @@ export default {
         {params: {all: true}})
         .then((response) => {
           return response.data;
-        });
+        })
+        .catch( (error) =>{
+          context.dispatch("error/setError",error.response.data, {root: true});
+        })
 
       context.state.isLoad = loadingState[2];
       context.commit("setProvinces", result);
