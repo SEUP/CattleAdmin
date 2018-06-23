@@ -30,6 +30,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
         <v-divider></v-divider>
 
         <!--addFarmOwner-->
@@ -43,7 +44,6 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-divider></v-divider>
 
         <!--farmOwner-->
         <v-list-tile :to="{name : 'farmOwner-index'}" exact>
@@ -56,10 +56,6 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-divider></v-divider>
-
-        <!--report-->
-
 
         <!--download form-->
         <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
@@ -74,19 +70,6 @@
         </v-list-tile>
         <v-divider></v-divider>
 
-        <!--role-->
-        <v-list-tile :to="{name : 'role-index'}" exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account-key</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              จัดการสิทธิ์ผู้ใช้
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
-
         <!--Users-->
         <v-list-tile :to="{name : 'user-index'}" exact>
           <v-list-tile-action>
@@ -94,11 +77,24 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              จัดการข้อมูลผู้ใช้ระบบ
+              จัดการผู้ใช้ระบบ
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <!--role-->
+        <v-list-tile :to="{name : 'role-index'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account-key</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              จัดการสิทธิ์การใช้งาน
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
+
+
 
       </v-list>
 
