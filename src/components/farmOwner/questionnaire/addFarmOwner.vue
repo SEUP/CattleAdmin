@@ -121,7 +121,7 @@
                 <v-divider class="pt-1 success"></v-divider>
               <v-list class="elevation-1">
                 <v-list-tile class="text-xs-center">
-                  <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
+                  <v-btn color="success" depressed block @click.native="createFarmOwner">Save All</v-btn>
                 </v-list-tile>
                 <v-divider></v-divider>
 
