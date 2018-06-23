@@ -6,7 +6,7 @@
                   :items="items"
                   v-model="selectedMain"
                   :label="label" item-text="choice"
-                  @change="updateValue()"
+                  @change="updateMainsel"
                   color="success">
         </v-select>
       </v-flex>
@@ -18,7 +18,7 @@
                           :value="item"
                           v-model="select_Box"
                           color="success"
-                          @change="updateValue">
+                          @change="updateCheckbox">
               </v-checkbox>
               <v-text-field hide-details class="pa-0 px-3"
                             placeholder="value of years" :value="item.pivot.remark"
@@ -99,8 +99,8 @@
       this.items_checkBox = await [].concat(await this.$store.dispatch("choices/getChoicesByType", "vaccine_types"));
       this.items_Sub = await [ChoiceSub].concat(await this.$store.dispatch("choices/getChoicesByType", "vaccined_by"));
       this.items = await [ChoiceMain].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
-      await  this.sync()
-      await this.syncCheckbox()
+      await  this.sync();
+      await this.syncCheckbox();
 
 
     },
@@ -111,6 +111,21 @@
       updateValue: function () {
         this.$store.dispatch("farmOwners/updateState",this.form)
       },
+      updateMainsel :function(items){
+       //console.log(items,this.form.vaccine_ever);
+        this.form.vaccine_ever = items;
+        if(items.id == 203){
+          this.form.vaccine_types = [];
+          //console.log(this.form.vaccine_types );
+        }
+        this.updateValue()
+
+      },
+      updateCheckbox:function(item){
+        this.form.vaccine_types = item;
+        console.log(item,this.form.vaccine_types);
+        this.updateValue()
+      },
       sync : function () {
         this.items.forEach((i) =>{
           if (i.id == this.form[this.type].id){
@@ -119,21 +134,23 @@
         })
       },
       syncCheckbox : function () {
-        let selectedchoice = this.select_Box
-        let choices = this.items_checkBox
-        let selChoice = this.form.vaccine_types
-        selChoice.forEach((a) =>{
-          if(a.id == choices.id){
-            console.log("ssss")
-          }
-        })
-        choices.forEach((i)=>{
-          console.log(i.id)
-          if(i.id == selChoice.id){
-            console.log(i.id,selChoice.id)
+        console.log(this.select_Box,this.items_checkBox,this.form.vaccine_types);
+        let selectedchoice = this.select_Box;
+        let choices = this.items_checkBox;
+        let selChoice = this.form.vaccine_types;
+        let choicesLangth =  this.items_checkBox.length;
+        let selChoiceLangth =  this.form.vaccine_types.length;
+
+        for(let i =0;i<choicesLangth ;i++){
+          for(let a = 0;a< selChoiceLangth;a++){
+            //console.log("aaaassssssss",choices[i].id,selChoice[a].id);
+            if (choices[i].id == selChoice[a].id ){
+              choices[i] = selChoice[a] ;
+              selectedchoice.push(selChoice[a] );
+            }
 
           }
-        })
+        }
 
       }
     }
