@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" v-if="userData">
+  <v-app id="inspire" >
     <v-navigation-drawer
       width="230"
       :clipped="$vuetify.breakpoint.lgAndUp"
@@ -102,7 +102,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-menu offset-y offset-x>
+      <v-menu offset-y offset-x v-if="userData">
         <v-toolbar-title slot="activator">
           <v-btn flat>
             {{userData.username}}
@@ -116,7 +116,7 @@
               User Profile
             </v-list-tile-title>
           </v-list-tile>
-          <v-list-tile :to="{name:'Login'}">
+          <v-list-tile :to="{name:'Login'}" @click="logout">
             <v-list-tile-title class="black--text">
               <v-icon>mdi-exit-to-app</v-icon>
               Logout
@@ -151,6 +151,10 @@
         // if(!user){
         //   this.$router.push({name: 'Login'})
         // }
+      },
+      logout : function () {
+        console.log("logout")
+        this.$store.dispatch("login/logout")
       }
     }
   }

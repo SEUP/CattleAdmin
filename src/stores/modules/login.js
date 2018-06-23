@@ -53,6 +53,10 @@ export default {
         context.commit("setUser",userData)
         return userData
       }
+    },
+    logout : async function (){
+      localStorage.removeItem("user")
+      localStorage.removeItem("access_token")
     }
 
 
