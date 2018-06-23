@@ -1,5 +1,17 @@
 <template>
   <v-app id="inspire" >
+    <loading :active.sync="spinnerVisible"></loading>
+
+    <v-snackbar
+      :timeout="6000"
+      :color="'error'"
+      :multi-line="true"
+      :vertical="true"
+      v-model="showError">
+      {{ error.message }}
+      <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
+    </v-snackbar>
+
     <v-navigation-drawer
       width="230"
       :clipped="$vuetify.breakpoint.lgAndUp"
@@ -132,7 +144,11 @@
 </template>
 
 <script>
+
+  import Base from "@/components/Base"
+
   export default {
+    extends : Base,
     props: {
       source: String
     },
