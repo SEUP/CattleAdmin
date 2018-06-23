@@ -30,10 +30,13 @@ export default {
           });
 
           return choices;
-        });
+        })
+        .catch( (error) => {
+          context.dispatch("error/setError",error.response.data, {root: true});
+          return null
+        })
 
       context.state.isLoad = context.state.loadingState[2];
-
       context.commit("setChoices", result);
     },
     getChoices: async function (context) {

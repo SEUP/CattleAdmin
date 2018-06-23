@@ -8,20 +8,20 @@ export default {
         .then((response) => {
           return response.data
         })
-        .catch((err) => {
+        .catch((error) => {
           context.dispatch("error/setError",error.response.data, {root: true});
           return null;
         });
       return result
     },
     getUserById: async function(context,params = null){
-
       let result =  await axios.get("/api/users/"+params.id,{params:params})
           .then ( (response) => {
             return response.data
           })
-        .catch((err) => {
-            return null
+        .catch((error) => {
+          context.dispatch("error/setError",error.response.data, {root: true});
+          return null
         })
       return result
     },
@@ -29,7 +29,6 @@ export default {
       let result = await axios.post("/api/users",  form)
         .then((response) => {
           return response.data
-
         })
         .catch((error) => {
           context.dispatch("error/setError",error.response.data, {root: true});
@@ -42,7 +41,8 @@ export default {
             .then((response) => {
               return response.data
             })
-            .catch((err) => {
+            .catch((error) => {
+              context.dispatch("error/setError",error.response.data, {root: true});
               return null
         });
       return result
@@ -52,7 +52,8 @@ export default {
         .then((response) => {
           return response.data
         })
-        .catch( (err) => {
+        .catch( (error) => {
+          context.dispatch("error/setError",error.response.data, {root: true});
           return null
         });
       return result
