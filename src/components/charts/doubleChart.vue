@@ -1,35 +1,30 @@
 <template>
-  <v-container class="grid-list-md">
+  <v-container class="grid-list-md fluid">
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs8>
         <div class="headline">{{$route.params.label}}</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>
-      </v-flex>
-
-      <v-flex xs12>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text">{{head1}}</v-card-text>
           <v-divider/>
           <div ref="master"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12 >
         <v-card>
           <v-card-text class="subheader black--text">{{head2}}</v-card-text>
           <v-divider/>
           <div ref="sub"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12 v-if = "type == 'use_land'">
-        <v-card>
+        <v-card v-if = "type == 'use_land'">
           <v-card-text class="subheader black--text">{{head3}}</v-card-text>
           <v-divider/>
           <div ref="sum_use_land"></div>
         </v-card>
+      </v-flex>
+
+      <v-flex xs4 class="mt-3">
+        <chartmenu></chartmenu>
       </v-flex>
 
     </v-layout>
@@ -40,9 +35,10 @@
 <script>
   import ProvinceSelect from "../share/provinceSelect";
   import Highcharts from "highcharts/highcharts"
+  import chartmenu from "../share/ChartsMenu"
     export default {
       name: "doubleChart",
-      components : {ProvinceSelect},
+      components : {ProvinceSelect,chartmenu},
       data: () => ({
         head1 : null,
         head2 : null,

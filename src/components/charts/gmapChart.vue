@@ -1,18 +1,17 @@
 <template>
-  <v-container class="grid-list-md">
+  <v-container class="grid-list-md fluid">
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs8>
         <div class="headline">ที่ตั้งฟาร์มของเกษตรกร</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>
-      </v-flex>
-      <v-flex xs12 style="height: 600px;">
+
         <gmap-map
-          style="width: 100%; height: 100%"
+          style="width: 100%; height: 35%"
           :center="{lat: 19.1378449, lng: 99.9138361}"
           :zoom="8"
-          class="map-container">
+          class="map-container mt-3">
 
           <gmap-marker :key="m.PROVINCE_ID" v-for="m in chartData" :position.sync="m.position"
                        :title="m.title"
@@ -23,6 +22,9 @@
           </gmap-marker>
         </gmap-map>
       </v-flex>
+      <v-flex xs4 class="mt-3">
+        <chartmenu></chartmenu>
+      </v-flex>
     </v-layout>
   </v-container>
 
@@ -31,10 +33,11 @@
 <script>
 
   import ProvinceSelect from "../share/provinceSelect";
+  import chartmenu from "../share/ChartsMenu"
 
   export default {
     name: "chart-gmap",
-    components: {
+    components: {chartmenu,
       "ProvinceSelect": ProvinceSelect,
     }, data: () => ({
       province: null,
