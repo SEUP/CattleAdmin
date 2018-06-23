@@ -23,18 +23,21 @@
               v-model="form.name"
               label="ชื่อ-นามสกุล"
               required
+              :error-messages="error.errors.name"
             ></v-text-field>
 
             <v-text-field
               v-model="form.email"
               label="E-mail"
               required
+              :error-messages="error.errors.email"
             ></v-text-field>
 
             <v-text-field
               v-model="form.username"
               label="Username"
               required
+              :error-messages="error.errors.username"
             ></v-text-field>
 
             <v-text-field
@@ -42,6 +45,7 @@
               v-model="form.password"
               label="Password"
               required
+              :error-messages="error.errors.password"
             ></v-text-field>
 
             <v-text-field
@@ -80,8 +84,11 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
 
+  import Base from "@/components/Base";
+
   export default {
     name: "create",
+    extends : Base,
     components: {
       roleCheckbox, districtSelect
     },

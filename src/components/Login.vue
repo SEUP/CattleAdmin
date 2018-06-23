@@ -24,8 +24,10 @@
               <v-card-text>
                 <v-form>
                   <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.email"
-                                type="text"></v-text-field>
+                                :error-messages="error.errors.email" type="text"
+                  ></v-text-field>
                   <v-text-field id="password" prepend-icon="lock" name="password" label="Password"
+                                :error-messages="error.errors.password"
                                 v-model="form.password" type="password" @keypress.13s="login()"></v-text-field>
                 </v-form>
               </v-card-text>
