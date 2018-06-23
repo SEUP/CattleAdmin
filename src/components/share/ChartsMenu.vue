@@ -9,6 +9,7 @@
             <li><router-link  :to="{name:'chart-pie',params : {label:'เพศ',type:'sex'}}">เพศ</router-link></li>
             <li><router-link  :to="{name:'chart-range-farmowner',params : {label:'อายุ',type:'age',min: 15,max: 70,step: 8,withNull : false,nullText : '0'}}">อายุ</router-link></li>
             <li><router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}">การศึกษา</router-link></li>
+            <li><router-link :to="{name:'chart-gmap',params : {label:'ที่ตั้งฟาร์มของเกษตรกร'}}">ที่ตั้งฟาร์มของเกษตรกร</router-link></li>
             <li> <router-link :to="{name:'chart-pie',params : {label:'อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)',type:'cattle_job'}}">อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)</router-link></li>
             <li><router-link  :to="{name:'chart-normal',params : {label:'เฉลี่ยรายได้รวมของครอบครัว',type:'income_range'}}">เฉลี่ยรายได้รวมของครอบครัว</router-link></li>
             <li><router-link   :to="{name:'chart-normal',params : {label:'รายได้จากการประกอบอาชีพของเกษตรกร',type:'jobtypes'}}">รายได้จากการประกอบอาชีพของเกษตรกร</router-link></li>

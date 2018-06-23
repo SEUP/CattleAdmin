@@ -1,60 +1,49 @@
 <template>
-  <v-container class="grid-list-md">
+  <v-container class="grid-list-md fluid">
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs8>
         <div class="headline">{{$route.params.label}}</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>
-      </v-flex>
-
-      <v-flex xs12>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text">พ่อพันธุ์โคเนื้อที่เลี้ยง</v-card-text>
           <v-divider/>
           <div ref="map_male_breeding"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text">แม่พันธุ์โคเนื้อที่เลี้ยง</v-card-text>
           <v-divider/>
           <div ref="map_female_breeding"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text">โคเพศผู้อายุมากกว่า 6 เดือนขึ้นไปแต่ไม่ใช่พ่อพันธุ์คุมฝูง</v-card-text>
           <v-divider/>
           <div ref="map_male_over_six_breeding"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text">โคเพศเมียอายุมากกว่า 6 เดือนขึ้นไปแต่ยังไม่ตั้งท้อง</v-card-text>
           <v-divider/>
           <div ref="map_female_over_six_breeding"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text">ลูกโคเพศผู้อายุน้อยกว่า 6 เดือน</v-card-text>
           <v-divider/>
           <div ref="map_male_under_six_breeding"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text">ลูกโคเพศเมียอายุน้อยกว่า 6 เดือน</v-card-text>
           <v-divider/>
           <div ref="map_female_under_six_breeding"></div>
         </v-card>
+
       </v-flex>
+
+      <v-flex xs4 class="mt-3">
+        <chartmenu></chartmenu>
+      </v-flex>
+
+
 
     </v-layout>
   </v-container>
@@ -64,9 +53,11 @@
 <script>
   import ProvinceSelect from "../share/provinceSelect";
   import Highcharts from "highcharts/highcharts"
+  import chartmenu from "../share/ChartsMenu"
+
     export default {
       name: "cattleChart",
-      components : {ProvinceSelect},
+      components : {ProvinceSelect,chartmenu},
       data: () => ({
         province : null,
         chartData : [

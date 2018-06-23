@@ -1,12 +1,13 @@
 <template>
-  <v-container class="grid-list-md">
+  <v-container class="grid-list-md fluid">
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs8>
         <div class="headline">{{$route.params.label}}</div>
         <province-select :value="province" @change="provinceChange"></province-select>
+        <div class="mt-3" ref="chart"></div>
       </v-flex>
-      <v-flex xs12>
-        <div ref="chart"></div>
+      <v-flex xs4 class="mt-3">
+        <chartmenu></chartmenu>
       </v-flex>
     </v-layout>
   </v-container>
@@ -15,11 +16,13 @@
 <script>
   import provinceSelect from "@/components/share/provinceSelect"
   import Highcharts from "highcharts/highcharts"
+  import chartmenu from "../share/ChartsMenu"
 
   export default {
     name: "pieChart",
     components: {
-      provinceSelect
+      provinceSelect,
+      chartmenu,
     },
     data: () => ({
       province: null,

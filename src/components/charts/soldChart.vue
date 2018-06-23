@@ -1,58 +1,54 @@
 <template>
-  <v-container class="grid-list-md">
+  <v-container class="grid-list-md fluid">
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs8>
         <div class="headline">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>
-      </v-flex>
 
-      <v-flex xs12>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text"> พ่อพันธุ์ </v-card-text>
           <v-divider/>
           <div ref="male_cattle_price_range_sale"></div>
           <div ref="male_cattle_age_range_sale"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text"> แม่พันธุ์ </v-card-text>
           <v-divider/>
           <div ref="female_cattle_price_range_sale"></div>
           <div ref="female_cattle_age_range_sale"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text"> โคขุน </v-card-text>
           <v-divider/>
           <div ref="khoon_cattle_price_range_sale"></div>
           <div ref="khoon_cattle_age_range_sale"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
         <v-card>
           <v-card-text class="subheader black--text"> โครุ่น </v-card-text>
           <v-divider/>
           <div ref="teen_cattle_price_range_sale"></div>
           <div ref="teen_cattle_age_range_sale"></div>
         </v-card>
-      </v-flex>
-
-      <v-flex xs12>
+        <v-card>
+          <v-card-text class="subheader black--text"> โครุ่น </v-card-text>
+          <v-divider/>
+          <div ref="teen_cattle_price_range_sale"></div>
+          <div ref="teen_cattle_age_range_sale"></div>
+        </v-card>
         <v-card>
           <v-card-text class="subheader black--text"> อื่นๆ  </v-card-text>
           <v-divider/>
           <div ref="other_cattle_price_range_sale"></div>
           <div ref="other_cattle_age_range_sale"></div>
         </v-card>
+
       </v-flex>
 
+      <v-flex xs4 class="mt-3">
+       <chartmenu></chartmenu>
+      </v-flex>
 
     </v-layout>
   </v-container>
@@ -61,9 +57,10 @@
 <script>
   import ProvinceSelect from "../share/provinceSelect";
   import Highcharts from "highcharts/highcharts"
+  import chartmenu from "../share/ChartsMenu"
     export default {
       name: "soldChart",
-      components : {ProvinceSelect},
+      components : {ProvinceSelect,chartmenu},
       data: () => ({
         province : null,
         chartData : [
