@@ -9,7 +9,7 @@
         <v-divider></v-divider>
         <v-container fluid grid-list-lg>
           <v-layout row wrap v-if="farmOwner" >
-            <v-flex xs9>
+            <v-flex lg9>
               <v-card>
                 <v-divider class="pt-1 indigo"></v-divider>
                 <v-stepper v-model="steper" vertical non-linear>
@@ -116,7 +116,7 @@
               </v-card>
             </v-flex>
 
-            <v-flex xs3 >
+            <v-flex lg3 >
               <div style="position: sticky; top:72px ">
                 <v-divider class="pt-1 success"></v-divider>
               <v-list class="elevation-1">
