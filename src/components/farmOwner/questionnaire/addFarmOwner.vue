@@ -239,6 +239,7 @@
         createFarmOwner: async function () {
           let data = await this.$store.dispatch("farmOwners/createFarmOwner");
           await console.log("SAVE", data)
+          this.$router.go(-1)
         },
       }
     }
