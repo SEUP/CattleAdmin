@@ -1,10 +1,10 @@
 export default {
   namespaced: true,
   state: {
-    user :null
+    user: null
   },
   mutations: {
-    setUser : function (state,user) {
+    setUser: function (state, user) {
       state.user = user
     }
   },
@@ -20,6 +20,8 @@ export default {
       };
       client.username = form.email;
       client.password = form.password;
+
+
       let token = await axios.post('/oauth/token', client)
         .then((r) => {
 
@@ -29,32 +31,46 @@ export default {
           return r.data
         })
         .catch((error) => {
-          context.dispatch("error/setError",error.response.data, {root: true});
+          let err = {
+            "message": "E-mail or Password is invalid",
+            "errors": {
+            }
+          };
+
+          if(!form.email) {
+            err['errors'].email = "The email field is required"
+          }
+          if(!form.password){
+            err['errors'].password = "The password field is required"
+
+          }
+
+          context.dispatch("error/setError", err, {root: true});
           return null;
         });
       return token;
 
     },
-    getUser : async function (token){
+    getUser: async function (token) {
       let user = null;
-      if(token) {
-        user = await axios.get('/api/user').then((r)=>{
+      if (token) {
+        user = await axios.get('/api/user').then((r) => {
           return r.data;
-        }).catch((error)=>{
+        }).catch((error) => {
           return null;
         })
         localStorage.user = JSON.stringify(user);
       }
     },
-    loadUser : async function (context) {
+    loadUser: async function (context) {
       let userData = await localStorage.getItem('user');
-      if (userData){
+      if (userData) {
         userData = JSON.parse(userData)
-        context.commit("setUser",userData)
+        context.commit("setUser", userData)
         return userData
       }
     },
-    logout : async function (){
+    logout: async function () {
       localStorage.removeItem("user")
       localStorage.removeItem("access_token")
     }
