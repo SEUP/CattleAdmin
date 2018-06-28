@@ -226,9 +226,10 @@
     }
     , async created() {
       let farmOwnerId = await this.$route.params.id;
-      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId)
+      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId);
       await this.$store.dispatch('choices/load');
       await this.$store.dispatch('districtSelect/load');
+
 
     }
     , methods: {
@@ -236,9 +237,9 @@
         this.steper = el
       },
       updateFarmOwner: async function () {
-        let data = await this.$store.dispatch("farmOwners/updateFarmOwner")
-        await console.log("SAVE", data)
-        this.$router.go(-1)
+        let data = await this.$store.dispatch("farmOwners/updateFarmOwner");
+        await console.log("SAVE", data);
+        if (data) {this.$router.go(-1)}
       },
 
     }
