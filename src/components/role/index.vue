@@ -32,10 +32,10 @@
           <template slot="items" slot-scope="props">
             <td>{{ props.item.name }}</td>
             <td class="text-xs-center">
-              <v-btn class="ma-0" icon >
+              <v-btn class="ma-0" icon disabled >
                 <v-icon color="primary" >create</v-icon>
               </v-btn>
-              <v-btn class="ma-0" icon>
+              <v-btn class="ma-0" icon disabled>
                 <v-icon color="red" >delete</v-icon>
               </v-btn>
             </td>

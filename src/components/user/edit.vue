@@ -140,6 +140,7 @@
       load: async function () {
         let data = await  this.$store.dispatch("users/getUserById", this.getUser);
         this.form = data
+        this.$router.go(-1)
       }
     }
 

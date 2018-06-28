@@ -238,6 +238,7 @@
       updateFarmOwner: async function () {
         let data = await this.$store.dispatch("farmOwners/updateFarmOwner")
         await console.log("SAVE", data)
+        this.$router.go(-1)
       },
 
     }
