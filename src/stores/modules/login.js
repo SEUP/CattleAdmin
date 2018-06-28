@@ -33,14 +33,13 @@ export default {
         .catch((error) => {
           let err = {
             "message": "E-mail or Password is invalid",
-            "errors": {
-            }
+            "errors": {}
           };
 
-          if(!form.email) {
+          if (!form.email) {
             err['errors'].email = "The email field is required"
           }
-          if(!form.password){
+          if (!form.password) {
             err['errors'].password = "The password field is required"
 
           }
