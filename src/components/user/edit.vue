@@ -103,7 +103,7 @@
     computed: {},
     async created() {
       this.getUser.id = this.$route.params.id;
-      await this.load()
+      await this.load();
       await console.log("start",this.form)
 
     },
@@ -132,15 +132,18 @@
           roles.splice(i, 1);
         }
       },
-      saveUser: function () {
-        let user = this.$store.dispatch("users/updateUser", this.form);
+      saveUser: async function () {
+        let user = await this.$store.dispatch("users/updateUser", this.form);
         console.log("save User", this.form);
-        this.$router.push({name: "user-index"})
+        if (user){
+          this.$router.go(-1)
+        }
+
       },
       load: async function () {
         let data = await  this.$store.dispatch("users/getUserById", this.getUser);
         this.form = data
-        this.$router.go(-1)
+
       }
     }
 
