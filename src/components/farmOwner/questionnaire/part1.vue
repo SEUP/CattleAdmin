@@ -152,8 +152,6 @@
       }),
       async created  () {
         this.form = await this.$store.state.farmOwners.farmOwner
-        console.log("IN Part1",this.form)
-        console.log("IN Part1 Sex",this.form.sex)
       },
       methods : {
         updateDistrictSelectHouse: function (value) {

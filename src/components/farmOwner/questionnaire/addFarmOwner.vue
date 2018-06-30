@@ -210,11 +210,9 @@
         Part6,
         Part7,
         Part8,
-
       },
       name: "addFarmOwner",
       data :()=>({
-
         steper :1,
         farmOwner : null
       }),
@@ -230,7 +228,6 @@
         await this.$store.dispatch('choices/load');
         await this.$store.dispatch('districtSelect/load');
         this.farmOwner = await this.$store.state.farmOwners.farmOwner;
-        console.log(this.farmOwner)
       },
       methods:{
         elFocus : function (el) {
@@ -238,7 +235,7 @@
         },
         createFarmOwner: async function () {
           let data = await this.$store.dispatch("farmOwners/createFarmOwner");
-          await console.log("SAVE", data)
+          await console.log("SAVE")
           if(user){this.$router.go(-1)}
 
         },

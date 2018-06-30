@@ -59,7 +59,6 @@
     async created() {
       this.items = await [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
       await this.sync()
-      console.log("IN choiceSelect",this.items)
     },
     methods: {
       sync: function () {
@@ -75,7 +74,6 @@
         })
       },
       updateChoice : async function (choice)  {
-        console.log("Change",this.selectedValue)
         this.selectedValue = choice
         await this.updateValue()
       },

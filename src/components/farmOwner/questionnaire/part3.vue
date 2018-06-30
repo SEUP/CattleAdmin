@@ -6,8 +6,11 @@
         <v-card-text class="pa-2 title">3.1 จำนวนแรงงานที่ใช้เลี้ยงโค (คน)</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <v-text-field label="3.1.1 จำนวนแรงงานภายในครอบครัว" placeholder="จำนวนแรงงานภายในครอบครัว" v-model="form.total_workers_amount" @blur="updateForm"></v-text-field>
-          <v-text-field label="3.1.2 จำนวนแรงงานภายนอก" placeholder="จำนวนแรงงานภายนอก" v-model="form.external_workers_amount" @blur="updateForm" ></v-text-field>
+
+          <v-text-field label="จำนวนแรงงานทั้งหมด" readonly v-model="totalWorks" ></v-text-field>
+
+          <v-text-field label="3.1.1 จำนวนแรงงานภายในครอบครัว"  type = "number" placeholder="จำนวนแรงงานภายในครอบครัว" v-model="form.family_workers_amount" @blur="updateWorkers"></v-text-field>
+          <v-text-field label="3.1.2 จำนวนแรงงานภายนอก"  type = "number" placeholder="จำนวนแรงงานภายนอก" v-model="form.external_workers_amount" @blur="updateWorkers" ></v-text-field>
 
         </div>
 
@@ -137,7 +140,19 @@
     async created  () {
       this.form = await this.$store.state.farmOwners.farmOwner
     },
+    computed : {
+      totalWorks : function () {
+        return this.updateWorkers()
+      }
+    },
     methods :{
+      updateWorkers : function ()  {
+        this.updateForm()
+        this.form.total_workers_amount = parseInt(this.form.external_workers_amount ? this.form.external_workers_amount : 0) + parseInt(this.form.family_workers_amount ? this.form.family_workers_amount : 0)
+        this.updateForm()
+        return this.form.total_workers_amount
+
+      },
       updateForm : async function () {
         await this.$store.dispatch("farmOwners/updateState",this.form)
         let data = await this.$store.state.farmOwners.farmOwner
