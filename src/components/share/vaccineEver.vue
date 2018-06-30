@@ -4,6 +4,7 @@
       <v-flex class="lg12">
         <v-select hide-details
                   :items="items"
+                  return-object
                   v-model="selectedMain"
                   :label="label" item-text="choice"
                   @change="updateMainsel"
@@ -18,10 +19,11 @@
                           :value="item"
                           v-model="select_Box"
                           color="success"
+                          class="pa-0 ma-0"
                           @change="updateCheckbox">
               </v-checkbox>
-              <v-text-field hide-details class="pa-0 px-3"
-                            placeholder="value of years" :value="item.pivot.remark"
+              <v-text-field hide-details class="pa-0 px-3 ma-0"
+                            placeholder="จำนวนครั้งต่อปี" :value="item.pivot.remark"
                             v-model="item.pivot.amount"
                             type="NUMBER"
                             @change="updateValue">
@@ -31,11 +33,12 @@
             <v-flex class="xs6 mt-3">
               <v-select hide-details
                         :items="items_Sub"
+                        class="ma-0 my-2"
                         item-value="choice"
                         v-model="item.pivot.remark"
                         :label="label_Sub" item-text="choice"
                         @change="updateValue()"
-                        color="success">>
+                        color="success">
               </v-select>
             </v-flex>
           </v-layout>
@@ -71,7 +74,7 @@
       },
       label_Sub: {
         type: String,
-        default: "ตัวเลือก"
+        default: "ผู้ทำ"
       },
       value: {
         type: Object,
@@ -105,26 +108,22 @@
 
     },
     mounted (){
-      console.log(this.form);
     },
     methods :{
       updateValue: function () {
         this.$store.dispatch("farmOwners/updateState",this.form)
       },
       updateMainsel :function(items){
-       //console.log(items,this.form.vaccine_ever);
         this.form.vaccine_ever = items;
         if(items.id == 203){
           this.form.vaccine_types = [];
-          //console.log(this.form.vaccine_types );
         }
         this.updateValue()
-
       },
       updateCheckbox:function(item){
         this.form.vaccine_types = item;
-        console.log(item,this.form.vaccine_types);
         this.updateValue()
+
       },
       sync : function () {
         this.items.forEach((i) =>{
@@ -134,21 +133,18 @@
         })
       },
       syncCheckbox : function () {
-        console.log(this.select_Box,this.items_checkBox,this.form.vaccine_types);
         let selectedchoice = this.select_Box;
         let choices = this.items_checkBox;
         let selChoice = this.form.vaccine_types;
-        let choicesLangth =  this.items_checkBox.length;
-        let selChoiceLangth =  this.form.vaccine_types.length;
+        let choicesLangth =  this.items_checkBox.length ? this.items_checkBox.length:0;
+        let selChoiceLangth =  this.form.vaccine_types.length?this.form.vaccine_types.length : 0;
 
         for(let i =0;i<choicesLangth ;i++){
           for(let a = 0;a< selChoiceLangth;a++){
-            //console.log("aaaassssssss",choices[i].id,selChoice[a].id);
             if (choices[i].id == selChoice[a].id ){
               choices[i] = selChoice[a] ;
               selectedchoice.push(selChoice[a] );
             }
-
           }
         }
 

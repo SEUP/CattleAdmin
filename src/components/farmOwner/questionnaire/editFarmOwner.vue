@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="isReady">
+  <v-container v-if="isReady ">
     <v-layout row >
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
@@ -213,7 +213,7 @@
       Part8,
     },
     data: () => ({
-      form: undefined,
+      form: null,
       steper: 1,
       farmOwner: null,
     }),
@@ -226,7 +226,7 @@
     }
     , async created() {
       let farmOwnerId = await this.$route.params.id;
-      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId);
+      this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById",farmOwnerId);
       await this.$store.dispatch('choices/load');
       await this.$store.dispatch('districtSelect/load');
     }
@@ -236,7 +236,7 @@
       },
       updateFarmOwner: async function () {
         let data = await this.$store.dispatch("farmOwners/updateFarmOwner");
-        console.log("SAVE");
+        console.log("SAVE",data);
         if (data) {
           alert("บันทึกข้อมูลเเล้ว")
           this.$router.go(-1)}

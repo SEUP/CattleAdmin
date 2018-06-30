@@ -147,7 +147,7 @@
       },
       resetSearch :function () {
         this.form = Object.assign({})
-        this.$router.go()
+        this.$router.go(0)
 
       },
       changePage: async function (page) {

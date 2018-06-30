@@ -91,7 +91,7 @@
         },
         resetSearch :function () {
           this.form = Object.assign({})
-          this.$router.go()
+          this.$router.go(0)
         },
         load : async function () {
           this.paginate = await this.$store.dispatch("charts/getSuggestion",this.form)

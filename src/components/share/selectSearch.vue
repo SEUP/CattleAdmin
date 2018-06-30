@@ -5,6 +5,7 @@
                 dense
                 :items="items"
                 v-model="selectedValue"
+                return-object
                 :label="label" item-text="choice"
       ></v-select>
     </v-flex>
