@@ -6,7 +6,9 @@
           <v-select hide-details
                     :items="items"
                     v-model="selectedValue"
+                    item-value = 'cat'
                     :label="label" item-text="choice"
+                    return-object
                     @change="updateChoice"
           ></v-select>
         </v-flex>
@@ -57,6 +59,7 @@
     async created() {
       this.items = await [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", this.type));
       await this.sync()
+      console.log("IN choiceSelect",this.items)
     },
     methods: {
       sync: function () {
@@ -72,6 +75,7 @@
         })
       },
       updateChoice : async function (choice)  {
+        console.log("Change",this.selectedValue)
         this.selectedValue = choice
         await this.updateValue()
       },
