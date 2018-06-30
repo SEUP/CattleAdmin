@@ -174,6 +174,7 @@
 
         if(confirm("Do you want to delete this item?")){
           let result = await  this.$store.dispatch("farmOwners/deleteFarmOwner",id)
+          await alert("ลบเรียบร้อยเเล้ว")
           await this.loadData();
         }
 

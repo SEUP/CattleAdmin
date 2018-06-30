@@ -5,6 +5,7 @@
                   v-bind:value="role"
                   v-on:change="$emit('change', role)"
                   :input-value="value" hide-details
+                  class="ma-0 pa-0 py-1"
       >
       </v-checkbox>
     </div>
@@ -51,7 +52,7 @@
       this.load();
     },
     mounted: function () {
-      console.log('role-checkbox mounted')
+      // console.log('role-checkbox mounted')
     }
 
   }

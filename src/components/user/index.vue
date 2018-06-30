@@ -48,12 +48,21 @@
               </td>
               <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
               <td class="text-xs-left">{{ props.item.action }}
-                <v-btn class="ma-0" icon :to="{name:'user-edit',params : {id : props.item.id}}">
-                  <v-icon color="primary">create</v-icon>
-                </v-btn>
-                <v-btn class="ma-0" icon @click="delUser(props.item.id)">
-                  <v-icon color="red">delete</v-icon>
-                </v-btn>
+                <v-tooltip top>
+                  <v-btn class="ma-0" icon
+                         :to="{name:'user-edit',params : {id : props.item.id}}"
+                         slot="activator"
+                  >
+                    <v-icon color="primary">create</v-icon>
+                  </v-btn>
+                  <span>เเก้ไข</span>
+                </v-tooltip>
+                <v-tooltip top>
+                  <v-btn class="ma-0" icon @click="delUser(props.item.id) " slot="activator">
+                    <v-icon color="red">delete</v-icon>
+                  </v-btn>
+                  <span>ลบ</span>
+                </v-tooltip>
               </td>
             </template>
           </v-data-table>
@@ -134,15 +143,15 @@
         this.users = page.data;
       },
       delUser: async function (id) {
-        console.log(id);
-        let data = await this.$store.dispatch("users/deleteUserById", id);
-        await  console.log(data, "has been destroy (In Vue)");
-        await this.loadData()
+
+        if(confirm("Do you want to delete this item?")) {
+          let data = await this.$store.dispatch("users/deleteUserById", id);
+          if(data){
+            alert("ลบเรียบร้อยเเล้ว")
+            await this.loadData()
+          }
+        }
       },
-      getUserByID: async function () {
-        let data = await  this.$store.dispatch("users/getUserById", this.idSand);
-        this.UserDataFormID = data
-      }
     }
 
   }

@@ -15,7 +15,6 @@ export default {
   actions: {
     createFarmOwner: async function (context) {
       let form = context.state.farmOwner;
-      console.log(form);
       let result = await  axios.post("api/farm-owner", form)
         .then((response) => {
           context.commit("setFarmOwner", response.data);
@@ -66,7 +65,6 @@ export default {
     },
     updateFarmOwner: async function (context) {
       let form = context.state.farmOwner;
-      console.log(form);
       let result = await  axios.put("api/farm-owner/" + form.id, form)
         .then((response) => {
 

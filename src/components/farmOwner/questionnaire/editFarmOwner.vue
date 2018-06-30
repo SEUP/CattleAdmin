@@ -229,8 +229,6 @@
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId);
       await this.$store.dispatch('choices/load');
       await this.$store.dispatch('districtSelect/load');
-
-
     }
     , methods: {
       elFocus: function (el) {
@@ -238,8 +236,10 @@
       },
       updateFarmOwner: async function () {
         let data = await this.$store.dispatch("farmOwners/updateFarmOwner");
-        await console.log("SAVE", data);
-        if (data) {this.$router.go(-1)}
+        console.log("SAVE");
+        if (data) {
+          alert("บันทึกข้อมูลเเล้ว")
+          this.$router.go(-1)}
       },
 
     }

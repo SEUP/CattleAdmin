@@ -236,7 +236,9 @@
         createFarmOwner: async function () {
           let data = await this.$store.dispatch("farmOwners/createFarmOwner");
           await console.log("SAVE")
-          if(user){this.$router.go(-1)}
+          if(data){
+            alert("บันทึกข้อมูลเเล้ว")
+            this.$router.push({name:'farmOwner-index'})}
 
         },
       }
