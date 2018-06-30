@@ -5,6 +5,7 @@
       <v-select
         hide-details
         :items="provinces"
+        return-object
         v-model="selProvince"
         label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
       ></v-select>
@@ -14,6 +15,7 @@
       <v-select v-if="amphures"
                 hide-details
                 :items="amphures"
+                return-object
                 v-model="selAmphure"
                 label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
       ></v-select>
@@ -23,6 +25,7 @@
       <v-select v-if="districts"
                 hide-details
                 :items="districts"
+                return-object
                 v-model="selDistrict"
                 label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
       ></v-select>

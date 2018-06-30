@@ -4,6 +4,7 @@
       hide-details
       :items="provinces"
       v-model="selProvince"
+      return-object
       label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"/>
   </div>
 </template>

@@ -3,17 +3,20 @@
         <v-select
           :items="provinces"
           v-model="selProvince"
+          return-object
           label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
         ></v-select>
 
         <v-select v-if="amphures"
                   :items="amphures"
+                  return-object
                   v-model="selAmphure"
                   label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
         ></v-select>
 
         <v-select v-if="districts"
                   :items="districts"
+                  return-object
                   v-model="selDistrict"
                   label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
         ></v-select>
