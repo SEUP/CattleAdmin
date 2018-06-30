@@ -4,14 +4,14 @@
         <v-flex xs12>
           <p class="title">8.1 ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ</p>
           <v-divider class="my-3"></v-divider>
-          <v-text-field
+          <v-textarea
             label="ปัญหาและอุปสรรคในการเลี้ยงโคเนื้อของท่านคือ"
             class="mt-3 ml-3"
             multi-line
             v-model="form.problem "
             @blur="updateForm"
           >
-          </v-text-field>
+          </v-textarea>
         </v-flex>
       </v-layout>
 
@@ -19,14 +19,13 @@
         <v-flex xs12>
           <p class="title">8.2 ท่านมีข้อเสนอแนะในการพัฒนาระบบการผลิตและการตลาดโคเนื้อในเขตพื้นที่ เชียงราย พะเยา แพร่ น่าน อย่างไร</p>
           <v-divider class="my-3"></v-divider>
-          <v-text-field
+          <v-textarea
             label="ข้อเสนอแนะในการพัฒนาระบบการผลิตและการตลาดโคเนื้อในเขตพื้นที่ เชียงราย พะเยา แพร่ น่าน อย่างไร"
             class="mt-3 ml-3"
-            multi-line
             v-model="form.suggestion"
             @blur="updateForm"
           >
-          </v-text-field>
+          </v-textarea>
         </v-flex>
       </v-layout>
     </v-container>

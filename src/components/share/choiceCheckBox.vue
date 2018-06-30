@@ -3,6 +3,7 @@
     <v-layout row  v-for="item in items" :key="item.id">
       <v-flex>
         <v-checkbox :label="item.choice" hide-details
+                    class="pa-0 ma-0"
                     :value="item"
                     v-model="selected"
                     @change="updateChoice"
@@ -10,14 +11,13 @@
         >
         </v-checkbox>
       </v-flex>
-      <v-flex xs8 v-if="item.has_text">
+      <v-flex xs8 v-if="item.has_text" class="pa-0 ma-0">
           <v-text-field
-                        hide-details class="pa-0 px-3"
+                        hide-details class="pa-0 ma-0"
                         placeholder="โปรดระบุ" :value="item.pivot.remark"
                         v-model="item.pivot.remark"
                         @change="updateChoice"
           ></v-text-field>
-
       </v-flex>
     </v-layout>
   </div>
