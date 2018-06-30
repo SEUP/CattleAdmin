@@ -56,15 +56,15 @@
     computed: {
       totalBudget: function () {
         let total = 0;
-        total +=  this.form.budget_source ? parseInt(this.form.budget_source.pivot.amount) : 0 ;
+        total +=  this.form.budget_source.pivot ? parseInt(this.form.budget_source.pivot.amount ? this.form.budget_source.pivot.amount : 0) : 0 ;
         let loneTypes = this.form.loan_types ? this.form.loan_types : [];
         loneTypes.forEach((t) => {  // v-for='t in loneTypes'
           if (t.pivot && t.pivot.amount) {
-             total += parseInt(t.pivot.amount)
+             total += parseInt(t.pivot.amount ? t.pivot.amount : 0)
           }
         });
         this.form.total_budget = total;
-        return this.form.total_budget;
+        return total;
       },
     },
     methods: {

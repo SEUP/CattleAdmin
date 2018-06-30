@@ -126,7 +126,7 @@
       getProvinceAmphurDistrictString: function (item) {
         let pvString = item.province_name ? item.province_name : "-";
         let amString = item.amphur_name ? item.amphur_name : "-";
-        let diString = item.district_name ? item.amphur_name : "-";
+        let diString = item.district_name ? item.district_name : "-";
 
 
         let outputStr = "";
