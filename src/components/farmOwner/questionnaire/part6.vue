@@ -26,7 +26,7 @@
         <v-flex xs12 class="mt-3">
           <p class="title">6.5 ถ้าท่านรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อเมื่อใด</p>
           <v-divider class="my-3"></v-divider>
-          <choice-check-box   :value="form.group_joins" @change="form.group_joins=$event"  type="group_joins" placeholder="ชื่อ"></choice-check-box>
+          <group-joins   :value="form.group_joins" @change="form.group_joins=$event"  type="group_joins" placeholder="ชื่อ"></group-joins>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">6.6 ถ้ายังไม่เข้ารวมกลุ่มท่านมีความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อหรือไม่</p>
@@ -61,8 +61,9 @@
   import ChoiceSelect from "../../share/choiceSelect";
   import ChoiceCheckBox from "../../share/choiceCheckBox";
   import cattleSales from "../../share/cattleSales";
+  import groupJoins from "../../share/groupJoins";
   export default {
-    components: {ChoiceSelect,ChoiceCheckBox,cattleSales},
+    components: {ChoiceSelect,ChoiceCheckBox,cattleSales,groupJoins},
     name: "part6",
     data (){
       return{

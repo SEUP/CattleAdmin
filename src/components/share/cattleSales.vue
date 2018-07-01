@@ -14,15 +14,17 @@
       <v-flex xs12 mb-2 pa-0 ml-3>
         <v-layout row>
           <v-flex md6>
-            <v-select :items="price" hide-details class="ma-0"
+            <v-select :items="price" hide-details class="ma-0 pt-3"
                       :value="item.pivot.remark"
+                      label="ราคาขายต่อตัว" placeholder="กรุณาเลือก"
                       item-text="choice" @change="updateSelect1($event,item.choice)">
 
             </v-select>
           </v-flex>
           <v-flex md6>
-            <v-select :items="age" hide-details class="ma-0"
+            <v-select :items="age" hide-details class="ma-0 pt-3"
                       :value="item.pivot.age_range_sale"
+                      label="ระยะเวลาที่เลี้ยง" placeholder="กรุณาเลือก"
                       item-text="choice" @change="updateSelect2($event,item.choice)">
 
             </v-select>
