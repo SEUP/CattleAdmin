@@ -8,6 +8,7 @@
                     v-model="selected"
                     @change="updateChoice"
                     :input-value="value"
+                    color="success"
         >
         </v-checkbox>
       </v-flex>
@@ -17,6 +18,7 @@
                         placeholder="โปรดระบุ" :value="item.pivot.remark"
                         v-model="item.pivot.remark"
                         @change="updateChoice"
+                        color="success"
           ></v-text-field>
       </v-flex>
     </v-layout>

@@ -12,8 +12,8 @@
         </v-select>
       </v-flex>
       <v-flex v-if="selectedMain.id == 202">
-        <div v-for="item in items_checkBox" :key="items_checkBox.id">
-          <v-layout row >
+        <div v-for="(item,index) in items_checkBox" :key="items_checkBox.id">
+          <v-layout row v-if="index == 0 ||index == 1||index == 2">
             <v-flex class="xs6 mt-0">
               <v-checkbox :label="item.choice" hide-details
                           :value="item"
@@ -42,6 +42,46 @@
               </v-select>
             </v-flex>
           </v-layout>
+
+          <v-layout row v-if="index == 3">
+            <v-flex class="xs6 mt-0">
+              <v-checkbox :label="item.choice" hide-details
+                          :value="item"
+                          v-model="select_Box"
+                          color="success"
+                          class="pa-0 ma-0"
+                          @change="updateCheckbox">
+              </v-checkbox>
+              <v-text-field hide-details class="pa-0 px-3 ma-0 "
+                            placeholder="ชื่อวัคซีนที่ใช้" :value="item.pivot.remark"
+                            type="string"
+                            v-model="item.pivot.source"
+                            @change="updateValue">
+
+              </v-text-field>
+            </v-flex>
+            <v-flex class="xs6 mt-3">
+              <v-text-field hide-details class="pa-0 px-3 ma-0 my-2"
+                            placeholder="จำนวนครั้งต่อปี" :value="item.pivot.remark"
+                            v-model="item.pivot.amount"
+                            type="NUMBER"
+                            @change="updateValue">
+
+              </v-text-field>
+            </v-flex>
+            <v-flex class="xs6 mt-3">
+              <v-select hide-details
+                        :items="items_Sub"
+                        class="ma-0 my-2"
+                        item-value="choice"
+                        v-model="item.pivot.remark"
+                        :label="label_Sub" item-text="choice"
+                        @change="updateValue()"
+                        color="success">
+              </v-select>
+            </v-flex>
+
+          </v-layout>
         </div>
       </v-flex>
     </v-layout>
@@ -51,6 +91,7 @@
 <script>
 
   import {mapState} from 'vuex';
+
 
   let ChoiceMain = {
     id : 0,
