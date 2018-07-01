@@ -77,7 +77,7 @@
       let provinces = await this.$store.dispatch('districtSelect/getProvinces');
       this.provinces = [this.defaultProvince].concat(provinces);
       await this.sync();
-      // await console.log(this.valProvince);
+
     },
     methods: {
       sync: function () {
@@ -87,9 +87,9 @@
             this.provinceChange(p);
           }
         });
-
         this.amphures.forEach((a) => {
           if (a.AMPHUR_ID == this.valAmphur) {
+
             this.selAmphure = a;
             this.amphureChange(a);
           }
@@ -109,8 +109,8 @@
         } else {
           this.amphures = [this.defaultAmphur];
         }
-        this.selAmphure = this.defaultAmphur;
-        this.selDistrict = this.defaultDistrict;
+        // this.selAmphure = this.defaultAmphur;
+        // this.selDistrict = this.defaultDistrict;
         this.$emit('change', [ev, null, null])
       }
 
@@ -121,9 +121,8 @@
         } else {
           this.districts = [this.defaultDistrict];
         }
-        this.selDistrict = this.defaultDistrict;
+        // this.selDistrict = this.defaultDistrict;
         this.$emit('change', [this.selProvince, ev, null])
-
       }
       , districtChange: function (ev) {
         this.$emit('change', [this.selProvince, this.selAmphure, ev])

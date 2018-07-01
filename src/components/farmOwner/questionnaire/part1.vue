@@ -155,7 +155,6 @@
       },
       methods : {
         updateDistrictSelectHouse: function (value) {
-          console.log("val",value);
           this.form.house_province = value[0];
           this.form.house_amphur = value[1];
           this.form.house_district = value[2];

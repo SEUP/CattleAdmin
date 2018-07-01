@@ -136,8 +136,8 @@
         let selectedchoice = this.select_Box;
         let choices = this.items_checkBox;
         let selChoice = this.form.vaccine_types;
-        let choicesLangth =  this.items_checkBox.length ? this.items_checkBox.length:0;
-        let selChoiceLangth =  this.form.vaccine_types.length?this.form.vaccine_types.length : 0;
+        let choicesLangth =  this.items_checkBox ? this.items_checkBox.length:0;
+        let selChoiceLangth =  this.form.vaccine_types?this.form.vaccine_types.length : 0;
 
         for(let i =0;i<choicesLangth ;i++){
           for(let a = 0;a< selChoiceLangth;a++){

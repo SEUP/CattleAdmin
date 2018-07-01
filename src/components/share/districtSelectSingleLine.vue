@@ -121,8 +121,6 @@
         } else {
           this.amphures = [this.defaultAmphur];
         }
-        this.selAmphure = this.defaultAmphur;
-        this.selDistrict = this.defaultDistrict;
         this.$emit('change', [ev, null, null])
 
       }
@@ -134,7 +132,6 @@
         } else {
           this.districts = [this.defaultDistrict];
         }
-        this.selDistrict = this.defaultDistrict;
         this.$emit('change', [this.selProvince, ev, null])
 
       }
