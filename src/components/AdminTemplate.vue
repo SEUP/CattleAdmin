@@ -103,8 +103,8 @@
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="blue darken-3" dark app fixed dense class="elevation-0">
-      <v-toolbar-title class="ml-0 pl-3 mr-3">
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title class="ma-0">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" class="ma-0 "></v-toolbar-side-icon>
         <span class="hidden-sm-and-down">Cattle Information System</span>
       </v-toolbar-title>
 

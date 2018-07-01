@@ -2,69 +2,69 @@
   <div v-if="isReady">
     <v-layout column>
       <v-flex v-for="mainBreed in choices[type]" :key="mainBreed.id">
-        <v-checkbox :label="mainBreed.choice" hide-details
+        <v-checkbox :label="mainBreed.choice" hide-details class="ma-0 pa-0"
                     :value="mainBreed"
                     v-model="selMainBreeds"
                     @change="updateValue(type,selMainBreeds)"
                     color="success"
         >
         </v-checkbox>
-        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ'">
-          <template>
-            <v-text-field placeholder="โปรดระบุ" hide-details class="pa-0 py-1"
+        <v-flex v-if="mainBreed.choice == 'พันธุ์พื้นเมือง' || mainBreed.choice == 'พันธุ์อื่นๆ'" pa-0 ml-1>
+          <template >
+            <v-text-field placeholder="โปรดระบุ" hide-details class="ma-0 pa-0 py-1"
                           v-model="mainBreed.pivot.remark" @blur="updateValue(type,selMainBreeds)"/>
             <v-layout>
-              <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details
+              <v-flex xs12 md4 mx-2 pa-0 >
+                <v-text-field placeholder="จำนวน" class="ma-0 pa-0 py-1" type="number" hide-details
                               v-model="mainBreed.pivot.amount" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
-              <v-flex xs12 md4 mx-1>
-                <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
+              <v-flex xs12 md4 mx-1 pa-0>
+                <v-select placeholder="เเหล่งที่มา" class=" ma-0 pa-0 py-1" hide-details dense
                           :items="source_opt" v-model="mainBreed.pivot.source_opt"
                           @change="updateValue(type,selMainBreeds)"
                 />
               </v-flex>
-              <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details
+              <v-flex xs12 md4 mx-1 pa-0>
+                <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class=" ma-0 pa-0 py-1" hide-details
                               v-model="mainBreed.pivot.source" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
-              <v-flex xs12 md4 mx-1>
-                <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details
+              <v-flex xs12 md4 mx-1 pa-0>
+                <v-text-field placeholder="ราคา" class=" ma-0 pa-0 py-1" type="number" hide-details
                               v-model="mainBreed.pivot.price" @blur="updateValue(type,selMainBreeds)"/>
               </v-flex>
             </v-layout>
           </template>
         </v-flex>
-        <v-flex class="pl-3" v-else>
-          <v-flex v-for="subBreed in choices[mainBreed.children[0].type]" :key="subBreed.id">
-            <v-checkbox :label="subBreed.choice" hide-details
+        <v-flex class="pa-0 pt-2 pl-3 " v-else >
+          <v-flex v-for="subBreed in choices[mainBreed.children[0].type]" :key="subBreed.id" pa-0 pb-3 >
+            <v-checkbox :label="subBreed.choice" hide-details class="ma-0 pa-0"
                         :value="subBreed"
                         v-model="selSubBreeds[mainBreed.children[0].type]"
                         color="success"
                         @change="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
             ></v-checkbox>
             <template>
-              <v-layout>
-                <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="จำนวน" class="pa-0 py-1" type="number" hide-details
+              <v-layout ml-2>
+                <v-flex xs12 md4 mx-1 pa-0>
+                  <v-text-field placeholder="จำนวน" class="ma-0 pa-0 py-1" type="number" hide-details
                                 v-if="subBreed.pivot" v-model="subBreed.pivot.amount"
                                 @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
                   />
                 </v-flex>
-                <v-flex xs12 md4 mx-1>
-                  <v-select placeholder="เเหล่งที่มา" class="pa-0 py-1" hide-details dense
+                <v-flex xs12 md4 mx-1 pa-0>
+                  <v-select placeholder="เเหล่งที่มา" class=" ma-0 pa-0 py-1" hide-details dense
                             v-model="subBreed.pivot.source_opt"
                             :items="source_opt"
                             @change="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
                   />
                 </v-flex>
-                <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class="pa-0 py-1" hide-details v-model="subBreed.pivot.source"
+                <v-flex xs12 md4 mx-1 pa-0>
+                  <v-text-field placeholder="เเหล่งที่มาอื่นๆ" class=" ma-0 pa-0 py-1" hide-details v-model="subBreed.pivot.source"
                                 @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"
                   />
                 </v-flex>
-                <v-flex xs12 md4 mx-1>
-                  <v-text-field placeholder="ราคา" class="pa-0 py-1" type="number" hide-details v-model="subBreed.pivot.price"
+                <v-flex xs12 md4 mx-1 pa-0>
+                  <v-text-field placeholder="ราคา" class=" ma-0 pa-0 py-1" type="number" hide-details v-model="subBreed.pivot.price"
                                 @blur="updateValue(mainBreed.children[0].type,selSubBreeds[mainBreed.children[0].type])"/>
                 </v-flex>
               </v-layout>
@@ -118,10 +118,11 @@
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
       this.sync();
+
     },
     methods: {
       updateValue: function (type, value) {
-        this.updateTotal(type, value)
+        this.updateTotalCattle()
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
       childrenSync: function (type, order) {
@@ -167,70 +168,58 @@
             }
           }
         }
+        let totalType = 'total_' +this.type
+        this.form[totalType] = 0
         this.choices[this.type] = main
         this.isReady = true;
+        this.updateTotalCattle()
       },
-      updateTotalMaster : function (type,newVal) {
-        let master = this.form.total_master_breeding_types;
-        let oldVal = this.form[type] ? this.form[type] : 0 ;
-        master -= oldVal;
-        master += newVal;
-        this.form.total_master_breeding_types = master
+      updateMasterCattle : function () {
+        let total = 0
+        let m = parseInt(this.form.total_male_breeding_types)
+        let f = parseInt(this.form.total_female_breeding_types)
+        let mo6 = parseInt(this.form.total_male_over_six_breeding_types)
+        let fo6 = parseInt(this.form.total_female_over_six_breeding_types)
+        let mu6 = parseInt(this.form.total_male_under_six_breeding_types)
+        let fu6 = parseInt(this.form.total_female_under_six_breeding_types)
+        total += m+f+mo6+fo6+mu6+fu6
+        console.log(total)
+        this.form.total_master_breeding_types = total
       },
-      updateTotal : function (type, value) {
-        // loop in value
-        let sumVal = 0;
-        for(let i =0 ;i<value.length;i++){
-          let val = value[i]
-          if(val.children.length > 0 ){ //  ถ้ามี child พันธุ์ต่างๆประเทศ ผสม ถ้าเปลั้ยนจากตัวหลัก
-            let valChildType = val.children[0].type
-            let valChild = this.form[valChildType] ? this.form[valChildType] : [] ;
-            let sumValChildAmount = 0;
-            for(let k = 0 ;k<valChild.length;k++){
-              let valChildAmount = valChild[k].pivot.amount  ? valChild[k].pivot.amount : 0 ;
-                sumValChildAmount += parseInt(valChildAmount)
-            }
-            let totalValChildType = "total_"+valChildType
-            this.form[totalValChildType] = sumValChildAmount
-            sumVal += sumValChildAmount
-          }else { // พัน พื้นเมือง เเละ อื่นๆ ถ้าเปลี่ยนจากตัวหลัก หรือ พันธุ์ต่างๆประเทศ ผสม ถ้ามีการเปลี่ยนเเปลงที่ ตัว นั้น
-            let valAmount = parseInt(val.pivot.amount ? val.pivot.amount : 0) ;
-            sumVal += valAmount
-            let mainId = [52,55,62,65,72,75,82,85,92,95,102,105]
-            if (mainId.includes(val.id)){ // ถ้าเป็น พันพื้นเมือง อื่นๆ
-              let totalMainType = "total_"+val.type
-              this.updateTotalMaster(totalMainType,sumVal)
-              this.form[totalMainType] = sumVal
-            }else { // ถ้าเป็น พันธ์ ต่างประเทศ ลุกผลม
-              // update self main Type
-              let mainType  = "" ;
-
-              if(type.startsWith('female_over_six')){
-                mainType = "total_female_over_six_breeding_types"
-              }else if (type.startsWith('female_under_six')){
-                mainType = "total_female_under_six_breeding_types"
-              }else if (type.startsWith('female')){
-                mainType = "total_female_breeding_types"
-              }else if (type.startsWith('male_over_six')){
-                mainType = "total_male_over_six_breeding_types"
-              }else if (type.startsWith('male_under_six')){
-                mainType = "total_male_under_six_breeding_types"
-              }else if (type.startsWith('male')){
-                mainType = "total_male_breeding_types"
-              }
-
-              let mainVal = this.form[mainType] ? this.form[mainType] : 0 ;
-              let totalSubType = "total_"+val.type;
-              let subVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
-              mainVal -= subVal
-              let totalSubVal = this.form[totalSubType] ? this.form[totalSubType] : 0 ;
-              this.updateTotalMaster(totalSubType,sumVal)
-              this.form[totalSubType] = sumVal
-              mainVal += sumVal
-              this.form[mainType] = mainVal >= 0 ? mainVal : 0
-            }
-          }
+      sumChild: function (childrenType) {
+        let sumChild = 0 ;
+        let children = this.form[childrenType]
+        if(children){
+          children.forEach( (child) => {
+            let childAmount = child.pivot ? child.pivot.amount : 0
+            sumChild += parseInt(childAmount) ? parseInt(childAmount) : 0
+          })
+          let totalChildrenType = 'total_'+childrenType;
+          this.form[totalChildrenType] =  sumChild
         }
+        return sumChild
+      },
+      updateTotalCattle : function () {
+        let sum_main = 0 ;
+        let main = this.form[this.type] ? this.form[this.type] : this.form[this.type] = this.choices[this.type]
+        // console.log("update",this.form[this.type])
+        main.forEach( (m) => {
+          //----------------------------------------------------------------
+          let children = m.children;
+          let childLength = m.children.length ? m.children.length : 0;
+          if (childLength > 0 ){
+            let childrenType = children[0].type
+            let sum_child = this.sumChild(childrenType)
+            m.pivot.amount = sum_child
+          }
+          //----------------------------------------------------------------
+          let mainAmount = m.pivot ? m.pivot.amount : 0 ;
+          sum_main += parseInt(mainAmount) ? parseInt(mainAmount) : 0
+
+        })
+        let totalType = 'total_'+this.type;
+        this.form[totalType] =  sum_main;
+        this.updateMasterCattle()
       }
     }
   }
