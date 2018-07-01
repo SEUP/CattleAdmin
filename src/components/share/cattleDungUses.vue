@@ -60,7 +60,7 @@
     async created () {
       this.items = await this.$store.dispatch("choices/getChoicesByType", this.type)
       await this.sync()
-      console.log(this.items)
+      // console.log(this.items)
     },
     methods: {
       syncSelect :function (item,val){
@@ -99,10 +99,11 @@
       },
       updateSelect : function (sel) {
         sel.forEach((i)=>{
-          console.log(i)
+          // console.log(i)
           if(i.children.length > 0 ){
             i.children = [this.selectSelect]
-            console.log(i)}
+            // console.log(i)
+            }
         })
       },
       updateChoice : function () {
