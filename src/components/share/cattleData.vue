@@ -146,7 +146,6 @@
             } catch (e) {
               console.log(childrenChoice[i], childrenForm[j])
             }
-
           }
         }
       },
@@ -183,7 +182,6 @@
         let mu6 = parseInt(this.form.total_male_under_six_breeding_types)
         let fu6 = parseInt(this.form.total_female_under_six_breeding_types)
         total += m+f+mo6+fo6+mu6+fu6
-        console.log(total)
         this.form.total_master_breeding_types = total
       },
       sumChild: function (childrenType) {

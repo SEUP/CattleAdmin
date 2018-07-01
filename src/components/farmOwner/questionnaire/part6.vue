@@ -46,7 +46,7 @@
         <v-flex xs12 class="mt-3">
           <p class="title">6.9 ท่านขายโคเนื้อได้ราคาเท่าไหร่และใช้เวลาในการเลี้ยงนานเท่าใด</p>
           <v-divider class="my-3"></v-divider>
-          <choice-check-box   :value="form.cattle_sales" @change="form.cattle_sales=$event" type="cattle_sales"></choice-check-box>
+          <cattle-sales  @change="form.cattle_sales=$event"></cattle-sales>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">6.10 ท่านพอใจกับราคาที่ขายได้หรือไม่</p>
@@ -60,8 +60,9 @@
 <script>
   import ChoiceSelect from "../../share/choiceSelect";
   import ChoiceCheckBox from "../../share/choiceCheckBox";
+  import cattleSales from "../../share/cattleSales";
   export default {
-    components: {ChoiceSelect,ChoiceCheckBox},
+    components: {ChoiceSelect,ChoiceCheckBox,cattleSales},
     name: "part6",
     data (){
       return{

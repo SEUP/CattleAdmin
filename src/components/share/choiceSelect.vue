@@ -6,7 +6,6 @@
           <v-select hide-details
                     :items="items"
                     v-model="selectedValue"
-                    item-value = 'cat'
                     :label="label" item-text="choice"
                     return-object
                     @change="updateChoice"
