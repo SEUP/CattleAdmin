@@ -85,8 +85,8 @@
       <v-flex xs12>
         <p class="title">4.8 ท่านมีการจัดการมูลโคในฟาร์มของท่านอย่างไร (เลือกได้มากกว่า 1 ข้อ)</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="cattle_dung_uses" :value="form.cattle_dung_uses"
-                          @change="form.cattle_dung_uses=$event" ></choice-check-box>
+        <cattle-dung-uses type="cattle_dung_uses" :value="form.cattle_dung_uses"
+                          @change="form.cattle_dung_uses=$event" ></cattle-dung-uses>
       </v-flex>
     </v-layout>
 
@@ -95,12 +95,13 @@
 
 <script>
     import ChoiceSelect from "../../share/choiceSelect";
+    import cattleDungUses from "../../share/cattleDungUses";
     import ChoiceCheckBox from "../../share/choiceCheckBox";
     import vaccineEver from "../../share/vaccineEver";
 
     export default {
         name: "part4",
-      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect },
+      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect ,cattleDungUses},
       data : () =>({
         form : undefined
       }),
