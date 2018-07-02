@@ -15,8 +15,8 @@
       <v-flex xs12>
         <p class="title" >4.2 การผสมเทียมใช้น้ำเชื้อจากแหล่งใด</p>
         <v-divider class="my-3"></v-divider>
-        <choice-check-box type="inseminate_sources" :value="form.inseminate_sources"
-                          @change="form.inseminate_sources=$event"></choice-check-box>
+        <inseminate-sources type="inseminate_sources" :value="form.inseminate_sources"
+                          @change="form.inseminate_sources=$event"></inseminate-sources>
       </v-flex>
 
       <v-flex mt-3>
@@ -97,11 +97,12 @@
     import ChoiceSelect from "../../share/choiceSelect";
     import cattleDungUses from "../../share/cattleDungUses";
     import ChoiceCheckBox from "../../share/choiceCheckBox";
+    import inseminateSources from "../../share/inseminateSources";
     import vaccineEver from "../../share/vaccineEver";
 
     export default {
         name: "part4",
-      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect ,cattleDungUses},
+      components: {vaccineEver, ChoiceCheckBox, ChoiceSelect ,cattleDungUses,inseminateSources},
       data : () =>({
         form : undefined
       }),
