@@ -50,10 +50,10 @@
         <v-card-text class="pa-2 title">3.5 การเช่าที่ดินเพื่อใช้ในการเลี้ยง</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <choice-select label=" " type="rent_land" :value="form.rent_land"
+          <rent-land label=" " type="rent_land" :value="form.rent_land"
                          @change="form.rent_land = $event">
 
-          </choice-select>
+          </rent-land>
         </div>
 
         <v-card-text class="pa-2 title">3.6 พื้นที่ที่ใช้ในการเลี้ยงโคเนื้อ</v-card-text>
@@ -93,9 +93,7 @@
         <v-card-text class="pa-2 title">3.9 ท่านเคยให้แร่ธาตุก้อนหรือไม่</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <minerals-feed>
-
-          </minerals-feed>
+          <minerals-feed></minerals-feed>
         </div>
 
         <v-card-text class="pa-2 title">3.10 ท่านมีการสำรองฟางข้าว หรือเปลือกข้าวโพดไว้ใช้เลี้ยงโคหรือไม่</v-card-text>
@@ -129,9 +127,10 @@
   import ChoiceCheckBox from "../../share/choiceCheckBox";
   import DistrictSelect from "../../share/districtSelect";
   import mineralsFeed from "../../share/mineralsFeed";
+  import RentLand from "../../share/rentLand";
 
   export default {
-    components: {ChoiceSelect, ChoiceCheckBox, DistrictSelect,mineralsFeed},
+    components: {RentLand, ChoiceSelect, ChoiceCheckBox, DistrictSelect,mineralsFeed},
     name: "past3",
     data : () =>({
       form : undefined

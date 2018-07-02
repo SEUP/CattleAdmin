@@ -43,7 +43,7 @@
         this.updateState()
       },
       updateState : function () {
-        this.$store.dispatch('farmOwners/updateState',this.form)
+        this.$store.dispatch('farmOwners/updateState',this.farmOwner)
       }
     },
 

@@ -180,11 +180,6 @@
 
       </v-flex>
     </v-layout>
-    <v-layout class="hidden-md-and-up">
-      <v-flex xs12 mx-3>
-        <v-btn color="success" block @click.native="updateFarmOwner">Save All</v-btn>
-      </v-flex>
-    </v-layout>
 
   </v-container>
 

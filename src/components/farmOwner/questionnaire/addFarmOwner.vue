@@ -180,12 +180,6 @@
 
       </v-flex>
     </v-layout>
-    <v-layout class="hidden-md-and-up">
-      <v-flex xs12 mx-3>
-        <v-btn color="success" block @click.native="createFarmOwner">Save All</v-btn>
-      </v-flex>
-    </v-layout>
-
   </v-container>
 
 </template>
@@ -239,7 +233,6 @@
           if(data){
             alert("บันทึกข้อมูลเเล้ว")
             this.$router.push({name:'farmOwner-index'})}
-
         },
       }
     }
