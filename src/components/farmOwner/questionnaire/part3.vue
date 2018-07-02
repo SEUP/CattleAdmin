@@ -93,10 +93,9 @@
         <v-card-text class="pa-2 title">3.9 ท่านเคยให้แร่ธาตุก้อนหรือไม่</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <choice-select label=" " type="minerals_feed" :value="form.minerals_feed"
-                         @change="form.minerals_feed = $event">
+          <minerals-feed>
 
-          </choice-select>
+          </minerals-feed>
         </div>
 
         <v-card-text class="pa-2 title">3.10 ท่านมีการสำรองฟางข้าว หรือเปลือกข้าวโพดไว้ใช้เลี้ยงโคหรือไม่</v-card-text>
@@ -116,7 +115,6 @@
                             @change="form.feed_summer_sources = $event"
                             @blur="updateForm"
           >
-
           </choice-check-box>
         </div>
 
@@ -130,9 +128,10 @@
   import ChoiceSelect from "../../share/choiceSelect";
   import ChoiceCheckBox from "../../share/choiceCheckBox";
   import DistrictSelect from "../../share/districtSelect";
+  import mineralsFeed from "../../share/mineralsFeed";
 
   export default {
-    components: {ChoiceSelect, ChoiceCheckBox, DistrictSelect},
+    components: {ChoiceSelect, ChoiceCheckBox, DistrictSelect,mineralsFeed},
     name: "past3",
     data : () =>({
       form : undefined
