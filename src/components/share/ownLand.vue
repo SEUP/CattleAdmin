@@ -11,7 +11,7 @@
                     @change="updateSelect"
           ></v-select>
         </v-flex>
-        <v-flex xs12>
+        <v-flex xs12 v-if="selectedValue.choice == 'มีพื้นที่ถือครอง'">
           <v-layout row >
             <v-flex  xs6 class="align-center ">
               <v-card-text class="pa-0 pt-2"><b>รวมพื้นที่ถือครองทางการเกษตร</b></v-card-text>
@@ -108,14 +108,13 @@
         syncSelect:function () {
           let value = this.form.own_land;
           this.items.forEach((item)=>{
-            let valID = value ? value.id : 0
+            let valID = value ? value.id : null
               if(item.id == valID){
                 this.selectedValue = value
               }
           })
         },
         syncCheckbox : function () {
-          console.log(this.form.sub_own_lands)
           let items = this.subItems ? this.subItems : [];
           let sel = this.form.sub_own_lands ? this.form.sub_own_lands : [];
           let items_length = items.length;

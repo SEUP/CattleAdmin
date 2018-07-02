@@ -56,10 +56,7 @@
         <v-card-text class="pa-2 title">3.6 พื้นที่ที่ใช้ในการเลี้ยงโคเนื้อ</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
-          <choice-select label=" " type="use_land" :value="form.use_land"
-                         @change="form.use_land = $event">
-
-          </choice-select>
+          <use-land></use-land>
         </div>
 
         <v-card-text class="pa-2 title">3.7 อาหารที่ท่านใช้เลี้ยงโคเนื้อเป็นอาหารประเภทใด (ตอบได้มากกว่า 1 ข้อ)
@@ -124,9 +121,10 @@
   import RentLand from "../../share/rentLand";
   import FeedStock from "../../share/feedstock";
   import OwnLand from "../../share/ownLand";
+  import UseLand from "../../share/useLand";
 
   export default {
-    components: {OwnLand, FeedStock, RentLand, ChoiceSelect, ChoiceCheckBox, DistrictSelect,mineralsFeed},
+    components: {UseLand, OwnLand, FeedStock, RentLand, ChoiceSelect, ChoiceCheckBox, DistrictSelect,mineralsFeed},
     name: "past3",
     data : () =>({
       form : undefined

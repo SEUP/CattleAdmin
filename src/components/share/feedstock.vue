@@ -12,7 +12,7 @@
           ></v-select>
         </v-flex>
         <!--<v-flex  xs12 ml-3 v-if="selectedValue.children.length > 0">-->
-        <v-flex  xs12 ml-3 v-if="true">
+        <v-flex  xs12 ml-3 v-if="selectedValue.choice == 'สำรอง'">
           <div v-for="subItem in subItems" :key="subItem.id" class="py-1">
             <v-checkbox :label="subItem.choice" hide-details
                         :value="subItem"
