@@ -76,7 +76,6 @@
         await this.updateValue()
       },
       updateValue: async function () {
-        console.log(this.selectedValue)
         await this.$emit('change', this.selectedValue)
 
       }
