@@ -125,6 +125,31 @@
         this.updateTotalCattle()
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
       },
+      sync: function () {
+        let main = this.choices[this.type];
+        let mainLength = main.length;
+
+        let select =this.form[this.type] ? this.form[this.type] : [] ;
+        let selectLength = select.length;
+
+        for (let i = 0; i < mainLength; i++) {
+          for (let j = 0; j < selectLength; j++) {
+            if (main[i].id == select[j].id) {
+              main[i] = select[j]
+              this.selMainBreeds.push(main[i]);
+              // sync children
+              if (main[i].children.length > 0) {
+                this.childrenSync(main[i].children[0].type);
+              }
+            }
+          }
+        }
+        let totalType = 'total_' +this.type
+        this.form[totalType] = 0
+        this.choices[this.type] = main
+        this.isReady = true;
+        this.updateTotalCattle()
+      },
       childrenSync: function (type, order) {
         let childrenForm = this.form[type];
         let childrenChoice = this.choices[type] ? this.choices[type] : [];
@@ -148,30 +173,6 @@
             }
           }
         }
-      },
-      sync: function () {
-        let main = this.choices[this.type];
-        let select = this.form[this.type] ? this.form[this.type] : [] ;
-        let mainLength = main.length;
-        let selectLength = select.length;
-
-        for (let i = 0; i < mainLength; i++) {
-          for (let j = 0; j < selectLength; j++) {
-            if (main[i].id == select[j].id) {
-              main[i] = select[j]
-              this.selMainBreeds.push(main[i]);
-              // sync children
-              if (main[i].children.length > 0) {
-                this.childrenSync(main[i].children[0].type);
-              }
-            }
-          }
-        }
-        let totalType = 'total_' +this.type
-        this.form[totalType] = 0
-        this.choices[this.type] = main
-        this.isReady = true;
-        this.updateTotalCattle()
       },
       updateMasterCattle : function () {
         let total = 0
