@@ -81,6 +81,19 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile :to="{name : 'admin-HomeFarmer'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account-key</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              หน้าแสดงข้อมูลของเกษตรกร
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
+
         <!--role-->
         <v-list-tile :to="{name : 'role-index'}" exact>
           <v-list-tile-action>
@@ -93,6 +106,12 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
+
+
+
+
+
+
 
 
 

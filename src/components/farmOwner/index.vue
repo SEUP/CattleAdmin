@@ -117,7 +117,7 @@
         {text: "จังหวัด อำเภอ ตำบล", align:"left" ,value:"address_name",sortable :false},
         {text: "ข้อมูลเมื่อ", align:"left" ,value:"updated_at",sortable :false},
         {text: "การจัดการ", align:"center" ,value:"action" ,sortable :false},
-      ],
+      ]
     }),
     async created () {
       await this.loadData()

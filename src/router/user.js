@@ -28,6 +28,7 @@ export default {
       path : ':id/profile/:username',
       name : 'user-userProfile',
       component : view('user/userProfile')
-    }
+    },
+
   ]
 }

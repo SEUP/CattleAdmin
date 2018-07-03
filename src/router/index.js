@@ -31,10 +31,16 @@ export default new Router({
           path: '',
           name: 'admin-home',
           component: view('Home')
-        },     {
+        },
+        {
           path: 'report',
           name: 'admin-report',
           component: view('Report')
+        },
+        {
+          path: 'HomeFarmer',
+          name: 'admin-HomeFarmer',
+          component: view('HomeFarmer')
         },
         farmOwner,
         userRoute,
