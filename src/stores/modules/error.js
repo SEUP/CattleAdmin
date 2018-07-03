@@ -10,6 +10,10 @@ export default {
   mutations: {
     setShowError(state, bool) {
       state.showError = bool;
+
+      if (bool) {
+
+      }
     }
   },
   actions: {
@@ -17,6 +21,9 @@ export default {
       console.log(error)
       state.error = error;
       commit('setShowError', true);
+      setTimeout(() => {
+        commit('setShowError', false)
+      }, 6000)
     },
 
     resetError({state, commit}) {
