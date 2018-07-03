@@ -1,35 +1,32 @@
 <template>
-  <div v-if="ready">
-    <v-layout row wrap  v-for="item in items" :key="item.id">
+  <div v-if="items && subItems && form">
+    <v-layout row wrap v-for="item in items" :key="item.id">
       <v-flex xs12>
         <v-checkbox :label="item.choice" hide-details
                     class="pa-0 ma-0"
                     :value="item"
-                    v-model="selected"
+                    v-model="selectedCheckbox"
                     @change="updateChoice"
-                    :input-value="value"
                     color="success"
         >
         </v-checkbox>
       </v-flex>
-      <v-flex xs12 v-if="item.has_text" class="pa-0 ma-0 ml-4">
+      <v-flex xs12 v-if="item.has_text" class="pa-0 ma-0 ml-5">
         <v-text-field
           hide-details class="pa-0 ma-0"
-          placeholder="บาท/ปี" type="number"
-          v-model="item.pivot.remark"
+          suffix = "บาท/ปี"
+          :value="item.pivot.price"
+          v-model="item.pivot.price"
           @change="updateChoice"
-          color="success"
         ></v-text-field>
       </v-flex>
-      <v-flex xs12 v-if="item.children.length > 0" class="pa-0 ma-0 ml-4">
-        <v-select
-          class="ma-0"
-          :items="item.children"
-          item-text="choice"
-          placeholder = 'กรุณาเลือก'
-          v-model="selectSelect"
-          @change="updateSelect"
-          return-object
+      <v-flex xs12 v-if="item.children.length > 0" class="pa-0 ma-0 ml-5">
+        <v-select hide-details
+                  :items="subItems"
+                  v-model="selectedSelect"
+                  item-text="choice"
+                  return-object
+                  @change="updateSelect"
         ></v-select>
       </v-flex>
     </v-layout>
@@ -37,81 +34,64 @@
 </template>
 <script>
   let defaultChoice = {
-  id : 0,
-  has_text :0,
-  choice : "กรุณาเลือก",
-};
+    id : 0,
+    has_text :0,
+    choice : "กรุณาเลือก",
+    pivot:{remark: null,amount:null}
+  };
   export default {
-    props: {
-      value: {
-        type: [Array],
-        default: () => []
-      },
-      type: {
-        type: String,
-      }
-    },
     data: () => ({
-      ready : false,
-      items: [],
-      selected: [],
-      selectSelect : defaultChoice
+      form : null ,
+      items: null,
+      subItems : null,
+      selectedCheckbox: [],
+      selectedSelect: defaultChoice,
+
     }),
     async created () {
-      this.items = await this.$store.dispatch("choices/getChoicesByType", this.type)
+      this.form = await  this.$store.state.farmOwners.farmOwner;
+      this.items = await this.$store.dispatch("choices/getChoicesByType", 'cattle_dung_uses');
+      this.subItems = [defaultChoice].concat(await this.$store.dispatch("choices/getChoicesByType", 'biogas_status'));
       await this.sync()
-      // console.log(this.items)
+      await this.syncSelect()
     },
     methods: {
-      syncSelect :function (item,val){
-        item.children = [defaultChoice].concat(item.children)
-        item.children.forEach((i)=>{
-          console.log(this.selectSelect)
-          val.children.forEach((v)=>{
-           if(v.id == i.id){
-             i=v
-             this.selectSelect = i
-          }
-          })
-        })
-        item = val
-        return item
-      },
       sync: function () {
         let items = this.items
-        let sel = this.value
-        let items_length = this.items.length;
-        let sel_length = this.value.length;
+        let sel = this.form.cattle_dung_uses
+        let items_length = items.length;
+        let sel_length = sel ? sel.length : [] ;
         for (let i = 0; i < items_length; i++) {
-          items[i] = Object.assign(items[i], {pivot: {remark: null}})
           for (let j = 0; j < sel_length; j++) {
             if (items[i].id == sel[j].id) {
-              if(items[i].id == 208){
-                items[i] = this.syncSelect(items[i],sel[j])
-              }else{
-                items[i] = sel[j]
-              }
-              this.selected.push(sel[j])
+              items[i] = sel[j]
+              this.selectedCheckbox.push(sel[j])
             }
           }
         }
-        this.ready = true
       },
-      updateSelect : function (sel) {
-        sel.forEach((i)=>{
-          // console.log(i)
-          if(i.children.length > 0 ){
-            i.children = [this.selectSelect]
-            // console.log(i)
-            }
+      syncSelect: function () {
+        let value = this.form.biogas_status ;
+        this.subItems.forEach((i) => {
+          if (i.id == value.id) {
+            this.selectedSelect = i;
+          }
         })
       },
+      updateSelect : function () {
+        console.log(this.form.biogas_status)
+        this.form.biogas_status = this.selectedSelect;
+        this.selectedCheckbox.forEach((i)=>{
+          if(i.choice =='ทำเเก๊สชีวภาพในครัวเรือน'){
+            i.children = this.selectedSelect
+          }
+        });
+        this.$store.dispatch('farmOwners/updateState',this.form)
+        this.updateChoice()
+      },
       updateChoice : function () {
-       let sel =  this.updateSelect(this.selected)
-        //-------------------
-
-        //-------------------
-        this.$emit("change",sel)
+        this.form.cattle_dung_uses = this.selectedCheckbox
+        this.$store.dispatch('farmOwners/updateState',this.form)
       }
     },
 
