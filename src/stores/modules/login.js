@@ -1,3 +1,12 @@
+const client = {
+  username: "",
+  "password": "",
+  "grant_type": "password",
+  "client_id": process.env.CLIENT_ID,
+  "client_secret": process.env.CLIENT_SECRET,
+  "provider": "admins"
+};
+
 export default {
   namespaced: true,
   state: {
@@ -10,14 +19,8 @@ export default {
   },
   actions: {
     getToken: async function (context, form) {
-      let client = {
-        username: "",
-        "password": "",
-        "grant_type": "password",
-        "client_id": "5",
-        "client_secret": "rcbRlgZjkk3zJMfhYITKK4EMTCh1rBnBcYgNaJiq",
-        "provider": "admins"
-      };
+
+      console.log(client)
       client.username = form.email;
       client.password = form.password;
 
