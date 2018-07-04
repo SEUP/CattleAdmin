@@ -106,16 +106,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-
-
-
-
-
-
-
-
-
-      </v-list>
+  </v-list>
 
     </v-navigation-drawer>
 

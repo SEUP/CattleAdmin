@@ -1,7 +1,8 @@
 <template>
   <div v-if="isReady">
     <v-layout column>
-      <v-flex v-for="mainBreed in choices[type]" :key="mainBreed.id">
+      <v-text-field label="จำนวน" v-model="totalMaster" readonly/>
+      <v-flex v-for="mainBreed in choices[type]" :key="mainBreed.id" >
         <v-checkbox :label="mainBreed.choice" hide-details class="ma-0 pa-0"
                     :value="mainBreed"
                     v-model="selMainBreeds"
@@ -86,6 +87,7 @@
       },
     },
     data: () => ({
+      totalMaster: 0,
       source_opt: ['ตลาดโค', 'พ่อค้าคนกลาง', 'ในหมู่บ้าน', 'โครงการหลวง', 'ผลิตเองในฟาร์ม', 'อื่นๆ'],
       choices: [],
       selMainBreeds2: [],
@@ -111,14 +113,12 @@
         male_under_six_int_breeding_types: [],
         male_under_six_mixed_breeding_types: [],
       },
-      form: null,
       isReady: false,
     }),
     async created() {
       this.form = await this.$store.state.farmOwners.farmOwner
       this.choices = await this.$store.dispatch("choices/getChoices")
       this.sync();
-
     },
     methods: {
       updateValue: function (type, value) {
@@ -147,8 +147,8 @@
         let totalType = 'total_' +this.type
         this.form[totalType] = 0
         this.choices[this.type] = main
-        this.isReady = true;
         this.updateTotalCattle()
+        this.isReady = true;
       },
       childrenSync: function (type, order) {
         let childrenForm = this.form[type];
@@ -176,12 +176,12 @@
       },
       updateMasterCattle : function () {
         let total = 0
-        let m = parseInt(this.form.total_male_breeding_types)
-        let f = parseInt(this.form.total_female_breeding_types)
-        let mo6 = parseInt(this.form.total_male_over_six_breeding_types)
-        let fo6 = parseInt(this.form.total_female_over_six_breeding_types)
-        let mu6 = parseInt(this.form.total_male_under_six_breeding_types)
-        let fu6 = parseInt(this.form.total_female_under_six_breeding_types)
+        let m = this.form.total_male_breeding_types ?  parseInt(this.form.total_male_breeding_types) : 0
+        let f =  this.form.total_female_breeding_types ? parseInt(this.form.total_female_breeding_types) : 0
+        let mo6 =  this.form.total_male_over_six_breeding_types ? parseInt(this.form.total_male_over_six_breeding_types) : 0
+        let fo6 =  this.form.total_female_over_six_breeding_types ? parseInt(this.form.total_female_over_six_breeding_types) : 0
+        let mu6 =  this.form.total_male_under_six_breeding_types ? parseInt(this.form.total_male_under_six_breeding_types) : 0
+        let fu6 =  this.form.total_female_under_six_breeding_types ? parseInt(this.form.total_female_under_six_breeding_types) : 0
         total += m+f+mo6+fo6+mu6+fu6
         this.form.total_master_breeding_types = total
       },
@@ -218,7 +218,12 @@
         })
         let totalType = 'total_'+this.type;
         this.form[totalType] =  sum_main;
+        this.totalMaster = this.form[totalType]
+        this.$emit("change",this.type,this.totalMaster)
+        // console.log("change",this.type,this.totalMaster)
+
         this.updateMasterCattle()
+        this.$store.dispatch('farmOwners/updateState',this.form)
       }
     }
   }

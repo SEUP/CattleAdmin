@@ -79,7 +79,6 @@
         })
       },
       updateSelect : function () {
-        console.log(this.form.biogas_status)
         this.form.biogas_status = this.selectedSelect;
         this.selectedCheckbox.forEach((i)=>{
           if(i.choice =='ทำเเก๊สชีวภาพในครัวเรือน'){
