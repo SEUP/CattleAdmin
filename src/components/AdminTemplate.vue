@@ -178,7 +178,6 @@
     },
     methods : {
       checkUser : function (user) {
-        console.log("user",user)
         // if(!user){
         //   this.$router.push({name: 'Login'})
         // }

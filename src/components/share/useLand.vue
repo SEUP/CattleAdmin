@@ -61,7 +61,7 @@
                 <v-text-field
                               @change="updateCheckbox"
                               label ="ชนิดหญ้า"
-                              v-model="subItem.pivot.subarea"
+                              v-model="subItem.pivot.remark"
                               class="pa-0 ma-0" hide-details
                               placeholder="ชนิดหญ้า">
                 </v-text-field>

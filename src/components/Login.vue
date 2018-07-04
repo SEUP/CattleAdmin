@@ -1,7 +1,6 @@
 <template>
   <v-app id="inspire">
-
-
+    <loading :active.sync="spinnerVisible"></loading>
     <v-snackbar
       :timeout="6000"
       :color="'error'"

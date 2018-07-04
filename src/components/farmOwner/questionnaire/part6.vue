@@ -11,7 +11,7 @@
         <v-flex xs12>
           <p class="title">6.2 อายุของโคเนื้อที่ท่านจำหน่าย(ปี)</p>
           <v-divider class="my-3"></v-divider>
-          <choiceSelect :value="form.age_breeding_sale" @change="form.age_breeding_sale=$event" type="age_breeding_sale"></choiceSelect>
+          <choiceSelect :value="form.age_sale" @change="form.age_sale=$event" type="age_sale"></choiceSelect>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">6.3 น้ำหนักของโคเนื้อที่ท่านจำหน่าย(กิโลกรัม)</p>
@@ -31,7 +31,7 @@
         <v-flex xs12 class="mt-3">
           <p class="title">6.6 ถ้ายังไม่เข้ารวมกลุ่มท่านมีความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อหรือไม่</p>
           <v-divider class="my-3"></v-divider>
-          <choiceSelect   :value="form.cattle_heath_support" @change="form.cattle_heath_support=$event"   type="cattle_heath_support"></choiceSelect>
+          <choiceSelect   :value="form.group_join_future" @change="form.group_join_future=$event"   type="group_join_future"></choiceSelect>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">6.7 ท่านต้องการให้สหกรณ์ช่วยเหลือในด้านใด</p>
@@ -41,7 +41,7 @@
         <v-flex xs12 class="mt-3">
           <p class="title">6.8 ท่านต้องการซื้ออาหารข้นในนามสหกรณ์หรือไม่</p>
           <v-divider class="my-3"></v-divider>
-          <choice-select :value="form.emale_breeder_support" @change="form.emale_breeder_support=$event" type="female_breeder_support" ></choice-select>
+          <choice-select :value="form.feed_purchase_cooperative" @change="form.feed_purchase_cooperative=$event" type="feed_purchase_cooperative" ></choice-select>
         </v-flex>
         <v-flex xs12 class="mt-3">
           <p class="title">6.9 ท่านขายโคเนื้อได้ราคาเท่าไหร่และใช้เวลาในการเลี้ยงนานเท่าใด</p>

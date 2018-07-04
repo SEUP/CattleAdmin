@@ -108,8 +108,8 @@
 
                       <part8 ></part8>
 
-                      <v-btn color="success">save</v-btn>
-                      <v-btn flat @click.native="steper=0" outline>Cancel</v-btn>
+                      <v-btn color="success" @click.native="updateFarmOwner">save</v-btn>
+                      <v-btn flat :to="{name:'farmOwner-index'}" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
                 </v-stepper>

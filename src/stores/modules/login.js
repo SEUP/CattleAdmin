@@ -46,7 +46,6 @@ export default {
             err['errors'].password = "The password field is required"
 
           }
-
           context.dispatch("error/setError", err, {root: true});
           return null;
         });
@@ -62,6 +61,7 @@ export default {
           return null;
         })
         localStorage.user = JSON.stringify(user);
+        return user
       }
     },
     loadUser: async function (context) {

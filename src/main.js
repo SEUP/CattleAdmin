@@ -12,7 +12,7 @@ import store from './stores/index'
 
 window.axios = axios.create({
   baseURL: process.env.API_URL,
-  timeout: 10000
+  timeout: 60000
 });
 
 import lodash from 'lodash'
