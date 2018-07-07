@@ -122,8 +122,9 @@
     },
     methods: {
       updateValue: function (type, value) {
-        this.updateTotalCattle()
         this.$store.dispatch("farmOwners/updateChoices", {type: type, value: value})
+        this.updateTotalCattle()
+
       },
       sync: function () {
         let main = this.choices[this.type];
@@ -200,7 +201,7 @@
       },
       updateTotalCattle : function () {
         let sum_main = 0 ;
-        let main = this.form[this.type] ? this.form[this.type] : this.form[this.type] = this.choices[this.type]
+        let main = this.form[this.type] ? this.form[this.type] : []
         // console.log("update",this.form[this.type])
         main.forEach( (m) => {
           //----------------------------------------------------------------
@@ -210,6 +211,7 @@
             let childrenType = children[0].type
             let sum_child = this.sumChild(childrenType)
             m.pivot.amount = sum_child
+            console.log(this.type,childrenType,sum_child);
           }
           //----------------------------------------------------------------
           let mainAmount = m.pivot ? m.pivot.amount : 0 ;
