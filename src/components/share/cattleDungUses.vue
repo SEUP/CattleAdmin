@@ -71,7 +71,7 @@
         }
       },
       syncSelect: function () {
-        let value = this.form.biogas_status ;
+        let value = this.form.biogas_status ?this.form.biogas_status: defaultChoice ;
         this.subItems.forEach((i) => {
           if (i.id == value.id) {
             this.selectedSelect = i;

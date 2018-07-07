@@ -80,7 +80,7 @@
     },
     methods: {
       sync: function () {
-        let value = this.form.feedstock
+        let value = this.form.feedstock ? this.form.feedstock : defaultChoice
         this.items.forEach((item)=>{
             if(item.id == value.id){
               item = value
