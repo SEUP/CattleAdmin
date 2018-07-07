@@ -87,12 +87,13 @@
               item = value
               this.selectedValue = item
             }
-        })
+          })
+        }
       },
-      syncCheckBox :function (){
+      syncCheckBox: function () {
         let items = this.subItems
-        let sel = this.form.feedstock_types ?  this.form.feedstock_types : []
-        let items_length =items.length;
+        let sel = this.form.feedstock_types ? this.form.feedstock_types : []
+        let items_length = items.length;
         let sel_length = sel.length;
         for (let i = 0; i < items_length; i++) {
           for (let j = 0; j < sel_length; j++) {
@@ -106,11 +107,11 @@
       },
       updateChoiceCheckbox: function () {
         this.form.feedstock_types = this.selectCheckbox
-        this.$store.dispatch('farmOwners/updateState',this.form)
+        this.$store.dispatch('farmOwners/updateState', this.form)
       },
-      updateChoice : async function (choice)  {
+      updateChoice: async function (choice) {
         this.form.feedstock = this.selectedValue
-        this.$store.dispatch('farmOwners/updateState',this.form)
+        this.$store.dispatch('farmOwners/updateState', this.form)
       },
       updateValue: async function () {
 
