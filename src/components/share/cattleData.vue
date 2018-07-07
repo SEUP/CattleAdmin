@@ -211,7 +211,7 @@
             let childrenType = children[0].type
             let sum_child = this.sumChild(childrenType)
             m.pivot.amount = sum_child
-            console.log(this.type,childrenType,sum_child);
+            // console.log(this.type,childrenType,sum_child);
           }
           //----------------------------------------------------------------
           let mainAmount = m.pivot ? m.pivot.amount : 0 ;
