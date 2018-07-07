@@ -84,8 +84,8 @@
               </v-data-table>
               <v-divider></v-divider>
               <v-flex xs12 py-2 class="text-xs-center">
-                <v-pagination @input="changePage" :length="paginate.last_page"
-                              v-model="paginate.current_page" ></v-pagination>
+                <v-pagination @input="changePage" :length="paginate.last_page ? paginate.last_page : paginate.lastPage"
+                              v-model="paginate.current_page ? paginate.current_page : paginate.page" ></v-pagination>
               </v-flex>
             </v-card>
           </v-flex>
