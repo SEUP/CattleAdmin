@@ -72,11 +72,14 @@
       },
       syncSelect: function () {
         let value = this.form.biogas_status ;
-        this.subItems.forEach((i) => {
-          if (i.id == value.id) {
-            this.selectedSelect = i;
-          }
-        })
+        if(value){
+          this.subItems.forEach((i) => {
+            if (i.id == value.id) {
+              this.selectedSelect = i;
+            }
+          })
+        }
+
       },
       updateSelect : function () {
         this.form.biogas_status = this.selectedSelect;

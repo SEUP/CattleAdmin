@@ -94,13 +94,13 @@
 
 
   let ChoiceMain = {
-    id : 0,
-    choice : "กรุณาเลือก",
+    id: 0,
+    choice: "กรุณาเลือก",
 
   };
   let ChoiceSub = {
-    id : 0,
-    choice : "กรุณาเลือก",
+    id: 0,
+    choice: "กรุณาเลือก",
 
   };
   export default {
@@ -119,7 +119,7 @@
       },
       value: {
         type: Object,
-        default : () =>  (ChoiceMain)
+        default: () => (ChoiceMain)
       },
       valueBox: {
         type: [Array],
@@ -127,16 +127,16 @@
       },
     },
     data: () => ({
-      selectedMain : ChoiceMain,
-      select_Sub : ChoiceSub,
-      select_Box:[],
-      items:[],
-      items_Sub :[],
-      items_checkBox : []
+      selectedMain: ChoiceMain,
+      select_Sub: ChoiceSub,
+      select_Box: [],
+      items: [],
+      items_Sub: [],
+      items_checkBox: []
     }),
     computed: {
       ...mapState({
-        form : state => state.farmOwners.farmOwner
+        form: state => state.farmOwners.farmOwner
       })
     },
     async created() {
@@ -148,43 +148,46 @@
 
 
     },
-    mounted (){
+    mounted() {
     },
-    methods :{
+    methods: {
       updateValue: function () {
-        this.$store.dispatch("farmOwners/updateState",this.form)
+        this.$store.dispatch("farmOwners/updateState", this.form)
       },
-      updateMainsel :function(items){
+      updateMainsel: function (items) {
         this.form.vaccine_ever = items;
-        if(items.id == 203){
+        if (items.id == 203) {
           this.form.vaccine_types = [];
         }
         this.updateValue()
       },
-      updateCheckbox:function(item){
+      updateCheckbox: function (item) {
         this.form.vaccine_types = item;
         this.updateValue()
 
       },
-      sync : function () {
-        this.items.forEach((i) =>{
-          if (i.id == this.form[this.type].id){
-            this.selectedMain = i ;
-          }
-        })
+      sync: function () {
+        let value = this.form[this.type]
+        if (value) {
+          this.items.forEach((i) => {
+            if (i.id == this.form[this.type].id) {
+              this.selectedMain = i;
+            }
+          })
+        }
       },
-      syncCheckbox : function () {
+      syncCheckbox: function () {
         let selectedchoice = this.select_Box;
         let choices = this.items_checkBox;
         let selChoice = this.form.vaccine_types;
-        let choicesLangth =  this.items_checkBox ? this.items_checkBox.length:0;
-        let selChoiceLangth =  this.form.vaccine_types?this.form.vaccine_types.length : 0;
+        let choicesLangth = this.items_checkBox ? this.items_checkBox.length : 0;
+        let selChoiceLangth = this.form.vaccine_types ? this.form.vaccine_types.length : 0;
 
-        for(let i =0;i<choicesLangth ;i++){
-          for(let a = 0;a< selChoiceLangth;a++){
-            if (choices[i].id == selChoice[a].id ){
-              choices[i] = selChoice[a] ;
-              selectedchoice.push(selChoice[a] );
+        for (let i = 0; i < choicesLangth; i++) {
+          for (let a = 0; a < selChoiceLangth; a++) {
+            if (choices[i].id == selChoice[a].id) {
+              choices[i] = selChoice[a];
+              selectedchoice.push(selChoice[a]);
             }
           }
         }
