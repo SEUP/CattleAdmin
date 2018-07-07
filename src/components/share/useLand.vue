@@ -11,7 +11,7 @@
                     @change="updateSelect"
           ></v-select>
         </v-flex>
-        <v-flex xs12 v-if="selectedValue.choice == 'มีพื้นที่'">
+        <v-flex xs12 v-if="selectedValue && selectedValue.choice == 'มีพื้นที่'">
           <v-layout row >
             <v-flex  xs6 class="align-center ">
               <v-card-text class="pa-0 pt-2"><b>รวมพื้นที่ที่ใช้เลี้ยงโคเนื้อ</b></v-card-text>
