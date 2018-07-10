@@ -10,7 +10,7 @@ module.exports = merge(prodEnv, {
   // CLIENT_SECRET : '"rcbRlgZjkk3zJMfhYITKK4EMTCh1rBnBcYgNaJiq"'
 
   //online - server
-  API_URL: '"http://localhost:10002"',
+  API_URL: '"http://10.94.1.82:3333"',
   CLIENT_ID : '8',
   CLIENT_SECRET : '"sGtSeZdxfjHmto8FVdDxG0kTK2b3JYWJtfVaKgOL"'
 

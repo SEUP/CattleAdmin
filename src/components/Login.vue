@@ -7,7 +7,9 @@
       :multi-line="true"
       :vertical="true"
       v-model="showError">
-      {{ error.message }}
+      <ul >
+        <li v-for="value in error">{{value}}</li>
+      </ul>
       <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
     </v-snackbar>
 
@@ -21,11 +23,11 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.email"
-                                :error-messages="error.errors.email" type="text"
+                  <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.username"
+                                :error-messages="error.username" type="text"
                   ></v-text-field>
                   <v-text-field id="password" prepend-icon="lock" name="password" label="Password"
-                                :error-messages="error.errors.password"
+                                :error-messages="error.password"
                                 v-model="form.password" type="password" @keypress.13s="login()"></v-text-field>
                 </v-form>
               </v-card-text>

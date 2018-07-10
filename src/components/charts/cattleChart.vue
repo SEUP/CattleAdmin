@@ -84,6 +84,7 @@
             male += "/" + this.province.province_id
           }
           this.chartData[0] = await this.$store.dispatch("charts/getChart",male)
+            console.log(this.chartData[0])
           this.displayChart(0);
 
           let female ="cattle/แม่พันธุ์โคเนื้อที่เลี้ยง/female_breeding_types";

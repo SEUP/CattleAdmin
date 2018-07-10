@@ -1,3 +1,4 @@
+import _ from "lodash"
 export default {
   namespaced: true,
   state: {
@@ -18,8 +19,15 @@ export default {
   },
   actions: {
     setError({state, commit}, error) {
-      console.log(error)
-      state.error = error;
+      console.log(error,11111)
+        error = _.map(error, (value,key) => {
+          let x = {}
+          x[value.field] = value.message
+            return x
+        });
+      error = _.assign.apply(_,error)
+        console.log(error)
+        state.error = error;
       commit('setShowError', true);
       setTimeout(() => {
         commit('setShowError', false)

@@ -19,34 +19,22 @@ export default {
   },
   actions: {
     getToken: async function (context, form) {
+      let userform = {
+        username : form.username,
+        password : form.password,
+      }
 
-      console.log(client)
-      client.username = form.email;
-      client.password = form.password;
 
-
-      let token = await axios.post('api/v1/admin/login', client)
+      let token = await axios.post('api/v1/admin/login', userform)
         .then((r) => {
-          console.log(r.data(),111)
-          localStorage.access_token = r.data.access_token;
+          localStorage.access_token = r.data.token;
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access_token;
 
           return r.data
         })
         .catch((error) => {
-          let err = {
-            "message": "E-mail or Password is invalid",
-            "errors": {}
-          };
-
-          if (!form.email) {
-            err['errors'].email = "The email field is required"
-          }
-          if (!form.password) {
-            err['errors'].password = "The password field is required"
-
-          }
-          context.dispatch("error/setError", err, {root: true});
+          console.log(error)
+            context.dispatch("error/setError", error.response.data, {root: true});
           return null;
         });
       return token;

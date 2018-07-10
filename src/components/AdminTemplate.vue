@@ -8,7 +8,9 @@
       :multi-line="true"
       :vertical="true"
       v-model="showError">
-      {{ error.message }}
+      <ul >
+        <li v-for="value in error">{{value}}</li>
+      </ul>
       <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
     </v-snackbar>
 
