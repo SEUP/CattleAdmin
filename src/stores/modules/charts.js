@@ -4,7 +4,7 @@ export default {
   mutations : {},
   actions : {
     getChart : async function (context,type){
-      let result  = axios.get("api/charts/"+type)
+      let result  = axios.get("api/v1/admin/charts/"+type)
         .then ((response)=>{
           return response.data
         })
@@ -14,7 +14,7 @@ export default {
       return result
     },
     getRangeFarmOwnerChart : async function (context,{type,params}){
-      let result  = axios.get("api/charts/"+type,{params : params})
+      let result  = axios.get("api/v1/admin/charts/"+type,{params : params})
         .then ((response)=>{
           return response.data
         })
@@ -25,7 +25,7 @@ export default {
       return result
     },
     getSuggestion : async function (context,params){
-      let result  = axios.get("api/farm-owner/suggestion",{params : params})
+      let result  = axios.get("api/v1/admin/farm-owner/suggestion",{params : params})
         .then ((response)=>{
           return response.data
         })

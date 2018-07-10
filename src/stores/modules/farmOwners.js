@@ -1,6 +1,6 @@
 // const api = "http://localhost:3333/api/v1/admin/farm-owners"
 
-const api = "/api/farm-owner"
+const api = "/api/v1/admin/farm-owners"
 
 
 export default {

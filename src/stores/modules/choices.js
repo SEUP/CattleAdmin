@@ -18,7 +18,7 @@ export default {
   actions: {
     load: async function (context) {
       context.state.isLoad = context.state.loadingState[1];
-      let result = await axios.get("/api/choices",
+      let result = await axios.get("/api/v1/admin/choices",
         {params: {all: true}})
         .then((response) => {
           let choices = response.data

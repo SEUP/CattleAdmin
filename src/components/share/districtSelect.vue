@@ -4,21 +4,21 @@
           :items="provinces"
           v-model="selProvince"
           return-object
-          label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"
+          label="จังหวัด" item-text="province_name" @change="provinceChange"
         ></v-select>
 
         <v-select v-if="amphures"
                   :items="amphures"
                   return-object
                   v-model="selAmphure"
-                  label="อำเภอ" item-text="AMPHUR_NAME" @change="amphureChange"
+                  label="อำเภอ" item-text="amphur_name" @change="amphureChange"
         ></v-select>
 
         <v-select v-if="districts"
                   :items="districts"
                   return-object
                   v-model="selDistrict"
-                  label="ตำบล" item-text="DISTRICT_NAME" @change="districtChange"
+                  label="ตำบล" item-text="district_name" @change="districtChange"
         ></v-select>
     </v-layout>
 </template>
@@ -42,18 +42,18 @@
     },
     data() {
       let defaultProvince = {
-        PROVINCE_ID: 0,
-        PROVINCE_NAME: "กรุณาเลือก",
+        province_id: 0,
+        province_name: "กรุณาเลือก",
       };
 
       let defaultAmphur = {
-        AMPHUR_ID: 0,
-        AMPHUR_NAME: "กรุณาเลือก"
+        amphur_id: 0,
+        amphur_name: "กรุณาเลือก"
       };
 
       let defaultDistrict = {
-        DISTRICT_ID: 0,
-        DISTRICT_NAME: "กรุณาเลือก"
+        district_id: 0,
+        district_name: "กรุณาเลือก"
       };
       return {
         defaultProvince: defaultProvince,
@@ -82,13 +82,13 @@
     methods: {
       sync: function () {
         this.provinces.forEach((p) => {
-          if (p.PROVINCE_ID == this.valProvince) {
+          if (p.province_id == this.valProvince) {
             this.selProvince = p;
             this.provinceChange(p);
           }
         });
         this.amphures.forEach((a) => {
-          if (a.AMPHUR_ID == this.valAmphur) {
+          if (a.amphur_id == this.valAmphur) {
 
             this.selAmphure = a;
             this.amphureChange(a);
@@ -96,7 +96,7 @@
         });
 
         this.districts.forEach((d) => {
-          if (d.DISTRICT_ID == this.valDistrict) {
+          if (d.district_id == this.valDistrict) {
             this.selDistrict = d;
             this.districtChange(d);
           }

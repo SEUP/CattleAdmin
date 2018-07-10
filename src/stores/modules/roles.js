@@ -4,7 +4,7 @@
   mutations: {},
   actions: {
     async getRoles(context, params = null) {
-      let result = await axios.get("/api/roles", {params: params})
+      let result = await axios.get("/api/v1/admin/roles", {params: params})
         .then((response) => {
           return response.data;
         })

@@ -5,7 +5,7 @@
       :items="provinces"
       v-model="selProvince"
       return-object
-      label="จังหวัด" item-text="PROVINCE_NAME" @change="provinceChange"/>
+      label="จังหวัด" item-text="province_name" @change="provinceChange"/>
   </div>
 </template>
 
@@ -20,8 +20,8 @@
     },
     data() {
       let defaultProvince = {
-        PROVINCE_ID: 0,
-        PROVINCE_NAME: "กรุณาเลือก",
+        province_id: 0,
+        province_name: "กรุณาเลือก",
       };
 
       return {
@@ -41,7 +41,7 @@
     methods: {
       sync: function () {
         this.provinces.forEach((p) => {
-          if (p.PROVINCE_ID == this.valProvince) {
+          if (p.province_id == this.valProvince) {
             this.selProvince = p;
             this.provinceChange(p);
           }

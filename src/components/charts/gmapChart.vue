@@ -55,7 +55,7 @@
       provinceChange: function (ev) {
         this.province = ev;
         if (this.province) {
-          axios.get('/api/charts/gmap/' + this.province.PROVINCE_ID).then((r) => {
+          axios.get('/api/v1/admin/charts/gmap/' + this.province.PROVINCE_ID).then((r) => {
             let data = r.data;
             this.chartData = data;
           });
@@ -63,7 +63,7 @@
 
       },
       load: function () {
-        axios.get('/api/charts/gmap').then((r) => {
+        axios.get('/api/v1/admin/charts/gmap/').then((r) => {
           let data = r.data;
           this.chartData = data;
         });

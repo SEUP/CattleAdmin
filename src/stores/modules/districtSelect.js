@@ -17,7 +17,7 @@ export default {
   actions: {
     load: async function (context) {
       context.state.isLoad = loadingState[1];
-      let result = await axios.get("/api/thailand/province",
+      let result = await axios.get("/api/v1/provinces",
         {params: {all: true}})
         .then((response) => {
           return response.data;

@@ -25,9 +25,9 @@ export default {
       client.password = form.password;
 
 
-      let token = await axios.post('/oauth/token', client)
+      let token = await axios.post('api/v1/admin/login', client)
         .then((r) => {
-
+          console.log(r.data(),111)
           localStorage.access_token = r.data.access_token;
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access_token;
 
@@ -55,7 +55,7 @@ export default {
     getUser: async function (token) {
       let user = null;
       if (token) {
-        user = await axios.get('/api/user').then((r) => {
+        user = await axios.get('/api/v1/admin/user').then((r) => {
           return r.data;
         }).catch((error) => {
           return null;

@@ -34,7 +34,7 @@
     }),
     async mounted() {
       let mapChart = this.$refs.mapChart;
-      let response = await axios.get('/api/charts/map-data').then((r) => {
+      let response = await axios.get('/api/v1/admin/charts/map-data').then((r) => {
         return r.data
       });
       this.options = {
