@@ -30,3 +30,14 @@ https://l.facebook.com/l.php?u=https%3A%2F%2Fcdn.fbsbx.com%2Fv%2Ft59.2708-21%2F3
 
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+ <v-avatar
+               :tile="tile"
+               size="300"
+               color="black lighten-4"
+               class="elevation-10"
+             >
+               <img src="https://avatarfiles.alphacoders.com/448/44895.jpg" alt="avatar">
+             </v-avatar>
+
