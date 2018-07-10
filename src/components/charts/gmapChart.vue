@@ -13,7 +13,7 @@
           :zoom="8"
           class="map-container mt-3">
 
-          <gmap-marker :key="m.PROVINCE_ID" v-for="m in chartData" :position.sync="m.position"
+          <gmap-marker :key="m.province_id" v-for="m in chartData" :position.sync="m.position"
                        :title="m.title"
                        :clickable="true"
                        :draggable="true" @g-click="center=m.position">
@@ -55,7 +55,7 @@
       provinceChange: function (ev) {
         this.province = ev;
         if (this.province) {
-          axios.get('/api/v1/admin/charts/gmap/' + this.province.PROVINCE_ID).then((r) => {
+          axios.get('/api/v1/admin/charts/gmap/' + this.province.province_id).then((r) => {
             let data = r.data;
             this.chartData = data;
           });

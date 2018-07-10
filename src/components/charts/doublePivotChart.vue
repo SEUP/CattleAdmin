@@ -58,6 +58,9 @@
           this.type = this.$route.params.type;
           let label = this.$route.params.label;
           let QueryString = "doublePivot/"+label+"/"+this.type
+            if (this.province && this.province.province_id != 0) {
+                QueryString += "/" + this.province.province_id;
+            }
           this.chartData = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);
           this.displayChart(1);

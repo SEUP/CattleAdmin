@@ -42,8 +42,8 @@
         load : async function () {
           let type = this.$route.params.type;
           let QueryString ="multi/choices/"+type;
-          if(this.province && this.province.PROVINCE_ID !=0){
-            QueryString += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            QueryString += "/" + this.province.province_id
           }
           this.chartData = await  this.$store.dispatch("charts/getChart",QueryString);
           this.displayChart();

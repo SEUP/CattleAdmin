@@ -69,14 +69,14 @@
         },
         load :async function () {
           let QueryString ="budget";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            QueryString += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            QueryString += "/" + this.province.province_id
           }
           this.chartData[0] = await  await this.$store.dispatch("charts/getChart",QueryString)
 
           let QueryString2 ="range/farm-owner/total_budget/"+this.min + "/"+this.max + "/"+this.step ;
-          if(this.province && this.province.PROVINCE_ID !=0){
-            QueryString2 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            QueryString2 += "/" + this.province.province_id
           }
           this.chartData[1] = await this.$store.dispatch("charts/getChart",QueryString2)
 

@@ -55,8 +55,8 @@
             params = {withNull: withNull, nullText: nullText}
           }
           let QueryString ="range/farm-owner/"+type+"/"+min+"/"+max+"/"+step;
-          if(this.province && this.province.PROVINCE_ID !=0){
-            QueryString += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            QueryString += "/" + this.province.province_id
           }
           this.chartData = await this.$store.dispatch("charts/getRangeFarmOwnerChart",{type:QueryString,params:params})
           this.displayChart();

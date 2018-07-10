@@ -114,13 +114,13 @@
         this.form.district = value[2];
 
         if (value[0]) {
-          this.form.user_province = value[0].PROVINCE_ID;
+          this.form.user_province = value[0].province_id;
         }
         if (value[1]) {
-          this.form.user_amphur = value[1].AMPHUR_ID;
+          this.form.user_amphur = value[1].amphur_id;
         }
         if (value[2]) {
-          this.form.user_district = value[2].DISTRICT_ID;
+          this.form.user_district = value[2].district_id;
         }
       },
       updateRoles: function (value) {

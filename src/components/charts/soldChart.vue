@@ -82,71 +82,71 @@
         },
         load :async function () {
           let CP239 ="price_range_sale/239";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CP239 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CP239 += "/" + this.province.province_id
           }
           this.chartData[0] = await  await this.$store.dispatch("charts/getChart",CP239)
           this.displayChart(0);
 
           let CA239 ="age_range_sale/239";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CA239 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CA239 += "/" + this.province.province_id
           }
           this.chartData[1] = await  await this.$store.dispatch("charts/getChart",CA239)
           this.displayChart(1);
 
           let CP240 ="price_range_sale/240";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CP240 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CP240 += "/" + this.province.province_id
           }
           this.chartData[2] = await  await this.$store.dispatch("charts/getChart",CP240)
           this.displayChart(2);
 
           let CA240 ="age_range_sale/240";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CA240 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CA240 += "/" + this.province.province_id
           }
           this.chartData[3] = await  await this.$store.dispatch("charts/getChart",CA240)
           this.displayChart(3);
 
           let CP241 ="price_range_sale/241";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CP241 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CP241 += "/" + this.province.province_id
           }
           this.chartData[4] = await  await this.$store.dispatch("charts/getChart",CP241)
           this.displayChart(4);
 
           let CA241 ="age_range_sale/241";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CA241 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CA241 += "/" + this.province.province_id
           }
           this.chartData[5] = await  await this.$store.dispatch("charts/getChart",CA241)
           this.displayChart(5);
 
           let CP242 ="price_range_sale/242";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CP242 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CP242 += "/" + this.province.province_id
           }
           this.chartData[6] = await  await this.$store.dispatch("charts/getChart",CP242)
           this.displayChart(6);
 
           let CA242 ="age_range_sale/242";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CA242 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CA242 += "/" + this.province.province_id
           }
           this.chartData[7] = await  await this.$store.dispatch("charts/getChart",CA242)
           this.displayChart(7);
 
           let CP243 ="price_range_sale/243";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CP243 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CP243 += "/" + this.province.province_id
           }
           this.chartData[8] = await  await this.$store.dispatch("charts/getChart",CP243)
           this.displayChart(8);
 
           let CA243 ="age_range_sale/243";
-          if(this.province && this.province.PROVINCE_ID !=0){
-            CA243 += "/" + this.province.PROVINCE_ID
+          if(this.province && this.province.province_id !=0){
+            CA243 += "/" + this.province.province_id
           }
           this.chartData[9] = await  await this.$store.dispatch("charts/getChart",CA243)
           this.displayChart(9);

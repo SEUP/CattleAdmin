@@ -160,13 +160,13 @@
           this.form.house_district = value[2];
 
           if (value[0]) {
-            this.form.house_province = value[0].PROVINCE_ID;
+            this.form.house_province = value[0].province_id;
           }
           if (value[1]) {
-            this.form.house_amphur = value[1].AMPHUR_ID;
+            this.form.house_amphur = value[1].amphur_id;
           }
           if (value[2]) {
-            this.form.house_district = value[2].DISTRICT_ID;
+            this.form.house_district = value[2].district_id;
           }
           this.updateForm()
         }
@@ -176,13 +176,13 @@
           this.form.farm_district = value[2];
 
           if (value[0]) {
-            this.form.farm_province = value[0].PROVINCE_ID;
+            this.form.farm_province = value[0].province_id;
           }
           if (value[1]) {
-            this.form.farm_amphur = value[1].AMPHUR_ID;
+            this.form.farm_amphur = value[1].amphur_id;
           }
           if (value[2]) {
-            this.form.farm_district = value[2].DISTRICT_ID;
+            this.form.farm_district = value[2].district_id;
           }
           this.updateForm()
         },

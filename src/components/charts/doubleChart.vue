@@ -69,6 +69,9 @@
           this.head2 = label
           this.head3 = label
           let QueryString = "double/"+label+"/"+this.type
+            if (this.province && this.province.province_id != 0) {
+                QueryString += "/" + this.province.province_id;
+            }
           this.chartData[0] = await this.$store.dispatch("charts/getChart",QueryString)
           this.displayChart(0);
           this.displayChart(1);

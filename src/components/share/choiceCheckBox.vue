@@ -46,10 +46,10 @@
     },
     methods: {
       sync: function () {
-        let items = this.items
-        let sel = this.value
-        let items_length = this.items.length;
-        let sel_length = this.value.length;
+        let items = this.items ? this.items  : console.log(this.type)
+        let sel = this.value ? this.value : []
+        let items_length = this.items.length ;
+        let sel_length = this.value.length  ;
         for (let i = 0; i < items_length; i++) {
           items[i] = Object.assign(items[i], {pivot: {remark: null}})
           for (let j = 0; j < sel_length; j++) {
