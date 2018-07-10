@@ -43,7 +43,9 @@
         }
       },
       load: async function () {
-        this.roles = await this.$store.dispatch('roles/getRoles', {paginate: false});
+          let roles =  await this.$store.dispatch('roles/getRoles', {paginate: false});
+        this.roles = roles.data
+
         this.sync();
         this.isReady = true;
       }
