@@ -23,21 +23,21 @@
               v-model="form.name"
               label="ชื่อ-นามสกุล"
               required
-              :error-messages="error.errors.name"
+              :error-messages="error.name"
             ></v-text-field>
 
             <v-text-field
               v-model="form.email"
               label="E-mail"
               required
-              :error-messages="error.errors.email"
+              :error-messages="error.email"
             ></v-text-field>
 
             <v-text-field
               v-model="form.username"
               label="Username"
               required
-              :error-messages="error.errors.username"
+              :error-messages="error.username"
             ></v-text-field>
 
             <v-text-field
@@ -45,13 +45,13 @@
               v-model="form.password"
               label="Password"
               required
-              :error-messages="error.errors.password"
+              :error-messages="error.password"
             ></v-text-field>
 
             <v-text-field
               type="password"
               v-model="form.password_confirmation"
-              :error-messages="error.errors.password_confirmation"
+              :error-messages="error.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>

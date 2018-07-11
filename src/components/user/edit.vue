@@ -21,7 +21,7 @@
           <v-form class="mt-3 ml-3 mr-5">
             <v-text-field
               v-model="form.name"
-              :error-messages="error.errors.name"
+              :error-messages="error.name"
               label="ชื่อ-นามสกุล"
 
             ></v-text-field>
@@ -29,21 +29,21 @@
             <v-text-field
               v-model="form.email"
               label="E-mail"
-              :error-messages="error.errors.email"
+              :error-messages="error.email"
               required
             ></v-text-field>
 
             <v-text-field
               v-model="form.username"
               label="Username"
-              :error-messages="error.errors.username"
+              :error-messages="error.username"
               required
             ></v-text-field>
 
             <v-text-field
               type="password"
               v-model="form.password"
-              :error-messages="error.errors.password"
+              :error-messages="error.password"
               label="Password"
               required
             ></v-text-field>
@@ -51,7 +51,7 @@
             <v-text-field
               type="password"
               v-model="form.password_confirmation"
-              :error-messages="error.errors.password_confirmation"
+              :error-messages="error.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>

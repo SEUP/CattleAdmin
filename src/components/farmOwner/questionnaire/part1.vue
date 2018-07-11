@@ -8,13 +8,13 @@
           <div class="ma-2 mx-4">
             <v-text-field label="ชื่อ" placeholder="กรุณากรอกชื่อ"
                           v-model="form.first_name"
-                          :error-messages="error.errors.first_name"
+                          :error-messages="error.first_name"
                           @blur="updateForm"></v-text-field>
             <v-text-field label="นามสกุล" placeholder="กรุณากรอกนามสกุล"
-                          :error-messages="error.errors.last_name"
+                          :error-messages="error.last_name"
                           v-model="form.last_name" @blur="updateForm"></v-text-field>
             <v-text-field label="รหัสประจำตัวประชาชน" placeholder="กรุณากรอกรหัสประจำตัวประชาชน"
-                          :error-messages="error.errors.person_id"
+                          :error-messages="error.person_id"
                           v-model="form.person_id" @blur="updateForm" ></v-text-field>
           </div>
 

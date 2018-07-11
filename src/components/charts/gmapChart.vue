@@ -13,7 +13,7 @@
                         :zoom="8"
                         class="map-container mt-3">
 
-                    <gmap-marker v-for="m in chartData" :position.sync="m.position"
+                    <gmap-marker :key = "index" v-for="(m,index) in chartData" :position.sync="m.position"
                                  :title="m.title"
                                  :clickable="true"
                                  :draggable="true" @g-click="center=m.position">
