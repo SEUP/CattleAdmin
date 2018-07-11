@@ -122,7 +122,8 @@
                 <v-divider class="pt-1 success"></v-divider>
                 <v-list class="elevation-1">
                   <v-list-tile class="text-xs-center">
-                    <v-btn color="success" depressed block @click.native="updateFarmOwner">Save All</v-btn>
+                    <v-btn color="success" depressed block @click.native="updateFarmOwner">Save</v-btn>
+                    <v-btn depressed block :to="{name:'farmOwner-index'}">Cancel</v-btn>
                   </v-list-tile>
                   <v-divider></v-divider>
 
@@ -234,8 +235,7 @@
         let data = await this.$store.dispatch("farmOwners/updateFarmOwner");
         console.log("SAVE", data);
         if (data) {
-          // alert("บันทึกข้อมูลเเล้ว")
-          // this.$router.go(-1)
+          alert("บันทึกข้อมูลเเล้ว")
         }
       }
       ,

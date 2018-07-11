@@ -111,9 +111,9 @@
     ,
     methods: {
       getProvinceAmphurDistrictString: function (user) {
-        let pvString = user.province ? user.province.PROVINCE_NAME : "-";
-        let amString = user.amphur ? user.amphur.AMPHUR_NAME : "-";
-        let diString = user.district ? user.district.DISTRICT_NAME : "-";
+        let pvString = user.province ? user.province.province_name : "-";
+        let amString = user.amphur ? user.amphur.amphur_name : "-";
+        let diString = user.district ? user.district.district_name : "-";
 
 
         let outputStr = "";

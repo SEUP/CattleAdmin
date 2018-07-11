@@ -110,7 +110,7 @@
     methods: {
       updateDistrictSelect: function (value) {
         this.form.province = value[0];
-        this.form.amphure = value[1];
+        this.form.amphur = value[1];
         this.form.district = value[2];
 
         if (value[0]) {
