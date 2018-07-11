@@ -107,6 +107,18 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+
+        <v-list-tile exact>
+          <v-list-tile-action>
+            <v-icon>mdi-account-key</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              จัดการเผู้เกษตรกรในระบบ
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-divider></v-divider>
   </v-list>
 
