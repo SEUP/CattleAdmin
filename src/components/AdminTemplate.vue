@@ -108,7 +108,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-
+        <v-divider></v-divider>
         <v-list-tile exact>
           <v-list-tile-action>
             <v-icon>mdi-account-key</v-icon>
