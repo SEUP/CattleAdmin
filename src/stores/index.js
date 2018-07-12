@@ -7,10 +7,12 @@ import districtSelect from "./modules/districtSelect"
 import choices from "./modules/choices"
 import farmOwners from "./modules/farmOwners"
 import charts from "./modules/charts"
+import farmers from "./modules/farmers"
 
 import login from "./modules/login"
 import error from "./modules/error"
 import spinner from "./modules/spinner";
+
 
 function store(name) {
   return function (resolve) {
@@ -32,5 +34,6 @@ export default new Vuex.Store({
     farmOwners: farmOwners,
     login: login,
     charts: charts,
+    farmers: farmers,
   }
 })
