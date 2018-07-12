@@ -6,6 +6,7 @@ import userRoute from './user'
 import roleRoute from './role'
 import farmOwner from './farmOwner'
 import chart from "./chart"
+import farmer from "./farmer"
 
 function view(name) {
   return function (resolve) {
@@ -37,11 +38,7 @@ export default new Router({
           name: 'admin-report',
           component: view('Report')
         },
-        {
-          path: 'HomeFarmer',
-          name: 'admin-HomeFarmer',
-          component: view('HomeFarmer')
-        },
+        farmer,
         farmOwner,
         userRoute,
         roleRoute,

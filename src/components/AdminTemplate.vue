@@ -79,18 +79,18 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              จัดการผู้ใช้ระบบ
+              จัดการผู้ดูแลระบบ
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="{name : 'admin-HomeFarmer'}" exact>
+        <v-list-tile :to="{name : 'farmer-index'}" exact>
           <v-list-tile-action>
-            <v-icon>mdi-account-key</v-icon>
+            <v-icon>mdi-account-circle</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              หน้าแสดงข้อมูลของเกษตรกร
+              จัดการผู้ใช้เกษตรกร
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -107,19 +107,6 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-
-        <v-divider></v-divider>
-        <v-list-tile exact>
-          <v-list-tile-action>
-            <v-icon>mdi-account-key</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              จัดการเผู้เกษตรกรในระบบ
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
   </v-list>
 
     </v-navigation-drawer>

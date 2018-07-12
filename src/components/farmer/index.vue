@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1 class="display-1 pa-0 mb-3"><v-icon x-large color="primary">mdi-magnify</v-icon>&ensp;หน้าแสดงข้อมูลของเกษตรกร</h1>
+    <h1 class="display-1 pa-0 mb-3"><v-icon x-large color="primary">mdi-magnify</v-icon>ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ</h1>
     <v-flex xs12 md6>
       <v-text-field label="ค้นหา : ชื่อ นามสกุล รหัสประจำตัวประชาชน" v-model="form.keyword"></v-text-field>
     </v-flex>
