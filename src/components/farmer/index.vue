@@ -1,6 +1,9 @@
 <template>
   <v-container>
-    <h1 class="display-1 pa-0 mb-3"><v-icon x-large color="primary">mdi-magnify</v-icon>ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ</h1>
+    <h1 class="display-1 pa-0 mb-3">
+      <v-icon x-large color="primary">mdi-magnify</v-icon>
+      ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ
+    </h1>
     <v-flex xs12 md6>
       <v-text-field label="ค้นหา : ชื่อ นามสกุล รหัสประจำตัวประชาชน" v-model="form.keyword"></v-text-field>
     </v-flex>
@@ -14,8 +17,8 @@
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
         <td class="text-xs-right">{{ props.item.first_name +" "+ props.item.last_name}}</td>
-        <td class="text-xs-right">{{  props.item.mobile_no }}</td>
-        <td class="text-xs-right">{{ getProvinceAmphurDistrictString(props.item)  }}</td>
+        <td class="text-xs-right">{{ props.item.mobile_no }}</td>
+        <td class="text-xs-right">{{ getProvinceAmphurDistrictString(props.item) }}</td>
         <td class="text-xs-right">{{ props.item.updated_at }}</td>
         <td class="text-xs-left">{{ props.item.action }}</td>
       </template>
@@ -30,7 +33,7 @@
 </template>
 <script>
   export default {
-    data () {
+    data() {
       return {
         form: {
           keyword: "",
