@@ -1,12 +1,20 @@
 <template>
-  <v-container v-if="farmers">
+  <v-container   v-if="farmers">
     <h1 class="display-1 pa-0 mb-3">
       <v-icon x-large color="primary">mdi-magnify</v-icon>
       ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ
     </h1>
-    <v-flex xs12 md6>
+    <v-divider class="my-3"></v-divider>
+    <v-layout row >
+      <v-flex xs3>
+        <v-btn :to="{name:'add-farmer'}" color="primary">
+          <v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม
+        </v-btn>
+      </v-flex>
+    <v-flex xs7 offset-xs6>
       <v-text-field label="ค้นหา : ชื่อ นามสกุล รหัสประจำตัวประชาชน" v-model="form.keyword"></v-text-field>
     </v-flex>
+    </v-layout>
     <v-divider class="mb-3"></v-divider>
     <v-data-table
       :headers="headers"
@@ -15,20 +23,15 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.firstname+" "+ props.item.lastname }}</td>
-        <td></td>
-        <td></td>
-        <td class="text-xs-center">{{ props.item.updated_at }}</td>
+        <td class="text-xs-left">{{ props.item.firstname+" "+ props.item.lastname }}</td>
+        <td class="text-xs-left"></td>
+        <td class="text-xs-left">{{props.item.house_province +" "+ props.item.house_amphur +" "+ props.item.house_district}}</td>
+        <td class="text-xs-left">{{ props.item.updated_at }}</td>
         <td class="text-xs-center">
-          <v-tooltip top >
-            <v-btn class="ma-0" icon @click="" slot="activator">
-              <v-icon color="success" >mdi-download</v-icon>
-            </v-btn>
-            <span>Export</span>
-          </v-tooltip>
+
 
           <v-tooltip top >
-            <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.id}}" slot="activator">
+            <v-btn class="ma-0" icon :to="{name:'edit-farmer',params : {id : props.item.id}}" slot="activator">
               <v-icon color="primary" >create</v-icon>
             </v-btn>
             <span>Edit</span>
