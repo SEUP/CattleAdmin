@@ -75,7 +75,7 @@
     },
     async created() {
       await this.loadData()
-      console.log(this.farmers)
+      //console.log(this.farmers)
     },
     methods: {
       loadData: async function () {
@@ -83,7 +83,7 @@
         let page = await this.$store.dispatch('farmers/getFarmer');
         this.paginate = page;
         this.farmers = page.data;
-        console.log(page)
+        //console.log(page)
       },
     }
   }
