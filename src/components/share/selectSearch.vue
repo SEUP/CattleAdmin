@@ -60,7 +60,8 @@
             i.children.forEach( (j) => {
               j.choice = i.choice+"-"+j.choice
               newItems.push(j)
-              if(j.children.length > 0) {
+
+              if(j.children && j.children.length > 0) {
                 j.children.forEach( (k)=> {
                   k.choice = j.choice+"-"+k.choice
                   newItems.push(k)

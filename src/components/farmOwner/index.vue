@@ -42,7 +42,7 @@
 
       <v-layout class="my-2">
         <v-flex>
-          <v-btn color="success" @click="">ส่งออกป็น Excel</v-btn>
+          <v-btn color="success" @click="exportAll">ส่งออกป็น Excel</v-btn>
         </v-flex>
       </v-layout>
 
@@ -127,6 +127,20 @@
       await this.loadData()
     },
     methods: {
+      exportAll: function(){
+        axios({
+          url: `/api/v1/admin/farm-owners/exportAll`,
+          method: 'GET',
+          responseType: 'blob', // important
+        }).then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', `exportall.xlsx`);
+          document.body.appendChild(link);
+          link.click();
+        });
+      },
       downloadPdf: function (item) {
         axios({
           url: `/api/v1/admin/farm-owners/${item.id}/export`,
