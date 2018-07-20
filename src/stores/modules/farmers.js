@@ -28,6 +28,7 @@ export default {
     createFarmer: async function (context, form) {
       let result = await axios.post("/api/v1/admin/farmers",  form)
         .then((response) => {
+          console.log(response.data)
           return response.data
         })
         .catch((error) => {
@@ -36,6 +37,7 @@ export default {
         });
       return result
     },
+
     updateFarmer: async function (context, form) {
       let result = await axios.put("/api/v1/admin/farmers/" + form.id, form)
         .then((response) => {

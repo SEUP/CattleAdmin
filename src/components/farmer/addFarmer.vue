@@ -20,38 +20,41 @@
 
           <v-form class="mt-3 ml-3 mr-5">
             <v-text-field
+              v-model="form.firstname"
               label="ชื่อ"
               required
+
             ></v-text-field>
 
             <v-text-field
+              v-model="form.lastname"
               label="นามสกุล"
               required
             ></v-text-field>
 
             <v-text-field
+              v-model="form.personal_id"
               label="รหัสบัตรประจำตัวประชาชน"
               required
             ></v-text-field>
 
             <v-text-field
+              v-model="form.email"
               label="E-mail"
               required
             ></v-text-field>
 
             <v-text-field
-
+              v-model="form.username"
               label="Username"
               required
-
             ></v-text-field>
 
             <v-text-field
               type="password"
-
+              v-model="form.password"
               label="Password"
               required
-
             ></v-text-field>
 
             <v-text-field
@@ -62,19 +65,24 @@
 
             <v-divider class="my-5"></v-divider>
             <v-text-field
+              v-model="form.house_address"
               label="ที่อยู่"
               required
             ></v-text-field>
 
             <district-select
+              :valProvince="form.house_province"
+              :valAmphur="form.house_amphur"
+              :valDistrict="form.house_district"
               @change="updateDistrictSelect"></district-select>
             <v-text-field
+              v-model="form.house_zipcode"
               label="รหัสไปรษณีย์"
               required
             ></v-text-field>
 
 
-            <v-btn color="primary" @click="saveUser"> Submit</v-btn>
+            <v-btn color="primary" @click="saveFarmer"> Submit</v-btn>
             <v-btn @click="$router.go(-1)">Cancel</v-btn>
           </v-form>
 
@@ -88,10 +96,47 @@
 
 <script>
   import districtSelect from "@/components/share/districtSelect";
+  import Base from "@/components/Base";
     export default {
         name: "addFarmer",
+      extend : Base,
       components : {
           districtSelect
+      },
+      data() {
+          return {
+            form : {
+              house_province : null,
+              house_amphur : null,
+              house_district : null,
+            }
+          }
+      },
+      async created (){
+      },
+      methods : {
+          saveFarmer : async function () {
+            let farmer = await this.$store.dispatch("farmers/createFarmer", this.form);
+            console.log("save User");
+            if(farmer){this.$router.go(-1)}
+        },
+
+        updateDistrictSelect: function (value) {
+          this.form.house_province = value[0];
+          this.form.house_amphur = value[1];
+          this.form.house_district = value[2];
+
+          if (value[0]) {
+            this.form.house_province = value[0].province_id;
+          }
+          if (value[1]) {
+            this.form.house_amphur = value[1].amphur_id;
+          }
+          if (value[2]) {
+            this.form.house_district = value[2].district_id;
+          }
+          console.log("UPDATE",this.form)
+        },
       }
     }
 </script>
