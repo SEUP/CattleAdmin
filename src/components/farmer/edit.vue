@@ -1,19 +1,19 @@
 <template>
-  <v-container mt-3>
+  <v-container mt-3 >
     <v-layout row wrap>
 
       <v-flex>
-        <h1 class="display-1">Farmer Management</h1>
+        <h1 class="display-1">Edit Farmer</h1>
       </v-flex>
     </v-layout>
     <v-divider class="mt-2"></v-divider>
 
-    <v-layout row wrap mt-3>
+    <v-layout row wrap mt-3 v-if="form">
       <v-flex mt-3>
         <v-card>
           <v-footer color="gray">
             <v-spacer></v-spacer>
-            <h3>Create Farmer</h3>
+            <h3></h3>
             <v-spacer></v-spacer>
 
           </v-footer>
@@ -59,6 +59,7 @@
 
             <v-text-field
               type="password"
+              v-model="form.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>
@@ -96,49 +97,57 @@
 
 <script>
   import districtSelect from "@/components/share/districtSelect";
-  import Base from "@/components/Base";
-    export default {
-        name: "addFarmer",
-      extend : Base,
-      components : {
-          districtSelect
-      },
-      data() {
-          return {
-            form : {
-              house_province : null,
-              house_amphur : null,
-              house_district : null,
-            }
-          }
-      },
-      async created (){
-      },
-      methods : {
-          saveFarmer : async function () {
-            let farmer = await this.$store.dispatch("farmers/createFarmer", this.form);
-            console.log("save User");
-            if(farmer){this.$router.go(-1)}
-        },
-
-        updateDistrictSelect: function (value) {
-          this.form.house_province = value[0];
-          this.form.house_amphur = value[1];
-          this.form.house_district = value[2];
-
-          if (value[0]) {
-            this.form.house_province = value[0].province_id;
-          }
-          if (value[1]) {
-            this.form.house_amphur = value[1].amphur_id;
-          }
-          if (value[2]) {
-            this.form.house_district = value[2].district_id;
-          }
-          console.log("UPDATE",this.form)
+  import Base from "@/components/Base"
+  export default {
+    name: "addFarmer",
+    extend : Base,
+    components : {
+      districtSelect
+    },
+    data() {
+      return {
+        form : null,
+        getFarmer :{
+          id : null,
         },
       }
+    },
+    computed : {},
+    async created() {
+      this.getFarmer.id = this.$router.params.id;
+      await this.load() ;
+      await  console.log("start", this.form)
+    },
+    methods : {
+      updateDistrictSelect: function (value) {
+        this.form.province = value[0];
+        this.form.amphur = value[1];
+        this.form.district = value[2];
+
+        if (value[0]) {
+          this.form.house_province = value[0].province_id;
+        }
+        if (value[1]) {
+          this.form.house_amphur = value[1].amphur_id;
+        }
+        if (value[2]) {
+          this.form.house_district = value[2].district_id;
+        }
+      },
+      saveFarmer: async function () {
+        let farmer = await this.$store.dispatch("farmers/updateFarmer", this.form);
+        console.log("save Farmer", this.form);
+        if (farmer) {
+          this.$router.go(-1)
+        }
+      },
+      load: async function () {
+        let data = await  this.$store.dispatch("farmers/getFarmerById", this.getFarmer);
+        this.form = data
+
+      },
     }
+  }
 </script>
 
 <style scoped>

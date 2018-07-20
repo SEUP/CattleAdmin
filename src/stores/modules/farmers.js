@@ -3,7 +3,7 @@ export default {
   state: {},
   mutations: {},
   actions: {
-    async getFarmer(context, params = null) {
+    async getFarmers (context, params = null) {
       let result = await  axios.get("/api/v1/admin/farmers", {params: params})
         .then((response) => {
           return response.data

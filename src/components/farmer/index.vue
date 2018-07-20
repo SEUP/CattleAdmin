@@ -7,7 +7,7 @@
     <v-divider class="my-3"></v-divider>
     <v-layout row >
       <v-flex xs3>
-        <v-btn :to="{name:'add-farmer'}" color="primary">
+        <v-btn :to="{name:'create-farmer'}" color="primary">
           <v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม
         </v-btn>
       </v-flex>
@@ -98,7 +98,7 @@
       },
       loadData: async function () {
         this.form.page = 1;
-        let page = await this.$store.dispatch('farmers/getFarmer');
+        let page = await this.$store.dispatch('farmers/getFarmers');
         this.paginate = page;
         this.farmers = page.data;
       },

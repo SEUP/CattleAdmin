@@ -15,14 +15,14 @@ export default {
       component: view('farmer/index')
     },
     {
-      path: '/addfarmer',
-      name: 'add-farmer',
-      component: view('farmer/addFarmer')
+      path: '/create',
+      name: 'create-farmer',
+      component: view('farmer/create')
     },
     {
-      path: '/editfarmer',
+      path: '/:id/edit',
       name: 'edit-farmer',
-      component: view('farmer/editFarmer')
+      component: view('farmer/edit')
     }
   ]
 }
