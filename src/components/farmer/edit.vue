@@ -114,15 +114,15 @@
     },
     computed : {},
     async created() {
-      this.getFarmer.id = this.$router.params.id;
+      this.getFarmer.id = this.$route.params.id;
       await this.load() ;
       await  console.log("start", this.form)
     },
     methods : {
       updateDistrictSelect: function (value) {
-        this.form.province = value[0];
-        this.form.amphur = value[1];
-        this.form.district = value[2];
+        this.form.house_province = value[0];
+        this.form.house_amphur = value[1];
+        this.form.house_district = value[2];
 
         if (value[0]) {
           this.form.house_province = value[0].province_id;
