@@ -7,7 +7,7 @@
       :multi-line="true"
       :vertical="true"
       v-model="showError">
-      <ul >
+      <ul>
         <li v-for="value in error">{{value}}</li>
       </ul>
       <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
@@ -41,11 +41,11 @@
       </v-container>
     </v-content>
   </v-app>
-
 </template>
 
 <script>
   import Base from "@/components/Base"
+
   export default {
     extends: Base,
     name: 'Login',
@@ -58,7 +58,7 @@
       login: async function () {
         let token = await this.$store.dispatch("login/getToken", this.form);
         if (token) {
-          await this.$store.dispatch("login/getUser",token);
+          await this.$store.dispatch("login/getUser", token);
           this.$router.push({name: 'admin-home'})
         }
       }
