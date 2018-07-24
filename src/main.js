@@ -8,14 +8,17 @@ import router from './router'
 import Vuetify from 'vuetify'
 import axios from 'axios'
 import store from './stores/index'
+import lodash from 'lodash'
 
 
 window.axios = axios.create({
   baseURL: process.env.API_URL,
   timeout: 60000
 });
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access_token;
 
-import lodash from 'lodash'
+
+
 
 window._ = lodash;
 
