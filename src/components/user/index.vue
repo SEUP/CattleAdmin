@@ -68,8 +68,8 @@
           </v-data-table>
         </v-card>
         <div class="text-xs-center">
-          <v-pagination @input="changePage" :length="paginate.last_page"
-                        v-model="paginate.current_page"></v-pagination>
+          <v-pagination @input="changePage" :length="paginate.last_page ? paginate.last_page : paginate.lastPage"
+                        v-model="paginate.current_page ? paginate.current_page : paginate.page"></v-pagination>
         </div>
       </v-flex>
     </v-layout>
