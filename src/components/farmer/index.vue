@@ -18,6 +18,7 @@
         append-icon="mdi-magnify"
         @keyup.13="search()"
       ></v-text-field>
+
     </v-flex>
     </v-layout>
     <v-divider class="mb-3"></v-divider>
@@ -81,7 +82,7 @@
     },
     async mounted() {
       await this.loadData()
-      console.log("IN index",this.farmers);
+      //console.log("IN index",this.farmers);
     },
     methods: {
       getProvinceAmphurDistrictString: function (farmers) {
@@ -114,7 +115,7 @@
       },
       search: async function () {
         this.form.page = 1;
-        let page = await  this.$store.dispatch("farmers/getFarmer", this.form);
+        let page = await  this.$store.dispatch("farmers/getFarmers", this.form)
         this.paginate = page;
         this.farmers = page.data;
       },

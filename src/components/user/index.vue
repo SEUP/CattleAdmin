@@ -134,8 +134,7 @@
         let page = await this.$store.dispatch('users/getUsers', this.form);
         this.paginate = page;
         this.users = page.data;
-      }
-      ,
+      },
       search: async function () {
         this.form.page = 1;
         let page = await  this.$store.dispatch("users/getUsers", this.form)

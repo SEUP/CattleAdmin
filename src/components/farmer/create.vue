@@ -112,7 +112,7 @@
             }
           }
       },
-      async created (){
+      async mounted (){
       },
       methods : {
           saveFarmer : async function () {
