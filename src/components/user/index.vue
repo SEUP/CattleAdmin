@@ -68,8 +68,8 @@
           </v-data-table>
         </v-card>
         <div class="text-xs-center">
-          <v-pagination @input="changePage" :length="paginate.last_page ? paginate.last_page : paginate.lastPage"
-                        v-model="paginate.current_page ? paginate.current_page : paginate.page"></v-pagination>
+          <v-pagination @input="changePage" :length="paginate.lastPage"
+                        v-model="paginate.page"></v-pagination>
         </div>
       </v-flex>
     </v-layout>
@@ -126,6 +126,7 @@
         this.form.page = page;
         let paginate = await  this.$store.dispatch("users/getUsers", this.form)
         this.paginate = paginate;
+        this.paginate.page = parseInt(paginate.page)
         this.users = paginate.data;
 
       },
@@ -133,12 +134,14 @@
         this.form.page = 1;
         let page = await this.$store.dispatch('users/getUsers', this.form);
         this.paginate = page;
+        this.paginate.page = parseInt(page.page)
         this.users = page.data;
       },
       search: async function () {
         this.form.page = 1;
         let page = await  this.$store.dispatch("users/getUsers", this.form)
         this.paginate = page;
+        this.paginate.page = parseInt(page.page)
         this.users = page.data;
       },
       delUser: async function (id) {

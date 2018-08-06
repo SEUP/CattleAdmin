@@ -87,8 +87,8 @@
             </v-data-table>
             <v-divider></v-divider>
             <v-flex xs12 py-2 class="text-xs-center">
-              <v-pagination @input="changePage" :length="paginate.last_page ? paginate.last_page : paginate.lastPage"
-                            v-model="paginate.current_page ? paginate.current_page : paginate.page"></v-pagination>
+              <v-pagination @input="changePage" :length="paginate.lastPage"
+                            v-model="paginate.page"></v-pagination>
             </v-flex>
           </v-card>
         </v-flex>
@@ -171,11 +171,13 @@
       loadData: async function () {
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners")
         this.paginate = paginate;
+        this.paginate.page = parseInt(paginate.page)
         this.farmOwners = paginate.data;
       },
       search: async function () {
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners", this.form)
         this.paginate = paginate;
+        this.paginate.page = parseInt(paginate.page)
         this.farmOwners = paginate.data;
       },
       resetSearch: function () {
@@ -187,6 +189,7 @@
         this.form.page = page;
         let paginate = await  this.$store.dispatch("farmOwners/getFarmOwners", this.form)
         this.paginate = paginate;
+        this.paginate.page = parseInt(paginate.page)
         this.farmOwners = paginate.data;
 
       }, updateDistrictSelect: function (value) {

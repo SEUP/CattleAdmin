@@ -55,8 +55,8 @@
       </template>
     </v-data-table>
     <div class="text-xs-center">
-      <v-pagination  @input="changePage" :length="paginate.last_page ? paginate.last_page : paginate.lastPage"
-                     v-model="paginate.current_page ? paginate.current_page : paginate.page"></v-pagination>
+      <v-pagination  @input="changePage" :length="paginate.lastPage"
+                     v-model="paginate.page"></v-pagination>
     </div>
   </v-container>
 </template>
@@ -67,6 +67,7 @@
       return {
         paginate : {},
         form: {
+          page:1,
           keyword: "",
         },
         farmers: [],
@@ -82,7 +83,6 @@
     },
     async mounted() {
       await this.loadData()
-      //console.log("IN index",this.farmers);
     },
     methods: {
       getProvinceAmphurDistrictString: function (farmers) {
@@ -101,6 +101,7 @@
         this.form.page = 1;
         let page = await this.$store.dispatch('farmers/getFarmers');
         this.paginate = page;
+        this.paginate.page = parseInt(page.page)
         this.farmers = page.data;
       },
       delFarmer: async function (id) {
@@ -117,12 +118,14 @@
         this.form.page = 1;
         let page = await  this.$store.dispatch("farmers/getFarmers", this.form)
         this.paginate = page;
+        this.paginate.page = parseInt(page.page)
         this.farmers = page.data;
       },
       changePage: async function (page) {
         this.form.page = page;
-        let paginate = await  this.$store.dispatch("farmers/getFarmer", this.form)
+        let paginate = await  this.$store.dispatch("farmers/getFarmers", this.form)
         this.paginate = paginate;
+        this.paginate.page = parseInt(paginate.page)
         this.farmers = paginate.data;
 
       },
