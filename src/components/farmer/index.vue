@@ -31,7 +31,7 @@
       <template slot="items" slot-scope="props">
         <td class="text-xs-left">{{ props.item.firstname+" "+ props.item.lastname }}</td>
         <td class="text-xs-left">{{props.item.personal_id}}</td>
-        <td class="text-xs-left">{{props.item.house_province +" "+ props.item.house_amphur +" "+ props.item.house_district}}</td>
+        <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
         <td class="text-xs-left">{{ props.item.updated_at }}</td>
         <td class="text-xs-center">
 
@@ -86,9 +86,9 @@
     },
     methods: {
       getProvinceAmphurDistrictString: function (farmers) {
-        let pvString = user.province ? user.province.province_name : "-";
-        let amString = user.amphur ? user.amphur.amphur_name : "-";
-        let diString = user.district ? user.district.district_name : "-";
+        let pvString = farmers.houseProvince.province_name ? farmers.houseProvince.province_name : "-";
+        let amString = farmers.houseAmphur.amphur_name ? farmers.houseAmphur.amphur_name : "-";
+        let diString = farmers.houseDistrict.district_name ? farmers.houseDistrict.district_name : "-";
 
 
         let outputStr = "";
