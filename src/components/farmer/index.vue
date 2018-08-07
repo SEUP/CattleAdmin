@@ -1,7 +1,7 @@
 <template>
   <v-container >
     <h1 class="display-1 pa-0 mb-3">
-      <v-icon x-large color="primary">mdi-magnify</v-icon>
+      <v-icon x-large color="primary">mdi-account-box</v-icon>
       ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ
     </h1>
     <v-divider class="my-3"></v-divider>
