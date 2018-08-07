@@ -122,7 +122,7 @@
               <v-list class="elevation-1">
                 <v-list-tile class="text-xs-center">
                   <v-btn color="success" depressed block @click.native="createFarmOwner">Save</v-btn>
-                  <v-btn depressed block :to="{name:'farmOwner-index'}">Cancel</v-btn>
+                  <v-btn depressed block @click="$router.go(-1)">Cancel</v-btn>
                 </v-list-tile>
                 <v-divider></v-divider>
 
@@ -223,6 +223,17 @@
         await this.$store.dispatch('choices/load');
         await this.$store.dispatch('districtSelect/load');
         this.farmOwner = await this.$store.state.farmOwners.farmOwner;
+
+
+        if(this.$route.params.farmer){
+          let farmer = this.$route.params.farmer
+          console.log(farmer);
+
+          this.farmOwner.first_name = farmer.firstname
+          this.farmOwner.last_name = farmer.lastname
+          this.farmOwner.person_id = farmer.personal_id
+
+        }
       },
       methods:{
         elFocus : function (el) {

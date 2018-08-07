@@ -36,6 +36,20 @@
         <td class="text-xs-center">
 
 
+          <v-tooltip top v-if="props.item.farmOwner" >
+            <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.farmOwner.id}}" slot="activator">
+              <v-icon color="green" >mdi-file-document</v-icon>
+            </v-btn>
+            <span>แบบสอบถาม</span>
+          </v-tooltip>
+
+          <v-tooltip top v-else>
+            <v-btn class="ma-0" icon :to="{name:'farmOwner-addFarmOwner',params : {'farmer' : props.item}}" slot="activator">
+              <v-icon color="red" >mdi-file-document</v-icon>
+            </v-btn>
+            <span>เพิ่มแบบสอบถาม</span>
+          </v-tooltip>
+
           <v-tooltip top >
             <v-btn class="ma-0" icon :to="{name:'edit-farmer',params : {id : props.item.id}}" slot="activator">
               <v-icon color="primary" >create</v-icon>
@@ -86,16 +100,16 @@
     },
     methods: {
       getProvinceAmphurDistrictString: function (farmers) {
-        let pvString = farmers.houseProvince.province_name ? farmers.houseProvince.province_name : "-";
-        let amString = farmers.houseAmphur.amphur_name ? farmers.houseAmphur.amphur_name : "-";
-        let diString = farmers.houseDistrict.district_name ? farmers.houseDistrict.district_name : "-";
+        let pvString = farmers.houseProvince ? farmers.houseProvince.province_name : "-";
+        let amString = farmers.houseAmphur? farmers.houseAmphur.amphur_name : "-";
+        let diString = farmers.houseDistrict? farmers.houseDistrict.district_name : "-";
 
 
         let outputStr = "";
         outputStr += pvString == "-" ? "" : pvString;
         outputStr += amString == "-" ? "" : " " + amString;
         outputStr += diString == "-" ? "" : " " + diString;
-        return outputStr;
+        return outputStr || '-';
       },
       loadData: async function () {
         this.form.page = 1;

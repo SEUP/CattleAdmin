@@ -110,7 +110,7 @@
                       <part8></part8>
 
                       <v-btn color="success" @click.native="updateFarmOwner">save</v-btn>
-                      <v-btn flat :to="{name:'farmOwner-index'}" outline>Cancel</v-btn>
+                      <v-btn flat @click="$router.go(-1)" outline>Cancel</v-btn>
                     </v-stepper-content>
                   </template>
                 </v-stepper>
@@ -123,7 +123,7 @@
                 <v-list class="elevation-1">
                   <v-list-tile class="text-xs-center">
                     <v-btn color="success" depressed block @click.native="updateFarmOwner">Save</v-btn>
-                    <v-btn depressed block :to="{name:'farmOwner-index'}">Cancel</v-btn>
+                    <v-btn depressed block @click="$router.go(-1)">Cancel</v-btn>
                   </v-list-tile>
                   <v-divider></v-divider>
 
