@@ -3,7 +3,7 @@
     <v-layout row wrap>
 
       <v-flex>
-        <h1 class="display-1">User Management</h1>
+        <h1 class="display-1">Create User</h1>
       </v-flex>
     </v-layout>
     <v-divider class="mt-2"></v-divider>
@@ -13,7 +13,7 @@
         <v-card>
           <v-footer color="gray">
             <v-spacer></v-spacer>
-            <h3>Create User</h3>
+
             <v-spacer></v-spacer>
 
           </v-footer>
