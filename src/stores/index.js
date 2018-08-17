@@ -13,6 +13,7 @@ import login from "./modules/login"
 import error from "./modules/error"
 import spinner from "./modules/spinner";
 
+import admin from "./modules/admin";
 
 function store(name) {
   return function (resolve) {
@@ -35,5 +36,8 @@ export default new Vuex.Store({
     login: login,
     charts: charts,
     farmers: farmers,
+
+    //migration to merge 2 app
+    admin : admin
   }
 })

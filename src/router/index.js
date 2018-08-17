@@ -35,7 +35,7 @@ export default new Router({
         },
         {
           path: 'report',
-          name: 'admin-report',
+          name: 'admin/report',
           component: view('Report')
         },
         farmer,

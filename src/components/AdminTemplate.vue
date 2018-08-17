@@ -59,6 +59,18 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <!--farmOwner-->
+        <v-list-tile :to="{name : 'admin/report'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-chart-areaspline</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              แผนภูมิรายงาน
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <!--download form-->
         <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
           <v-list-tile-action>
