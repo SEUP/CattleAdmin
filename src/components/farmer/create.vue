@@ -74,7 +74,7 @@
               required
             ></v-text-field>
 
-            <v-divider class="my-5"></v-divider>
+
             <v-text-field
               v-model="form.house_address"
               label="ที่อยู่"
@@ -106,14 +106,12 @@
 </template>
 
 <script>
-  import districtSelect from "@/components/share/districtSelect";
+
   import Base from "../../components/Base";
     export default {
       name: "addFarmer",
       extends : Base,
-      components : {
-          districtSelect
-      },
+     
       data() {
           return {
             form : {
