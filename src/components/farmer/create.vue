@@ -22,18 +22,21 @@
             <v-text-field
               v-model="form.firstname"
               label="ชื่อ"
+              :error-messages="error.firstname"
               required
 
             ></v-text-field>
 
             <v-text-field
               v-model="form.lastname"
+              :error-messages="error.lastname"
               label="นามสกุล"
               required
             ></v-text-field>
 
             <v-text-field
               v-model="form.personal_id"
+              :error-messages="error.personal_id"
               label="รหัสบัตรประจำตัวประชาชน"
               required
             ></v-text-field>
@@ -47,12 +50,14 @@
             <v-text-field
               v-model="form.username"
               label="Username"
+              :error-messages="error.username"
               required
             ></v-text-field>
 
             <v-text-field
               type="password"
               v-model="form.password"
+              :error-messages="error.password"
               label="Password"
               required
             ></v-text-field>
@@ -96,10 +101,10 @@
 
 <script>
   import districtSelect from "@/components/share/districtSelect";
-  import Base from "@/components/Base";
+  import Base from "../../components/Base";
     export default {
-        name: "addFarmer",
-      extend : Base,
+      name: "addFarmer",
+      extends : Base,
       components : {
           districtSelect
       },
@@ -117,12 +122,10 @@
       methods : {
           saveFarmer : async function () {
             let farmer = await this.$store.dispatch("farmers/createFarmer", this.form);
-            console.log("save Farmer");
             if(farmer){
               this.$router.go(-1)
             }
         },
-
         updateDistrictSelect: function (value) {
           this.form.house_province = value[0];
           this.form.house_amphur = value[1];

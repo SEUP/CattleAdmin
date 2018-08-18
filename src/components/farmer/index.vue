@@ -75,7 +75,10 @@
   </v-container>
 </template>
 <script>
+  import Base from "../../components/Base";
+
   export default {
+    extend : Base,
     name: "farmer-index",
     data() {
       return {

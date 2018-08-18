@@ -22,18 +22,21 @@
             <v-text-field
               v-model="form.firstname"
               label="ชื่อ"
+              :error-messages="error.firstname"
               required
 
             ></v-text-field>
 
             <v-text-field
               v-model="form.lastname"
+              :error-messages="error.lastname"
               label="นามสกุล"
               required
             ></v-text-field>
 
             <v-text-field
               v-model="form.personal_id"
+              :error-messages="error.personal_id"
               label="รหัสบัตรประจำตัวประชาชน"
               required
             ></v-text-field>
@@ -46,6 +49,7 @@
 
             <v-text-field
               v-model="form.username"
+              :error-messages="error.username"
               label="Username"
               required
             ></v-text-field>
@@ -53,6 +57,7 @@
             <v-text-field
               type="password"
               v-model="form.password"
+              :error-messages="error.password"
               label="Password"
               required
             ></v-text-field>
