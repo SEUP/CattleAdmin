@@ -11,13 +11,16 @@
     </v-layout>
     <v-layout row wrap>
       <v-flex md4 xs6>
-        <add-card/>
+        <add-farm-owner-card/>
       </v-flex>
       <v-flex md4 xs6>
         <search-card/>
       </v-flex>
       <v-flex md4 xs6>
         <report-card/>
+      </v-flex>
+      <v-flex md4 xs6>
+        <farmer-card/>
       </v-flex>
       <v-flex md4 xs6>
         <user-card/>
@@ -30,19 +33,21 @@
   import ChartsMenu from "./share/ChartsMenu";
   import ThailandNorthMapChart from "@/components/maps/ThailandNorthMapChart";
   import ThailandProvinceMapChart from "@/components/maps/ThailandProvinceMapChart";
-
-  import AddCard from "@/components/admin/Home/AddCard"
   import SearchCard from "./admin/Home/SearchCard";
   import ReportCard from "./admin/Home/ReportCard";
   import UserCard from "./admin/Home/UserCard";
+  import FarmerCard from "./admin/Home/FarmerCard";
+  import AddFarmOwnerCard from "./admin/Home/AddFarmOwnerCard";
 
   export default {
     name: "Home",
     components: {
+      AddFarmOwnerCard,
+      FarmerCard,
       UserCard,
       ReportCard,
       SearchCard,
-      ThailandNorthMapChart, ThailandProvinceMapChart, ChartsMenu, AddCard
+      ThailandNorthMapChart, ThailandProvinceMapChart, ChartsMenu
     },
     data: () => ({}),
   }
