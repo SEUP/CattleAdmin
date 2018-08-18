@@ -5,12 +5,14 @@
           v-model="selProvince"
           return-object
           label="จังหวัด" item-text="province_name" @change="provinceChange"
+          :error-messages="error.house_province"
         ></v-select>
 
         <v-select v-if="amphures"
                   :items="amphures"
                   return-object
                   v-model="selAmphure"
+                  :error-messages="error.house_amphur"
                   label="อำเภอ" item-text="amphur_name" @change="amphureChange"
         ></v-select>
 
@@ -18,13 +20,16 @@
                   :items="districts"
                   return-object
                   v-model="selDistrict"
+                  :error-messages="error.house_district"
                   label="ตำบล" item-text="district_name" @change="districtChange"
         ></v-select>
     </v-layout>
 </template>
 
 <script>
+  import Base from '@/component/Base'
   export default {
+    extends : Base,
     name: "districtSelect",
     props: {
       valProvince: {
