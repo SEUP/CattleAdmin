@@ -105,7 +105,7 @@
   import Base from "@/components/Base"
   export default {
     name: "addFarmer",
-    extend : Base,
+    extends : Base,
     components : {
       districtSelect
     },
@@ -121,7 +121,6 @@
     async created() {
       this.getFarmer.id = this.$route.params.id;
       await this.load() ;
-      await  console.log("start", this.form)
     },
     methods : {
       updateDistrictSelect: function (value) {
@@ -141,7 +140,6 @@
       },
       saveFarmer: async function () {
         let farmer = await this.$store.dispatch("farmers/updateFarmer", this.form);
-        console.log("save Farmer", this.form);
         if (farmer) {
           this.$router.go(-1)
         }

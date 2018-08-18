@@ -140,7 +140,6 @@
           if (value[2]) {
             this.form.house_district = value[2].district_id;
           }
-          console.log("UPDATE",this.form)
         },
       }
     }
