@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
 
 import userRoute from './user'
 import roleRoute from './role'
@@ -31,7 +30,7 @@ export default new Router({
         {
           path: '',
           name: 'admin-home',
-          component: view('Home')
+          component: view('admin/Home/index')
         },
         {
           path: 'report',

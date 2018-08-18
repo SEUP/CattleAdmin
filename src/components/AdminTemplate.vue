@@ -71,6 +71,17 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-list-tile :to="{name : 'admin/farmer/report'}" exact>
+          <v-list-tile-action>
+            <v-icon>mdi-chart-areaspline</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              แผนภูมิรายงานสมาร์ทฟาร์ม
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <!--download form-->
         <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
           <v-list-tile-action>

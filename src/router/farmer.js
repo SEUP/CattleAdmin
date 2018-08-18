@@ -23,6 +23,12 @@ export default {
       path: '/:id/edit',
       name: 'edit-farmer',
       component: view('farmer/edit')
-    }
+    },
+    {
+      path: '/farmer/report',
+      name: 'admin/farmer/report',
+      component: view('admin/FarmerReport/index')
+    },
+
   ]
 }

@@ -33,9 +33,6 @@
             </v-flex>
             <v-flex>
               <thailand-province-map-chart :province-id="45"/>
-
-
-
             </v-flex>
           </v-layout>
         </v-flex>

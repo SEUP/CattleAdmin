@@ -30,14 +30,14 @@
 </template>
 <style scoped></style>
 <script>
-  import ChartsMenu from "./share/ChartsMenu";
+  import ChartsMenu from "@/components/share/ChartsMenu";
   import ThailandNorthMapChart from "@/components/maps/ThailandNorthMapChart";
   import ThailandProvinceMapChart from "@/components/maps/ThailandProvinceMapChart";
-  import SearchCard from "./admin/Home/SearchCard";
-  import ReportCard from "./admin/Home/ReportCard";
-  import UserCard from "./admin/Home/UserCard";
-  import FarmerCard from "./admin/Home/FarmerCard";
-  import AddFarmOwnerCard from "./admin/Home/AddFarmOwnerCard";
+  import SearchCard from "@/components/admin/Home/Cards/SearchCard";
+  import ReportCard from "@/components/admin/Home/Cards/ReportCard";
+  import UserCard from "@/components/admin/Home/Cards/UserCard";
+  import FarmerCard from "@/components/admin/Home/Cards/FarmerCard";
+  import AddFarmOwnerCard from "@/components/admin/Home/Cards/AddFarmOwnerCard";
 
   export default {
     name: "Home",
