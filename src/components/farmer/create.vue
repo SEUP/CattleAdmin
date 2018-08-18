@@ -40,6 +40,12 @@
               label="รหัสบัตรประจำตัวประชาชน"
               required
             ></v-text-field>
+            <v-text-field
+              v-model="form.phone_number"
+              :error-messages="error.phone_number"
+              label="เบอร์โทร"
+              required
+            ></v-text-field>
 
             <v-text-field
               v-model="form.email"

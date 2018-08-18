@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import Base from '@/component/Base'
+  import Base from '@/components/Base'
   export default {
     extends : Base,
     name: "districtSelect",
@@ -126,7 +126,6 @@
         } else {
           this.districts = [this.defaultDistrict];
         }
-        // this.selDistrict = this.defaultDistrict;
         this.$emit('change', [this.selProvince, ev, null])
       }
       , districtChange: function (ev) {

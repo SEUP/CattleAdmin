@@ -18,10 +18,8 @@
         append-icon="mdi-magnify"
         @keyup.13="search()"
       ></v-text-field>
-
     </v-flex>
     </v-layout>
-    <v-divider class="mb-3"></v-divider>
     <v-data-table
       :headers="headers"
       :items="paginate.data"
