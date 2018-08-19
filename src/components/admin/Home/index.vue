@@ -25,6 +25,9 @@
       <v-flex md4 xs6>
         <user-card/>
       </v-flex>
+      <v-flex md4 xs6>
+        <farmer-report-card/>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -38,10 +41,12 @@
   import UserCard from "@/components/admin/Home/Cards/UserCard";
   import FarmerCard from "@/components/admin/Home/Cards/FarmerCard";
   import AddFarmOwnerCard from "@/components/admin/Home/Cards/AddFarmOwnerCard";
+  import FarmerReportCard from "./Cards/FarmerReportCard";
 
   export default {
     name: "Home",
     components: {
+      FarmerReportCard,
       AddFarmOwnerCard,
       FarmerCard,
       UserCard,
