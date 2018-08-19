@@ -78,25 +78,32 @@
   export default {
     extend : Base,
     name: "farmer-index",
+    computed : {
+    },
     data() {
       return {
+        admin:null,
         paginate : {},
         form: {
-          page:1,
           keyword: "",
+          page: 1,
+          admin_province:"",
+          admin_amphur:"",
+          admin_district:""
         },
         farmers: [],
         headers: [
-
-          {text: "ชื่อ-นามสกุล", align: "left", value: "full_name", sortable: false},
-          {text: "เลขบัตรประจำตัวประชาชน", align: "left", value: "personal_id", sortable: false},
-          {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "address_name", sortable: false},
-          {text: "ข้อมูลเมื่อ", align: "left", value: "updated_at", sortable: false},
-          {text: "การจัดการ", align: "center", value: "action", sortable: false},
+          {text: 'รหัสบัตรประจำตัวประชาชน', align: 'left', sortable: false,},
+          { text: 'ชื่อ', sortable: false },
+          { text: 'นามสกุล', sortable: false },
+          { text: 'เบอร์โทรศัพท์', sortable: false},
+          { text: "จังหวัด อำเภอ ตำบล", sortable: false},
+          { text: 'การจัดการ', sortable: false,align:'center' }
         ],
       }
     },
     async mounted() {
+      this.admin  = await localStorage.getItem('user');
       await this.loadData()
     },
     methods: {
@@ -113,8 +120,14 @@
         return outputStr || '-';
       },
       loadData: async function () {
+        this.admin = JSON.parse(this.admin)
+        console.log(this.admin)
         this.form.page = 1;
-        let page = await this.$store.dispatch('farmers/getFarmers');
+        this.form.admin_role = this.admin.roles ? this.admin.roles : null;
+        this.form.admin_province = this.admin.province;
+        this.form.admin_amphur = this.admin.amphur;
+        this.form.admin_district = this.admin.district;
+        let page = await this.$store.dispatch('farmers/getFarmers',this.form);
         this.paginate = page;
         this.paginate.page = parseInt(page.page)
         this.farmers = page.data;
