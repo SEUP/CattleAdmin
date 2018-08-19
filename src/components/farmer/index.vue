@@ -104,6 +104,7 @@
     },
     async mounted() {
       this.admin  = await localStorage.getItem('user');
+      this.admin = JSON.parse(this.admin)
       await this.loadData()
     },
     methods: {
@@ -120,9 +121,11 @@
         return outputStr || '-';
       },
       loadData: async function () {
-        this.admin = JSON.parse(this.admin)
-        console.log(this.admin)
-        this.form.page = 1;
+        if(!this.admin){
+          this.admin  = await localStorage.getItem('user');
+          this.admin = JSON.parse(this.admin)
+        }
+
         this.form.admin_role = this.admin.roles ? this.admin.roles : null;
         this.form.admin_province = this.admin.province;
         this.form.admin_amphur = this.admin.amphur;
@@ -142,21 +145,15 @@
           }
         }
       },
-      search: async function () {
+      search: async function (ev) {
         this.form.page = 1;
-        let page = await  this.$store.dispatch("farmers/getFarmers", this.form)
-        this.paginate = page;
-        this.paginate.page = parseInt(page.page)
-        this.farmers = page.data;
+        this.loadData()
       },
       changePage: async function (page) {
+        console.log(page)
         this.form.page = page;
-        let paginate = await  this.$store.dispatch("farmers/getFarmers", this.form)
-        this.paginate = paginate;
-        this.paginate.page = parseInt(paginate.page)
-        this.farmers = paginate.data;
-
-      },
+        this.loadData()
+      }
     }
   }
 </script>
