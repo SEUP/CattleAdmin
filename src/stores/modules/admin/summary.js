@@ -17,7 +17,23 @@ export default {
         return r.data
       })
       return count;
+    },
+
+    summaryCattleByType : () => {
+      let data = axios.get('/api/v1/admin/summary/cattle-by-type').then((r) => {
+        return r.data
+      })
+      return data;
+    },
+
+    summaryCattleByTypeByProvince : () => {
+      let data = axios.get('/api/v1/admin/summary/cattle-by-type-province').then((r) => {
+        return r.data
+      })
+      return data;
     }
+
+
   }
 
 }
