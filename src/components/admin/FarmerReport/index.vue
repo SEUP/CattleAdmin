@@ -10,9 +10,18 @@
           </v-card-text>
           <v-divider class="my-3"></v-divider>
         </v-flex>
+
+        <v-flex xs6>
+          <farmer-bar-chart title="จำนวนวัวแยกตามประเภท" dispatchPath="admin/summary/summaryCattleByType"/>
+        </v-flex>
+        <v-flex xs6>
+          <farmer-bar-group-chart title="จำนวนวัวแยกตามประเภทและจังหวัด" dispatchPath="admin/summary/summaryCattleByTypeByProvince"/>
+        </v-flex>
+
         <v-flex xs6>
           <farmer-north-map-chart title="สมาชิกเกษตรกรระบบใหม่ 4 จังหวัดภาคเหนือ"/>
         </v-flex>
+
         <v-flex xs6>
           <farmer-province-map-chart :province-id="42"/>
         </v-flex>
@@ -35,10 +44,14 @@
 
   import FarmerNorthMapChart from "./Charts/FarmerNorthMapChart";
   import FarmerProvinceMapChart from "./Charts/FarmerProvinceMapChart";
+  import FarmerBarChart from "./Charts/BarChart";
+  import FarmerBarGroupChart from "./Charts/BarGroupChart";
 
   export default {
     name: "FamerReportIndex",
     components: {
+      FarmerBarGroupChart,
+      FarmerBarChart,
       FarmerProvinceMapChart,
       FarmerNorthMapChart
     },
