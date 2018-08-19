@@ -10,11 +10,9 @@
           </v-card-text>
           <v-divider class="my-3"></v-divider>
         </v-flex>
-
         <v-flex xs6>
           <farmer-north-map-chart title="สมาชิกเกษตรกรระบบใหม่ 4 จังหวัดภาคเหนือ"/>
         </v-flex>
-
         <v-flex xs6>
           <farmer-province-map-chart :province-id="42"/>
         </v-flex>

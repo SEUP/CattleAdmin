@@ -85,7 +85,7 @@
               :valProvince="form.house_province"
               :valAmphur="form.house_amphur"
               :valDistrict="form.house_district"
-              @change="updateDistrictSelect"></district-select>
+              @change="updateDistrictSelect"/>
             <v-text-field
               v-model="form.house_zipcode"
               label="รหัสไปรษณีย์"
@@ -108,8 +108,10 @@
 <script>
 
   import Base from "../../components/Base";
+  import DistrictSelect from "../share/districtSelect";
     export default {
       name: "addFarmer",
+      components: {DistrictSelect},
       extends : Base,
      
       data() {
