@@ -7,41 +7,67 @@
       :multi-line="true"
       :vertical="true"
       v-model="showError">
-      <ul>
+      <ul >
         <li v-for="value in error">{{value}}</li>
       </ul>
       <v-btn dark flat @click.native="$store.dispatch('error/toggleError',false)">Close</v-btn>
     </v-snackbar>
 
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
-          <v-flex xs12 sm8 md4>
-            <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Login form</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                <v-form>
-                  <v-text-field prepend-icon="person" name="login" label="E-Mail" v-model="form.username"
-                                :error-messages="error.username" type="text"
-                  ></v-text-field>
-                  <v-text-field id="password" prepend-icon="lock" name="password" label="Password"
-                                :error-messages="error.password"
-                                v-model="form.password" type="password" @keypress.13s="login()"></v-text-field>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn @click="login()" color="primary">Login</v-btn>
-              </v-card-actions>
-            </v-card>
+    <v-content class="bgImg">
+      <v-container fill-height >
+        <v-layout align-center>
+          <v-flex text-xs-center>
+            <v-layout align-center justify-end>
+              <v-flex xs12 lg6>
+                <v-card class="elevation-20 DelBG ">
+                  <v-card-text text-xs-center class="display-3 textwhite " >
+                    <h4 class="light italic ">Welcome</h4>
+                  </v-card-text>
+                  <v-card-text >
+                    <v-form>
+                      <v-text-field dark prepend-icon="person" name="login" label="Username" v-model="form.username"
+                                    :error-messages="error.username" type="text" color="white"
+                      ></v-text-field>
+                      <v-text-field  dark id="password" prepend-icon="lock" name="password" label="Password"
+                                     :error-messages="error.password"
+                                     v-model="form.password" type="password" color="white" @keypress.13s="login()"></v-text-field>
+
+
+                    </v-form>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn block outline @click="login()" color="success">Login</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-container>
     </v-content>
   </v-app>
 </template>
+<style scoped>
+  .bgImg{
+    background-image: url("../../static/loginBG.jpg");
+
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .DelBG{
+    background-color: rgba(0,0,0,0.75);
+    opacity: 30%;
+    border-radius: 5px;
+  }
+  .blurBG{
+    filter: blur(5px);
+  }
+  .textwhite{
+    color: white;
+  }
+</style>
 
 <script>
   import Base from "@/components/Base"
