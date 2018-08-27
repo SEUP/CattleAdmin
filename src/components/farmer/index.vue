@@ -37,10 +37,11 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td class="text-xs-left">{{ props.item.firstname+" "+ props.item.lastname }}</td>
         <td class="text-xs-left">{{props.item.personal_id}}</td>
+        <td class="text-xs-left">{{ props.item.firstname}}</td>
+        <td class="text-xs-left">{{  props.item.lastname }}</td>
+        <td class="text-xs-left">{{ props.item.phone_number }}</td>
         <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
-        <td class="text-xs-left">{{ props.item.updated_at }}</td>
         <td class="text-xs-center">
 
 
