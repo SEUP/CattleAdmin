@@ -78,7 +78,6 @@
         colorAxis: {},
         tooltip: {
           formatter: function () {
-            console.log(this)
             return `${this.point.province_name} : ${this.point.value}`
           }
         },

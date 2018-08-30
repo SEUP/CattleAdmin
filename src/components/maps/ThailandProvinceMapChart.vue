@@ -6,8 +6,26 @@
       </v-card-title>
       <v-card-text>
         <div ref="mapChart"></div>
+        <v-btn ref="showDialog" @click="dialog = true" color="info">เต็มจอ</v-btn>
+
       </v-card-text>
     </v-card>
+    <v-dialog v-model="dialog" width="100%">
+      <v-card>
+        <v-toolbar>
+          <v-toolbar-title>{{title}}</v-toolbar-title>
+          <v-spacer/>
+          <v-btn @click="dialog = false" color="error">ปิด</v-btn>
+        </v-toolbar>
+        <v-card-title>
+          <div class="headline"></div>
+        </v-card-title>
+        <v-card-text>
+          <div ref="mapChart2" style="height: 650px;"></div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+
   </v-flex>
 </template>
 
@@ -34,11 +52,15 @@
       title: "จำนวนเกษตรกรผู้เลี้ยงโคเนื้อจังหวัด",
       Highcharts: Highcharts,
       options: null,
+      options2: null,
+      dialog: false,
     }),
     async mounted() {
       this.title += MapData[this.provinceId][1];
 
       let mapChart = this.$refs.mapChart;
+      let mapChart2 = this.$refs.mapChart2;
+
       let response = await axios.get('/api/v1/admin/charts/map-data/' + this.provinceId).then((r) => {
         return r.data
       });
@@ -51,13 +73,22 @@
             point: {
               events: {
                 click: function () {
-                  console.log(this);
                 }
               }
             }
           }
         },
         colorAxis: {},
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{series.name}</span><br/>',
+          pointFormatter: function () {
+
+            var amphurName = this.amphur_name ? this.amphur_name : this.properties.amphur_name;
+            var value = this.value ? this.value : 0;
+
+            return amphurName + " : " + value + " คน";
+          }
+        },
 
         series: [
           {
@@ -71,26 +102,17 @@
               enabled: true,
               color: '#FFFFFF',
               formatter: function () {
-                var amphurName = this.point.amphur_name ? this.point.amphur_name : this.point.properties.amphur_name;
-                var value = this.point.value ? this.point.value : 0;
-
+                let amphurName = this.point.amphur_name
+                let value = this.point.value ? this.point.value : 0;
                 return amphurName + " : " + value + " คน";
-              },
-              tooltip: {
-                headerFormat: '<span style="font-size:10px">{series.name}</span><br/>',
-                pointFormatter: function () {
-
-                  var amphurName = this.amphur_name ? this.amphur_name : this.properties.amphur_name;
-                  var value = this.value ? this.value : 0;
-
-                  return amphurName + " : " + value + " คน";
-                }
               },
             },
           }
         ],
-      },
-        Highcharts.mapChart(mapChart, this.options);
+      }
+      this.options2 = _.cloneDeep(this.options)
+      Highcharts.mapChart(mapChart, this.options);
+      Highcharts.mapChart(mapChart2, this.options2);
     }
   }
 </script>

@@ -83,7 +83,7 @@
         </v-list-tile>
 
         <!--download form-->
-        <v-list-tile href="http://mct.ict.up.ac.th:10007/file/questionaire.pdf" exact>
+        <v-list-tile href="/static/questionaire.pdf" exact>
           <v-list-tile-action>
             <v-icon>mdi-file-document</v-icon>
           </v-list-tile-action>
