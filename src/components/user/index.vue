@@ -28,7 +28,7 @@
     </v-layout>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
+        <v-card v-if="admin">
           <v-data-table
             :headers="headers"
             :items="paginate.data"
@@ -42,12 +42,13 @@
               <td class="text-xs-left">
                 <ul class="text-xs-left">
                   <li v-for="role in props.item.roles">
-                    {{role.display_name}}
+                    {{role.display_name }}
                   </li>
                 </ul>
               </td>
               <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
-              <td class="text-xs-left">{{ props.item.action }}
+              <td class="text-xs-left">
+                <template v-if="admin.roles[0].id <=  (props.item.roles[0] ? props.item.roles[0].id : 20)">
                 <v-tooltip top>
                   <v-btn class="ma-0" icon
                          :to="{name:'user-edit',params : {id : props.item.id}}"
@@ -63,6 +64,7 @@
                   </v-btn>
                   <span>ลบ</span>
                 </v-tooltip>
+                </template>
               </td>
             </template>
           </v-data-table>
@@ -82,6 +84,7 @@
 </style>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     data: () => ({
       ID: null,
@@ -103,10 +106,19 @@
         page: 1,
       },
     }),
-    computed: {}
+    computed: {
+      ...mapState ({
+        admin: state => state.login.user
+      })
+    }
     ,
     async mounted() {
+      if(!this.admin){
+        this.$store.dispatch("login/loadUser")
+      }
       await this.loadData()
+
+
     }
     ,
     methods: {

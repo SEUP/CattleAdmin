@@ -95,7 +95,6 @@
     extend: Base,
     name: "farmer-index",
     computed: {
-      DistrictSelectSingleLine
     },
     data() {
       return {
