@@ -49,7 +49,7 @@
 </template>
 <style scoped>
   .bgImg{
-    background-image: url("../../static/loginBG.jpg");
+    background-image: url("../../static/loginAdminBG.jpg");
 
     height: 100%;
     background-position: center;
