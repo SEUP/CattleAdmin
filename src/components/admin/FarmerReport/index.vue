@@ -12,10 +12,10 @@
         </v-flex>
 
         <v-flex xs6>
-          <farmer-bar-chart title="จำนวนวัวแยกตามประเภท" dispatchPath="admin/summary/summaryCattleByType"/>
+          <farmer-bar-chart title="จำนวนโคแยกตามประเภท" dispatchPath="admin/summary/summaryCattleByType"/>
         </v-flex>
         <v-flex xs6>
-          <farmer-bar-group-chart title="จำนวนวัวแยกตามประเภทและจังหวัด" dispatchPath="admin/summary/summaryCattleByTypeByProvince"/>
+          <farmer-bar-group-chart title="จำนวนโคแยกตามประเภทและจังหวัด" dispatchPath="admin/summary/summaryCattleByTypeByProvince"/>
         </v-flex>
 
         <v-flex xs6>

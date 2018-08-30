@@ -63,7 +63,7 @@
                     <v-btn class="ma-0" icon @click="downloadPdf(props.item)" slot="activator">
                       <v-icon color="success">mdi-download</v-icon>
                     </v-btn>
-                    <span>Export</span>
+                    <span>ส่งออก</span>
                   </v-tooltip>
 
                   <v-tooltip top>
@@ -71,14 +71,14 @@
                            slot="activator">
                       <v-icon color="primary">create</v-icon>
                     </v-btn>
-                    <span>Edit</span>
+                    <span>แก้ไข</span>
                   </v-tooltip>
 
                   <v-tooltip top>
                     <v-btn class="ma-0" icon @click="" slot="activator" @click.native="deleteFarmOwner(props.item.id)">
                       <v-icon color="red">delete</v-icon>
                     </v-btn>
-                    <span>Delete</span>
+                    <span>ลบ</span>
                   </v-tooltip>
 
                 </td>

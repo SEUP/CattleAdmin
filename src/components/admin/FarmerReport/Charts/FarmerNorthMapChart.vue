@@ -53,7 +53,12 @@
           }
         },
         colorAxis: {},
-
+        tooltip: {
+          formatter: function() {
+            console.log(this)
+            return `${this.point.province_name} : ${this.point.value}`
+          }
+        },
         series: [
           {
             cursor: 'pointer',
@@ -68,6 +73,7 @@
               color: '#FFFFFF',
               format: '{point.province_name}<br/>{point.value} คน'
             },
+
           }
         ],
       },

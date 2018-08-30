@@ -58,6 +58,15 @@
           }
         },
         colorAxis: {},
+        tooltip: {
+          formatter: function() {
+            let point = this.point
+            let amphurName = point.amphur_name
+            let value = point.value ? point.value : 0;
+
+            return `${amphurName} : ${value} คน`;
+          }
+        },
 
         series: [
           {
@@ -76,16 +85,7 @@
 
                 return amphurName + " : " + value + " คน";
               },
-              tooltip: {
-                headerFormat: '<span style="font-size:10px">{series.name}</span><br/>',
-                pointFormatter: function () {
 
-                  var amphurName = this.amphur_name ? this.amphur_name : this.properties.amphur_name;
-                  var value = this.value ? this.value : 0;
-
-                  return amphurName + " : " + value + " คน";
-                }
-              },
             },
           }
         ],
