@@ -193,9 +193,9 @@
     },
     methods : {
       checkUser : function (user) {
-        // if(!user){
-        //   this.$router.push({name: 'Login'})
-        // }
+        if(!user){
+          this.$router.push({name: 'Login'})
+        }
       },
       logout : function () {
         console.log("logout")

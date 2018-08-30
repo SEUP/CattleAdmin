@@ -15,7 +15,7 @@ window.axios = axios.create({
   baseURL: process.env.API_URL,
   timeout: 60000
 });
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access_token;
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.admin_access_token;
 
 
 

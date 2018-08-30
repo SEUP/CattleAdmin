@@ -39,6 +39,7 @@
         },
         error => {
           this.$emit("response-error");
+          console.log(error)
           return Promise.reject(error);
         }
       );

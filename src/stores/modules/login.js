@@ -18,8 +18,8 @@ export default {
 
       let token = await axios.post('api/v1/admin/login', userform)
         .then((r) => {
-          localStorage.access_token = r.data.token;
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access_token;
+          localStorage.admin_access_token = r.data.token;
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.admin_access_token;
 
           return r.data
         })
