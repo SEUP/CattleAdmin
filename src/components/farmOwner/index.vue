@@ -42,7 +42,7 @@
 
       <v-layout class="my-2">
         <v-flex>
-          <v-btn color="success" @click="exportAll">ส่งออกป็น Excel</v-btn>
+          <v-btn color="success" @click="exportAll">ส่งออกเป็น Excel</v-btn>
         </v-flex>
       </v-layout>
 
@@ -175,6 +175,7 @@
         this.farmOwners = paginate.data;
       },
       search: async function () {
+        this.form.page = 1 ;
         let paginate = await this.$store.dispatch("farmOwners/getFarmOwners", this.form)
         this.paginate = paginate;
         this.paginate.page = parseInt(paginate.page)

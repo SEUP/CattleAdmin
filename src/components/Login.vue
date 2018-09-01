@@ -21,7 +21,7 @@
               <v-flex xs12 lg6>
                 <v-card class="elevation-20 DelBG ">
                   <v-card-text text-xs-center class="display-3 textwhite " >
-                    <h4 class="light italic ">Welcome</h4>
+                    <h4 class="light italic ">ยินดีต้อนรับ</h4>
                   </v-card-text>
                   <v-card-text >
                     <v-form>
@@ -36,7 +36,7 @@
                     </v-form>
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn block outline @click="login()" color="success">Login</v-btn>
+                    <v-btn block outline @click="login()" color="success">เข้าสู่ระบบ</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-flex>

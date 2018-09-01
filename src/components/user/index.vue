@@ -48,7 +48,7 @@
               </td>
               <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
               <td class="text-xs-left">
-                <template v-if="admin.roles[0].id <=  (props.item.roles[0] ? props.item.roles[0].id : 20)">
+                <template v-if="admin.roles[0].id <  (props.item.roles[0] ? props.item.roles[0].id : 20) || admin.id == (props.item.id)">
                 <v-tooltip top>
                   <v-btn class="ma-0" icon
                          :to="{name:'user-edit',params : {id : props.item.id}}"
@@ -89,12 +89,12 @@
     data: () => ({
       ID: null,
       headers: [
-        {text: "Name", align: "left", value: "name"},
-        {text: "Email", align: "left", value: "email"},
-        {text: "Username", align: "left", value: "username"},
-        {text: "Roles", align: "left", value: "role"},
+        {text: "ชื่อ", align: "left", value: "name"},
+        {text: "อีเมล์", align: "left", value: "email"},
+        {text: "ชื่อผู้ใช้", align: "left", value: "username"},
+        {text: "สิทธิ์", align: "left", value: "role"},
         {text: "จังหวัด อำเภอ ตำบล", align: "left", value: "atdes", sortable: false},
-        {text: "Action", align: "left", value: "action", sortable: false},
+        {text: "การจัดการ", align: "left", value: "action", sortable: false},
 
 
       ],
