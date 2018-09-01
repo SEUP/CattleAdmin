@@ -22,7 +22,13 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: view("Login")
-    }, {
+    },
+    {
+      path: '/reset-password',
+      name: 'reset-password',
+      component: view("ResetPassword")
+    },
+    {
       path: '/admin',
       name: 'admin',
       component: view("AdminTemplate"),

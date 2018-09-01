@@ -9,6 +9,11 @@ export default {
     }
   },
   actions: {
+
+    resetPassword : async function(context,form){
+      return await axios.post('api/v1/admin/reset-password', form)
+    },
+
     getToken: async function (context, form) {
       let userform = {
         username : form.username,

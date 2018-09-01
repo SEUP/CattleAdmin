@@ -83,7 +83,7 @@
         </v-list-tile>
 
         <!--download form-->
-        <v-list-tile href="/static/questionaire.pdf" exact>
+        <v-list-tile href="./static/questionaire.pdf" target="_blank" exact>
           <v-list-tile-action>
             <v-icon>mdi-file-document</v-icon>
           </v-list-tile-action>

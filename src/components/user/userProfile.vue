@@ -2,7 +2,7 @@
   <v-container v-if="form">
   <v-layout>
     <v-flex xs12>
-      <v-card-text class="display-1 ma-0 pa-0">User Management</v-card-text>
+      <v-card-text class="display-1 ma-0 pa-0">แก้ไขข้อมูลส่วนตัว</v-card-text>
       <v-divider class="my-2"></v-divider>
       <v-card>
         <v-divider class="pt-1 orange"></v-divider>
@@ -10,18 +10,19 @@
         <v-divider></v-divider>
         <div class="mx-5 my-2">
           <v-text-field  label="Username" v-model="form.username"
-                         :error-messages="error.errors.username"
+                         :error-messages="error.username"
           ></v-text-field>
           <v-text-field  label="Email"  readonly
                          v-model="form.email"
           ></v-text-field>
           <v-text-field  label="Password"
+                         type="password"
                          v-model="form.password"
-                         :error-messages="error.errors.password"
           ></v-text-field>
           <v-text-field  label="Verify Password"
+                         type="password"
                          v-model="form.password_confirmation"
-                         :error-messages="error.errors.password"
+                         :error-messages="error.password"
           ></v-text-field>
         </div>
         <div class="text-xs-center">
@@ -47,10 +48,13 @@
         this.load({id:id})
       },
       methods : {
-        saveUser: function () {
-          let user = this.$store.dispatch("users/updateUser", this.form);
-          console.log("save User", this.form);
-          this.$router.push({name: "user-index"})
+        saveUser: async  function () {
+          let user = await this.$store.dispatch("users/updateUser", this.form);
+          console.log("save User", user);
+          if(user) {
+            this.$router.push({name: "user-index"})
+          }
+
         },
         load: async function (id) {
           let data = await this.$store.dispatch("users/getUserById", id);
