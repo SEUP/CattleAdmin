@@ -80,10 +80,8 @@
                     </v-btn>
                     <span>ลบ</span>
                   </v-tooltip>
-
                 </td>
               </template>
-
             </v-data-table>
             <v-divider></v-divider>
             <v-flex xs12 py-2 class="text-xs-center">
@@ -112,6 +110,9 @@
         province: null,
         amphur: null,
         district: null,
+        admin_province: "",
+        admin_amphur: "",
+        admin_district: ""
 
       },
       farmOwners: [],
@@ -123,8 +124,11 @@
         {text: "การจัดการ", align: "center", value: "action", sortable: false},
       ]
     }),
-    async created() {
+    async mounted() {
+      this.admin = await localStorage.getItem('user');
+      this.admin = JSON.parse(this.admin)
       await this.loadData()
+
     },
     methods: {
       exportAll: function(){
@@ -169,7 +173,15 @@
         return outputStr;
       },
       loadData: async function () {
-        let paginate = await this.$store.dispatch("farmOwners/getFarmOwners")
+        if (!this.admin) {
+          this.admin = await localStorage.getItem('user');
+          this.admin = JSON.parse(this.admin)
+        }
+        this.form.admin_role = this.admin.roles ? this.admin.roles : null;
+        this.form.admin_province = this.admin.province;
+        this.form.admin_amphur = this.admin.amphur;
+        this.form.admin_district = this.admin.district;
+        let paginate = await this.$store.dispatch("farmOwners/getFarmOwners",this.form)
         this.paginate = paginate;
         this.paginate.page = parseInt(paginate.page)
         this.farmOwners = paginate.data;
