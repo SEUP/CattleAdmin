@@ -40,10 +40,11 @@
               label="รหัสบัตรประจำตัวประชาชน"
               required
             ></v-text-field>
+
             <v-text-field
-              v-model="form.phone_number"
+              v-model="form.phone_number "
               :error-messages="error.phone_number"
-              label="เบอร์โทร"
+              label="เบอร์โทรศัพท์"
               required
             ></v-text-field>
 
@@ -71,9 +72,10 @@
             <v-text-field
               type="password"
               label="Verify Password"
+              v-model="form.password_confirmation"
+              :error-messages="error.password_confirmation"
               required
             ></v-text-field>
-
 
             <v-text-field
               v-model="form.house_address"
@@ -106,14 +108,16 @@
 </template>
 
 <script>
-
+  import districtSelect from "@/components/share/districtSelect";
   import Base from "../../components/Base";
   import DistrictSelect from "../share/districtSelect";
     export default {
       name: "addFarmer",
       components: {DistrictSelect},
       extends : Base,
-     
+      components : {
+          districtSelect
+      },
       data() {
           return {
             form : {

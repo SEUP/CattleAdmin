@@ -72,6 +72,7 @@
             <v-text-field
               type="password"
               v-model="form.password_confirmation"
+              :error-messages="error.password_confirmation"
               label="Verify Password"
               required
             ></v-text-field>
