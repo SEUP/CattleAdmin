@@ -42,7 +42,7 @@
 
       <v-layout class="my-2">
         <v-flex>
-          <v-btn color="success" @click="exportAll">ส่งออกเป็น Excel</v-btn>
+          <v-btn color="success" @click="exportAll()">ส่งออกเป็น Excel</v-btn>
         </v-flex>
       </v-layout>
 

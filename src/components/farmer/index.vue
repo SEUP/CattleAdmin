@@ -5,84 +5,85 @@
       ผู้ใช้เกษตรกรผู้เลี้ยงโคเนื้อ
     </h1>
     <v-divider class="my-3"></v-divider>
-    <v-card class="elevation-2">
+    <v-card class="elevation-2 mb-3">
       <v-layout row>
-        <v-flex xs3>
+        <v-flex xs4>
           <v-btn :to="{name:'create-farmer'}" color="primary">
             <v-icon>mdi-account-plus</v-icon>&ensp;เพิ่ม
           </v-btn>
+          <v-btn @click="exportAll()" color="success">
+            <v-icon>mdi-export</v-icon>&ensp;ส่งออก Excel
+          </v-btn>
         </v-flex>
-        <v-layout wrap>
-          <v-flex xs12 class="mx-3">
-            <v-text-field append-icon="mdi-magnify"
-                          placeholder="ค้นหา"
-                          hide-details class="pa-0 mt-2"
-                          v-model="form.keyword"
-                          @keyup.13="search()"
-            ></v-text-field>
-          </v-flex>
-        </v-layout>
+        <v-flex xs8 class="mx-3">
+          <v-text-field append-icon="mdi-magnify"
+                        placeholder="ค้นหา"
+                        hide-details class="pa-0 mt-2"
+                        v-model="form.keyword"
+                        @keyup.13="search()"
+          ></v-text-field>
+        </v-flex>
       </v-layout>
       <v-layout>
         <v-flex my-2 mx-2 xs12>
           <district-select-single-line @change="updateDistrictSelect"></district-select-single-line>
         </v-flex>
       </v-layout>
+    </v-card>
+    <v-card class="elevation-2">
+      <v-data-table
+        :headers="headers"
+        :items="paginate.data"
+        hide-actions
+        class="elevation-1"
+      >
+        <template slot="items" slot-scope="props">
+          <td class="text-xs-left">{{props.item.personal_id}}</td>
+          <td class="text-xs-left">{{ props.item.firstname}}</td>
+          <td class="text-xs-left">{{ props.item.lastname }}</td>
+          <td class="text-xs-left">{{ props.item.phone_number }}</td>
+          <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
+          <td class="text-xs-center">
 
-      <v-divider ></v-divider>
-    <v-data-table
-      :headers="headers"
-      :items="paginate.data"
-      hide-actions
-      class="elevation-1"
-    >
-      <template slot="items" slot-scope="props">
-        <td class="text-xs-left">{{props.item.personal_id}}</td>
-        <td class="text-xs-left">{{ props.item.firstname}}</td>
-        <td class="text-xs-left">{{  props.item.lastname }}</td>
-        <td class="text-xs-left">{{ props.item.phone_number }}</td>
-        <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
-        <td class="text-xs-center">
 
+            <v-tooltip top v-if="props.item.farmOwner">
+              <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.farmOwner.id}}"
+                     slot="activator">
+                <v-icon color="green">mdi-file-document</v-icon>
+              </v-btn>
+              <span>แบบสอบถาม</span>
+            </v-tooltip>
 
-          <v-tooltip top v-if="props.item.farmOwner">
-            <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.farmOwner.id}}"
-                   slot="activator">
-              <v-icon color="green">mdi-file-document</v-icon>
-            </v-btn>
-            <span>แบบสอบถาม</span>
-          </v-tooltip>
+            <v-tooltip top v-else>
+              <v-btn class="ma-0" icon :to="{name:'farmOwner-addFarmOwner',params : {'farmer' : props.item}}"
+                     slot="activator">
+                <v-icon color="red">mdi-file-document</v-icon>
+              </v-btn>
+              <span>เพิ่มแบบสอบถาม</span>
+            </v-tooltip>
 
-          <v-tooltip top v-else>
-            <v-btn class="ma-0" icon :to="{name:'farmOwner-addFarmOwner',params : {'farmer' : props.item}}"
-                   slot="activator">
-              <v-icon color="red">mdi-file-document</v-icon>
-            </v-btn>
-            <span>เพิ่มแบบสอบถาม</span>
-          </v-tooltip>
+            <v-tooltip top>
+              <v-btn class="ma-0" icon :to="{name:'edit-farmer',params : {id : props.item.id}}" slot="activator">
+                <v-icon color="primary">create</v-icon>
+              </v-btn>
+              <span>Edit</span>
+            </v-tooltip>
 
-          <v-tooltip top>
-            <v-btn class="ma-0" icon :to="{name:'edit-farmer',params : {id : props.item.id}}" slot="activator">
-              <v-icon color="primary">create</v-icon>
-            </v-btn>
-            <span>Edit</span>
-          </v-tooltip>
+            <v-tooltip top>
+              <v-btn class="ma-0" icon @click="" slot="activator" @click.native="delFarmer(props.item.id)">
+                <v-icon color="red">delete</v-icon>
+              </v-btn>
+              <span>Delete</span>
+            </v-tooltip>
 
-          <v-tooltip top>
-            <v-btn class="ma-0" icon @click="" slot="activator" @click.native="delFarmer(props.item.id)">
-              <v-icon color="red">delete</v-icon>
-            </v-btn>
-            <span>Delete</span>
-          </v-tooltip>
+          </td>
 
-        </td>
-
-      </template>
-    </v-data-table>
-    <div class="text-xs-center">
-      <v-pagination @input="changePage" :length="paginate.lastPage"
-                    v-model="paginate.page"></v-pagination>
-    </div>
+        </template>
+      </v-data-table>
+      <div class="text-xs-center">
+        <v-pagination @input="changePage" :length="paginate.lastPage"
+                      v-model="paginate.page"></v-pagination>
+      </div>
     </v-card>
   </v-container>
 </template>
@@ -94,8 +95,7 @@
     components: {DistrictSelectSingleLine},
     extend: Base,
     name: "farmer-index",
-    computed: {
-    },
+    computed: {},
     data() {
       return {
         admin: null,
@@ -124,6 +124,20 @@
       await this.loadData()
     },
     methods: {
+      exportAll: function(){
+        axios({
+          url: `/api/v1/admin/summary/farmer-cattle-summary-exporter`,
+          method: 'GET',
+          responseType: 'blob', // important
+        }).then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', `export_smartfarmer.xlsx`);
+          document.body.appendChild(link);
+          link.click();
+        });
+      },
       search() {
         this.form.page = 1
         if (this.form.house_province == 0) {
