@@ -45,6 +45,7 @@
           <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
           <td class="text-xs-center">
 
+            <ExportFarmerButton :farmer-id="props.item.id"/>
 
             <v-tooltip top v-if="props.item.farmOwner">
               <v-btn class="ma-0" icon :to="{name:'farmOwner-editFarmOwner',params : {id : props.item.farmOwner.id}}"
@@ -90,9 +91,10 @@
 <script>
   import Base from "../../components/Base";
   import DistrictSelectSingleLine from "../share/districtSelectSingleLine";
+  import ExportFarmerButton from "./ExportFarmerButton";
 
   export default {
-    components: {DistrictSelectSingleLine},
+    components: {ExportFarmerButton, DistrictSelectSingleLine},
     extend: Base,
     name: "farmer-index",
     computed: {},
