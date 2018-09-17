@@ -61,11 +61,12 @@
               :valAmphur="form.user_amphur"
               :valDistrict="form.user_district"
               @change="updateDistrictSelect"></district-select>
-
+            <template v-if="admin.id != form.id">
             <h3>Roles</h3>
             <v-container fluid>
               <role-checkbox :value="form.roles" @change="updateRoles"></role-checkbox>
             </v-container>
+            </template>
 
             <v-btn color="primary" @click="saveUser"> Submit</v-btn>
             <v-btn @click="$router.go(-1)"> Cancel</v-btn>
@@ -84,6 +85,7 @@
   import roleCheckbox from "@/components/role/roleCheckbox";
   import districtSelect from "@/components/share/districtSelect";
   import Base from "@/components/Base";
+  import {mapState} from 'vuex'
 
   export default {
     name: "edit",
@@ -100,8 +102,15 @@
         form: null,
       }
     },
-    computed: {},
+    computed: {
+      ...mapState ({
+        admin: state => state.login.user
+      })
+    },
     async created() {
+      if(!this.admin){
+        this.$store.dispatch("login/loadUser")
+      }
       this.getUser.id = this.$route.params.id;
       await this.load();
       await console.log("start",this.form)

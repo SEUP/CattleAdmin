@@ -49,21 +49,23 @@
               <td class="text-xs-left">{{ getProvinceAmphurDistrictString(props.item) }}</td>
               <td class="text-xs-left">
                 <template v-if="admin.roles[0].id <  (props.item.roles[0] ? props.item.roles[0].id : 20) || admin.id == (props.item.id)">
-                <v-tooltip top>
-                  <v-btn class="ma-0" icon
-                         :to="{name:'user-edit',params : {id : props.item.id}}"
-                         slot="activator"
-                  >
-                    <v-icon color="primary">create</v-icon>
-                  </v-btn>
-                  <span>เเก้ไข</span>
-                </v-tooltip>
-                <v-tooltip top>
-                  <v-btn class="ma-0" icon @click="delUser(props.item.id) " slot="activator">
-                    <v-icon color="red">delete</v-icon>
-                  </v-btn>
-                  <span>ลบ</span>
-                </v-tooltip>
+                  <template v-if="checkProvinceAmphur(admin,props.item)">
+                    <v-tooltip top>
+                      <v-btn class="ma-0" icon
+                             :to="{name:'user-edit',params : {id : props.item.id}}"
+                             slot="activator"
+                      >
+                        <v-icon color="primary">create</v-icon>
+                      </v-btn>
+                      <span>เเก้ไข</span>
+                    </v-tooltip>
+                    <v-tooltip top>
+                      <v-btn class="ma-0" icon @click="delUser(props.item.id) " slot="activator">
+                        <v-icon color="red">delete</v-icon>
+                      </v-btn>
+                      <span>ลบ</span>
+                    </v-tooltip>
+                  </template>
                 </template>
               </td>
             </template>
@@ -122,6 +124,32 @@
     }
     ,
     methods: {
+
+      checkProvinceAmphur(admin,p) {
+        console.log(admin,p)
+        let adminRole = admin.roles[0].id
+        let pRole = p.roles[0].id
+        let admin_province = admin.user_province
+        let admin_amphur = admin.user_amphur
+        let p_province = p.user_province
+        let p_amphur = p.user_amphur
+        if (adminRole == 3){
+
+          if (p_amphur == admin_amphur){
+            return true
+          }else{
+            return false
+          }
+
+        }else if (adminRole == 2) {
+          if (p_amphur == admin_amphur){
+            return true
+          }else{
+            return false
+          }
+        }
+        return true
+      },
       getProvinceAmphurDistrictString: function (user) {
         let pvString = user.province ? user.province.province_name : "-";
         let amString = user.amphur ? user.amphur.amphur_name : "-";
