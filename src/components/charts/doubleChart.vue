@@ -11,12 +11,12 @@
           <v-divider/>
           <div ref="master"></div>
         </v-card>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text">{{head2}}</v-card-text>
           <v-divider/>
           <div ref="sub"></div>
         </v-card>
-        <v-card v-if = "type == 'use_land'">
+        <v-card class="mt-3" v-if = "type == 'use_land'">
           <v-card-text class="subheader black--text">{{head3}}</v-card-text>
           <v-divider/>
           <div ref="sum_use_land"></div>
