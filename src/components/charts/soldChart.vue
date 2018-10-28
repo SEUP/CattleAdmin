@@ -2,7 +2,7 @@
   <v-container class="grid-list-md fluid">
     <v-layout row wrap>
       <v-flex xs8>
-        <div class="headline">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</div>
+        <div class="headline">ราคาของโคเนื้อที่จำหน่ายและระยะเวลาในการเลี้ยง</div>
         <province-select :value="province"
                          @change="provinceChange">
         </province-select>
@@ -10,38 +10,32 @@
         <v-card class="mt-3">
           <v-card-text class="subheader black--text"> พ่อพันธุ์ </v-card-text>
           <v-divider/>
-          <div ref="male_cattle_price_range_sale"></div>
-          <div ref="male_cattle_age_range_sale"></div>
+          <div class="mt-3" ref="male_cattle_price_range_sale"></div>
+          <div class="mt-3" ref="male_cattle_age_range_sale"></div>
         </v-card>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text"> แม่พันธุ์ </v-card-text>
           <v-divider/>
-          <div ref="female_cattle_price_range_sale"></div>
-          <div ref="female_cattle_age_range_sale"></div>
+          <div class="mt-3" ref="female_cattle_price_range_sale"></div>
+          <div class="mt-3" ref="female_cattle_age_range_sale"></div>
         </v-card>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text"> โคขุน </v-card-text>
           <v-divider/>
-          <div ref="khoon_cattle_price_range_sale"></div>
-          <div ref="khoon_cattle_age_range_sale"></div>
+          <div class="mt-3" ref="khoon_cattle_price_range_sale"></div>
+          <div class="mt-3" ref="khoon_cattle_age_range_sale"></div>
         </v-card>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text"> โครุ่น </v-card-text>
           <v-divider/>
-          <div ref="teen_cattle_price_range_sale"></div>
-          <div ref="teen_cattle_age_range_sale"></div>
+          <div class="mt-3" ref="teen_cattle_price_range_sale"></div>
+          <div class="mt-3" ref="teen_cattle_age_range_sale"></div>
         </v-card>
-        <v-card>
-          <v-card-text class="subheader black--text"> โครุ่น </v-card-text>
-          <v-divider/>
-          <div ref="teen_cattle_price_range_sale"></div>
-          <div ref="teen_cattle_age_range_sale"></div>
-        </v-card>
-        <v-card>
+        <v-card class="mt-3">
           <v-card-text class="subheader black--text"> อื่นๆ  </v-card-text>
           <v-divider/>
-          <div ref="other_cattle_price_range_sale"></div>
-          <div ref="other_cattle_age_range_sale"></div>
+          <div class="mt-3" ref="other_cattle_price_range_sale"></div>
+          <div class="mt-3" ref="other_cattle_age_range_sale"></div>
         </v-card>
 
       </v-flex>
@@ -159,7 +153,7 @@
                 type: 'column'
               },
               title: {
-                text: 'ราคาของโคเนื้อที่ขาย',
+                text: 'ราคาของโคเนื้อที่จำหน่าย',
               },
               xAxis: this.chartData[0].xAxis,
               yAxis: {
@@ -245,7 +239,7 @@
                 type: 'column'
               },
               title: {
-                text: 'ราคาของโคเนื้อที่ขาย',
+                text: 'ราคาของโคเนื้อที่จำหน่าย',
               },
               xAxis: this.chartData[2].xAxis,
               yAxis: {
@@ -329,7 +323,7 @@
                 type: 'column'
               },
               title: {
-                text: 'ราคาของโคเนื้อที่ขาย',
+                text: 'ราคาของโคเนื้อที่จำหน่าย',
               },
               xAxis: this.chartData[4].xAxis,
               yAxis: {
@@ -413,7 +407,7 @@
                 type: 'column'
               },
               title: {
-                text: 'ราคาของโคเนื้อที่ขาย',
+                text: 'ราคาของโคเนื้อที่จำหน่าย',
               },
               xAxis: this.chartData[6].xAxis,
               yAxis: {
@@ -497,7 +491,7 @@
                 type: 'column'
               },
               title: {
-                text: 'ราคาของโคเนื้อที่ขาย',
+                text: 'ราคาของโคเนื้อที่จำหน่าย',
               },
               xAxis: this.chartData[8].xAxis,
               yAxis: {

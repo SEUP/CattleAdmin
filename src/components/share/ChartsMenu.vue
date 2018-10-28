@@ -103,7 +103,7 @@
             <li><router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'น้ำหนักของโคเนื้อที่ท่านจำหน่าย',type:'weight_range_sale'}}">น้ำหนักของโคเนื้อที่ท่านจำหน่าย</router-link></li>
             <li> <router-link  @click.native="toTop"  :to="{name:'chart-pie',params : {label:'ลักษณะการจำหน่าย',type:'cattle_sale_methods'}}">ลักษณะการจำหน่าย</router-link></li>
             <li><router-link  @click.native="toTop"  :to="{name:'chart-groupJoin',params : {label:'การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_joins'}}">การรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</router-link></li>
-            <li><router-link  @click.native="toTop"  :to="{name:'chart-sold'}">ราคาของโคเนื้อที่ขาย และระยะเวลาในการเลี้ยง</router-link></li>
+            <li><router-link  @click.native="toTop"  :to="{name:'chart-sold'}">ราคาของโคเนื้อที่จำหน่ายและระยะเวลาในการเลี้ยง</router-link></li>
             <li><router-link  @click.native="toTop"  :to="{name:'chart-pie',params : {label:'ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_join_future'}}">ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</router-link></li>
             <li><router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ความต้องการความช่วยเหลือจากสหกรณ์',type:'cooperative_help_types'}}">ความต้องการความช่วยเหลือจากสหกรณ์</router-link></li>
             <li> <router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ความต้องการซื้ออาหารข้นในนามสหกรณ์',type:'feed_purchase_cooperative'}}">ความต้องการซื้ออาหารข้นในนามสหกรณ์</router-link></li>
