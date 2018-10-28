@@ -7,14 +7,15 @@
                          @change="provinceChange">
         </province-select>
         <v-card class="mt-3">
-          <v-card-text class="subheader black--text">เงินทุนที่ท่านใช้เลี้ยงโคเนื้อ</v-card-text>
+          <v-card-text class="subheader black--text">{{$route.params.label}}</v-card-text>
           <v-divider/>
-          <div ref="master"></div>
+          <div class="mt-3" ref="master"></div>
         </v-card>
-        <v-card>
-          <v-card-text class="subheader black--text">ยอดรวมเงินกู้ แยกตามแหล่งเงินกู้</v-card-text>
+
+        <v-card class="mt-3">
+          <v-card-text class="subheader black--text">{{$route.params.label}}</v-card-text>
           <v-divider/>
-          <div ref="sub"></div>
+          <div class="mt-3" ref="sub"></div>
         </v-card>
       </v-flex>
 
