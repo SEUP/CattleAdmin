@@ -13,7 +13,7 @@
         </v-card>
 
         <v-card class="mt-3">
-          <v-card-text class="subheader black--text">{{$route.params.label}}</v-card-text>
+          <v-card-text class="subheader black--text">จำนวน{{$route.params.label}}</v-card-text>
           <v-divider/>
           <div class="mt-3" ref="sub"></div>
         </v-card>
