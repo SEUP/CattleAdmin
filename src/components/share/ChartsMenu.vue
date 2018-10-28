@@ -11,7 +11,7 @@
                               @click.native="toTop">อายุ</router-link></li>
             <li><router-link :to="{name:'chart-normal',params : {label:'การศึกษา',type:'education'}}"  @click.native="toTop">การศึกษา</router-link></li>
             <li><router-link :to="{name:'chart-gmap',params : {label:'ที่ตั้งฟาร์มของเกษตรกร'}}"  @click.native="toTop">ที่ตั้งฟาร์มของเกษตรกร</router-link></li>
-            <li> <router-link :to="{name:'chart-pie',params : {label:'อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)',type:'cattle_job'}}"  @click.native="toTop">อาชีพการเลี้ยงโคเนื้อ(อาชีพหลัก-เสริม)</router-link></li>
+            <li> <router-link :to="{name:'chart-pie',params : {label:'อาชีพการเลี้ยงโคเนื้อ (อาชีพหลัก-เสริม)',type:'cattle_job'}}"  @click.native="toTop">อาชีพการเลี้ยงโคเนื้อ (อาชีพหลัก-เสริม)</router-link></li>
             <li><router-link  :to="{name:'chart-normal',params : {label:'เฉลี่ยรายได้รวมของครอบครัว',type:'income_range'}}"  @click.native="toTop">เฉลี่ยรายได้รวมของครอบครัว</router-link></li>
             <li><router-link   :to="{name:'chart-normal',params : {label:'รายได้จากการประกอบอาชีพของเกษตรกร',type:'jobtypes'}}"  @click.native="toTop">รายได้จากการประกอบอาชีพของเกษตรกร</router-link></li>
             <li> <router-link  :to="{name:'chart-range-farmowner',
@@ -107,7 +107,7 @@
             <li><router-link  @click.native="toTop"  :to="{name:'chart-pie',params : {label:'ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ',type:'group_join_future'}}">ความประสงค์ในการรวมกลุ่มวิสาหกิจชุมชนและสหกรณ์โคเนื้อ</router-link></li>
             <li><router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ความต้องการความช่วยเหลือจากสหกรณ์',type:'cooperative_help_types'}}">ความต้องการความช่วยเหลือจากสหกรณ์</router-link></li>
             <li> <router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ความต้องการซื้ออาหารข้นในนามสหกรณ์',type:'feed_purchase_cooperative'}}">ความต้องการซื้ออาหารข้นในนามสหกรณ์</router-link></li>
-            <li><router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ระดับความพอใจต่อราคาที่ขาย',type:'sale_satisfaction'}}">ระดับความพอใจต่อราคาที่ขาย</router-link></li>
+            <li><router-link  @click.native="toTop"  :to="{name:'chart-normal',params : {label:'ระดับความพอใจต่อราคาที่จำหน่าย',type:'sale_satisfaction'}}">ระดับความพอใจต่อราคาที่จำหน่าย</router-link></li>
             </ul>
         </v-card-text>
       </v-card>

@@ -4,7 +4,13 @@
       <v-flex xs8>
         <div class="headline">{{$route.params.label}}</div>
         <province-select :value="province" @change="provinceChange"></province-select>
-        <div class="mt-3" ref="chart"></div>
+
+        <v-card class="mt-3">
+          <v-card-text class="subheader black--text">{{$route.params.label}}</v-card-text>
+          <v-divider/>
+          <div class="mt-3" ref="chart"></div>
+        </v-card>
+
       </v-flex>
       <v-flex xs4 class="mt-3">
         <chartmenu></chartmenu>
