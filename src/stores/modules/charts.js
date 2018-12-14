@@ -25,7 +25,7 @@ export default {
       return result
     },
     getSuggestion : async function (context,params){
-      let result  = axios.get("api/v1/admin/farm-owner/suggestion",{params : params})
+      let result  = axios.get("api/v1/admin/farm-owners/suggestion",{params : params})
         .then ((response)=>{
           return response.data
         })
