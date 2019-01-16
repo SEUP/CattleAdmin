@@ -7,7 +7,6 @@
       <v-card-text>
         <div ref="mapChart"></div>
         <v-btn ref="showDialog" @click="dialog = true" color="info">เต็มจอ</v-btn>
-
       </v-card-text>
     </v-card>
     <v-dialog v-model="dialog" width="100%">
@@ -23,100 +22,116 @@
         <v-card-text>
           <div ref="mapChart2" style="height: 650px;"></div>
         </v-card-text>
+
+        <v-card-text v-if="tableData">
+          <h3 class="text-md-center">ตารางเเสดง{{title}}</h3>
+          <v-data-table :headers="headers" :items="tableData" hide-actions>
+            <template slot="items" slot-scope="props">
+              <td>{{props.item.amphur_name}}</td>
+              <td>{{props.item.value}}</td>
+            </template>
+          </v-data-table>
+        </v-card-text>
       </v-card>
     </v-dialog>
-
   </v-flex>
 </template>
 
 <script>
-  import Highcharts from 'highcharts/highmaps'
-  import {Phayao, Phrae, Nan, ChiangRai} from '@/maps/Provinces'
+import Highcharts from "highcharts/highmaps";
+import { Phayao, Phrae, Nan, ChiangRai } from "@/maps/Provinces";
 
-  const MapData = {
-    42: [Phrae, "แพร่"],
-    43: [Nan, "น่าน"],
-    44: [Phayao, "พะเยา"],
-    45: [ChiangRai, "เชียงราย"],
-  }
+const MapData = {
+  42: [Phrae, "แพร่"],
+  43: [Nan, "น่าน"],
+  44: [Phayao, "พะเยา"],
+  45: [ChiangRai, "เชียงราย"]
+};
 
-  export default {
-    name: "ThailandProvinceMapChart",
-    components: {},
-    props: {
-      provinceId: {
-        type: Number,
-      },
-    },
-    data: () => ({
-      title: "จำนวนเกษตรกรผู้เลี้ยงโคเนื้อจังหวัด",
-      Highcharts: Highcharts,
-      options: null,
-      options2: null,
-      dialog: false,
-    }),
-    async mounted() {
-      this.title += MapData[this.provinceId][1];
+export default {
+  name: "ThailandProvinceMapChart",
+  components: {},
+  props: {
+    provinceId: {
+      type: Number
+    }
+  },
+  data: () => ({
+    title: "จำนวนเกษตรกรผู้เลี้ยงโคเนื้อจังหวัด",
+    Highcharts: Highcharts,
+    options: null,
+    options2: null,
+    dialog: false,
+    tableData: null,
+    headers: [
+      { text: "อำเภอ", value: "amphur_name", sortable: false },
+      { text: "จำนวน (คน)", value: "amphur_name", sortable: false }
+    ]
+  }),
+  async mounted() {
+    this.title += MapData[this.provinceId][1];
 
-      let mapChart = this.$refs.mapChart;
-      let mapChart2 = this.$refs.mapChart2;
+    let mapChart = this.$refs.mapChart;
+    let mapChart2 = this.$refs.mapChart2;
 
-      let response = await axios.get('/api/v1/admin/charts/map-data/' + this.provinceId).then((r) => {
-        return r.data
+    let response = await axios
+      .get("/api/v1/admin/charts/map-data/" + this.provinceId)
+      .then(r => {
+        this.tableData = r.data;
+        return r.data;
       });
-      this.options = {
-        title: {
-          text: null,
-        },
-        plotOptions: {
-          series: {
-            point: {
-              events: {
-                click: function () {
-                }
-              }
+    this.options = {
+      title: {
+        text: null
+      },
+      plotOptions: {
+        series: {
+          point: {
+            events: {
+              click: function() {}
             }
           }
-        },
-        colorAxis: {},
-        tooltip: {
-          headerFormat: '<span style="font-size:10px">{series.name}</span><br/>',
-          pointFormatter: function () {
+        }
+      },
+      colorAxis: {},
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{series.name}</span><br/>',
+        pointFormatter: function() {
+          var amphurName = this.amphur_name
+            ? this.amphur_name
+            : this.properties.amphur_name;
+          var value = this.value ? this.value : 0;
 
-            var amphurName = this.amphur_name ? this.amphur_name : this.properties.amphur_name;
-            var value = this.value ? this.value : 0;
+          return amphurName + " : " + value + " คน";
+        }
+      },
 
-            return amphurName + " : " + value + " คน";
+      series: [
+        {
+          cursor: "pointer",
+          name: "จำนวนเกษตรกร",
+          type: "map",
+          mapData: MapData[this.provinceId][0],
+          data: response,
+          joinBy: ["amphur_id", "amphur_id"],
+          dataLabels: {
+            enabled: true,
+            color: "#FFFFFF",
+            formatter: function() {
+              let amphurName = this.point.amphur_name;
+              let value = this.point.value ? this.point.value : 0;
+              return amphurName + " : " + value + " คน";
+            }
           }
-        },
-
-        series: [
-          {
-            cursor: 'pointer',
-            name: "จำนวนเกษตรกร",
-            type: "map",
-            mapData: MapData[this.provinceId][0],
-            data: response,
-            joinBy: ['amphur_id', 'amphur_id'],
-            dataLabels: {
-              enabled: true,
-              color: '#FFFFFF',
-              formatter: function () {
-                let amphurName = this.point.amphur_name
-                let value = this.point.value ? this.point.value : 0;
-                return amphurName + " : " + value + " คน";
-              },
-            },
-          }
-        ],
-      }
-      this.options2 = _.cloneDeep(this.options)
-      Highcharts.mapChart(mapChart, this.options);
-      Highcharts.mapChart(mapChart2, this.options2);
-    }
+        }
+      ]
+    };
+    this.options2 = _.cloneDeep(this.options);
+    Highcharts.mapChart(mapChart, this.options);
+    Highcharts.mapChart(mapChart2, this.options2);
   }
+};
 </script>
 
 <style scoped>
-
 </style>
