@@ -72,7 +72,7 @@
           </choice-check-box>
         </div>
 
-        <v-card-text class="pa-2 title">3.8 แหล่งที่มาของอาหารข้นหรืออาหารผาชสมครบส่วน</v-card-text>
+        <v-card-text class="pa-2 title">3.8 แหล่งที่มาของอาหารข้นหรืออาหารผสมครบส่วน</v-card-text>
         <v-divider></v-divider>
         <div class="ma-2 mx-4">
           <choice-check-box type="feed_sources"
