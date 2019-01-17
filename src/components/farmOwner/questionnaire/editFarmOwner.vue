@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="isReady ">
+  <v-container v-if="isLoaded">
     <v-layout row>
       <v-flex xs12>
         <v-card-text class="display-1  pa-0 mb-3 text-xs-center text-md-left">
@@ -213,9 +213,11 @@
       form: null,
       steper: 1,
       farmOwner: null,
+      isLoaded : false,
     }),
     computed: {
       isReady: function () {
+        /* despricated */
         let choicesLoaded = this.$store.state.choices.isLoad == 'Done';
         let districtLoaded = this.$store.state.districtSelect.isLoad == 'Done';
         return choicesLoaded && districtLoaded && this.form;
@@ -226,6 +228,7 @@
       this.form = await this.$store.dispatch("farmOwners/getFarmOwnerById", farmOwnerId);
       await this.$store.dispatch('choices/load');
       await this.$store.dispatch('districtSelect/load');
+      this.isLoaded = true
     }
     , methods: {
       elFocus: function (el) {
