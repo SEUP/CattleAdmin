@@ -67,7 +67,7 @@
     name: "part6",
     data (){
       return{
-        form:[]
+        form:null
       }
 
     },async created (){
