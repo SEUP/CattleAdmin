@@ -15,7 +15,7 @@
     </v-snackbar>
 
     <v-navigation-drawer
-      width="230"
+      width="240"
       :clipped="$vuetify.breakpoint.lgAndUp"
       v-model="drawer"
       fixed
@@ -130,7 +130,62 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-  </v-list>
+        <v-divider></v-divider>
+
+      <!-- manual-->
+        <v-list-group
+        >
+          <template slot="activator" >
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-icon>mdi-book-multiple-variant</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  คู่มือการใช้งานระบบ
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </template>
+
+          <v-list-tile
+            href="./static/manual_complete.pdf" target="_blank" exact
+          >
+            <v-list-tile-action>
+              <v-icon>mdi-checkbox-blank-circle</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>รายงานฉบับสมบูรณ์</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+
+          <v-list-tile
+            href="./static/android.pdf" target="_blank" exact
+          >
+            <v-list-tile-action>
+              <v-icon>mdi-checkbox-blank-circle</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Android</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+
+          <v-list-tile
+            href="./static/ios.pdf" target="_blank" exact
+          >
+            <v-list-tile-action>
+              <v-icon>mdi-checkbox-blank-circle</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>IOS</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+
+
+      </v-list>
 
     </v-navigation-drawer>
 
@@ -184,7 +239,16 @@
     },
     data: () => ({
       drawer: null,
-      userData : null
+      userData : null,
+      items: [
+        {
+          action: 'manual',
+          title: 'คู่มือ',
+          items: [
+            { title: 'List Item' }
+          ]
+        },
+      ]
     }),
     async mounted () {
       let user = await this.$store.dispatch("login/loadUser");
