@@ -17,7 +17,7 @@
         </v-flex>
         <v-flex xs8 class="mx-3">
           <v-text-field append-icon="mdi-magnify"
-                        placeholder="ค้นหา"
+                        placeholder="ค้นหา : ชื่อผู้ใช้ ชื่อ นามสกุล รหัสประจำตัวประชาชน"
                         hide-details class="pa-0 mt-2"
                         v-model="form.keyword"
                         @keyup.13="search()"
