@@ -9,7 +9,7 @@ import farmer from "./farmer"
 
 function view(name) {
   return function (resolve) {
-    require(['@/components/' + name + '.vue'], resolve);
+    require(['@/components/admin/' + name + '.vue'], resolve);
   }
 }
 
@@ -36,7 +36,7 @@ export default new Router({
         {
           path: '',
           name: 'admin-home',
-          component: view('admin/Home/index')
+          component: view('Home/index')
         },
         {
           path: 'report',

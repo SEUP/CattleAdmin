@@ -33,9 +33,6 @@
 </template>
 <style scoped></style>
 <script>
-  import ChartsMenu from "@/components/share/ChartsMenu";
-  import ThailandNorthMapChart from "@/components/maps/ThailandNorthMapChart";
-  import ThailandProvinceMapChart from "@/components/maps/ThailandProvinceMapChart";
   import SearchCard from "@/components/admin/Home/Cards/SearchCard";
   import ReportCard from "@/components/admin/Home/Cards/ReportCard";
   import UserCard from "@/components/admin/Home/Cards/UserCard";
@@ -52,7 +49,6 @@
       UserCard,
       ReportCard,
       SearchCard,
-      ThailandNorthMapChart, ThailandProvinceMapChart, ChartsMenu
     },
     data: () => ({}),
   }

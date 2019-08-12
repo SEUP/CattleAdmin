@@ -1,6 +1,6 @@
 function view(name) {
   return function (resolve) {
-    require(['@/components/' + name + '.vue'], resolve);
+    require(['@/components/admin/' + name + '.vue'], resolve);
   }
 }
 
@@ -25,9 +25,9 @@ export default {
       component: view('farmer/edit')
     },
     {
-      path: '/farmer/report',
+      path: 'report',
       name: 'admin/farmer/report',
-      component: view('admin/FarmerReport/index')
+      component: view('FarmerReport/index')
     },
 
   ]

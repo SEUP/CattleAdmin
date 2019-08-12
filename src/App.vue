@@ -9,10 +9,10 @@
     name: 'App',
     methods: {
       showSpinner: function () {
-        this.$store.dispatch("spinner/toggle", true);
+        this.$store.dispatch("admin/spinner/toggle", true);
       },
       hideSpinner: function () {
-        this.$store.dispatch("spinner/toggle", false);
+        this.$store.dispatch("admin/spinner/toggle", false);
       }
     },
     created() {

@@ -20,7 +20,7 @@ export default {
   actions: {
     createFarmOwner: async function (context) {
       let form = context.state.farmOwner;
-      context.dispatch("error/resetError",null, {root: true});
+      context.dispatch("admin/error/resetError",null, {root: true});
 
       let result = await  axios.post(api, form)
         .then((response) => {
@@ -28,7 +28,7 @@ export default {
           return response.data;
         })
         .catch((error) => {
-          context.dispatch("error/setError", error.response.data, {root: true});
+          context.dispatch("admin/error/setError", error.response.data, {root: true});
           return null
         })
       return result
@@ -42,7 +42,7 @@ export default {
           return response.data
         })
         .catch((error) => {
-          context.dispatch("error/setError", error.response.data, {root: true});
+          context.dispatch("admin/error/setError", error.response.data, {root: true});
 
           return null
         })
@@ -68,7 +68,7 @@ export default {
     },
     updateFarmOwner: async function (context) {
       let form = context.state.farmOwner;
-      context.dispatch("error/resetError",null, {root: true});
+      context.dispatch("admin/error/resetError",null, {root: true});
 
       let result = await  axios.put(api+"/" + form.id, form)
         .then((response) => {
@@ -77,7 +77,7 @@ export default {
           return response.data;
         })
         .catch((error) => {
-          context.dispatch("error/setError", error.response.data, {root: true});
+          context.dispatch("admin/error/setError", error.response.data, {root: true});
           return null
         })
       return result
@@ -88,7 +88,7 @@ export default {
           return response.data
         })
         .catch((error) => {
-          context.dispatch("error/setError", error.response.data, {root: true});
+          context.dispatch("admin/error/setError", error.response.data, {root: true});
           return null
         });
       return result
@@ -109,7 +109,7 @@ export default {
           return response.data
         })
         .catch((error) => {
-          context.dispatch("error/setError", error.response.data, {root: true});
+          context.dispatch("admin/error/setError", error.response.data, {root: true});
           return null
         });
       return result

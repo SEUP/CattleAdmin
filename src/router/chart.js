@@ -1,6 +1,6 @@
 function view(name) {
   return function (resolve) {
-    require(['@/components/' + name + '.vue'], resolve);
+    require(['@/components/admin/' + name + '.vue'], resolve);
   }
 }
 
