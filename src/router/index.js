@@ -21,27 +21,26 @@ export default new Router({
     {
       path: '/',
       name: 'Login',
-      component: view("Login")
+      component: view("login")
     },
     {
       path: '/reset-password',
       name: 'reset-password',
-      component: view("ResetPassword")
+      component: view("reset-password")
     },
     {
       path: '/admin',
-      name: 'admin',
-      component: view("AdminTemplate"),
+      component: view("admin-template"),
       children: [
         {
           path: '',
           name: 'admin-home',
-          component: view('Home/index')
+          component: view('home/index')
         },
         {
           path: 'report',
           name: 'admin/report',
-          component: view('Report')
+          component: view('report')
         },
         farmer,
         farmOwner,

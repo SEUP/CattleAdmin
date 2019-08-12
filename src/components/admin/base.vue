@@ -3,7 +3,7 @@
     import Loading from 'vue-loading-overlay';
 
     export default {
-        name: "Base",
+        name: "base",
         components : {Loading},
         props : {},
         computed: {

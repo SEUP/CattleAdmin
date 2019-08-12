@@ -33,12 +33,12 @@
 </template>
 <style scoped></style>
 <script>
-  import SearchCard from "@/components/admin/Home/Cards/SearchCard";
-  import ReportCard from "@/components/admin/Home/Cards/ReportCard";
-  import UserCard from "@/components/admin/Home/Cards/UserCard";
-  import FarmerCard from "@/components/admin/Home/Cards/FarmerCard";
-  import AddFarmOwnerCard from "@/components/admin/Home/Cards/AddFarmOwnerCard";
-  import FarmerReportCard from "./Cards/FarmerReportCard";
+  import SearchCard from "@/components/admin/home/cards/SearchCard";
+  import ReportCard from "@/components/admin/home/cards/ReportCard";
+  import UserCard from "@/components/admin/home/cards/UserCard";
+  import FarmerCard from "@/components/admin/home/cards/FarmerCard";
+  import AddFarmOwnerCard from "@/components/admin/home/cards/AddFarmOwnerCard";
+  import FarmerReportCard from "./cards/FarmerReportCard";
 
   export default {
     name: "Home",

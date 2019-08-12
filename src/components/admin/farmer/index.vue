@@ -82,7 +82,7 @@
   </v-container>
 </template>
 <script>
-  import Base from "../Base";
+  import Base from "../base";
   import DistrictSelectSingleLine from "../share/districtSelectSingleLine";
   import ExportFarmerButton from "./ExportFarmerButton";
 

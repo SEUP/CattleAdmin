@@ -84,7 +84,7 @@
 
   import roleCheckbox from "@/components/admin/role/roleCheckbox";
   import districtSelect from "@/components/admin/share/districtSelect";
-  import Base from "@/components/admin/Base";
+  import Base from "@/components/admin/base";
   import {mapState} from 'vuex'
 
   export default {

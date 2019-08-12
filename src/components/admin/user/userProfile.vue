@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import Base from "@/components/admin/Base";
+  import Base from "@/components/admin/base";
     export default {
       name: "userProfile",
       extends : Base,

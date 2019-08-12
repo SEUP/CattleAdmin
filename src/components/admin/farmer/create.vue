@@ -109,7 +109,7 @@
 
 <script>
   import districtSelect from "@/components/admin/share/districtSelect";
-  import Base from "../Base";
+  import Base from "../base";
   import DistrictSelect from "../share/districtSelect";
     export default {
       name: "addFarmer",

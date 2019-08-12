@@ -109,8 +109,8 @@
 </template>
 
 <script>
-  import districtSelect from "@/components/Admin/share/districtSelect";
-  import Base from "@/components/Admin/Base"
+  import districtSelect from "@/components/admin/share/districtSelect";
+  import Base from "@/components/admin/base"
   export default {
     name: "addFarmer",
     extends : Base,

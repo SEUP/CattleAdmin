@@ -6,7 +6,6 @@ function view(name) {
 
 export default {
   path: 'farmer',
-  name: 'farmer',
   component: view('farmer/template'),
   children: [
     {

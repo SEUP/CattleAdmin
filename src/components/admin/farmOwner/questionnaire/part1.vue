@@ -138,7 +138,7 @@
 </template>
 
 <script>
-    import Base from "@/components/admin/Base";
+    import Base from "@/components/admin/base";
     import DistrictSelect from "../../share/districtSelect";
     import ChoiceSelect from "../../share/choiceSelect";
     import ChoiceCheckBox from "../../share/choiceCheckBox";

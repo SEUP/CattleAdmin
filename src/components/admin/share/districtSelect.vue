@@ -27,10 +27,10 @@
 </template>
 
 <script>
-  import Base from '@/components/admin/Base'
+  import Base from '@/components/admin/base'
   export default {
     extends : Base,
-    name: "districtSelect",
+    name: "district-select",
     props: {
       valProvince: {
         type: Number,
